@@ -1,0 +1,27 @@
+.dailyNorm {
+  position: absolute;
+  width: 102px;
+  height: 54px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  border-radius: 15px;
+  margin-left: 16px;
+  margin-top: 72px;
+}
+.title {
+  pointer-events: none;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 14px;
+  padding-top: 12px;
+  padding-left: 12px;
+  margin-bottom: 6px;
+}
+.desc {
+  pointer-events: none;
+  font-size: 10px;
+  line-height: 10px;
+  font-weight: 400;
+  padding-left: 12px;
+}

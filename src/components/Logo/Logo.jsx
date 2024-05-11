@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import styles from "./Logo.module.css";
 
 const Logo = ({ text }) => {
@@ -10,7 +10,7 @@ const Logo = ({ text }) => {
 };
 
 Logo.propTypes = {
-  text: PropTypes.string.isRequired // Перевірка типу властивості text
+  text: PropTypes.string.isRequired,
 };
 
 export default Logo;
