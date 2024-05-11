@@ -5,9 +5,15 @@
 
 .text {
   font-family: Poppins;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 24px;
   letter-spacing: -0.01em;
   text-align: center;
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .text {
+    font-size: 24px;
+  }
 }
