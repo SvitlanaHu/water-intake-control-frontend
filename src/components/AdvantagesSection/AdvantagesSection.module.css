@@ -1,0 +1,138 @@
+.advantagesSection {
+  border-radius: 30px;
+  width: 343px;
+  height: 353px;
+  top: 443px;
+  left: 16px;
+  gap: 0px;
+  opacity: 0px;
+
+  background: url(/public/images/home-mobile.jpg) center / cover no-repeat;
+}
+
+@media (min-resolution: 192dpi) {
+  .advantagesSection {
+    background: url(/public/images/home-mobile@2x.jpg) center / cover no-repeat;
+  }
+}
+
+@media (min-resolution: 288dpi) {
+  .advantagesSection {
+    background: url(/public/images/home-mobile@3x.jpg) center / cover no-repeat;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1439.98px) {
+  .advantagesSection {
+    width: 704px;
+    height: 446px;
+    top: 546px;
+    left: 32px;
+    background: url(/public/images/home-tablet.jpg) center / cover no-repeat;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1439.98px) and (min-resolution: 192dpi) {
+  .advantagesSection {
+    background: url(/public/images/home-tablet@2x.jpg) center / cover no-repeat;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1439.98px) and (min-resolution: 288dpi) {
+  .advantagesSection {
+    background: url(/public/images/home-tablet@3x.jpg) center / cover no-repeat;
+  }
+}
+
+@media (min-width: 1440px) {
+  .advantagesSection {
+    width: 672px;
+    height: 736px;
+    top: 32px;
+    left: 736px;
+    background: url(/public/images/home-desktop.jpg) center / cover no-repeat;
+  }
+}
+
+@media (min-width: 1440px) and (min-resolution: 192dpi) {
+  .advantagesSection {
+    background: url(/public/images/home-desktop@2x.jpg) center / cover no-repeat;
+  }
+}
+
+@media (min-width: 1440px) and (min-resolution: 288dpi) {
+  .advantagesSection {
+    background: url(/public/images/home-desktop@3x.jpg) center / cover no-repeat;
+  }
+}
+.advantages {
+  display: flex;
+  padding: 24px 14px;
+  gap: 52px;
+}
+.customersBox {
+  display: flex;
+  align-items: center;
+  top: 652px;
+  left: 32px;
+  padding: 10px 14px 10px 14px;
+  gap: 52px;
+  border-radius: 30px;
+  background-color: var(--white);
+  opacity: 0px;
+}
+.customers {
+  display: block;
+  text-wrap: wrap;
+  width: 66.94px;
+  height: 28px;
+  top: 10px;
+  left: 79.06px;
+  gap: 0px;
+  opacity: 0px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14px;
+  text-align: left;
+}
+.customersHappy {
+  color: var(--mint);
+}
+@media (min-width: 768px) and (max-width: 1439.98px) {
+  .customers {
+    width: 90px;
+    height: 45px;
+    font-size: 15px;
+  }
+}
+@media (min-width: 1440px) {
+  .customers {
+    width: 90px;
+    height: 45px;
+    font-size: 15px;
+  }
+}
+.advantageBox {
+  display: flex;
+  flex-wrap: wrap;
+  width: 242px;
+  top: 882px;
+  left: 462px;
+  gap: 10px;
+}
+.base {
+  display: block;
+  padding: 11px, 16px;
+  border-radius: 30px;
+  font-size: 12px;
+}
+.drive {
+  color: var(--white);
+  background-color: var(--text-color);
+}
+.statistics {
+  background-color: var(--mint);
+}
+.setting {
+  background-color: var(--white);
+}
