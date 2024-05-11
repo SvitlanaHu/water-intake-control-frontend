@@ -1,4 +1,4 @@
-import styles from "./WaterProgressBar.module.css";
+// import styles from "./WaterProgressBar.module.css";
 
 const WaterProgressBar = () => {
   // ваш код

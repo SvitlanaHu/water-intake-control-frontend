@@ -1,1 +1,1 @@
-import styles from "./DeleteWaterModal.module.css";
+// import styles from "./DeleteWaterModal.module.css";

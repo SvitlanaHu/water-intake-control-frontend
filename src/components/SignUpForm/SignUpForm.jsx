@@ -1,4 +1,4 @@
-import styles from "./SignUpForm.module.css";
+// import styles from "./SignUpForm.module.css";
 
 const SignUpForm = () => {
   // ваш код

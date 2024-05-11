@@ -1,5 +1,5 @@
-import styles from "./WaterModal.module.css";
-import WaterForm from "../WaterForm/WaterForm";
+// import styles from "./WaterModal.module.css";
+// import WaterForm from "../WaterForm/WaterForm";
 
 const WaterModal = () => {
   // ваш код

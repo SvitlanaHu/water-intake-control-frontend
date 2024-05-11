@@ -1,4 +1,4 @@
-import styles from "./CalendarPagination.module.css";
+// import styles from "./CalendarPagination.module.css";
 
 const CalendarPagination = () => {
   // ваш код

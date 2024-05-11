@@ -1,6 +1,7 @@
-import styles from "./SharedLayout.module.css";
-import React from 'react';
-import { Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
+// import styles from "./SharedLayout.module.css";
+// import React from 'react';
+// import { Route } from 'react-router-dom';
 
 const SharedLayout = ({ children }) => {
   return (
@@ -15,6 +16,10 @@ const SharedLayout = ({ children }) => {
       </main>
     </div>
   );
+};
+
+SharedLayout.propTypes = {
+  children: PropTypes.node.isRequired // Перевірка типу властивості children
 };
 
 export default SharedLayout;

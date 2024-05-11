@@ -1,4 +1,4 @@
-import styles from "./AdvantagesSection.module.css";
+// import styles from "./AdvantagesSection.module.css";
 
 const AdvantagesSection = () => {
   // ваш код

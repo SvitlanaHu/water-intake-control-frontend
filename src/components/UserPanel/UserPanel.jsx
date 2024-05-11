@@ -1,5 +1,5 @@
-import styles from "./UserPanel.module.css"
-import UserBar from "../UserBar/UserBar";
+// import styles from "./UserPanel.module.css"
+// import UserBar from "../UserBar/UserBar";
 
 const UserPanel = () => {
   // ваш код
