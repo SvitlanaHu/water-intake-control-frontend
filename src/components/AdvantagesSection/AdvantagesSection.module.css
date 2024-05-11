@@ -168,42 +168,102 @@
 .advantageBox {
   position: absolute;
   padding: 10px 14px;
-  display: flex;
-  flex-wrap: wrap;
+  display: block;
   width: 168px;
   height: 56px;
-  top: 708px;
-  left: 175px;
+  top: 258px;
+  left: 140px;
   gap: 4px;
 }
 @media (min-width: 768px) and (max-width: 1439.98px) {
   .advantageBox {
     width: 242px;
     height: 78px;
-    top: 526;
-    left: 162px;
+    top: 342px;
+    left: 412px;
     gap: 10px;
   }
 }
 @media (min-width: 1440px) {
   .advantageBox {
-    top: 626;
-    left: 1134px;
+    position: absolute;
+    top: 592px;
+    left: 390px;
   }
 }
-.base {
+.advantageContainer {
+  position: relative;
   display: block;
-  padding: 11px, 16px;
+  width: 180px;
+}
+.advantageFlex {
+  position: relative;
+  display: flex;
+  gap: 4px;
+}
+.base {
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 30px;
-  font-size: 12px;
+  font-size: 8px;
 }
 .drive {
+  position: absolute;
+  width: 81px;
   color: var(--white);
   background-color: var(--text-color);
+  top: -13px;
+}
+.customersO {
+  position: absolute;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  color: var(--mint);
+  background-color: var(--mint);
+  top: 2px;
+  left: -12px;
 }
 .statistics {
+  position: absolute;
+  width: 83px;
   background-color: var(--mint);
+  top: -20px;
+  left: 87px;
 }
 .setting {
+  position: absolute;
+  width: 108px;
   background-color: var(--white);
+  top: 10px;
+}
+@media (min-width: 768px) {
+  .base {
+    font-size: 12px;
+    height: 34px;
+  }
+  .customersO {
+    top: 5px;
+    left: -16px;
+  }
+  .advantageContainer {
+    width: 250px;
+  }
+  .drive {
+    width: 111px;
+  }
+  .statistics {
+    width: 121px;
+    top: -25px;
+    left: 121px;
+  }
+  .setting {
+    width: 150px;
+    top: 17px;
+  }
+}
+@media (min-width: 1440px) {
 }
