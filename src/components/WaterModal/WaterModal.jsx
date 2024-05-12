@@ -1,4 +1,4 @@
-// import styles from "./WaterModal.module.css";
+//import styles from "./WaterModal.module.css";
 import WaterForm from "../WaterForm/WaterForm.jsx";
 import { useState } from "react";
 import { Modal } from "../Modal/Modal.jsx";
@@ -7,7 +7,20 @@ import PropTypes from "prop-types";
 const WaterModal = ({ operationType }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const toggleModal = () => setIsModalOpen(!isModalOpen);
+  const formState = {
+    add: {
+      title: "Add Water",
+      formComponent: <WaterForm operationType="add" />,
+    },
+    edit: {
+      title: "Edit Water",
+      formComponent: <WaterForm operationType="edit" />,
+    },
+  };
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
 
   const handleFormSubmit = (formData) => {
     console.log("Form Data Submitted:", formData);
@@ -15,13 +28,13 @@ const WaterModal = ({ operationType }) => {
   };
   return (
     <>
-      <button onClick={toggleModal}>
-        {operationType === "add" ? "Add Water" : "Edit Water"}
+      <button onClick={handleOpenModal}>
+        {formState[operationType].title}
       </button>
       {isModalOpen && (
         <Modal active={isModalOpen} setActive={setIsModalOpen}>
-          <h2>{operationType === "add" ? "Add Water" : "Edit Water"}</h2>
-          <WaterForm onSubmit={handleFormSubmit} />
+          <h2>{formState[operationType].title}</h2>
+          {formState[operationType].formComponent}
         </Modal>
       )}
     </>
