@@ -1,0 +1,13 @@
+.text {
+  margin-left: 20px;
+  margin-top: 40px;
+}
+.greet {
+  color: #323f47;
+  line-height: 32px;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+}
+.userName {
+  font-weight: bold;
+}

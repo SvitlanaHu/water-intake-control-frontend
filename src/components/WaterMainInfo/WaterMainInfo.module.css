@@ -1,6 +1,6 @@
 .container {
   min-width: 288px;
-  max-width: 375px;
+  /* max-width: 343px; */
 }
 .WaterMaininfoContainer {
   background: #9be1a0;
@@ -64,11 +64,12 @@
     width: 672px;
     margin: 0;
     padding: 0;
+    height: 736px;
   }
   .WaterMaininfoContainer {
     background: #9be1a0;
 
-    height: 736px;
+    height: 100%;
   }
   .imgWrapper {
     margin-top: 32px;
