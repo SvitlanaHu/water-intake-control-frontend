@@ -1,0 +1,24 @@
+.trackerContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 16px;
+
+  max-width: 375px;
+}
+@media only screen and (min-width: 768px) {
+  .trackerContainer {
+    max-width: 768px;
+    padding: 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .trackerContainer {
+    flex-direction: row;
+    gap: 32px;
+    padding: 32px;
+    max-width: 1440px;
+    padding: 32px;
+  }
+}
