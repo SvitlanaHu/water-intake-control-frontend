@@ -3,9 +3,9 @@
 // import AdvantagesSection from "../components/AdvantagesSection/AdvantagesSection";
 // import WelcomeSection from "../components/WelcomeSection/WelcomeSection";
 // import Logo from "../components/Logo/Logo";
-import WaterModal from "../components/WaterModal/WaterModal";
+// import WaterModal from "../components/WaterModal/WaterModal";
 
 const HomePage = () => {
-  <WaterModal perationType="edit" />;
+  // return <WaterModal operationType="edit" />;
 };
 export default HomePage;

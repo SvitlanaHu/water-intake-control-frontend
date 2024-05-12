@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import styles from "./Modal.module.css";
-// import { symbol } from "../../../public/";
+// import { symbol } from "../Modal/icon/symbol.svg";
 
 export const Modal = ({ active, setActive, children }) => {
   useEffect(() => {
@@ -30,9 +30,9 @@ export const Modal = ({ active, setActive, children }) => {
         >
           {children}
           <button className={styles.closeButton} onClick={handleCloseModal}>
-            {/* <svg className={styles.icon} width={24} height={24}>
+            {/* {<svg className={styles.icon} width={24} height={24}>
               <use href={`${symbol}#icon-x`}></use>
-            </svg> */}
+            </svg>} */}
             Close
           </button>
         </div>
