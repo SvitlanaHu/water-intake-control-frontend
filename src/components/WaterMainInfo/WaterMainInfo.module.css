@@ -1,12 +1,10 @@
-.WaterMaininfoContainer {
+.container {
   min-width: 288px;
   max-width: 375px;
+}
+.WaterMaininfoContainer {
   background: #9be1a0;
-  border-radius: 30;
 
-  margin-top: 16px;
-  margin-left: 16px;
-  margin-right: 16px;
   border-radius: 30px;
   height: 415px;
   position: relative;
@@ -26,4 +24,44 @@
   max-width: 262px;
   height: 335px;
   margin-bottom: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+  .WaterMaininfoContainer {
+    background: #9be1a0;
+
+    height: 578px;
+  }
+  .imgWrapper {
+    margin-top: 13px;
+  }
+  .img {
+    max-width: 374px;
+    height: 477px;
+    margin-bottom: 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    width: 672px;
+    margin: 0;
+    padding: 0;
+  }
+  .WaterMaininfoContainer {
+    background: #9be1a0;
+
+    height: 736px;
+  }
+  .imgWrapper {
+    margin-top: 32px;
+  }
+  .img {
+    max-width: 472px;
+    height: 604px;
+    margin-bottom: 40px;
+  }
 }

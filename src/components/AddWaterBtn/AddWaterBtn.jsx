@@ -7,10 +7,8 @@ const AddWaterBtn = () => {
       <div className={css.cont}>
         <svg className={css.svg}>
           <use
-            width={16}
-            height={16}
             className={css.icon}
-            href="../../../public/symbol.svg#icon-x"
+            href="../../../public/symbol.svg#icon-plus"
           ></use>
         </svg>
         <a className={css.btnText}>Add water</a>

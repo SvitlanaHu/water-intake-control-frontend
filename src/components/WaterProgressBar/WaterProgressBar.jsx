@@ -6,13 +6,13 @@ const WaterProgressBar = () => {
     <div className={css.progressCont}>
       <div className={css.textCont}>
         <strong className={css.title}>Today</strong>
-        {/* <input type="range" className={(css.input, css.sliderProgress)} /> */}
         <Slider
           className={css.slider}
           defaultValue={30}
           sx={{
             m: 0,
             p: 0,
+            // height: 6,
             color: "#9be1a0",
             "& .MuiSlider-thumb": {
               borderRadius: "16px",
@@ -21,14 +21,10 @@ const WaterProgressBar = () => {
               color: "white",
               border: "1px solid#9be1a0",
             },
-            // "& .MuiSlider-track": {
-            //   color: '"#F0EFF4"',
-            //   backgroundColor: "#F0EFF4",
-            // },
+
             "& .MuiSlider-rail": {
               color: "#F0EFF4",
               backgroundColor: "#F0EFF4",
-              height: 6,
             },
           }}
         />

@@ -24,4 +24,33 @@
   line-height: 10px;
   font-weight: 400;
   padding-left: 12px;
+  opacity: 0.6;
+}
+@media only screen and (min-width: 768px) {
+  .dailyNorm {
+    width: 129px;
+    height: 78px;
+    margin-left: 32px;
+    margin-top: 88px;
+  }
+  .title {
+    font-size: 15px;
+
+    line-height: 22.4px;
+    padding-top: 14px;
+    padding-left: 18px;
+    margin-bottom: 4px;
+  }
+  .desc {
+    font-size: 12px;
+    line-height: 22.4px;
+    font-weight: 400;
+    padding-left: 18px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .dailyNorm {
+    margin-left: 64px;
+    margin-top: 101px;
+  }
 }
