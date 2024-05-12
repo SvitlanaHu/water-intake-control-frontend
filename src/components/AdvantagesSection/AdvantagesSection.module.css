@@ -1,4 +1,5 @@
 .advantagesSection {
+  position: absolute;
   border-radius: 30px;
   width: 343px;
   height: 353px;
@@ -26,7 +27,7 @@
   .advantagesSection {
     width: 704px;
     height: 446px;
-    top: 546px;
+    top: 578px;
     left: 32px;
     background: url(/public/images/home-tablet.jpg) center / cover no-repeat;
   }
@@ -49,7 +50,7 @@
     width: 672px;
     height: 736px;
     top: 32px;
-    left: 736px;
+    left: 770px;
     background: url(/public/images/home-desktop.jpg) center / cover no-repeat;
   }
 }

@@ -1,0 +1,21 @@
+.container {
+  display: block;
+  margin: auto;
+  width: 100%;
+}
+.box {
+  /* position: relative; */
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+}
+@media (min-width: 1440px) {
+  .box {
+    flex-direction: row;
+    padding: 32px;
+    gap: 32px;
+  }
+}
