@@ -1,7 +1,6 @@
-import css from "./AddWaterBtn.module.css";
-// import WaterModal from "../WaterModal/WaterModal";
+import css from "./AddWaterDetailedBtn.module.css";
 
-const AddWaterBtn = () => {
+const AddWaterDetailedBtn = () => {
   return (
     <button className={css.btn} type="button">
       <svg className={css.svg}>
@@ -10,9 +9,9 @@ const AddWaterBtn = () => {
           href="../../../public/symbol.svg#icon-plus"
         ></use>
       </svg>
-      <a className={css.btnText}>Add water</a>
+      <p className={css.btnText}>Add water</p>
     </button>
   );
 };
 
-export default AddWaterBtn;
+export default AddWaterDetailedBtn;
