@@ -1,4 +1,5 @@
 .advantagesSection {
+  position: absolute;
   border-radius: 30px;
   width: 343px;
   height: 353px;
@@ -26,7 +27,7 @@
   .advantagesSection {
     width: 704px;
     height: 446px;
-    top: 546px;
+    top: 578px;
     left: 32px;
     background: url(/public/images/home-tablet.jpg) center / cover no-repeat;
   }
@@ -49,7 +50,7 @@
     width: 672px;
     height: 736px;
     top: 32px;
-    left: 736px;
+    left: 770px;
     background: url(/public/images/home-desktop.jpg) center / cover no-repeat;
   }
 }
@@ -66,73 +67,204 @@
   }
 }
 .advantages {
+  position: relative;
   display: flex;
   padding: 24px 14px;
   gap: 52px;
 }
+.customersContainer {
+  position: relative;
+  width: 285px;
+  height: 47px;
+}
+.customersImg,
+.customersImg2,
+.customersImg3 {
+  position: absolute;
+  display: block;
+  width: 27px;
+  top: 8px;
+  left: 30px;
+  border: 2px solid var(--white);
+  border-radius: 50%;
+}
+.customersImg2 {
+  left: 12px;
+}
+.customersImg3 {
+  left: -6px;
+}
+@media (min-width: 768px) {
+  .customersImg,
+  .customersImg2,
+  .customersImg3 {
+    width: 47px;
+    top: 0px;
+    left: 58px;
+  }
+  .customersImg2 {
+    left: 30px;
+  }
+  .customersImg3 {
+    left: 2px;
+  }
+}
+
 .customersBox {
+  position: absolute;
   display: flex;
   align-items: center;
-  top: 652px;
-  left: 32px;
-  padding: 10px 14px 10px 14px;
+  width: 125px;
+  height: 26px;
+  top: 210px;
+  left: 18px;
+  padding: 10px 14px;
   gap: 52px;
   border-radius: 30px;
   background-color: var(--white);
   opacity: 0px;
 }
+@media (min-width: 768px) {
+  .customersBox {
+    width: 200px;
+    height: 48px;
+    top: 280px;
+    left: 32px;
+  }
+}
+@media (min-width: 1440px) {
+  .customersBox {
+    top: 540px;
+  }
+}
 .customers {
+  position: absolute;
   display: block;
   text-wrap: wrap;
-  width: 66.94px;
+  width: 67px;
   height: 28px;
-  top: 10px;
-  left: 79.06px;
+  top: -2px;
+  left: 60px;
   gap: 0px;
   opacity: 0px;
   font-size: 12px;
   font-weight: 700;
-  line-height: 14px;
+  line-height: 120%;
   text-align: left;
 }
 .customersHappy {
   color: var(--mint);
 }
-@media (min-width: 768px) and (max-width: 1439.98px) {
+@media (min-width: 768px) {
   .customers {
     width: 90px;
     height: 45px;
     font-size: 15px;
+    line-height: 150%;
+    top: -10px;
+    left: 110px;
+  }
+}
+
+.advantageBox {
+  position: absolute;
+  padding: 10px 14px;
+  display: block;
+  width: 168px;
+  height: 56px;
+  top: 258px;
+  left: 140px;
+  gap: 4px;
+}
+@media (min-width: 768px) and (max-width: 1439.98px) {
+  .advantageBox {
+    width: 242px;
+    height: 78px;
+    top: 342px;
+    left: 412px;
+    gap: 10px;
   }
 }
 @media (min-width: 1440px) {
-  .customers {
-    width: 90px;
-    height: 45px;
-    font-size: 15px;
+  .advantageBox {
+    position: absolute;
+    top: 592px;
+    left: 390px;
   }
 }
-.advantageBox {
+.advantageContainer {
+  position: relative;
+  display: block;
+  width: 180px;
+}
+.advantageFlex {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  width: 242px;
-  top: 882px;
-  left: 462px;
-  gap: 10px;
+  gap: 4px;
 }
 .base {
-  display: block;
-  padding: 11px, 16px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 30px;
-  font-size: 12px;
+  font-size: 8px;
 }
 .drive {
+  position: absolute;
+  width: 81px;
   color: var(--white);
   background-color: var(--text-color);
+  top: -13px;
+}
+.customersO {
+  position: absolute;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  color: var(--mint);
+  background-color: var(--mint);
+  top: 2px;
+  left: -12px;
 }
 .statistics {
+  position: absolute;
+  width: 83px;
   background-color: var(--mint);
+  top: -20px;
+  left: 87px;
 }
 .setting {
+  position: absolute;
+  width: 108px;
   background-color: var(--white);
+  top: 10px;
+}
+@media (min-width: 768px) {
+  .base {
+    font-size: 12px;
+    height: 34px;
+  }
+  .customersO {
+    top: 5px;
+    left: -16px;
+  }
+  .advantageContainer {
+    width: 250px;
+  }
+  .drive {
+    width: 111px;
+  }
+  .statistics {
+    width: 121px;
+    top: -25px;
+    left: 121px;
+  }
+  .setting {
+    width: 150px;
+    top: 17px;
+  }
+}
+@media (min-width: 1440px) {
 }

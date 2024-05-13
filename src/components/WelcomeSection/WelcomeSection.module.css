@@ -1,0 +1,135 @@
+.container {
+  position: absolute;
+  width: 343px;
+  height: 411px;
+  top: 16px;
+  left: 16px;
+  gap: 0px;
+  border-radius: 30px;
+  opacity: 0px;
+  background-color: var(--light-gray);
+}
+@media (min-width: 768px) {
+  .container {
+    width: 672px;
+    height: 498px;
+    top: 32px;
+    left: 32px;
+    padding: 16px;
+  }
+}
+@media (min-width: 1440px) {
+  .container {
+    width: 672px;
+    height: 704px;
+  }
+}
+
+.box {
+  width: 300px;
+  padding: 16px;
+}
+@media (min-width: 768px) {
+  .box {
+    width: 600px;
+    padding: 32px;
+  }
+}
+
+.textBox {
+  width: 300px;
+  padding: 16px;
+  padding: 80px 16px 16px 16px;
+}
+@media (min-width: 768px) {
+  .textBox {
+    padding: 56px 64px 16px 32px;
+    width: 547px;
+  }
+}
+@media (min-width: 1440) {
+  .textBox {
+    padding-top: 88px;
+    padding-bottom: 32px;
+  }
+}
+
+.text {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.06em;
+  text-align: left;
+  color: var(--main-text-color);
+}
+@media (min-width: 768px) {
+  .text {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+@media (min-width: 1440px) {
+  .text {
+    width: 400px;
+  }
+}
+
+.title {
+  padding: 0 0 16px 0;
+  margin: 0;
+  color: var(--main-text-color);
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 38px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  text-wrap: wrap;
+}
+@media (min-width: 768px) and (max-width: 1439.98px) {
+  .title {
+    font-size: 64px;
+    line-height: 70px;
+  }
+}
+@media (min-width: 1440px) {
+  .title {
+    font-size: 80px;
+    line-height: 76px;
+  }
+}
+
+.linkBox {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding-left: 16px;
+}
+.link {
+  padding: 14px 28px;
+  border: 1px solid var(--main-text-color);
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+.link:hover,
+.link:active,
+.link:focus {
+  cursor: pointer;
+  background-color: var(--mint);
+  border-color: var(--mint);
+  color: var(--text-color);
+}
+@media (min-width: 768px) {
+  .link {
+    padding: 16px 40px;
+    font-size: 16px;
+  }
+  .linkBox {
+    padding-left: 32px;
+  }
+}
