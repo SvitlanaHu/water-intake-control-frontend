@@ -1,0 +1,53 @@
+.formWrap {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.label {
+  color: #2f2f2f;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.29em;
+}
+
+.input::placeholder,
+.input {
+  color: rgba(47, 47, 47, 0.6);
+  font-family: Poppins;
+  font-size: 14px;
+}
+.input {
+  box-sizing: border-box;
+  background-color: transparent;
+  border-radius: 15px;
+  border: 1px solid rgba(47, 47, 47, 0.2);
+  width: 100%;
+  padding: 16px;
+  margin-top: 8px;
+  color: rgb(47, 47, 47);
+}
+
+.passwordWrap {
+  position: relative;
+}
+
+.showPasswordBtnContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(50%);
+}
+.showPasswordBtn,
+.showPasswordBtn:hover,
+.showPasswordBtn:focus,
+.showPasswordBtn:active {
+  border-color: transparent !important;
+  color: #2f2f2f !important;
+  background-color: transparent !important;
+  outline: none;
+}
+
+.svg {
+  scale: 1.3;
+}

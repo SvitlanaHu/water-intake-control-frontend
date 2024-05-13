@@ -1,0 +1,18 @@
+.button {
+  margin-top: 32px;
+  padding: 16px;
+  width: 100%;
+  border-radius: 30px;
+  background: #9be1a0;
+  border: none;
+  color: #323f47;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.29em;
+  letter-spacing: -0.14px;
+}
+.button:active,
+.button:hover,
+.button:focus {
+  outline: none;
+}

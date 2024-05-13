@@ -1,0 +1,31 @@
+.wrap {
+  min-width: 320px;
+  max-width: 375px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  padding: 16px;
+
+  color: #323f47;
+
+  /* Рамки, які підсвічують наш контейнер */
+  /* outline: 2px solid red;
+  outline-offset: -2px; */
+}
+
+.content {
+  padding: 24px 16px;
+  background-color: #f0eff4;
+  border-radius: 30px;
+}
+
+.logoWrap {
+  margin-bottom: 172px;
+}
+.logoWrapSignUp {
+  margin-bottom: 126px;
+}
+.titleWrap {
+  margin-bottom: 32px;
+}

@@ -1,0 +1,26 @@
+.wrapDesc {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.linkQuestion {
+  color: rgba(47, 47, 47, 0.5);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.29em;
+  letter-spacing: -0.14px;
+}
+
+.linkRedirect {
+  color: #2f2f2f;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.29em;
+  letter-spacing: -0.14px;
+  text-decoration-line: underline;
+}
+
+.form {
+  margin-bottom: 192px;
+}
