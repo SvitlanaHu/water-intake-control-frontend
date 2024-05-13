@@ -1,8 +1,14 @@
-import React from 'react';
+import DocumentTitle from "../components/DocumentTitle/DocumentTitle";
 import Logo from "../components/Logo/Logo";
+
 import SignInForm from "../components/SignInForm/SignInForm";
 
-const SignInPage = () => {
-  // ваш код
-};
-export default SignInPage;
+export default function SignInPage() {
+  return (
+    <div>
+      <Logo text="AquaTrack" />
+      <DocumentTitle>Sign In</DocumentTitle>
+      <SignInForm />
+    </div>
+  );
+}
