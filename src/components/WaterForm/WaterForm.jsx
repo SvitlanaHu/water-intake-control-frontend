@@ -61,7 +61,7 @@ const WaterForm = ({ operationType }) => {
         <label className={styles.labelAmount} htmlFor="waterAmount">
           Amount of water:
         </label>
-        <div>
+        <div className={styles.amountBox}>
           <button
             className={styles.incrementBtn}
             type="button"
@@ -69,7 +69,12 @@ const WaterForm = ({ operationType }) => {
           >
             -
           </button>
-          <input type="number" {...register("waterAmount")} readOnly />
+          <input
+            className={styles.waterAmount}
+            type="number"
+            {...register("waterAmount")}
+            readOnly
+          />
           <button
             className={styles.incrementBtn}
             type="button"
@@ -87,12 +92,16 @@ const WaterForm = ({ operationType }) => {
         <input type="time" {...register("time")} />
         <p>{errors.time?.message}</p>
       </div>
-      <div>
-        <label htmlFor="water">Enter the value of the water used:</label>
+      <div className={styles.enterBox}>
+        <label className={styles.textValue} htmlFor="water">
+          Enter the value of the water used:
+        </label>
         <input type="number" {...register("waterAmount")} readOnly />
       </div>
       <div>
-        <button type="submit">Save</button>
+        <button className={styles.saveBtn} type="submit">
+          Save
+        </button>
       </div>
     </form>
   );

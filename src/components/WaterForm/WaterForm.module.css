@@ -1,4 +1,4 @@
-.formTitle {
+/* .formTitle {
     color: #323F47;
     font-family: Poppins;
     font-size: 20px;
@@ -39,4 +39,118 @@
     font-weight: 400;
     line-height: 1.29;
     letter-spacing: -0.14px;
+}
+
+
+.saveBtn {
+    background-color: var(--mint);
+    
+    width: 116px;
+    height: 46px;
+    border-radius: 30px;
+    color: var(--text-color);
+    padding: 14px 40px;
+    text-align: center;
+    font-size: 14px;
+    border: none;
+    font-weight: bold;
+}
+
+.waterAmount {
+    display: flex;
+    padding: 11px 20px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 30px;
+    background: var(--text-color);
+}
+
+.amountBox {
+    display: flex;
+} */
+.formTitle {
+    color: var(--text-color);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.2px;
+    margin-bottom: 24px;
+
+}
+
+.textValue {
+    color: var(--text-color);
+    text-align: left;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.16px;
+    margin-bottom: 20px;
+}
+
+
+.labelTime,
+.labelAmount {
+    color: #2F2F2F;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.29;
+    letter-spacing: -0.14px;
+    margin-bottom: 8px;
+}
+
+
+.amountBox {
+    display: flex;
+    margin-bottom: 16px;
+
+}
+
+
+.enterBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 24px;
+
+}
+
+.incrementBtn {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.waterAmount {
+    display: flex;
+    padding: 11px 20px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 30px;
+    background: var(--text-color);
+    color: #FFF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.29;
+
+}
+
+.saveBtn {
+    background-color: var(--mint);
+    width: 116px;
+    height: 46px;
+    border-radius: 30px;
+    color: var(--text-color);
+    padding: 14px 40px;
+    text-align: center;
+    font-size: 14px;
+    border: none;
+    font-weight: bold;
 }
