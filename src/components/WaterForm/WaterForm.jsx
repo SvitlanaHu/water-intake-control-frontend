@@ -1,3 +1,4 @@
+import styles from "./WaterForm.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -47,27 +48,42 @@ const WaterForm = ({ operationType }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h2>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <h2 className={styles.formTitle}>
         {operationType === "add"
           ? "Add water"
           : "Edit the entered amount of water"}
       </h2>
-      <div>
-        <label htmlFor="waterAmount">Amount of water:</label>
+      <div className={styles.divValue}>
+        <h3 className={styles.textValue}>Choose a value</h3>
+      </div>
+      <div className={styles.divAmount}>
+        <label className={styles.labelAmount} htmlFor="waterAmount">
+          Amount of water:
+        </label>
         <div>
-          <button type="button" onClick={decrementWaterAmount}>
+          <button
+            className={styles.incrementBtn}
+            type="button"
+            onClick={decrementWaterAmount}
+          >
             -
           </button>
           <input type="number" {...register("waterAmount")} readOnly />
-          <button type="button" onClick={incrementWaterAmount}>
+          <button
+            className={styles.incrementBtn}
+            type="button"
+            onClick={incrementWaterAmount}
+          >
             +
           </button>
         </div>
         <p>{errors.waterAmount?.message}</p>
       </div>
       <div>
-        <label htmlFor="time">Recording time:</label>
+        <label className={styles.labelTime} htmlFor="time">
+          Recording time:
+        </label>
         <input type="time" {...register("time")} />
         <p>{errors.time?.message}</p>
       </div>

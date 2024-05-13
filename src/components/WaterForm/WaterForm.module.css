@@ -1,0 +1,42 @@
+.formTitle {
+    color: #323F47;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1, 2;
+    letter-spacing: -0.2px;
+}
+
+.textValue {
+    color: #323F47;
+    text-align: left;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.16px;
+}
+
+
+
+.incrementBtn {
+
+    height: 40px;
+    width: 40px;
+    border-radius: 30px;
+    align-items: center;
+    text-align: centerl
+}
+
+.labelTime,
+.labelAmount {
+    color: #2F2F2F;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.29;
+    letter-spacing: -0.14px;
+}
