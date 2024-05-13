@@ -17,6 +17,8 @@
     padding: 40px 20px;
     border-radius: 15px;
     z-index: 101;
+
+
 }
 
 .closeButton {
@@ -28,9 +30,8 @@
     border: none;
     cursor: pointer;
     padding: 0;
-    /* display: flex; */
-    align-items: center;
-    justify-content: center;
+
+
 }
 
 .closeIcon {
@@ -38,5 +39,8 @@
     stroke: #2F2F2F;
     width: 24px;
     height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
