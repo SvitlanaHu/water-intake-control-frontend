@@ -3,6 +3,7 @@
   /* max-width: 343px; */
 }
 .WaterMaininfoContainer {
+  width: 100%;
   background: #9be1a0;
   border-radius: 30px;
   height: 415px;

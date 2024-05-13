@@ -10,7 +10,9 @@ const DailyInfo = () => {
         <ChooseDate />
         <AddWaterDetailedBtn />
       </div>
-      <WaterList />
+      <div className={css.scrollDiv}>
+        <WaterList />
+      </div>
     </div>
   );
 };

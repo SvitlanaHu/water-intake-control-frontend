@@ -27,7 +27,7 @@ const UserBar = () => {
         variant="contained"
         onClick={handleClick}
       >
-        <a className={css.text}>{userName}</a>
+        <p className={css.text}>{userName}</p>
         <svg className={css.svg}>
           <use className={css.icon} href="../../../public/symbol.svg#"></use>
         </svg>

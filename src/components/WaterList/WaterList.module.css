@@ -1,0 +1,14 @@
+.waterList {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+@media only screen and (min-width: 768px) {
+  .waterList {
+    gap: 32px;
+  }
+}

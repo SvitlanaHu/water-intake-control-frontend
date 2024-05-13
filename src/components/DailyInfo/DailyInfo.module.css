@@ -1,8 +1,25 @@
 .dailyCont {
+  display: flex;
+  flex-direction: column;
   margin-top: 40px;
   margin-left: 20px;
+  margin-right: 20px;
   outline: 1px solid red;
+}
+.scrollDiv {
   overflow-x: scroll;
+}
+
+.scrollDiv::-webkit-scrollbar {
+  height: 8px;
+}
+.scrollDiv::-webkit-scrollbar-thumb {
+  background: #323f47;
+  border-radius: 9px;
+}
+.scrollDiv::-webkit-scrollbar-track {
+  background-color: #ffffff;
+  border-radius: 9px;
 }
 .dateAdd {
   display: flex;

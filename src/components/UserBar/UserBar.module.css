@@ -1,6 +1,7 @@
 .userBar {
   margin-top: 20px;
   margin-left: 20px;
+  display: flex;
 }
 
 .btn {
@@ -11,7 +12,7 @@
   background-color: #323f47 !important;
   display: flex !important;
   flex-direction: row !important;
-  justify-content: center !important;
+  justify-content: space-between !important;
   align-items: center !important;
   align-content: center !important;
   gap: 8px !important;
@@ -28,6 +29,8 @@
   letter-spacing: -0.01em !important;
   font-weight: bold !important;
   text-transform: capitalize !important;
+  padding: 0;
+  margin: 0;
 }
 .svg {
   width: 38px !important;
@@ -48,4 +51,31 @@
 .iconDrop {
   width: 100% !important;
   height: 100% !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .btn {
+    width: 157px !important;
+    height: 56px !important;
+    /* gap: 10px !important; */
+    margin-right: 32px !important;
+  }
+  .userBar {
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: bold;
+  }
+  .svgDrop {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .svg {
+    width: 44px !important;
+    height: 44px !important;
+  }
 }
