@@ -142,6 +142,16 @@
 
 }
 
+.input {
+    display: flex;
+    padding: 14px 390px 14px 16px;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 15px;
+    border: 1px solid rgba(47, 47, 47, 0.15);
+}
+
 .saveBtn {
     background-color: var(--mint);
     width: 116px;

@@ -25,19 +25,18 @@
     top: 20px;
     width: 24px;
     height: 24px;
-    background: none;
     border: none;
     cursor: pointer;
     padding: 0;
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
 }
 
 .closeIcon {
-    fill: none;
+    fill: #2F2F2F;
     stroke: #2F2F2F;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    width: 24px;
+    height: 24px;
+
 }

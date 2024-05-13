@@ -85,18 +85,23 @@ const WaterForm = ({ operationType }) => {
         </div>
         <p>{errors.waterAmount?.message}</p>
       </div>
-      <div>
+      <div className={styles.enterBox}>
         <label className={styles.labelTime} htmlFor="time">
           Recording time:
         </label>
-        <input type="time" {...register("time")} />
+        <input className={styles.input} type="time" {...register("time")} />
         <p>{errors.time?.message}</p>
       </div>
       <div className={styles.enterBox}>
         <label className={styles.textValue} htmlFor="water">
           Enter the value of the water used:
         </label>
-        <input type="number" {...register("waterAmount")} readOnly />
+        <input
+          className={styles.input}
+          type="number"
+          {...register("waterAmount")}
+          readOnly
+        />
       </div>
       <div>
         <button className={styles.saveBtn} type="submit">
