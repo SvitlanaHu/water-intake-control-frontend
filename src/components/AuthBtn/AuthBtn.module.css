@@ -11,6 +11,17 @@
   line-height: 1.29em;
   letter-spacing: -0.14px;
 }
+@media (min-width: 768px) {
+  .button {
+    padding: 18px;
+    margin-left: 134px;
+    margin-right: 134px;
+    max-width: 436px;
+    font-size: 16px;
+    line-height: 1.5em;
+    letter-spacing: -0.16px;
+  }
+}
 .button:active,
 .button:hover,
 .button:focus {

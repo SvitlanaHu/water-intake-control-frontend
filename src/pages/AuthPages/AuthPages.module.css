@@ -1,17 +1,19 @@
 .wrap {
   min-width: 320px;
   max-width: 375px;
-
   margin-left: auto;
   margin-right: auto;
-
   padding: 16px;
-
   color: #323f47;
-
-  /* Рамки, які підсвічують наш контейнер */
-  /* outline: 2px solid red;
-  outline-offset: -2px; */
+}
+@media screen and (min-width: 768px) {
+  .wrap {
+    max-width: 768px;
+    padding: 32px;
+    /* Рамки, які підсвічують наш контейнер */
+    outline: 2px solid red;
+    outline-offset: -2px;
+  }
 }
 
 .content {
@@ -19,13 +21,39 @@
   background-color: #f0eff4;
   border-radius: 30px;
 }
+@media screen and (min-width: 768px) {
+  .content {
+    padding: 0;
+  }
+}
 
 .logoWrap {
   margin-bottom: 172px;
 }
+@media screen and (min-width: 768px) {
+  .logoWrap {
+    padding: 32px;
+    padding-bottom: 0;
+    margin-bottom: 225px;
+  }
+}
 .logoWrapSignUp {
   margin-bottom: 126px;
 }
+@media screen and (min-width: 768px) {
+  .logoWrapSignUp {
+    padding: 32px;
+    padding-bottom: 0;
+    margin-bottom: 171px;
+  }
+}
+
 .titleWrap {
   margin-bottom: 32px;
+}
+@media screen and (min-width: 768px) {
+  .titleWrap {
+    margin-left: 134px;
+    margin-right: 134px;
+  }
 }
