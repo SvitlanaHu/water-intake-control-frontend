@@ -78,7 +78,12 @@
     margin-right: 134px;
   }
 }
-
+@media (min-width: 1440px) {
+  .titleWrap {
+    margin-left: 118px;
+    margin-right: 118px;
+  }
+}
 .wrapWaterSection {
   display: none;
 }
