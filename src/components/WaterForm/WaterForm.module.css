@@ -97,15 +97,24 @@
     border: 1px solid rgba(47, 47, 47, 0.15);
 }
 
-.saveBtn {
-    background-color: var(--mint);
+.btn {
+    position: absolute;
     width: 116px;
     height: 46px;
+    background-color: #9BE1A0;
     border-radius: 30px;
-    color: var(--text-color);
-    padding: 14px 40px;
-    text-align: center;
+    right: 40px;
+    bottom: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.btnText {
+    color: #323F47;
     font-size: 14px;
-    border: none;
+    line-height: 14px;
+    letter-spacing: -0.01em;
     font-weight: bold;
 }
