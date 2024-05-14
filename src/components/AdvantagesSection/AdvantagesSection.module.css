@@ -141,7 +141,7 @@
   position: absolute;
   display: block;
   text-wrap: wrap;
-  width: 67px;
+  width: 90px;
   height: 28px;
   top: -2px;
   left: 60px;
@@ -157,7 +157,7 @@
 }
 @media (min-width: 768px) {
   .customers {
-    width: 90px;
+    width: 110px;
     height: 45px;
     font-size: 15px;
     line-height: 150%;

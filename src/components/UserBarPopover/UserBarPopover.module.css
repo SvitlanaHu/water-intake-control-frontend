@@ -1,0 +1,84 @@
+.settingsCont {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 8px;
+}
+.svg {
+  width: 16px !important;
+  height: 16px !important;
+  fill: #323f47 !important;
+}
+.settingsIcon,
+.LogIcon {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.settingBtn {
+  padding: 0;
+  border: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.typography {
+  width: 137px !important;
+  padding-left: 20px !important;
+  padding-top: 14px !important;
+  padding-bottom: 0px !important;
+  padding-right: 40px !important;
+}
+.typographyLog {
+  padding-bottom: 14px !important;
+  padding-left: 20px !important;
+  padding-top: 8px !important;
+}
+.popover {
+  border-radius: 15px !important;
+  color: #ffffff !important;
+}
+.MuiPopover {
+  border-radius: 15px !important;
+}
+.settingBtn:hover {
+  border: none !important ;
+  background-color: transparent !important;
+  color: none !important;
+}
+.settingBtn:focus,
+.settingBtn:focus-visible {
+  outline: none !important;
+  color: none !important;
+}
+.settingBtn:active {
+  color: none !important;
+}
+.logBtn {
+  padding: 0;
+  border: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logBtn:hover {
+  border: none !important ;
+  background-color: transparent !important;
+  color: none !important;
+}
+.logBtn:focus,
+.logBtn:focus-visible {
+  outline: none !important;
+  color: none !important;
+}
+.popOverText2 {
+  opacity: 0.4;
+}
+.popOverText1:hover,
+.popOverText2:hover {
+  color: #323f47 !important;
+  opacity: 1;
+  transition: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}

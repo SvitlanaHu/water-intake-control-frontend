@@ -1,0 +1,61 @@
+.svg {
+  width: 100%;
+  height: 100%;
+  fill: #323f47;
+}
+.btn {
+  border: none;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn:focus,
+.btn:focus-visible {
+  outline: none;
+}
+.btn:hover {
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.btn:hover .svg {
+  fill: #9be1a0;
+  transition: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.text {
+  color: #323f47;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+  font-weight: bold;
+}
+.paginationBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.icon {
+  height: 100%;
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .btn {
+    width: 18px;
+    height: 18px;
+  }
+  .paginationBlock {
+    gap: 20px;
+  }
+  .text {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
