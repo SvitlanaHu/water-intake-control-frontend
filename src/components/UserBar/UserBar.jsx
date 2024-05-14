@@ -1,22 +1,25 @@
-import css from "./UserBar.module.css";
+import css from './UserBar.module.css';
 
-import Button from "@mui/material/Button";
+import Button from '@mui/material/Button';
 
-import { useState } from "react";
-import UserBarPopover from "../UserBarPopover/UserBarPopover";
+import { useState } from 'react';
+import UserBarPopover from '../UserBarPopover/UserBarPopover';
 
 const UserBar = () => {
-  const userName = "Nadia";
+  const userName = 'Nadia';
 
+  const [isIconRotated, setIsIconRotated] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const handleClick = (event) => {
+  const handleClick = event => {
     setAnchorEl(event.currentTarget);
+    setIsIconRotated(!isIconRotated);
   };
   const handleClose = () => {
     setAnchorEl(null);
+    setIsIconRotated(!isIconRotated);
   };
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const id = open ? 'simple-popover' : undefined;
 
   return (
     <div className={css.userBar}>
@@ -32,7 +35,7 @@ const UserBar = () => {
           <use className={css.icon} href="../../../public/symbol.svg#"></use>
         </svg>
 
-        <svg className={css.svgDrop}>
+        <svg className={`${css.svgDrop} ${isIconRotated ? css.rotated : ''}`}>
           <use
             className={css.iconDrop}
             href="../../../public/symbol.svg#icon-chevron-down"

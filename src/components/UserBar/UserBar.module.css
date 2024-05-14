@@ -47,10 +47,19 @@
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
+  transition: transform 0.3s;
+}
+.rotated {
+  transform: rotate(180deg);
 }
 .iconDrop {
   width: 100% !important;
   height: 100% !important;
+}
+
+.svgDrop:active,
+.svgDrop::before {
+  transform: rotate(180deg) !important;
 }
 
 @media only screen and (min-width: 768px) {
