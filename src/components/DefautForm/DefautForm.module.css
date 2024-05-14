@@ -10,7 +10,12 @@
     gap: 20px;
   }
 }
-
+@media (min-width: 1440px) {
+  .formWrap {
+    margin-left: 118px;
+    margin-right: 118px;
+  }
+}
 .label {
   color: #2f2f2f;
   font-size: 14px;

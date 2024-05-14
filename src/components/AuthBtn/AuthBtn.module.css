@@ -22,6 +22,12 @@
     letter-spacing: -0.16px;
   }
 }
+@media (min-width: 1440px) {
+  .button {
+    margin-left: 118px;
+    margin-right: 118px;
+  }
+}
 .button:active,
 .button:hover,
 .button:focus {

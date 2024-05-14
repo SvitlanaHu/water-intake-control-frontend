@@ -1,3 +1,4 @@
+import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection";
 import DocumentTitle from "../../components/DocumentTitle/DocumentTitle";
 import Logo from "../../components/Logo/Logo";
 import SignInForm from "../../components/SignInForm/SignInForm";
@@ -16,6 +17,9 @@ export default function SignInPage() {
         <div className={styles.formWrap}>
           <SignInForm />
         </div>
+      </div>
+      <div className={styles.wrapWaterSection}>
+        <AdvantagesSection />
       </div>
     </div>
   );

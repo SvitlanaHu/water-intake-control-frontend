@@ -32,3 +32,11 @@
     padding-bottom: 281px;
   }
 }
+@media screen and (min-width: 1440px) {
+  .form {
+    padding-bottom: 151px;
+  }
+  .btnContainer {
+    margin: 0 auto;
+  }
+}

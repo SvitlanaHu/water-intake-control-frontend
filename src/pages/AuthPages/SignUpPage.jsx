@@ -1,3 +1,4 @@
+import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection";
 import DocumentTitle from "../../components/DocumentTitle/DocumentTitle";
 import Logo from "../../components/Logo/Logo";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
@@ -16,6 +17,9 @@ export default function SignUpPage() {
         <div className={styles.formWrap}>
           <SignUpForm />
         </div>
+      </div>
+      <div className={styles.wrapWaterSection}>
+        <AdvantagesSection />
       </div>
     </div>
   );

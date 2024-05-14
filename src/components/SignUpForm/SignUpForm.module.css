@@ -30,6 +30,12 @@
     padding-bottom: 227px;
   }
 }
+@media screen and (min-width: 1440px) {
+  .form {
+    padding-bottom: 82px;
+  }
+}
+
 .formInputs {
   display: flex;
   gap: 16px;
@@ -54,6 +60,13 @@
     margin-right: 134px;
   }
 }
+@media (min-width: 1440px) {
+  .label {
+    margin-left: 118px;
+    margin-right: 118px;
+  }
+}
+
 .input::placeholder,
 .input {
   color: rgba(47, 47, 47, 0.6);

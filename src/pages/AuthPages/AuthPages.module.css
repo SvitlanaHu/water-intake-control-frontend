@@ -8,11 +8,17 @@
 }
 @media screen and (min-width: 768px) {
   .wrap {
-    max-width: 768px;
+    max-width: 704px;
     padding: 32px;
-    /* Рамки, які підсвічують наш контейнер */
-    outline: 2px solid red;
-    outline-offset: -2px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .wrap {
+    max-width: 1376px;
+    padding: 32px;
+    display: flex;
+    gap: 32px;
+    position: relative;
   }
 }
 
@@ -26,6 +32,11 @@
     padding: 0;
   }
 }
+@media screen and (min-width: 1440px) {
+  .content {
+    width: 672px;
+  }
+}
 
 .logoWrap {
   margin-bottom: 172px;
@@ -37,14 +48,24 @@
     margin-bottom: 225px;
   }
 }
+@media screen and (min-width: 1440px) {
+  .logoWrap {
+    margin-bottom: 94px;
+  }
+}
 .logoWrapSignUp {
-  margin-bottom: 126px;
+  margin-bottom: 129px;
 }
 @media screen and (min-width: 768px) {
   .logoWrapSignUp {
     padding: 32px;
     padding-bottom: 0;
     margin-bottom: 171px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .logoWrapSignUp {
+    margin-bottom: 55px;
   }
 }
 
@@ -55,5 +76,17 @@
   .titleWrap {
     margin-left: 134px;
     margin-right: 134px;
+  }
+}
+
+.wrapWaterSection {
+  display: none;
+}
+@media screen and (min-width: 1440px) {
+  .wrapWaterSection {
+    display: flex;
+    position: absolute;
+    left: -32px;
+    top: 0;
   }
 }
