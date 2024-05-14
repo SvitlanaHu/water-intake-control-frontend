@@ -41,6 +41,7 @@
   background-color: #323f47;
   color: #9be1a0 !important;
   fill: #9be1a0 !important;
+  transition: 350ms cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 .btn:active {
   outline: none;
@@ -57,7 +58,7 @@
     display: flex;
     align-items: center;
     align-content: center;
-    padding: 18px 30px 18px 30px;
+    /* padding: 18px 30px 18px 30px; */
   }
   .svg {
     width: 24px;
