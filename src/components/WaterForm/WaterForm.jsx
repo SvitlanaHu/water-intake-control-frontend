@@ -85,7 +85,8 @@ const WaterForm = ({ operationType }) => {
             <span>+</span>
           </button>
         </div>
-        <p>{errors.waterAmount?.message}</p>
+        {/* {errors && <p>{errors.waterAmount.message}</p>} */}
+        {/* {<p>{errors.waterAmount?.message}</p>} */}
       </div>
       <div className={styles.timeBox}>
         <label className={styles.labelTime} htmlFor="time">

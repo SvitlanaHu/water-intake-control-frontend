@@ -71,12 +71,14 @@
 }
 
 .incrementBtn {
+    position: relative;
     height: 40px;
     width: 40px;
     border-radius: 20px;
     align-items: center;
     text-align: center;
     cursor: pointer;
+
 
 
 }
@@ -128,13 +130,21 @@
 }
 
 .spanIcon {
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 40px;
     height: 40px;
-    color: #2F2F2F;
+    color: #2F2F2F; */
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 4px;
+    background-color: #000;
 }
 
 .btnBox {

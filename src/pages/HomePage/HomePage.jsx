@@ -4,6 +4,7 @@ import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSect
 import WelcomeSection from "../../components/WelcomeSection/WelcomeSection";
 import styles from "./HomePage.module.css";
 import WaterModal from "../../components/WaterModal/WaterModal";
+// import DeleteWaterModal from "../../components/DeleteWaterModal/DeleteWaterModal";
 
 const HomePage = () => {
   return (
@@ -12,6 +13,7 @@ const HomePage = () => {
         <WelcomeSection className={styles.welcome} />
         <AdvantagesSection className={styles.advantages} />
         <WaterModal operationType="edit" />
+        {/* <DeleteWaterModal /> */}
       </div>
     </div>
   );
