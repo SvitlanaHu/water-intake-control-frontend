@@ -1,7 +1,8 @@
-// import styles from "./ChooseDate.module.css";
-// import MonthInfo from "../MonthInfo/MonthInfo";
+import css from "./ChooseDate.module.css";
 
 const ChooseDate = () => {
-  // ваш код
+  const date = "Today";
+
+  return <p className={css.text}>{date}</p>;
 };
 export default ChooseDate;

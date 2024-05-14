@@ -3,8 +3,10 @@
   flex-direction: column;
   margin: 0 auto;
   padding: 16px;
+  gap: 16px;
 
   max-width: 375px;
+  /* min-width: 343px; */
 }
 @media only screen and (min-width: 768px) {
   .trackerContainer {
@@ -17,8 +19,6 @@
   .trackerContainer {
     flex-direction: row;
     gap: 32px;
-    padding: 32px;
     max-width: 1440px;
-    padding: 32px;
   }
 }
