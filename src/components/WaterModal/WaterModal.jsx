@@ -1,4 +1,4 @@
-//import styles from "./WaterModal.module.css";
+import styles from "./WaterModal.module.css";
 import WaterForm from "../WaterForm/WaterForm.jsx";
 import { useState } from "react";
 import { Modal } from "../Modal/Modal.jsx";
@@ -33,7 +33,7 @@ const WaterModal = ({ operationType }) => {
       </button>
       {isModalOpen && (
         <Modal active={isModalOpen} setActive={setIsModalOpen}>
-          <h2>{formState[operationType].title}</h2>
+          {/* <h2 className={styles.title}>{formState[operationType].title}</h2> */}
           {formState[operationType].formComponent}
         </Modal>
       )}
