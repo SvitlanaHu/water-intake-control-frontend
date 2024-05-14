@@ -1,3 +1,4 @@
+import styles from "./WaterForm.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -47,36 +48,68 @@ const WaterForm = ({ operationType }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h2>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <h2 className={styles.formTitle}>
         {operationType === "add"
           ? "Add water"
           : "Edit the entered amount of water"}
       </h2>
-      <div>
-        <label htmlFor="waterAmount">Amount of water:</label>
-        <div>
-          <button type="button" onClick={decrementWaterAmount}>
-            -
+      <div className={styles.divValue}>
+        <h3 className={styles.textValue}>Choose a value</h3>
+      </div>
+      <div className={styles.divAmount}>
+        <label className={styles.labelAmount} htmlFor="waterAmount">
+          Amount of water:
+        </label>
+        <div className={styles.amountBox}>
+          <button
+            className={styles.decrementBtn}
+            type="button"
+            onClick={decrementWaterAmount}
+          >
+            <span className={styles.spanIcon}>-</span>
           </button>
-          <input type="number" {...register("waterAmount")} readOnly />
-          <button type="button" onClick={incrementWaterAmount}>
-            +
+          <div className={styles.waterAmountBox}>
+            <input
+              className={styles.waterAmount}
+              type="number"
+              {...register("waterAmount")}
+              readOnly
+            />
+          </div>
+          <button
+            className={styles.incrementBtn}
+            type="button"
+            onClick={incrementWaterAmount}
+          >
+            <span>+</span>
           </button>
         </div>
-        <p>{errors.waterAmount?.message}</p>
+        {/* {errors && <p>{errors.waterAmount.message}</p>} */}
+        {/* {<p>{errors.waterAmount?.message}</p>} */}
       </div>
-      <div>
-        <label htmlFor="time">Recording time:</label>
-        <input type="time" {...register("time")} />
+      <div className={styles.timeBox}>
+        <label className={styles.labelTime} htmlFor="time">
+          Recording time:
+        </label>
+        <input className={styles.input} type="time" {...register("time")} />
         <p>{errors.time?.message}</p>
       </div>
-      <div>
-        <label htmlFor="water">Enter the value of the water used:</label>
-        <input type="number" {...register("waterAmount")} readOnly />
+      <div className={styles.enterBox}>
+        <label className={styles.textValue} htmlFor="water">
+          Enter the value of the water used:
+        </label>
+        <input
+          className={styles.input}
+          type="number"
+          {...register("waterAmount")}
+          readOnly
+        />
       </div>
-      <div>
-        <button type="submit">Save</button>
+      <div className={styles.btnBox}>
+        <button className={styles.saveBtn} type="submit">
+          Save
+        </button>
       </div>
     </form>
   );

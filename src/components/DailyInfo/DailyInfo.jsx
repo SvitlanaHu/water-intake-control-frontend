@@ -1,9 +1,19 @@
-// import styles from "./DailyInfo.module.css";
-// import ChooseDate from "../ChooseDate/ChooseDate";
-// import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
-// import WaterList from "../WaterList/WaterList";
+import css from "./DailyInfo.module.css";
+import ChooseDate from "../ChooseDate/ChooseDate";
+import AddWaterDetailedBtn from "../AddWaterDetailedBtn/AddWaterDetailedBtn";
+import WaterList from "../WaterList/WaterList";
 
 const DailyInfo = () => {
-  // ваш код
+  return (
+    <div className={css.dailyCont}>
+      <div className={css.dateAdd}>
+        <ChooseDate />
+        <AddWaterDetailedBtn />
+      </div>
+      <div className={css.scrollDiv}>
+        <WaterList />
+      </div>
+    </div>
+  );
 };
 export default DailyInfo;
