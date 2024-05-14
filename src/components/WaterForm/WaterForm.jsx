@@ -63,29 +63,31 @@ const WaterForm = ({ operationType }) => {
         </label>
         <div className={styles.amountBox}>
           <button
-            className={styles.incrementBtn}
+            className={styles.decrementBtn}
             type="button"
             onClick={decrementWaterAmount}
           >
-            -
+            <span className={styles.spanIcon}>-</span>
           </button>
-          <input
-            className={styles.waterAmount}
-            type="number"
-            {...register("waterAmount")}
-            readOnly
-          />
+          <div className={styles.waterAmountBox}>
+            <input
+              className={styles.waterAmount}
+              type="number"
+              {...register("waterAmount")}
+              readOnly
+            />
+          </div>
           <button
             className={styles.incrementBtn}
             type="button"
             onClick={incrementWaterAmount}
           >
-            +
+            <span>+</span>
           </button>
         </div>
         <p>{errors.waterAmount?.message}</p>
       </div>
-      <div className={styles.enterBox}>
+      <div className={styles.timeBox}>
         <label className={styles.labelTime} htmlFor="time">
           Recording time:
         </label>
@@ -103,7 +105,7 @@ const WaterForm = ({ operationType }) => {
           readOnly
         />
       </div>
-      <div>
+      <div className={styles.btnBox}>
         <button className={styles.saveBtn} type="submit">
           Save
         </button>
