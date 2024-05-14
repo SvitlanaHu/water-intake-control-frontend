@@ -1,0 +1,152 @@
+.form {
+    max-width: 375px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 16px;
+    color: #323f47;
+    position: relative;
+
+    /* outline: 2px solid red;
+    outline-offset: -2px; */
+}
+
+.formTitle {
+    color: var(--text-color);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: -0.2px;
+    margin-bottom: 24px;
+}
+
+.divValue {
+    margin-bottom: 20px;
+}
+
+.textValue {
+    color: var(--text-color);
+    text-align: left;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: -0.16px;
+}
+
+
+.labelTime,
+.labelAmount {
+    color: #2F2F2F;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -0.14px;
+
+}
+
+.amountBox {
+    display: flex;
+    margin-bottom: 16px;
+    align-items: center;
+    gap: 8px;
+}
+
+.timeBox,
+.enterBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.decrementBtn {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.incrementBtn {
+    position: relative;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+
+
+
+}
+
+.waterAmount {
+    width: 41px;
+    height: 18px;
+    display: flex;
+    padding: 11px 20px;
+    align-items: center;
+    border-radius: 30px;
+    background: var(--text-color);
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.29;
+
+}
+
+.input {
+    height: 100%;
+    display: flex;
+    padding: 14px 16px;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 15px;
+    border: 1px solid rgba(47, 47, 47, 0.15);
+}
+
+.saveBtn {
+    position: absolute;
+    width: 116px;
+    height: 46px;
+    background-color: #9BE1A0;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.btnText {
+    color: #323F47;
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: -0.01em;
+    font-weight: bold;
+}
+
+.spanIcon {
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    color: #2F2F2F; */
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 4px;
+    background-color: #000;
+}
+
+.btnBox {
+    display: flex;
+}

@@ -1,6 +1,27 @@
+import { useState, useEffect } from 'react';
 import styles from "./AdvantagesSection.module.css";
 
 const AdvantagesSection = () => {
+  const [totalUsers, setTotalUsers] = useState(0);
+
+  useEffect(() => {
+    // Функція для отримання даних з backend-а
+    const fetchTotalUsers = async () => {
+      try {
+        // Виклик функції для отримання загальної кількості користувачів
+        const response = await fetch('/api/users/total');
+        const data = await response.json();
+        // Оновлення стану totalUsers
+        setTotalUsers(data.total);
+      } catch (error) {
+        console.error('Error fetching total users:', error);
+      }
+    };
+
+    // Виклик функції для отримання даних після завантаження компонента
+    fetchTotalUsers();
+  }, []);
+
   return (
     <div className={styles.advantagesSection}>
       <div className={styles.advantages}>
@@ -9,7 +30,7 @@ const AdvantagesSection = () => {
             <img className={styles.customersImg} src="/images/Male3.png" alt="Male3" />
             <img className={styles.customersImg2} src="/images/Male2.png" alt="Male2" />
             <img className={styles.customersImg3} src="/images/Male1.png" alt="Male1" />
-            <p className={styles.customers}>Our <span className={styles.customersHappy}>happy</span> customers</p>
+            <p className={styles.customers}>Our <span className={styles.customersHappy}>{totalUsers ?? 0} happy</span> customers</p>
           </div>          
         </div>
 
