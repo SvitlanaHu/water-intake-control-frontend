@@ -1,4 +1,4 @@
-modalBackdrop {
+.modalBackdrop {
     position: fixed;
     top: 0;
     left: 0;
@@ -17,4 +17,30 @@ modalBackdrop {
     padding: 40px 20px;
     border-radius: 15px;
     z-index: 101;
+
+
+}
+
+.closeButton {
+    position: absolute;
+    right: 16px;
+    top: 20px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+
+}
+
+.closeIcon {
+    fill: #2F2F2F;
+    stroke: #2F2F2F;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
