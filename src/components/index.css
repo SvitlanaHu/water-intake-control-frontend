@@ -71,6 +71,10 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.modal-active {
+  overflow: hidden;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: var(--white);

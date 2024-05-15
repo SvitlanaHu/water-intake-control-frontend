@@ -1,11 +1,11 @@
-import * as yup from "yup";
-import { useState } from "react";
-import { SettingFormTitle } from "../SettingFormTitle/SettingFormTitle";
-import css from "./UserSettingsForm.module.css";
-import icons from "../../../public/symbol.svg";
-import { TextInput } from "../TextInput/TextInput";
-import { Formik, Form } from "formik";
-import { SaveButton } from "../SaveButton/SaveButton";
+import * as yup from 'yup';
+import { useState } from 'react';
+import { SettingFormTitle } from '../SettingFormTitle/SettingFormTitle';
+import css from './UserSettingsForm.module.css';
+import icons from '../../../public/symbol.svg';
+import { TextInput } from '../TextInput/TextInput';
+import { Formik, Form } from 'formik';
+import { SaveButton } from '../SaveButton/SaveButton';
 
 const schema = yup.object().shape({
   name: yup
@@ -13,30 +13,30 @@ const schema = yup.object().shape({
     .required("We can't help you if we don't know your name :)"),
   email: yup
     .string()
-    .required("Required!")
-    .email("Invalid email format")
-    .max(100, "Max is 100 symbols!"),
+    .required('Required!')
+    .email('Invalid email format')
+    .max(100, 'Max is 100 symbols!'),
   weight: yup
     .string()
-    .matches(/^\d+$/, "Kilograms are something like numbers, hmm?")
-    .required("Required!")
-    .max(3, "Max is 3 symbols!"),
+    .matches(/^\d+$/, 'Kilograms are something like numbers, hmm?')
+    .required('Required!')
+    .max(3, 'Max is 3 symbols!'),
   time: yup
     .string()
-    .matches(/^\d+$/, "Hours are something like numbers, hmm?")
+    .matches(/^\d+$/, 'Hours are something like numbers, hmm?')
     .test(
-      "max-hours",
-      "Easier, tiger...There are only 24 hours in a day",
-      (value) => {
+      'max-hours',
+      'Easier, tiger...There are only 24 hours in a day',
+      value => {
         return parseInt(value, 10) <= 24;
       }
     )
-    .required("Required!")
-    .max(24, "Easier, tiger...There are only 24 hours in a day"),
-  amountOfWater: yup.string().matches(/^\d+$/, "Only numbers please"),
+    .required('Required!')
+    .max(24, 'Easier, tiger...There are only 24 hours in a day'),
+  amountOfWater: yup.string().matches(/^\d+$/, 'Only numbers please'),
 });
 
-const handleFormClick = (ev) => {
+const handleFormClick = ev => {
   ev.preventDefault();
   const formData = new FormData(ev.target);
 };
@@ -44,14 +44,14 @@ const handleFormClick = (ev) => {
 const UserSettingsForm = () => {
   const [img, setImg] = useState(null);
 
-  const onInputFileChange = (ev) => {
+  const onInputFileChange = ev => {
     setImg(URL.createObjectURL(ev.target.files[0]));
   };
 
   return (
-    <Formik initialValues={{ name: "", email: "" }} validationSchema={schema}>
+    <Formik initialValues={{ name: '', email: '' }} validationSchema={schema}>
       {({ dirty, isValid }) => (
-        <Form className={css.form} onSubmit={(ev) => handleFormClick(ev)}>
+        <Form className={css.form} onSubmit={ev => handleFormClick(ev)}>
           <div className={css.photoContainer}>
             {img && <img className={css.SettingFormImg} src={img} />}
             <label htmlFor="photo">
@@ -60,7 +60,7 @@ const UserSettingsForm = () => {
               </svg>
               Upload a photo
               <input
-                onChange={(ev) => onInputFileChange(ev)}
+                onChange={ev => onInputFileChange(ev)}
                 type="file"
                 name="photo"
                 id="photo"
@@ -121,7 +121,7 @@ const UserSettingsForm = () => {
           <p className={`${css.text} ${css.activeTimeText}`}>
             <svg>
               <use href={`${icons}#icon-exclamation-mark`}></use>
-            </svg>{" "}
+            </svg>{' '}
             Active time in hours
           </p>
           <div className={css.indicatorsContainer}>
@@ -155,7 +155,7 @@ const UserSettingsForm = () => {
               Write down how much water you will drink:
             </SettingFormTitle>
           </TextInput>
-          <SaveButton enabled={isValid && dirty} />
+          <SaveButton margin="40" enabled={isValid && dirty} />
         </Form>
       )}
     </Formik>
