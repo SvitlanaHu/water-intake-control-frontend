@@ -50,11 +50,11 @@
 }
 @media screen and (min-width: 1440px) {
   .logoWrap {
-    margin-bottom: 94px;
+    margin-bottom: 110px;
   }
 }
 .logoWrapSignUp {
-  margin-bottom: 129px;
+  margin-bottom: 130px;
 }
 @media screen and (min-width: 768px) {
   .logoWrapSignUp {
@@ -65,7 +65,7 @@
 }
 @media screen and (min-width: 1440px) {
   .logoWrapSignUp {
-    margin-bottom: 55px;
+    margin-bottom: 75px;
   }
 }
 
