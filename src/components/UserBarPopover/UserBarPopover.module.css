@@ -82,3 +82,9 @@
   opacity: 1;
   transition: 350ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+@media only screen and (min-width: 768px) {
+  .MuiPopover-paper {
+    width: 200px;
+  }
+}

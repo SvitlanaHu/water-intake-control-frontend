@@ -1,11 +1,13 @@
 // import React from 'react';
-import { Route, Routes } from "react-router-dom";
-import SharedLayout from "./SharedLayout/SharedLayout";
-import HomePage from "../pages/HomePage/HomePage";
-import TrackerPage from "../pages/TrackerPage";
-import Statistics from "../pages/Statistics";
-import SignUpPage from "../pages/AuthPages/SignUpPage";
-import SignInPage from "../pages/AuthPages/SignInPage";
+
+import { Route, Routes } from 'react-router-dom';
+import SharedLayout from './SharedLayout/SharedLayout';
+import HomePage from '../pages/HomePage/HomePage';
+import SignInPage from '../pages/AuthPages/SignInPage';
+import SignUpPage from '../pages/AuthPages/SignUpPage';
+import TrackerPage from '../pages/TrackerPage/TrackerPage';
+import Statistics from '../pages/Statistics';
+
 // import { BrowserRouter } from 'react-router-dom';
 
 const App = () => {
