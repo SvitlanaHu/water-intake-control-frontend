@@ -1,0 +1,36 @@
+.button {
+  margin-top: 32px;
+  margin-bottom: 16px;
+  padding: 16px;
+  width: 100%;
+  border-radius: 30px;
+  background: #9be1a0;
+  border: none;
+  color: #323f47;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.29em;
+  letter-spacing: -0.14px;
+}
+@media (min-width: 768px) {
+  .button {
+    padding: 18px;
+    margin-left: 134px;
+    margin-right: 134px;
+    max-width: 436px;
+    font-size: 16px;
+    line-height: 1.5em;
+    letter-spacing: -0.16px;
+  }
+}
+@media (min-width: 1440px) {
+  .button {
+    margin-left: 118px;
+    margin-right: 118px;
+  }
+}
+.button:active,
+.button:hover,
+.button:focus {
+  outline: none;
+}

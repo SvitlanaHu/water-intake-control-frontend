@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import css from "./AuthBtn.module.css";
 
 export default function AuthBtn({ children }) {
@@ -7,3 +9,6 @@ export default function AuthBtn({ children }) {
     </button>
   );
 }
+AuthBtn.propTypes = {
+  children: PropTypes.string.isRequired, // Перевірка типу властивості children
+};

@@ -39,7 +39,13 @@ body {
   min-height: 100vh;
 }
 
-h1 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
   font-size: 3.2em;
   line-height: 1.1;
 }
@@ -65,6 +71,10 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.modal-active {
+  overflow: hidden;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: var(--white);
@@ -76,4 +86,14 @@ button:focus-visible {
   button {
     background-color: inherit;
   }
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
 }

@@ -1,7 +1,15 @@
-import styles from "./UserSettingsModal.modale.css";
-import UserSettingsForm from "../UserSettingsForm/UserSettingsForm";
+import { Modal } from '../Modal/Modal';
+import UserSettingsForm from '../UserSettingsForm/UserSettingsForm';
+import { useState } from 'react';
 
 const UserSettingsModal = () => {
-  // ваш код
+  const [isModalOpen, setIsModalOpen] = useState(true);
+  return (
+    <>
+      <Modal active={isModalOpen} setActive={setIsModalOpen} title="Setting">
+        <UserSettingsForm />
+      </Modal>
+    </>
+  );
 };
 export default UserSettingsModal;

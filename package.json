@@ -1,4 +1,4 @@
-{
+w{
   "name": "water-intake-control-frontend",
   "private": true,
   "version": "0.0.0",
@@ -17,6 +17,7 @@
     "@reduxjs/toolkit": "^2.2.4",
     "axios": "^1.6.8",
     "dayjs": "^1.11.11",
+    "formik": "^2.4.6",
     "modern-normalize": "^2.0.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
