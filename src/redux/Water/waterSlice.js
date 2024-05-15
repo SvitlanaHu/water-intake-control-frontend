@@ -4,7 +4,7 @@ import {
   updateWater,
   deleteWater,
   dailyWater,
-  monthlyWater,
+  getMonthlyWater,
 } from './operations';
 
 const handlePending = state => {
@@ -56,13 +56,13 @@ const waterSlice = createSlice({
         state.items = action.payload;
       })
       .addCase(dailyWater.rejected, handleRejected)
-      .addCase(monthlyWater.pending, handlePending)
-      .addCase(monthlyWater.fulfilled, (state, action) => {
+      .addCase(getMonthlyWater.pending, handlePending)
+      .addCase(getMonthlyWater.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items = action.payload;
       })
-      .addCase(monthlyWater.rejected, handleRejected);
+      .addCase(getMonthlyWater.rejected, handleRejected);
   },
 });
 

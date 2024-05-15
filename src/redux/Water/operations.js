@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const token =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjQ0NWI0NWNmODdmYjMxMDllMmYyNmEiLCJpYXQiOjE3MTU3NTU5NDcsImV4cCI6MTcxNTc1OTU0N30.kPDVlHcpvJUdR-5Bvxxf34V9_BvjGCdzsDMiYYdfTdE';
-axios.defaults.baseURL = 'localhost:3000/api/';
+axios.defaults.baseURL = 'localhost:3000/api';
 axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
 export const addWater = createAsyncThunk(
@@ -54,13 +54,11 @@ export const dailyWater = createAsyncThunk(
   }
 );
 
-export const monthlyWater = createAsyncThunk(
-  'water/dailyWater',
-  async (date, thunkAPI) => {
+export const getMonthlyWater = createAsyncThunk(
+  'water/getMonthlyWater',
+  async ({ year, month }, thunkAPI) => {
     try {
-      const response = await axios.get(
-        `/water/monthly/${date.year}/${date.month}`
-      );
+      const response = await axios.get(`/water/monthly/${year}/${month}`);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

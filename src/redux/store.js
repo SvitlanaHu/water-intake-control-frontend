@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { waterReducer } from './Water/waterSlice';
+import waterReducer from './Water/waterSlice';
 
 export const store = configureStore({
   reducer: {
