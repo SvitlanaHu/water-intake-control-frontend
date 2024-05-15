@@ -49,11 +49,13 @@ const WaterForm = ({ operationType }) => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <h2 className={styles.formTitle}>
-        {operationType === 'add'
-          ? 'Add water'
-          : 'Edit the entered amount of water'}
-      </h2>
+      <div className={styles.titleBox}>
+        <h2 className={styles.formTitle}>
+          {operationType === 'add'
+            ? 'Add water'
+            : 'Edit the entered amount of water'}
+        </h2>
+      </div>
       <div className={styles.divValue}>
         <h3 className={styles.textValue}>Choose a value</h3>
       </div>

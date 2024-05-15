@@ -10,13 +10,17 @@
     outline-offset: -2px; */
 }
 
+.titleBox {
+    margin-bottom: 24px;
+}
+
 .formTitle {
     color: var(--text-color);
     font-size: 20px;
     font-weight: 700;
     line-height: 24px;
     letter-spacing: -0.2px;
-    margin-bottom: 24px;
+
 }
 
 .divValue {
