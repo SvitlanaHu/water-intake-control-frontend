@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
-import css from "./CalendarItem.module.css";
+
+import css from './CalendarItem.module.css';
 
 const CalendarItem = ({ data }) => {
   return (
