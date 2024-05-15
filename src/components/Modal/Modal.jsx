@@ -1,8 +1,13 @@
 import { useEffect } from "react";
 import styles from "./Modal.module.css";
+
+// import { symbol } from "../Modal/icon/symbol.svg";
+import { ModalTitle } from "../ModalTitle/ModalTitle";
+
 import symbol from "../../../public/symbol.svg";
 
-export const Modal = ({ active, setActive, children }) => {
+
+export const Modal = ({ active, setActive, children, title }) => {
   useEffect(() => {
     const handleEscape = (event) => {
       if (event.key === "Escape") {
@@ -17,6 +22,8 @@ export const Modal = ({ active, setActive, children }) => {
     };
   }, [setActive]);
 
+  console.log(active);
+
   const handleCloseModal = () => {
     setActive(false);
   };
@@ -28,6 +35,7 @@ export const Modal = ({ active, setActive, children }) => {
           className={styles.modalWrapper}
           onClick={(event) => event.stopPropagation()}
         >
+          <ModalTitle>{title}</ModalTitle>
           {children}
           <button className={styles.closeButton} onClick={handleCloseModal}>
             <svg className={styles.closeIcon}>

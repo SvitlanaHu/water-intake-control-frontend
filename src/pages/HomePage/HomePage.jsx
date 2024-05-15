@@ -1,9 +1,12 @@
 // import React from 'react';
 
-import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection";
-import WelcomeSection from "../../components/WelcomeSection/WelcomeSection";
-import styles from "./HomePage.module.css";
-import WaterModal from "../../components/WaterModal/WaterModal";
+import AdvantagesSection from '../../components/AdvantagesSection/AdvantagesSection';
+import { Modal } from '../../components/Modal/Modal';
+import UserSettingsModal from '../../components/UserSettingsModal/UserSettingsModal';
+
+import WelcomeSection from '../../components/WelcomeSection/WelcomeSection';
+import styles from './HomePage.module.css';
+import WaterModal from '../../components/WaterModal/WaterModal';
 // import DeleteWaterModal from "../../components/DeleteWaterModal/DeleteWaterModal";
 
 const HomePage = () => {
