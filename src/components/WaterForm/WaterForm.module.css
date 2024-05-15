@@ -67,6 +67,20 @@
     align-items: center;
     text-align: center;
     cursor: pointer;
+    position: relative;
+
+
+}
+
+.decrementBtn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 15px;
+    height: 2px;
+    background-color: #000;
 
 }
 
@@ -79,7 +93,15 @@
     text-align: center;
     cursor: pointer;
 
+    span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 30px;
+        font-weight: 300;
 
+    }
 
 }
 
@@ -137,14 +159,7 @@
     width: 40px;
     height: 40px;
     color: #2F2F2F; */
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 4px;
-    background-color: #000;
+
 }
 
 .btnBox {

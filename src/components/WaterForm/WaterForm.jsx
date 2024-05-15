@@ -1,16 +1,16 @@
-import styles from "./WaterForm.module.css";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import styles from './WaterForm.module.css';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 const schema = yup
   .object({
     waterAmount: yup
       .number()
-      .required("Amount of water is required")
-      .min(0, "Minimum is 0ml")
-      .max(3000, "Maximum is 3000ml"),
-    time: yup.string().required("Time is required"),
+      .required('Amount of water is required')
+      .min(0, 'Minimum is 0ml')
+      .max(3000, 'Maximum is 3000ml'),
+    time: yup.string().required('Time is required'),
   })
   .required();
 
@@ -25,24 +25,24 @@ const WaterForm = ({ operationType }) => {
     resolver: yupResolver(schema),
     defaultValues: {
       waterAmount: 50,
-      time: new Date().toLocaleTimeString("en-US", {
+      time: new Date().toLocaleTimeString('en-US', {
         hour12: false,
-        hour: "2-digit",
-        minute: "2-digit",
+        hour: '2-digit',
+        minute: '2-digit',
       }),
     },
   });
 
-  const waterAmount = watch("waterAmount");
+  const waterAmount = watch('waterAmount');
 
   const incrementWaterAmount = () => {
-    setValue("waterAmount", Math.min(waterAmount + 50, 3000));
+    setValue('waterAmount', Math.min(waterAmount + 50, 3000));
   };
   const decrementWaterAmount = () => {
-    setValue("waterAmount", Math.max(waterAmount - 50, 0));
+    setValue('waterAmount', Math.max(waterAmount - 50, 0));
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     console.log(data);
     // логіка для відправки даних на сервер
   };
@@ -50,9 +50,9 @@ const WaterForm = ({ operationType }) => {
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <h2 className={styles.formTitle}>
-        {operationType === "add"
-          ? "Add water"
-          : "Edit the entered amount of water"}
+        {operationType === 'add'
+          ? 'Add water'
+          : 'Edit the entered amount of water'}
       </h2>
       <div className={styles.divValue}>
         <h3 className={styles.textValue}>Choose a value</h3>
@@ -67,13 +67,13 @@ const WaterForm = ({ operationType }) => {
             type="button"
             onClick={decrementWaterAmount}
           >
-            <span className={styles.spanIcon}>-</span>
+            {/* <span className={styles.spanIcon}>-</span> */}
           </button>
           <div className={styles.waterAmountBox}>
             <input
               className={styles.waterAmount}
               type="number"
-              {...register("waterAmount")}
+              {...register('waterAmount')}
               readOnly
             />
           </div>
@@ -92,7 +92,7 @@ const WaterForm = ({ operationType }) => {
         <label className={styles.labelTime} htmlFor="time">
           Recording time:
         </label>
-        <input className={styles.input} type="time" {...register("time")} />
+        <input className={styles.input} type="time" {...register('time')} />
         <p>{errors.time?.message}</p>
       </div>
       <div className={styles.enterBox}>
@@ -102,7 +102,7 @@ const WaterForm = ({ operationType }) => {
         <input
           className={styles.input}
           type="number"
-          {...register("waterAmount")}
+          {...register('waterAmount')}
           readOnly
         />
       </div>
