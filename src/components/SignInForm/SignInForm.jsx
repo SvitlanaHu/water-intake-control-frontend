@@ -34,8 +34,11 @@ export default function SignInForm() {
     <form className={styles.form} onSubmit={handleSubmit} autoComplete="off">
       <DefaultForm />
       <AuthBtn>Sign In</AuthBtn>
-      <NavLink className={styles.link} to="/signup">
-        Don`t have an account? Sign Up
+      <NavLink to="/signup">
+        <p className={styles.wrapDesc}>
+          <span className={styles.linkQuestion}>Don`t have an account?</span>
+          <span className={styles.linkRedirect}>Sign Up</span>
+        </p>
       </NavLink>
     </form>
   );

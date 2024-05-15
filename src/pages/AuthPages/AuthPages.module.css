@@ -1,0 +1,97 @@
+.wrap {
+  min-width: 320px;
+  max-width: 375px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 16px;
+  color: #323f47;
+}
+@media screen and (min-width: 768px) {
+  .wrap {
+    max-width: 704px;
+    padding: 32px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .wrap {
+    max-width: 1376px;
+    padding: 32px;
+    display: flex;
+    gap: 32px;
+    position: relative;
+  }
+}
+
+.content {
+  padding: 24px 16px;
+  background-color: #f0eff4;
+  border-radius: 30px;
+}
+@media screen and (min-width: 768px) {
+  .content {
+    padding: 0;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .content {
+    width: 672px;
+  }
+}
+
+.logoWrap {
+  margin-bottom: 172px;
+}
+@media screen and (min-width: 768px) {
+  .logoWrap {
+    padding: 32px;
+    padding-bottom: 0;
+    margin-bottom: 225px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .logoWrap {
+    margin-bottom: 94px;
+  }
+}
+.logoWrapSignUp {
+  margin-bottom: 129px;
+}
+@media screen and (min-width: 768px) {
+  .logoWrapSignUp {
+    padding: 32px;
+    padding-bottom: 0;
+    margin-bottom: 171px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .logoWrapSignUp {
+    margin-bottom: 55px;
+  }
+}
+
+.titleWrap {
+  margin-bottom: 32px;
+}
+@media screen and (min-width: 768px) {
+  .titleWrap {
+    margin-left: 134px;
+    margin-right: 134px;
+  }
+}
+@media (min-width: 1440px) {
+  .titleWrap {
+    margin-left: 118px;
+    margin-right: 118px;
+  }
+}
+.wrapWaterSection {
+  display: none;
+}
+@media screen and (min-width: 1440px) {
+  .wrapWaterSection {
+    display: flex;
+    position: absolute;
+    left: -32px;
+    top: 0;
+  }
+}

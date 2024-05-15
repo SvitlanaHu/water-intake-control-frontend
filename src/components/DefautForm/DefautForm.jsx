@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { IoIosEye } from "react-icons/io";
-import { IoEyeOffSharp } from "react-icons/io5";
+import PropTypes from "prop-types";
+import { FiEye, FiEyeOff } from "react-icons/fi";
+
 import styles from "./DefautForm.module.css";
 
 const DefaultForm = ({ handleChangePassword }) => {
@@ -10,7 +11,7 @@ const DefaultForm = ({ handleChangePassword }) => {
   };
 
   return (
-    <div>
+    <div className={styles.formWrap}>
       <label className={styles.label}>
         Email
         <input
@@ -44,13 +45,21 @@ const DefaultForm = ({ handleChangePassword }) => {
               className={styles.showPasswordBtn}
               onClick={handleTogglePassword}
             >
-              {showPassword ? <IoEyeOffSharp /> : <IoIosEye />}
+              {showPassword ? (
+                <FiEye className={styles.svg} />
+              ) : (
+                <FiEyeOff className={styles.svg} />
+              )}
             </button>
           </div>
         </div>
       </label>
     </div>
   );
+};
+
+DefaultForm.propTypes = {
+  handleChangePassword: PropTypes.func, // Перевірка типу властивості handleChangePassword
 };
 
 export default DefaultForm;
