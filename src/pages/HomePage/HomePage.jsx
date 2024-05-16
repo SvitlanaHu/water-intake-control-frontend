@@ -17,7 +17,6 @@ const HomePage = () => {
         <AdvantagesSection className={styles.advantages} />
         <WaterModal operationType="edit" />
         {/* <DeleteWaterModal /> */}
-        <UserSettingsModal />
       </div>
     </div>
   );
