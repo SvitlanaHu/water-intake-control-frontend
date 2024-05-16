@@ -2,6 +2,7 @@ import styles from './WaterForm.module.css';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { SaveButton } from '../SaveButton/SaveButton';
 
 const schema = yup
   .object({
@@ -20,9 +21,10 @@ const WaterForm = ({ operationType }) => {
     handleSubmit,
     setValue,
     watch,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     resolver: yupResolver(schema),
+    mode: 'onChange',
     defaultValues: {
       waterAmount: 50,
       time: new Date().toLocaleTimeString('en-US', {
@@ -109,9 +111,10 @@ const WaterForm = ({ operationType }) => {
         />
       </div>
       <div className={styles.btnBox}>
-        <button className={styles.saveBtn} type="submit">
+        {/* <button className={styles.saveBtn} type="submit">
           Save
-        </button>
+        </button> */}
+        <SaveButton enabled={isValid} />
       </div>
     </form>
   );
