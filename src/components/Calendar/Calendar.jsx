@@ -1,9 +1,16 @@
 import css from './Calendar.module.css';
 import CalendarItem from '../CalendarItem/CalendarItem';
 import { useSelector } from 'react-redux';
+import {
+  selectWater,
+  selectIsLoading,
+  selectError,
+} from '../../redux/Water/selector';
 
 const Calendar = () => {
-  const { items, isLoading, error } = useSelector(state => state.water);
+  const items = useSelector(selectWater);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -12,6 +19,7 @@ const Calendar = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
+  console.log(items);
   return (
     <div className={css.calendarBlock}>
       {items.map(data => (
