@@ -3,35 +3,40 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 80%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .modalWrapper {
+  margin: 0px 16px;
   position: fixed;
-  top: 50%;
-  left: 16px;
-  right: 16px;
-  transform: translateY(-50%);
+  top: 80px;
+  bottom: 0;
   background-color: white;
   padding: 40px 20px;
   border-radius: 15px;
   z-index: 101;
-  max-height: 80vh;
-  overflow: scroll;
+  max-height: 100vh;
+  overflow-y: scroll;
   padding: 40px 20px;
+  max-width: 343px;
+  box-sizing: border-box;
 }
 
 .closeButton {
   position: absolute;
   right: 16px;
   top: 20px;
-  width: 24px;
-  height: 24px;
   border: none;
   cursor: pointer;
   padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .closeIcon {
@@ -39,7 +44,33 @@
   stroke: #2f2f2f;
   width: 24px;
   height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .modalWrapper {
+    max-width: 648px;
+    margin: 0px 40px;
+    padding: 40px;
+  }
+
+  .closeButton {
+    right: 40px;
+    top: 40px;
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .modalWrapper {
+    max-width: 920px;
+    margin: 0px 260px;
+  }
+
+  /* .closeButton {
+    right: 40px;
+    top: 40px;
+    width: 28px;
+    height: 28px;
+  } */
 }
