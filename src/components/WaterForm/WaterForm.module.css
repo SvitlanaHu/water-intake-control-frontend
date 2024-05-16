@@ -1,13 +1,10 @@
 .form {
-    max-width: 375px;
+    max-width: 343px;
     margin-left: auto;
     margin-right: auto;
-    padding: 16px;
+    padding: 40px 20px;
     color: #323f47;
     position: relative;
-
-    /* outline: 2px solid red;
-    outline-offset: -2px; */
 }
 
 .titleBox {
@@ -20,7 +17,6 @@
     font-weight: 700;
     line-height: 24px;
     letter-spacing: -0.2px;
-
 }
 
 .divValue {
@@ -109,7 +105,13 @@
 
 }
 
-.waterAmount {
+.waterAmountBox {
+    display: flex;
+    align-items: center;
+}
+
+.waterAmount,
+.spanAmount {
     width: 41px;
     height: 18px;
     display: flex;
@@ -120,8 +122,7 @@
     color: #FFF;
     font-size: 14px;
     font-weight: 700;
-    line-height: 1.29;
-
+    line-height: 18px;
 }
 
 .input {
@@ -134,47 +135,93 @@
     border-radius: 15px;
     border: 1px solid rgba(47, 47, 47, 0.15);
     color: var(--text-color);
-
-    font-size: 16px;
-
-    font-weight: 400;
-    line-height: 24px;
-
-    letter-spacing: -0.16px;
-}
-
-.saveBtn {
-    position: absolute;
-    width: 116px;
-    height: 46px;
-    background-color: #9BE1A0;
-    border-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    align-content: flex-start;
-}
-
-.btnText {
-    color: #323F47;
     font-size: 14px;
-    line-height: 14px;
-    letter-spacing: -0.01em;
-    font-weight: bold;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -0.14px;
 }
 
-/* .spanIcon {
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    color: #2F2F2F;
-} */
+/* tablet */
+@media (min-width: 768px) {
+    .form {
+        max-width: 518px;
+        padding: 40px;
+
+    }
+
+    .titleBox {
+        width: 347px;
+    }
+
+    .formTitle {
+        color: var(--text-color);
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 32px;
+        letter-spacing: -0.28px;
+
+    }
+
+    .divValue {
+        width: 196px;
+    }
+
+    .textValue {
+        color: var(--text-color);
+        text-align: left;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 24px;
+        letter-spacing: -0.18px;
+    }
 
 
+    .labelTime,
+    .labelAmount {
+        color: #2F2F2F;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: -0.16px;
+    }
 
-.btnBox {
-    display: flex;
+    .decrementBtn {
+        height: 43px;
+        width: 43px;
+    }
+
+    .decrementBtn::before {
+        width: 16px;
+        height: 3px;
+    }
+
+    .waterAmountBox {
+        display: flex;
+        align-items: center;
+        height: 43px;
+    }
+
+    .waterAmount,
+    .spanAmount {
+        font-size: 15px;
+        line-height: 22.4px;
+    }
+
+    .incrementBtn {
+        height: 43px;
+        width: 43px;
+
+        span {
+            font-size: 35px;
+            font-weight: 400;
+        }
+
+    }
+
+    .input {
+        padding: 16px 16px;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: -0.16px;
+    }
 }
