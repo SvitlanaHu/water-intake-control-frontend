@@ -78,6 +78,13 @@
   gap: 8px;
 }
 
+@media (min-width: 1440px) {
+  .labelGap {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+}
+
 @keyframes pulseAnimation {
   0% {
     color: black; /* Начальный цвет */

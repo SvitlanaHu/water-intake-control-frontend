@@ -79,29 +79,29 @@ const UserSettingsForm = () => {
               />
             </label>
           </div>
+
+          <SettingFormTitle margin="14">Your gender identity</SettingFormTitle>
+          <label className={css.radioLabel}>
+            <input
+              className={css.radioInput}
+              type="radio"
+              name="gender"
+              value="woman"
+            />
+            Woman
+          </label>
+          <label className={css.radioLabel}>
+            <input
+              className={css.radioInput}
+              type="radio"
+              name="gender"
+              value="man"
+            />
+            Man
+          </label>
+
           <div className={css.form}>
             <div className={css.halfFormContainer}>
-              <SettingFormTitle margin="14">
-                Your gender identity
-              </SettingFormTitle>
-              <label className={css.radioLabel}>
-                <input
-                  className={css.radioInput}
-                  type="radio"
-                  name="gender"
-                  value="woman"
-                />
-                Woman
-              </label>
-              <label className={css.radioLabel}>
-                <input
-                  className={css.radioInput}
-                  type="radio"
-                  name="gender"
-                  value="man"
-                />
-                Man
-              </label>
               <div className={css.textInputContainer}>
                 <TextInput id="name" type="text" placeholder="Mary" name="name">
                   <SettingFormTitle margin="8">Your name</SettingFormTitle>
