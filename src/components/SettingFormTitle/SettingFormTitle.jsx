@@ -1,12 +1,11 @@
+import css from './SettingFormTitle.module.css';
+
 export const SettingFormTitle = ({ children, margin }) => {
-  console.log(margin);
   return (
     <h3
+      className={css.settingFormTitle}
       style={{
         marginBottom: `${margin}px`,
-        fontWeight: '700',
-        fontSize: '16px',
-        lineHeight: '1.25',
       }}
     >
       {children}
