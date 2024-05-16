@@ -59,7 +59,9 @@ const WaterForm = ({ operationType }) => {
         </h2>
       </div>
       <div className={styles.divValue}>
-        <h3 className={styles.textValue}>Choose a value</h3>
+        <h3 className={styles.textValue}>
+          {operationType === 'add' ? 'Choose a value' : 'Correct entered data:'}
+        </h3>
       </div>
       <div className={styles.divAmount}>
         <label className={styles.labelAmount} htmlFor="waterAmount">
