@@ -1,0 +1,83 @@
+.formWrap {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+@media screen and (min-width: 768px) {
+  .formWrap {
+    margin-left: 134px;
+    margin-right: 134px;
+    gap: 20px;
+  }
+}
+@media (min-width: 1440px) {
+  .formWrap {
+    margin-left: 118px;
+    margin-right: 118px;
+  }
+}
+.label {
+  color: #2f2f2f;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.29em;
+}
+@media screen and (min-width: 768px) {
+  .label {
+    font-size: 16px;
+    line-height: 1.5em;
+  }
+}
+
+.input::placeholder,
+.input {
+  color: rgba(47, 47, 47, 0.6);
+  font-family: Poppins;
+  font-size: 14px;
+}
+@media screen and (min-width: 768px) {
+  .input::placeholder,
+  .input {
+    font-size: 16px;
+  }
+}
+
+.input {
+  box-sizing: border-box;
+  background-color: transparent;
+  border-radius: 15px;
+  border: 1px solid rgba(47, 47, 47, 0.2);
+  width: 100%;
+  padding: 16px;
+  margin-top: 8px;
+  color: rgb(47, 47, 47);
+}
+
+.passwordWrap {
+  position: relative;
+}
+
+.showPasswordBtnContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(50%);
+}
+@media screen and (min-width: 768px) {
+  .showPasswordBtnContainer {
+    transform: translateY(40%);
+  }
+}
+.showPasswordBtn,
+.showPasswordBtn:hover,
+.showPasswordBtn:focus,
+.showPasswordBtn:active {
+  border-color: transparent !important;
+  color: #2f2f2f !important;
+  background-color: transparent !important;
+  outline: none;
+}
+
+.svg {
+  scale: 1.3;
+}

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { IoIosEye } from "react-icons/io";
-import { IoEyeOffSharp } from "react-icons/io5";
-import styles from "./SignUpForm.module.css";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
+
 import AuthBtn from "../AuthBtn/AuthBtn";
 import DefaultForm from "../DefautForm/DefautForm";
+import styles from "./SignUpForm.module.css";
 
 export default function SignUpForm() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -41,34 +41,43 @@ export default function SignUpForm() {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit} autoComplete="off">
-      <DefaultForm handleChangePassword={handleChangePassword} />
-      <label className={styles.label}>
-        Repeat password
-        <div className={styles.passwordWrap}>
-          <input
-            type={showConfirmPassword ? "text" : "password"}
-            name="confirmPassword"
-            placeholder="Repeat password"
-            autoComplete="new-password"
-            required
-            className={styles.input}
-            value={confirmPassword}
-            onChange={handleChangeConfirmPassword}
-          />
-          <div className={styles.showPasswordBtnContainer}>
-            <button
-              type="button"
-              className={styles.showPasswordBtn}
-              onClick={handleToggleConfirmPassword}
-            >
-              {showConfirmPassword ? <IoEyeOffSharp /> : <IoIosEye />}
-            </button>
+      <div className={styles.formInputs}>
+        <DefaultForm handleChangePassword={handleChangePassword} />
+        <label className={styles.label}>
+          Repeat password
+          <div className={styles.passwordWrap}>
+            <input
+              type={showConfirmPassword ? "text" : "password"}
+              name="confirmPassword"
+              placeholder="Repeat password"
+              autoComplete="new-password"
+              required
+              className={styles.input}
+              value={confirmPassword}
+              onChange={handleChangeConfirmPassword}
+            />
+            <div className={styles.showPasswordBtnContainer}>
+              <button
+                type="button"
+                className={styles.showPasswordBtn}
+                onClick={handleToggleConfirmPassword}
+              >
+                {showConfirmPassword ? (
+                  <FiEye className={styles.svg} />
+                ) : (
+                  <FiEyeOff className={styles.svg} />
+                )}
+              </button>
+            </div>
           </div>
-        </div>
-      </label>
+        </label>
+      </div>
       <AuthBtn>Sign Up</AuthBtn>
-      <NavLink className={styles.link} to="/signin">
-        Already have account? Sign in
+      <NavLink to="/signin">
+        <p className={styles.wrapDesc}>
+          <span className={styles.linkQuestion}>Already have an account?</span>
+          <span className={styles.linkRedirect}> Sign in</span>
+        </p>
       </NavLink>
     </form>
   );
