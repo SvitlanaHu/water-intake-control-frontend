@@ -1,9 +1,38 @@
-.SettingFormImg {
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1440px) {
+  .form {
+    flex-direction: row;
+    gap: 40px;
+
+    div {
+      min-width: calc(50% - 20px);
+    }
+  }
+}
+
+.settingFormImg {
   width: 75px;
   height: 75px;
   border-radius: 50%;
 }
 
+@media (min-width: 768px) {
+  .settingFormImg {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .settingFormImg {
+    width: 100px;
+    height: 100px;
+  }
+}
 .photoContainer {
   display: flex;
   flex-direction: column;
@@ -13,9 +42,12 @@
   align-content: center;
 
   label {
+    display: flex;
+    font-size: 14px;
     text-align: center;
     font-family: var(--font-family);
     margin: 0;
+    line-height: 1.2;
     svg {
       margin-right: 8px;
       width: 18px;
@@ -26,6 +58,20 @@
 
     input {
       display: none;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .photoContainer {
+    label {
+      line-height: 1.5;
+      font-size: 16px;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
     }
   }
 }
@@ -59,7 +105,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-99%, -80%);
+  transform: translate(-105%, -70%);
 }
 
 .radioLabel {
@@ -84,6 +130,14 @@
   font-size: 14px;
   line-height: 1;
   color: var(--mint);
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 768px) {
+  .formula {
+    font-size: 16px;
+    line-height: 1.5;
+  }
 }
 
 .formulaTitle {
@@ -94,6 +148,12 @@
   margin-bottom: 4px;
 }
 
+@media (min-width: 768px) {
+  .formulaTitle {
+    font-size: 16px;
+  }
+}
+
 .formulaList {
   display: flex;
   flex-direction: column;
@@ -101,11 +161,33 @@
   margin-bottom: 14px;
 }
 
-.explanationText {
-  border-radius: 15px;
-  border: 2px solid var(--light-gray);
-  padding: 16px;
-  margin-bottom: 14px;
+@media (min-width: 768px) {
+  .formulaList {
+    flex-direction: row;
+    gap: 0;
+  }
+
+  .formulaListItem {
+    margin-right: 28px;
+  }
+}
+
+@media (min-width: 768px) {
+  .text {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .requiredAmountTextContainer {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 14px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .requiredAmountTextContainer {
+  }
 }
 
 .text {
@@ -131,6 +213,16 @@
   }
 }
 
+@media (min-width: 768px) {
+  .activeTimeText {
+    font-size: 16px;
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}
+
 .indicatorsContainer {
   display: flex;
   flex-direction: column;
@@ -151,4 +243,40 @@
   font-size: 14px;
   line-height: 1.3;
   margin-bottom: 14px;
+}
+
+@media (min-width: 768px) {
+  .amountOfWater {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .requiredAmountText {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .halfFormContainer {
+  }
+
+  .requiredAmountText {
+    letter-spacing: -0.01em;
+  }
+}
+
+.explanationText {
+  border-radius: 15px;
+  border: 2px solid var(--light-gray);
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+@media (min-width: 768px) {
+  .explanationText {
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    min-width: 100%;
+  }
 }

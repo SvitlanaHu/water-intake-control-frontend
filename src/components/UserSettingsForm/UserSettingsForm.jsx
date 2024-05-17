@@ -33,7 +33,10 @@ const schema = yup.object().shape({
     )
     .required('Required!')
     .max(24, 'Easier, tiger...There are only 24 hours in a day'),
-  amountOfWater: yup.string().matches(/^\d+$/, 'Only numbers please'),
+  amountOfWater: yup
+    .string()
+    .matches(/^\d+$/, 'Only numbers please')
+    .required('Required!'),
 });
 
 const handleFormClick = ev => {
@@ -49,11 +52,20 @@ const UserSettingsForm = () => {
   };
 
   return (
-    <Formik initialValues={{ name: '', email: '' }} validationSchema={schema}>
+    <Formik
+      initialValues={{
+        name: '',
+        email: '',
+        amountOfWater: '',
+        weight: '',
+        time: '',
+      }}
+      validationSchema={schema}
+    >
       {({ dirty, isValid }) => (
-        <Form className={css.form} onSubmit={ev => handleFormClick(ev)}>
+        <Form onSubmit={ev => handleFormClick(ev)}>
           <div className={css.photoContainer}>
-            {img && <img className={css.SettingFormImg} src={img} />}
+            {img && <img className={css.settingFormImg} src={img} />}
             <label htmlFor="photo">
               <svg>
                 <use href={`${icons}#icon-upload`}></use>
@@ -87,74 +99,82 @@ const UserSettingsForm = () => {
             />
             Man
           </label>
-          <div className={css.textInputContainer}>
-            <TextInput id="name" type="text" placeholder="Mary" name="name">
-              <SettingFormTitle margin="8">Your name</SettingFormTitle>
-            </TextInput>
 
-            <TextInput
-              id="email"
-              type="email"
-              name="email"
-              placeholder="mary@ukr.net.com"
-            >
-              <SettingFormTitle margin="8">Email</SettingFormTitle>
-            </TextInput>
-          </div>
-          <SettingFormTitle margin="14">My daily norma</SettingFormTitle>
-          <ul className={css.formulaList}>
-            <li>
-              <p className={css.formulaTitle}>For woman</p>
-              <p className={css.formula}>V=(M*0,03) + (T*0,4)</p>
-            </li>
-            <li>
-              <p className={css.formulaTitle}>For man</p>
-              <p className={css.formula}>V=(M*0,04) + (T*0,6)</p>
-            </li>
-          </ul>
-          <p className={`${css.explanationText} ${css.text} `}>
-            <span>*</span> V is the volume of the water norm in liters per day,
-            M is your body weight, T is the time of active sports, or another
-            type of activity commensurate in terms of loads (in the absence of
-            these, you must set 0)
-          </p>
-          <p className={`${css.text} ${css.activeTimeText}`}>
-            <svg>
-              <use href={`${icons}#icon-exclamation-mark`}></use>
-            </svg>{' '}
-            Active time in hours
-          </p>
-          <div className={css.indicatorsContainer}>
-            <TextInput
-              id="weight"
-              type="text"
-              forLabel="Your weight in kilograms:"
-              placeholder="0"
-              name="weight"
-            ></TextInput>
-            <TextInput
-              placeholder="0"
-              id="time"
-              type="text"
-              forLabel="The time of active participation in sports:"
-              name="time"
-            ></TextInput>
-          </div>
+          <div className={css.form}>
+            <div className={css.halfFormContainer}>
+              <div className={css.textInputContainer}>
+                <TextInput id="name" type="text" placeholder="Mary" name="name">
+                  <SettingFormTitle margin="8">Your name</SettingFormTitle>
+                </TextInput>
 
-          <p className={css.requiredAmountText}>
-            The required amount of water in liters per day:
-          </p>
-          <p className={css.amountOfWater}>1.8 L</p>
-          <TextInput
-            name="amountOfWater"
-            placeholder="1.8"
-            id="amountOfWater"
-            type="text"
-          >
-            <SettingFormTitle margin="8">
-              Write down how much water you will drink:
-            </SettingFormTitle>
-          </TextInput>
+                <TextInput
+                  id="email"
+                  type="email"
+                  name="email"
+                  placeholder="mary@ukr.net.com"
+                >
+                  <SettingFormTitle margin="8">Email</SettingFormTitle>
+                </TextInput>
+              </div>
+              <SettingFormTitle margin="14">My daily norma</SettingFormTitle>
+              <ul className={css.formulaList}>
+                <li className={css.formulaListItem}>
+                  <p className={css.formulaTitle}>For woman</p>
+                  <p className={css.formula}>V=(M*0,03) + (T*0,4)</p>
+                </li>
+                <li className={css.formulaListItem}>
+                  <p className={css.formulaTitle}>For man</p>
+                  <p className={css.formula}>V=(M*0,04) + (T*0,6)</p>
+                </li>
+              </ul>
+              <p className={`${css.explanationText} ${css.text} `}>
+                <span>*</span> V is the volume of the water norm in liters per
+                day, M is your body weight, T is the time of active sports, or
+                another type of activity commensurate in terms of loads (in the
+                absence of these, you must set 0)
+              </p>
+              <p className={`${css.text} ${css.activeTimeText}`}>
+                <svg>
+                  <use href={`${icons}#icon-exclamation-mark`}></use>
+                </svg>{' '}
+                Active time in hours
+              </p>
+            </div>
+            <div className={css.halfFormContainer}>
+              <div className={css.indicatorsContainer}>
+                <TextInput
+                  id="weight"
+                  type="text"
+                  forLabel="Your weight in kilograms:"
+                  placeholder="0"
+                  name="weight"
+                ></TextInput>
+                <TextInput
+                  placeholder="0"
+                  id="time"
+                  type="text"
+                  forLabel="The time of active participation in sports:"
+                  name="time"
+                ></TextInput>
+              </div>
+              <div className={css.requiredAmountTextContainer}>
+                <p className={css.requiredAmountText}>
+                  The required amount of water in liters per day:
+                </p>
+                <p className={css.amountOfWater}>1.8 L</p>
+              </div>
+              <TextInput
+                name="amountOfWater"
+                placeholder="1.8"
+                id="amountOfWater"
+                type="text"
+              >
+                <SettingFormTitle margin="8">
+                  Write down how much water you will drink:
+                </SettingFormTitle>
+              </TextInput>
+            </div>
+          </div>
           <SaveButton margin="40" enabled={isValid && dirty} />
         </Form>
       )}

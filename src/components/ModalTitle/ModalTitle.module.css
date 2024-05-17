@@ -3,3 +3,9 @@
   line-height: 1.2;
   font-weight: 700;
 }
+
+@media (min-width: 768px) {
+  .modalTitle {
+    font-size: 28px;
+  }
+}
