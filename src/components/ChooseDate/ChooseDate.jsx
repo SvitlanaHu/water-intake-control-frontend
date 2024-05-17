@@ -1,12 +1,9 @@
+import { useSelector } from 'react-redux';
 import css from './ChooseDate.module.css';
 
 const ChooseDate = () => {
-  const date = 'Today';
-  //   const today = new Date();
-  //   const month = today.getMonth();
-  //   const year = today.getFullYear();
-  //   const date = today.;
-
-  return <p className={css.text}>{date}</p>;
+  const selectedDate = useSelector(state => state.calendar.selectedDate);
+  return <p className={css.text}>{selectedDate}</p>;
 };
+
 export default ChooseDate;

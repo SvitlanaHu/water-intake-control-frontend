@@ -33,7 +33,6 @@ const Calendar = () => {
     waterRecordsByDay[day].volume += item.volume;
   });
 
-  console.log(waterRecordsByDay);
   return (
     <div className={css.calendarBlock}>
       {waterRecordsByDay.map((data, index) => (

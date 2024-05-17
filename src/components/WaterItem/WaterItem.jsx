@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
-import css from "./WaterItem.module.css";
+import css from './WaterItem.module.css';
 // import WaterModal from "../WaterModal/WaterModal";
 // import DeleteWaterModal from "../DeleteWaterModal/DeleteWaterModal";
 
 const WaterItem = ({ data }) => {
+  console.log(data);
   return (
     <li>
       <div className={css.waterItemContainer}>
@@ -15,7 +16,7 @@ const WaterItem = ({ data }) => {
         </svg>
 
         <div className={css.textContainer}>
-          <p className={css.textWater}>{data.water}</p>
+          <p className={css.textWater}>{data.volume}ml</p>
           <p className={css.textTime}>{data.time}</p>
         </div>
 

@@ -20,6 +20,7 @@ const waterSlice = createSlice({
   name: 'water',
   initialState: {
     items: [],
+    dailyItems: [],
     isLoading: false,
     error: null,
   },
@@ -53,7 +54,7 @@ const waterSlice = createSlice({
       .addCase(dailyWater.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload.records;
+        state.dailyItems = action.payload.records;
       })
       .addCase(dailyWater.rejected, handleRejected)
       .addCase(getMonthlyWater.pending, handlePending)
