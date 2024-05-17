@@ -30,9 +30,7 @@ const schema = yup.object().shape({
       value => {
         return parseInt(value, 10) <= 24;
       }
-    )
-    .required('Required!')
-    .max(24, 'Easier, tiger...There are only 24 hours in a day'),
+    ),
   amountOfWater: yup
     .string()
     .matches(/^\d+$/, 'Only numbers please')
@@ -46,10 +44,32 @@ const handleFormClick = ev => {
 
 const UserSettingsForm = () => {
   const [img, setImg] = useState(null);
+  const [gender, setGender] = useState('man');
+  const [weight, setWeight] = useState('');
+  const [time, setTime] = useState('');
 
   const onInputFileChange = ev => {
     setImg(URL.createObjectURL(ev.target.files[0]));
   };
+
+  const handleFormChange = ev => {
+    const { name, value } = ev.target;
+    switch (name) {
+      case 'weight':
+        setWeight(value);
+        break;
+      case 'time':
+        setTime(value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const amountOfWaterFormula =
+    gender === 'woman'
+      ? weight * 0.03 + time * (0.4).toFixed(2)
+      : weight * 0.04 + time * (0.6).toFixed(2);
 
   return (
     <Formik
@@ -63,7 +83,10 @@ const UserSettingsForm = () => {
       validationSchema={schema}
     >
       {({ dirty, isValid }) => (
-        <Form onSubmit={ev => handleFormClick(ev)}>
+        <Form
+          onChange={ev => handleFormChange(ev)}
+          onSubmit={ev => handleFormClick(ev)}
+        >
           <div className={css.photoContainer}>
             {img && <img className={css.settingFormImg} src={img} />}
             <label htmlFor="photo">
@@ -83,19 +106,23 @@ const UserSettingsForm = () => {
           <SettingFormTitle margin="14">Your gender identity</SettingFormTitle>
           <label className={css.radioLabel}>
             <input
+              onChange={() => setGender('woman')}
               className={css.radioInput}
               type="radio"
               name="gender"
               value="woman"
+              checked={gender === 'woman'}
             />
             Woman
           </label>
           <label className={css.radioLabel}>
             <input
+              onChange={() => setGender('man')}
               className={css.radioInput}
               type="radio"
               name="gender"
               value="man"
+              checked={gender === 'man'}
             />
             Man
           </label>
@@ -161,7 +188,9 @@ const UserSettingsForm = () => {
                 <p className={css.requiredAmountText}>
                   The required amount of water in liters per day:
                 </p>
-                <p className={css.amountOfWater}>1.8 L</p>
+                <p className={css.amountOfWater}>
+                  {!dirty ? '1.8 L' : amountOfWaterFormula}
+                </p>
               </div>
               <TextInput
                 name="amountOfWater"

@@ -1,21 +1,28 @@
 .container {
-  display: block;
-  margin: auto;
-  width: 100%;
-}
-.box {
-  /* position: relative; */
   padding: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  width: 343px;
   gap: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
 }
-@media (min-width: 1440px) {
-  .box {
-    flex-direction: row;
+@media (min-width: 768px) {
+  .container {
     padding: 32px;
     gap: 32px;
+    width: 672px;
   }
+}
+@media (min-width: 1440px) {
+  .container {
+    flex-direction: row;
+    width: 1392px;
+  }
+}
+.box {
+  position: static;
 }

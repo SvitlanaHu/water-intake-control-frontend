@@ -6,7 +6,12 @@ const UserSettingsModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(true);
   return (
     <>
-      <Modal active={isModalOpen} setActive={setIsModalOpen} title="Setting">
+      <Modal
+        isSettingModal="_"
+        active={isModalOpen}
+        setActive={setIsModalOpen}
+        title="Setting"
+      >
         <UserSettingsForm />
       </Modal>
     </>

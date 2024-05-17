@@ -82,15 +82,15 @@ const WaterForm = ({ operationType }) => {
               {...register('waterAmount')}
               readOnly
             />
-            <span className={styles.spanAmount}>ml</span>
+            <span className={styles.spanAmount}>{waterAmount} ml</span>
           </div>
-          <button
+          <buttonn
             className={styles.incrementBtn}
             type="button"
             onClick={incrementWaterAmount}
           >
             <span>+</span>
-          </button>
+          </buttonn>
         </div>
         {/* {errors && <p>{errors.waterAmount.message}</p>} */}
         {/* {<p>{errors.waterAmount?.message}</p>} */}
