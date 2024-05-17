@@ -30,9 +30,7 @@ const schema = yup.object().shape({
       value => {
         return parseInt(value, 10) <= 24;
       }
-    )
-    .required('Required!')
-    .max(24, 'Easier, tiger...There are only 24 hours in a day'),
+    ),
   amountOfWater: yup
     .string()
     .matches(/^\d+$/, 'Only numbers please')
@@ -47,14 +45,31 @@ const handleFormClick = ev => {
 const UserSettingsForm = () => {
   const [img, setImg] = useState(null);
   const [gender, setGender] = useState('man');
-  const [weight, setWeight] = useState(0);
-  const [time, setTime] = useState(0);
-  const [amountOfWater, setAmountOfWater] = useState(0);
+  const [weight, setWeight] = useState('');
+  const [time, setTime] = useState('');
+
   const onInputFileChange = ev => {
     setImg(URL.createObjectURL(ev.target.files[0]));
   };
 
-  const amountOfWaterFormula = gender === 'man' ? {} : {};
+  const handleFormChange = ev => {
+    const { name, value } = ev.target;
+    switch (name) {
+      case 'weight':
+        setWeight(value);
+        break;
+      case 'time':
+        setTime(value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const amountOfWaterFormula =
+    gender === 'woman'
+      ? weight * 0.03 + time * (0.4).toFixed(2)
+      : weight * 0.04 + time * (0.6).toFixed(2);
 
   return (
     <Formik
@@ -68,7 +83,10 @@ const UserSettingsForm = () => {
       validationSchema={schema}
     >
       {({ dirty, isValid }) => (
-        <Form onSubmit={ev => handleFormClick(ev)}>
+        <Form
+          onChange={ev => handleFormChange(ev)}
+          onSubmit={ev => handleFormClick(ev)}
+        >
           <div className={css.photoContainer}>
             {img && <img className={css.settingFormImg} src={img} />}
             <label htmlFor="photo">
@@ -152,15 +170,11 @@ const UserSettingsForm = () => {
             <div className={css.halfFormContainer}>
               <div className={css.indicatorsContainer}>
                 <TextInput
-                  value={weight}
                   id="weight"
                   type="text"
                   forLabel="Your weight in kilograms:"
                   placeholder="0"
                   name="weight"
-                  onChange={ev => {
-                    setWeight(ev.target.value);
-                  }}
                 ></TextInput>
                 <TextInput
                   placeholder="0"
@@ -168,27 +182,21 @@ const UserSettingsForm = () => {
                   type="text"
                   forLabel="The time of active participation in sports:"
                   name="time"
-                  onChange={ev => {
-                    setTime(ev.target.value);
-                  }}
-                  value={time}
                 ></TextInput>
               </div>
               <div className={css.requiredAmountTextContainer}>
                 <p className={css.requiredAmountText}>
                   The required amount of water in liters per day:
                 </p>
-                <p className={css.amountOfWater}>1.8 L</p>
+                <p className={css.amountOfWater}>
+                  {!dirty ? '1.8 L' : amountOfWaterFormula}
+                </p>
               </div>
               <TextInput
                 name="amountOfWater"
                 placeholder="1.8"
                 id="amountOfWater"
                 type="text"
-                value={amountOfWater}
-                onChange={ev => {
-                  setAmountOfWater(ev.target.value);
-                }}
               >
                 <SettingFormTitle margin="8">
                   Write down how much water you will drink:

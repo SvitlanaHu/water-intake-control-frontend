@@ -8,8 +8,6 @@ export const TextInput = ({
   forLabel,
   placeholder,
   name,
-  onChange,
-  value,
 }) => {
   return (
     <label
@@ -19,13 +17,11 @@ export const TextInput = ({
       {children}
       {forLabel}
       <Field
-        onChange={onChange ? onChange : undefined}
         name={name}
         placeholder={placeholder}
         className={css.textInput}
         type={type}
         id={id}
-        value={value}
       ></Field>
       <ErrorMessage className={css.errorMessage} name={name} component="span" />
     </label>
