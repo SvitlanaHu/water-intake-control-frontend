@@ -110,19 +110,23 @@
     align-items: center;
 }
 
-.waterAmount,
+.waterAmount {
+    display: none;
+}
+
 .spanAmount {
-    width: 41px;
+    width: 68px;
     height: 18px;
     display: flex;
     padding: 11px 20px;
     align-items: center;
+    justify-content: center;
     border-radius: 30px;
     background: var(--text-color);
     color: #FFFFFF;
     font-size: 14px;
     font-weight: 700;
-    line-height: 18px;
+
 }
 
 .input {
@@ -191,10 +195,10 @@
         height: 43px;
     }
 
-    .waterAmount,
+
     .spanAmount {
         font-size: 15px;
-        line-height: 22.4px;
+
     }
 
     .incrementBtn {

@@ -1,9 +1,9 @@
-import css from "./AddWaterBtn.module.css";
+import css from './AddWaterBtn.module.css';
 // import WaterModal from "../WaterModal/WaterModal";
 
-const AddWaterBtn = () => {
+const AddWaterBtn = ({ handleOpenModal }) => {
   return (
-    <button className={css.btn} type="button">
+    <button onClick={handleOpenModal} className={css.btn} type="button">
       <svg className={css.svg}>
         <use
           className={css.icon}
