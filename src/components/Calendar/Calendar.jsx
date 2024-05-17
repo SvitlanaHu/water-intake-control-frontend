@@ -23,11 +23,14 @@ const Calendar = () => {
   }
 
   const daysInMonth = dayjs(`${currentYear}-${currentMonth + 1}`).daysInMonth();
-  const waterRecordsByDay = Array(daysInMonth).fill(null);
+  const waterRecordsByDay = Array.from({ length: daysInMonth }, (_, i) => ({
+    day: i + 1,
+    volume: 0,
+  }));
 
   items.forEach(item => {
     const day = dayjs(item.date).date() - 1;
-    waterRecordsByDay[day] = item;
+    waterRecordsByDay[day].volume += item.volume;
   });
 
   console.log(waterRecordsByDay);
