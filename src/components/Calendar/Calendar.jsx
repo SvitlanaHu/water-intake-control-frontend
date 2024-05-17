@@ -3,14 +3,14 @@ import CalendarItem from '../CalendarItem/CalendarItem';
 import { useSelector } from 'react-redux';
 import {
   selectWater,
-  selectIsLoading,
+  selectMonthLoading,
   selectError,
 } from '../../redux/Water/selector';
 import dayjs from 'dayjs';
 
 const Calendar = () => {
   const items = useSelector(selectWater);
-  const isLoading = useSelector(selectIsLoading);
+  const isLoading = useSelector(selectMonthLoading);
   const error = useSelector(selectError);
   const { currentMonth, currentYear } = useSelector(state => state.calendar);
 
