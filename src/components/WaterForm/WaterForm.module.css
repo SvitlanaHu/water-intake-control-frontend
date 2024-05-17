@@ -1,13 +1,14 @@
 .form {
-    max-width: 375px;
+    max-width: 343px;
     margin-left: auto;
     margin-right: auto;
-    padding: 16px;
+    padding: 40px 20px;
     color: #323f47;
     position: relative;
+}
 
-    /* outline: 2px solid red;
-    outline-offset: -2px; */
+.titleBox {
+    margin-bottom: 24px;
 }
 
 .formTitle {
@@ -16,7 +17,6 @@
     font-weight: 700;
     line-height: 24px;
     letter-spacing: -0.2px;
-    margin-bottom: 24px;
 }
 
 .divValue {
@@ -35,7 +35,7 @@
 
 .labelTime,
 .labelAmount {
-    color: #2F2F2F;
+    color: var(--main-text-color);
     font-size: 14px;
     font-weight: 400;
     line-height: 18px;
@@ -67,6 +67,20 @@
     align-items: center;
     text-align: center;
     cursor: pointer;
+    position: relative;
+
+
+}
+
+.decrementBtn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 15px;
+    height: 2px;
+    background-color: var(--text-color);
 
 }
 
@@ -79,22 +93,39 @@
     text-align: center;
     cursor: pointer;
 
+    span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 30px;
+        font-weight: 300;
 
+    }
 
 }
 
+.waterAmountBox {
+    display: flex;
+    align-items: center;
+}
+
 .waterAmount {
-    width: 41px;
+    display: none;
+}
+
+.spanAmount {
+    width: 68px;
     height: 18px;
     display: flex;
     padding: 11px 20px;
     align-items: center;
+    justify-content: center;
     border-radius: 30px;
     background: var(--text-color);
-    color: #FFF;
+    color: #FFFFFF;
     font-size: 14px;
     font-weight: 700;
-    line-height: 1.29;
 
 }
 
@@ -107,46 +138,95 @@
     align-self: stretch;
     border-radius: 15px;
     border: 1px solid rgba(47, 47, 47, 0.15);
-}
-
-.saveBtn {
-    position: absolute;
-    width: 116px;
-    height: 46px;
-    background-color: #9BE1A0;
-    border-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    align-content: flex-start;
-}
-
-.btnText {
-    color: #323F47;
+    color: var(--main-text-color);
     font-size: 14px;
-    line-height: 14px;
-    letter-spacing: -0.01em;
-    font-weight: bold;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -0.14px;
 }
 
-.spanIcon {
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    color: #2F2F2F; */
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 4px;
-    background-color: #000;
+/* tablet */
+@media (min-width: 768px) {
+    .form {
+        max-width: 518px;
+        padding: 40px;
+
+    }
+
+    .titleBox {
+        width: 347px;
+    }
+
+    .formTitle {
+        font-size: 28px;
+        line-height: 32px;
+        letter-spacing: -0.28px;
+    }
+
+    .divValue {
+        width: 196px;
+    }
+
+    .textValue {
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: -0.18px;
+    }
+
+
+    .labelTime,
+    .labelAmount {
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: -0.16px;
+    }
+
+    .decrementBtn {
+        height: 43px;
+        width: 43px;
+    }
+
+    .decrementBtn::before {
+        width: 16px;
+        height: 3px;
+    }
+
+    .waterAmountBox {
+        height: 43px;
+    }
+
+
+    .spanAmount {
+        font-size: 15px;
+
+    }
+
+    .incrementBtn {
+        height: 43px;
+        width: 43px;
+
+        span {
+            font-size: 35px;
+            font-weight: 400;
+        }
+
+    }
+
+    .input {
+        padding: 16px 16px;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: -0.16px;
+    }
 }
 
-.btnBox {
-    display: flex;
+/* desktop */
+@media (min-width: 1440px) {
+
+    .divValue {
+        width: 196px;
+    }
+
+
+
 }

@@ -1,29 +1,34 @@
-import styles from "./WaterModal.module.css";
-import WaterForm from "../WaterForm/WaterForm.jsx";
-import { useState } from "react";
-import { Modal } from "../Modal/Modal.jsx";
-import PropTypes from "prop-types";
+// import styles from './WaterModal.module.css';
+import WaterForm from '../WaterForm/WaterForm.jsx';
+// import { useState } from 'react';
+import { Modal } from '../Modal/Modal.jsx';
+import PropTypes from 'prop-types';
 
-const WaterModal = ({ operationType }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const WaterModal = ({
+  operationType,
+  isModalOpen,
+  setIsModalOpen,
+  handleOpenModal,
+}) => {
+  // const [isModalOpen, setIsModalOpen] = useState(false);
 
   const formState = {
     add: {
-      title: "Add Water",
+      title: 'Add Water',
       formComponent: <WaterForm operationType="add" />,
     },
     edit: {
-      title: "Edit Water",
+      title: 'Edit Water',
       formComponent: <WaterForm operationType="edit" />,
     },
   };
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
+  // const handleOpenModal = () => {
+  //   setIsModalOpen(true);
+  // };
 
-  const handleFormSubmit = (formData) => {
-    console.log("Form Data Submitted:", formData);
+  const handleFormSubmit = formData => {
+    console.log('Form Data Submitted:', formData);
     setIsModalOpen(false);
   };
   return (
@@ -33,7 +38,6 @@ const WaterModal = ({ operationType }) => {
       </button>
       {isModalOpen && (
         <Modal active={isModalOpen} setActive={setIsModalOpen}>
-          {/* <h2 className={styles.title}>{formState[operationType].title}</h2> */}
           {formState[operationType].formComponent}
         </Modal>
       )}
@@ -41,7 +45,7 @@ const WaterModal = ({ operationType }) => {
   );
 };
 WaterModal.propTypes = {
-  operationType: PropTypes.oneOf(["add", "edit"]).isRequired,
+  operationType: PropTypes.oneOf(['add', 'edit']).isRequired,
 };
 
 export default WaterModal;
