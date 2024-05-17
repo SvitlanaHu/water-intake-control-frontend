@@ -19,9 +19,6 @@ const calendarSlice = createSlice({
       } else {
         state.currentMonth -= 1;
       }
-      state.selectedDate = dayjs(
-        `${state.currentYear}-${state.currentMonth + 1}-01`
-      ).format('YYYY-MM-DD');
     },
     nextMonth: state => {
       if (state.currentMonth === 11) {
@@ -30,9 +27,6 @@ const calendarSlice = createSlice({
       } else {
         state.currentMonth += 1;
       }
-      state.selectedDate = dayjs(
-        `${state.currentYear}-${state.currentMonth + 1}-01`
-      ).format('YYYY-MM-DD');
     },
     selectDate: (state, action) => {
       state.selectedDate = action.payload;
