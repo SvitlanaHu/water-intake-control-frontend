@@ -4,7 +4,6 @@ import css from './WaterItem.module.css';
 // import DeleteWaterModal from "../DeleteWaterModal/DeleteWaterModal";
 
 const WaterItem = ({ data }) => {
-  console.log(data);
   return (
     <li>
       <div className={css.waterItemContainer}>
