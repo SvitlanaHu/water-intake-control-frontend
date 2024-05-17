@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
-
 import css from './CalendarItem.module.css';
 
-const CalendarItem = ({ data }) => {
+const CalendarItem = ({ data, day }) => {
   return (
     <button type="button" className={css.btn}>
-      <p className={(css.backGround, css.day)}>{data.id}</p>
-      <p className={css.water}>{data.water}</p>
+      <p className={css.day}>{day}</p>
+      <p className={css.water}>{data ? data.volume : '0'}%</p>
     </button>
   );
 };
+
 export default CalendarItem;
