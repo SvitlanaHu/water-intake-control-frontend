@@ -46,10 +46,15 @@ const handleFormClick = ev => {
 
 const UserSettingsForm = () => {
   const [img, setImg] = useState(null);
-
+  const [gender, setGender] = useState('man');
+  const [weight, setWeight] = useState(0);
+  const [time, setTime] = useState(0);
+  const [amountOfWater, setAmountOfWater] = useState(0);
   const onInputFileChange = ev => {
     setImg(URL.createObjectURL(ev.target.files[0]));
   };
+
+  const amountOfWaterFormula = gender === 'man' ? {} : {};
 
   return (
     <Formik
@@ -83,19 +88,23 @@ const UserSettingsForm = () => {
           <SettingFormTitle margin="14">Your gender identity</SettingFormTitle>
           <label className={css.radioLabel}>
             <input
+              onChange={() => setGender('woman')}
               className={css.radioInput}
               type="radio"
               name="gender"
               value="woman"
+              checked={gender === 'woman'}
             />
             Woman
           </label>
           <label className={css.radioLabel}>
             <input
+              onChange={() => setGender('man')}
               className={css.radioInput}
               type="radio"
               name="gender"
               value="man"
+              checked={gender === 'man'}
             />
             Man
           </label>
@@ -143,11 +152,15 @@ const UserSettingsForm = () => {
             <div className={css.halfFormContainer}>
               <div className={css.indicatorsContainer}>
                 <TextInput
+                  value={weight}
                   id="weight"
                   type="text"
                   forLabel="Your weight in kilograms:"
                   placeholder="0"
                   name="weight"
+                  onChange={ev => {
+                    setWeight(ev.target.value);
+                  }}
                 ></TextInput>
                 <TextInput
                   placeholder="0"
@@ -155,6 +168,10 @@ const UserSettingsForm = () => {
                   type="text"
                   forLabel="The time of active participation in sports:"
                   name="time"
+                  onChange={ev => {
+                    setTime(ev.target.value);
+                  }}
+                  value={time}
                 ></TextInput>
               </div>
               <div className={css.requiredAmountTextContainer}>
@@ -168,6 +185,10 @@ const UserSettingsForm = () => {
                 placeholder="1.8"
                 id="amountOfWater"
                 type="text"
+                value={amountOfWater}
+                onChange={ev => {
+                  setAmountOfWater(ev.target.value);
+                }}
               >
                 <SettingFormTitle margin="8">
                   Write down how much water you will drink:

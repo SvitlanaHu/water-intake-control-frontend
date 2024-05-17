@@ -27,6 +27,20 @@
   box-sizing: border-box;
 }
 
+.modalWrapper::-webkit-scrollbar-thumb {
+  background-color: var(--light-gray);
+  border-radius: 8px;
+}
+
+.modalWrapper::-webkit-scrollbar-track {
+  margin: 100px;
+}
+
+.modalWrapper::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
 .closeButton {
   position: absolute;
   right: 16px;
