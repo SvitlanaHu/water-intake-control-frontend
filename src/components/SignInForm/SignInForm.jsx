@@ -1,33 +1,33 @@
-// import { useDispatch } from "react-redux";
-// import { logIn } from "../../redux/auth/operations";
-import styles from "./SignInForm.module.css";
-// import toast from "react-hot-toast";
-import AuthBtn from "../AuthBtn/AuthBtn";
-import { NavLink } from "react-router-dom";
-import DefaultForm from "../DefautForm/DefautForm";
+import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
+
+import { logIn } from '../../redux/auth/operations';
+import styles from './SignInForm.module.css';
+import AuthBtn from '../AuthBtn/AuthBtn';
+import DefaultForm from '../DefautForm/DefautForm';
 
 export default function SignInForm() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
 
-    // dispatch(
-    //   logIn({
-    //     email: form.elements.email.value,
-    //     password: form.elements.password.value,
-    //   })
-    // )
-    //   .unwrap()
-    //   .then(() => {
-    //     toast.success("Login success");
-    //   })
-    //   .catch(() => {
-    //     toast.error("Incorrect email or password :c");
-    //   });
-
-    form.reset();
+    dispatch(
+      logIn({
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    )
+      .unwrap()
+      .then(() => {
+        form.reset();
+        toast.success('Login success');
+      })
+      .catch(() => {
+        toast.error('Incorrect email or password :c');
+      });
   };
 
   return (

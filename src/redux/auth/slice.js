@@ -18,7 +18,7 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = null;
-        state.isEmailVerified = false; //очікується підтвердження електронної пошти
+        state.isEmailVerified = false; //Очікується підтвердження електронної пошти
         state.isLoggedIn = false;
       })
       .addCase(verifyEmail.fulfilled, (state, action) => {
