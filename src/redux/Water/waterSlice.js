@@ -60,7 +60,10 @@ const waterSlice = createSlice({
         state.error = null;
         state.dailyItems = action.payload.records;
       })
-      .addCase(dailyWater.rejected, handleRejected)
+      .addCase(dailyWater.rejected, (state, action) => {
+        state.dailyIsLoading = false;
+        state.error = action.payload;
+      })
       .addCase(getMonthlyWater.pending, state => {
         state.monthIsLoading = true;
       })
@@ -69,7 +72,10 @@ const waterSlice = createSlice({
         state.error = null;
         state.items = action.payload.records;
       })
-      .addCase(getMonthlyWater.rejected, handleRejected);
+      .addCase(getMonthlyWater.rejected, (state, action) => {
+        state.monthIsLoading = false;
+        state.error = action.payload;
+      });
   },
 });
 
