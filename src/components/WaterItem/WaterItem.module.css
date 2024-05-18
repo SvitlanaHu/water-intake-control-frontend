@@ -33,6 +33,9 @@
 .btn {
   border: none;
   padding: 0;
+  width: 14px;
+  height: 14px;
+  display: flex;
 }
 .btn:hover {
   border-color: transparent;
