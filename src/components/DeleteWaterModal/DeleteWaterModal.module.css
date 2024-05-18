@@ -1,71 +1,102 @@
-/* .form {
-    max-width: 375px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 16px;
-    color: var(--text-color);
-    text-align: center;
+.form {
+    background-color: var(--white);
+    max-width: 344px;
 }
 
 .formTitle {
     color: var(--text-color);
-
+    text-align: center;
+    font-family: Poppins;
     font-size: 20px;
-
     font-weight: 700;
     line-height: 24px;
-    /* 120% */
-letter-spacing: -0.2px;
-margin-bottom: 16px;
-}
-
-.textBox {
-    margin-bottom: 28px;
+    letter-spacing: -0.2px;
+    margin-bottom: 16px;
 }
 
 .text {
     color: var(--text-color);
-
+    text-align: center;
     font-size: 14px;
-
     font-weight: 400;
     line-height: 18px;
-    /* 128.571% */
     letter-spacing: -0.14px;
+    margin-bottom: 28px;
+}
+
+.btnBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
 }
 
 .deleteBtn {
-    display: flex;
-    padding: 14px 129px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+    background-color: var(--mint);
+    color: var(--text-color);
     border-radius: 30px;
-    background: var(--Accent, #9be1a0);
-    margin-bottom: 9px;
-    color: #fff;
-
+    padding: 14px 129px;
     font-size: 14px;
     font-weight: 700;
     border: none;
-    cursor: pointer;
+    letter-spacing: -0.14px;
+    text-align: center;
 }
 
 .cancelBtn {
-    display: flex;
-    width: 304px;
-    padding: 14px 126px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+    background-color: var(--light-grey);
+    color: var(--text-color);
     border-radius: 30px;
-    background: #f0eff4;
-    color: #323f47;
-    font-family: Poppins;
+    padding: 14px 129px;
     font-size: 14px;
     font-weight: 700;
     border: none;
-    cursor: pointer;
+    letter-spacing: -0.14px;
+    text-align: center;
+    opacity: 0.7;
 }
 
-*/
+/* .deleteBtn:hover,
+.deleteBtn:focus {
+    background-color: ;
+} */
+
+.cancelBtn:hover,
+.cancelBtn:focus {
+    opacity: 1;
+}
+
+@media only screen and (min-width: 768px) {
+    .forma {
+        width: 516px;
+        padding: 40px;
+    }
+
+    .formTitle {
+        font-size: 28px;
+        margin-bottom: 24px;
+    }
+
+    .text {
+
+        font-size: 18px;
+    }
+
+    .btnBox {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .deleteBtn {
+        padding: 18px 67px;
+        font-size: 16px;
+    }
+
+    .cancelBtn {
+        padding: 18px 67px;
+        font-size: 16px;
+    }
+
+}

@@ -33,9 +33,6 @@ const WaterModal = ({
   };
   return (
     <>
-      <button onClick={handleOpenModal}>
-        {formState[operationType].title}
-      </button>
       {isModalOpen && (
         <Modal active={isModalOpen} setActive={setIsModalOpen}>
           {formState[operationType].formComponent}

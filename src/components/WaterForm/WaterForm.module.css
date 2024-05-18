@@ -32,7 +32,6 @@
     letter-spacing: -0.16px;
 }
 
-
 .labelTime,
 .labelAmount {
     color: var(--main-text-color);
@@ -40,7 +39,6 @@
     font-weight: 400;
     line-height: 18px;
     letter-spacing: -0.14px;
-
 }
 
 .amountBox {
@@ -60,7 +58,7 @@
     margin-bottom: 24px;
 }
 
-.decrementBtn {
+.decrementButton {
     height: 40px;
     width: 40px;
     border-radius: 20px;
@@ -68,11 +66,9 @@
     text-align: center;
     cursor: pointer;
     position: relative;
-
-
 }
 
-.decrementBtn::before {
+.decrementButton::before {
     content: "";
     position: absolute;
     top: 50%;
@@ -81,10 +77,9 @@
     width: 15px;
     height: 2px;
     background-color: var(--text-color);
-
 }
 
-.incrementBtn {
+.incrementButton {
     position: relative;
     height: 40px;
     width: 40px;
@@ -92,6 +87,7 @@
     align-items: center;
     text-align: center;
     cursor: pointer;
+    border-color: var(--text-color);
 
     span {
         position: absolute;
@@ -100,7 +96,6 @@
         transform: translate(-50%, -50%);
         font-size: 30px;
         font-weight: 300;
-
     }
 
 }
