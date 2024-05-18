@@ -4,6 +4,11 @@
   column-gap: 17px;
   row-gap: 20px;
 }
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @media only screen and (min-width: 768px) {
   .calendarBlock {
     column-gap: 48px;
