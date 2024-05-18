@@ -6,12 +6,10 @@ import { logIn } from '../../redux/auth/operations';
 import styles from './SignInForm.module.css';
 import AuthBtn from '../AuthBtn/AuthBtn';
 import DefaultForm from '../DefautForm/DefautForm';
-import { Navigate, useNavigate } from 'react-router-dom/dist';
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom/dist';
 
 export default function SignInForm() {
   const dispatch = useDispatch();
-  // const [isLoginedIn, setIsLoginedIn] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = e => {
@@ -28,7 +26,6 @@ export default function SignInForm() {
       .then(() => {
         form.reset();
         toast.success('Login success');
-        // setIsLoginedIn(true);
         navigate('/tracker');
       })
       .catch(error => {
@@ -41,10 +38,6 @@ export default function SignInForm() {
         }
       });
   };
-
-  // if (isLoginedIn) {
-  //   return <Navigate to="/tracker" />;
-  // }
 
   return (
     <form className={styles.form} onSubmit={handleSubmit} autoComplete="off">
