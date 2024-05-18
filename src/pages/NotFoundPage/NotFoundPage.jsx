@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import { GoBackBtn } from '../../components/GoBackBtn/GoBackBtn';
 import styles from './NotFoundPage.module.css';
-import img from '../../../dist/assets/404notFound.png';
+import img from '../../../public/images/404-error-page-not-found.png';
 
 export default function NotFoundPage() {
   const navigate = useNavigate();
