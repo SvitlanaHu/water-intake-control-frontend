@@ -20,7 +20,7 @@ const WaterList = () => {
   useEffect(() => {
     const currentDate = dayjs().format('YYYY-MM-DD');
     dispatch(dailyWater(currentDate));
-  }, [dispatch]);
+  }, [dispatch, water]);
 
   const isLoading = useSelector(selectDailyLoading);
   if (isLoading) {

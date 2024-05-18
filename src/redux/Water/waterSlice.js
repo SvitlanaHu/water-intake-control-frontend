@@ -32,7 +32,7 @@ const waterSlice = createSlice({
       .addCase(addWater.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload;
+        state.items.push(action.payload);
       })
       .addCase(addWater.rejected, handleRejected)
       .addCase(updateWater.pending, handlePending)
@@ -47,7 +47,7 @@ const waterSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.items.findIndex(
-          contact => contact.id === action.payload.id
+          water => water.id === action.payload.id
         );
         state.items.splice(index, 1);
       })

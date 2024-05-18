@@ -4,6 +4,15 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { SaveButton } from '../SaveButton/SaveButton';
+//add imports
+import { useDispatch } from 'react-redux';
+import { addWater } from '../../redux/Water/operations';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 const schema = yup
   .object({
@@ -16,7 +25,8 @@ const schema = yup
   })
   .required();
 
-const WaterForm = ({ operationType }) => {
+const WaterForm = ({ operationType, closeModal }) => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -56,9 +66,21 @@ const WaterForm = ({ operationType }) => {
     }
   };
 
+  //Відправка на сервер
   const onSubmit = data => {
     console.log(data);
-    // логіка для відправки даних на сервер
+    const date = dayjs().format('YYYY-MM-DD');
+    const datetime = `${date} ${data.time}`;
+    const userTimezone = dayjs.tz.guess();
+    const formattedDatetime = dayjs.tz(datetime, userTimezone).format();
+    dispatch(
+      addWater({
+        volume: Number(data.waterAmount),
+        date: formattedDatetime,
+        timezone: userTimezone,
+      })
+    );
+    closeModal();
   };
 
   return (
