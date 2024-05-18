@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjQ1ZTkzOWQ4MTA5ZjFkNWYyNWJjMTQiLCJpYXQiOjE3MTU5ODE3MTMsImV4cCI6MTcxNTk4NTMxM30.eY_HAXF5aJ9592E0S6aAhO1ygD1V6PVkVIusEbN_4JI';
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjQ1ZTkzOWQ4MTA5ZjFkNWYyNWJjMTQiLCJpYXQiOjE3MTYwMTQyMTQsImV4cCI6MTcxNjAxNzgxNH0.EfvBev-R7Sd63e8xH4rWJuES9aziiQkUoWQgZOglQIo';
 axios.defaults.baseURL =
   'https://water-intake-control-backend.onrender.com/api';
 

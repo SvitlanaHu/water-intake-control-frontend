@@ -7,6 +7,8 @@ import {
   selectError,
 } from '../../redux/Water/selector';
 import dayjs from 'dayjs';
+import CircularProgress from '@mui/material/CircularProgress';
+import Stack from '@mui/material/Stack';
 
 const Calendar = () => {
   const items = useSelector(selectWater);
@@ -15,7 +17,13 @@ const Calendar = () => {
   const { currentMonth, currentYear } = useSelector(state => state.calendar);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className={css.loaderContainer}>
+        <Stack justifyContent="center" alignItems="center" height="100%">
+          <CircularProgress sx={{ color: '#9BE1A0' }} />
+        </Stack>
+      </div>
+    );
   }
 
   if (error) {

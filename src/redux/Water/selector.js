@@ -9,3 +9,5 @@ export const selectDailyWater = state => state.water.dailyItems;
 export const selectCurrentDate = state => state.water.currentDate;
 
 export const selectMonthLoading = state => state.water.monthIsLoading;
+
+export const selectDailyLoading = state => state.water.dailyIsLoading;
