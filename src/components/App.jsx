@@ -9,6 +9,7 @@ import TrackerPage from '../pages/TrackerPage/TrackerPage';
 import Statistics from '../pages/Statistics';
 import { Toaster } from 'react-hot-toast';
 import ConfirmEmailPage from '../pages/AuthPages/ConfirmEmailPage';
+import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 
 // import { BrowserRouter } from 'react-router-dom';
 
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/tracker" element={<TrackerPage />} />
         <Route path="/statistics" element={<Statistics />} />
+        <Route path="*" element={<NotFoundPage />} />
         {/* Додайте інші маршрути, які вам потрібні */}
       </Routes>
       <Toaster
