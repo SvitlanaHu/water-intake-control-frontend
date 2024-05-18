@@ -26,15 +26,16 @@ export default function SignInForm() {
       .then(() => {
         form.reset();
         toast.success('Login success');
-        navigate('/tracker');
       })
       .catch(error => {
         console.log('status', error);
         if (error === 'Request failed with status code 403') {
           toast.error('Please verify email');
           navigate('/confirm-email');
-        } else {
+        } else if (error === 'Request failed with status code 401') {
           toast.error('Incorrect email or password :c');
+        } else {
+          toast.error('Internal Server Error');
         }
       });
   };

@@ -8,11 +8,9 @@ import styles from './SignUpForm.module.css';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom/dist';
 
 export default function SignUpForm() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -33,7 +31,6 @@ export default function SignUpForm() {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
-
     // Check if passwords match
     if (password !== confirmPassword) {
       toast.error('Passwords do not match');
@@ -51,7 +48,6 @@ export default function SignUpForm() {
         form.reset();
         setConfirmPassword('');
         toast.success('Registration success');
-        navigate('/confirm-email');
       })
       .catch(error => {
         console.log('status', error === 'Request failed with status code 409');
