@@ -1,4 +1,5 @@
 import styles from './WaterForm.module.css';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -37,11 +38,22 @@ const WaterForm = ({ operationType }) => {
 
   const waterAmount = watch('waterAmount');
 
+  useEffect(() => {
+    setValue('waterAmount', waterAmount);
+  }, [waterAmount, setValue]);
+
   const incrementWaterAmount = () => {
-    setValue('waterAmount', Math.min(waterAmount + 50, 3000));
+    setValue('waterAmount', Math.min(Number(waterAmount) + 50, 3000));
   };
   const decrementWaterAmount = () => {
-    setValue('waterAmount', Math.max(waterAmount - 50, 0));
+    setValue('waterAmount', Math.max(Number(waterAmount) - 50, 0));
+  };
+
+  const handleWaterAmountChange = e => {
+    const { value } = e.target;
+    if (!isNaN(value) && value >= 0) {
+      setValue('waterAmount', Number(value));
+    }
   };
 
   const onSubmit = data => {
@@ -69,7 +81,7 @@ const WaterForm = ({ operationType }) => {
         </label>
         <div className={styles.amountBox}>
           <button
-            className={styles.decrementBtn}
+            className={styles.decrementButton}
             type="button"
             onClick={decrementWaterAmount}
           >
@@ -79,28 +91,33 @@ const WaterForm = ({ operationType }) => {
             <input
               className={styles.waterAmount}
               type="number"
+              value={waterAmount}
+              onChange={handleWaterAmountChange}
+              min="0"
+              max="3000"
               {...register('waterAmount')}
-              readOnly
+              // readOnly
             />
             <span className={styles.spanAmount}>{waterAmount} ml</span>
           </div>
           <buttonn
-            className={styles.incrementBtn}
+            className={styles.incrementButton}
             type="button"
             onClick={incrementWaterAmount}
           >
             <span>+</span>
           </buttonn>
         </div>
-        {/* {errors && <p>{errors.waterAmount.message}</p>} */}
-        {/* {<p>{errors.waterAmount?.message}</p>} */}
+        {errors.waterAmount && (
+          <p className={styles.error}>{errors.waterAmount.message}</p>
+        )}
       </div>
       <div className={styles.timeBox}>
         <label className={styles.labelTime} htmlFor="time">
           Recording time:
         </label>
         <input className={styles.input} type="time" {...register('time')} />
-        <p>{errors.time?.message}</p>
+        {errors.time && <p className={styles.error}>{errors.time.message}</p>}
       </div>
       <div className={styles.enterBox}>
         <label className={styles.textValue} htmlFor="water">
@@ -109,8 +126,10 @@ const WaterForm = ({ operationType }) => {
         <input
           className={styles.input}
           type="number"
-          {...register('waterAmount')}
-          readOnly
+          value={waterAmount}
+          onChange={e => setValue('waterAmount', e.target.value)}
+          min="0"
+          max="3000"
         />
       </div>
       <div className={styles.btnBox}>
