@@ -100,13 +100,13 @@ const WaterForm = ({ operationType }) => {
             />
             <span className={styles.spanAmount}>{waterAmount} ml</span>
           </div>
-          <buttonn
+          <button
             className={styles.incrementButton}
             type="button"
             onClick={incrementWaterAmount}
           >
             <span>+</span>
-          </buttonn>
+          </button>
         </div>
         {errors.waterAmount && (
           <p className={styles.error}>{errors.waterAmount.message}</p>
