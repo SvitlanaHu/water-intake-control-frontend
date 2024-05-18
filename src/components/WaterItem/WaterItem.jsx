@@ -1,9 +1,13 @@
 /* eslint-disable react/prop-types */
-import css from "./WaterItem.module.css";
+import css from './WaterItem.module.css';
 // import WaterModal from "../WaterModal/WaterModal";
 // import DeleteWaterModal from "../DeleteWaterModal/DeleteWaterModal";
+import dayjs from 'dayjs';
 
 const WaterItem = ({ data }) => {
+  console.log(data);
+  const formattedTime = dayjs(data.date).format('h:mm A');
+
   return (
     <li>
       <div className={css.waterItemContainer}>
@@ -15,8 +19,8 @@ const WaterItem = ({ data }) => {
         </svg>
 
         <div className={css.textContainer}>
-          <p className={css.textWater}>{data.water}</p>
-          <p className={css.textTime}>{data.time}</p>
+          <p className={css.textWater}>{data.volume}ml</p>
+          <p className={css.textTime}>{formattedTime}</p>
         </div>
 
         <div className={css.editScript}>

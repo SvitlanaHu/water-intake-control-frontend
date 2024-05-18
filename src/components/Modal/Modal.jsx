@@ -6,7 +6,13 @@ import { ModalTitle } from '../ModalTitle/ModalTitle';
 
 import symbol from '../../../public/symbol.svg';
 
-export const Modal = ({ active, setActive, children, title }) => {
+export const Modal = ({
+  isSettingModal,
+  active,
+  setActive,
+  children,
+  title,
+}) => {
   useEffect(() => {
     const handleEscape = event => {
       if (event.key === 'Escape') {
@@ -35,7 +41,9 @@ export const Modal = ({ active, setActive, children, title }) => {
     return (
       <div className={styles.modalBackdrop} onClick={() => setActive(false)}>
         <div
-          className={styles.modalWrapper}
+          className={
+            isSettingModal ? styles.modalWrapper : styles.modalsWrapper
+          }
           onClick={event => event.stopPropagation()}
         >
           <ModalTitle margin="20">{title}</ModalTitle>
