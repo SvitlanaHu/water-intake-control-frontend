@@ -215,7 +215,7 @@
   width: 81px;
   color: var(--white);
   background-color: var(--text-color);
-  top: -13px;
+  top: -3px;
 }
 .customersO {
   position: absolute;
@@ -232,14 +232,14 @@
   position: absolute;
   width: 83px;
   background-color: var(--mint);
-  top: -20px;
+  top: -2px;
   left: 87px;
 }
 .setting {
   position: absolute;
   width: 108px;
   background-color: var(--white);
-  top: 10px;
+  top: 30px;
 }
 @media (min-width: 768px) {
   .base {
@@ -255,6 +255,7 @@
   }
   .drive {
     width: 111px;
+    top: -25px;
   }
   .statistics {
     width: 121px;

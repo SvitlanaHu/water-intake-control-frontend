@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
-import { NavLink, Navigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import AuthBtn from '../AuthBtn/AuthBtn';
 import DefaultForm from '../DefautForm/DefautForm';
@@ -8,14 +8,15 @@ import styles from './SignUpForm.module.css';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom/dist';
 
 export default function SignUpForm() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState('');
   const [password, setPassword] = useState('');
-  const [isRegistered, setIsRegistered] = useState(false);
 
   const handleToggleConfirmPassword = () => {
     setShowConfirmPassword(!showConfirmPassword);
@@ -50,7 +51,7 @@ export default function SignUpForm() {
         form.reset();
         setConfirmPassword('');
         toast.success('Registration success');
-        setIsRegistered(true);
+        navigate('/confirm-email');
       })
       .catch(error => {
         console.log('status', error === 'Request failed with status code 409');
@@ -61,10 +62,6 @@ export default function SignUpForm() {
         }
       });
   };
-  if (isRegistered) {
-    // Якщо користувач успішно зареєстрований, перенаправити його на сторінку верифікації
-    return <Navigate to="/confirm-email" />;
-  }
 
   return (
     <form className={styles.form} onSubmit={handleSubmit} autoComplete="off">

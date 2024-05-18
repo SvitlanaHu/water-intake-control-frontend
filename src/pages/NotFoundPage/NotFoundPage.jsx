@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { GoBackBtn } from '../../components/GoBackBtn/GoBackBtn';
 import styles from './NotFoundPage.module.css';
-import img from '../../../public/images/404-error-page-not-found.png';
+import img from '../../../public/images/404notFound.png';
 
 export default function NotFoundPage() {
   const navigate = useNavigate();
@@ -32,9 +31,8 @@ export default function NotFoundPage() {
 
   return (
     <div className={styles.wrap}>
-      {/* <GoBackBtn path="/">Back to home page</GoBackBtn> */}
       <h2 className={styles.title}>
-        Oops! It seems like the page you`re looking for doesn`t exist.
+        Oops! It seems like the page you're looking for doesn't exist.
       </h2>
       <div className={styles.textWrap}>
         <p className={styles.text}>
