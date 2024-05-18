@@ -2,8 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjQ0NWI0NWNmODdmYjMxMDllMmYyNmEiLCJpYXQiOjE3MTU3NTU5NDcsImV4cCI6MTcxNTc1OTU0N30.kPDVlHcpvJUdR-5Bvxxf34V9_BvjGCdzsDMiYYdfTdE';
-axios.defaults.baseURL = 'http://localhost:3000/api';
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjQ1ZTkzOWQ4MTA5ZjFkNWYyNWJjMTQiLCJpYXQiOjE3MTU5ODE3MTMsImV4cCI6MTcxNTk4NTMxM30.eY_HAXF5aJ9592E0S6aAhO1ygD1V6PVkVIusEbN_4JI';
+axios.defaults.baseURL =
+  'https://water-intake-control-backend.onrender.com/api';
 
 axios.defaults.headers.Authorization = `Bearer ${token}`;
 
@@ -47,7 +48,12 @@ export const dailyWater = createAsyncThunk(
   'water/dailyWater',
   async (date, thunkAPI) => {
     try {
-      const response = await axios.get(`/water/daily/${date}`);
+      const timezone = new Date().getTimezoneOffset();
+      const response = await axios.get(`/water/daily/${date}`, {
+        params: {
+          timezone: timezone,
+        },
+      });
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -59,7 +65,12 @@ export const getMonthlyWater = createAsyncThunk(
   'water/getMonthlyWater',
   async ({ year, month }, thunkAPI) => {
     try {
-      const response = await axios.get(`/water/monthly/${year}/${month}`);
+      const timezone = new Date().getTimezoneOffset();
+      const response = await axios.get(`/water/monthly/${year}/${month}`, {
+        params: {
+          timezone: timezone,
+        },
+      });
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

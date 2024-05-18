@@ -20,7 +20,9 @@ const waterSlice = createSlice({
   name: 'water',
   initialState: {
     items: [],
+    dailyItems: [],
     isLoading: false,
+    monthIsLoading: false,
     error: null,
   },
   extraReducers: builder => {
@@ -53,14 +55,16 @@ const waterSlice = createSlice({
       .addCase(dailyWater.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload;
+        state.dailyItems = action.payload.records;
       })
       .addCase(dailyWater.rejected, handleRejected)
-      .addCase(getMonthlyWater.pending, handlePending)
+      .addCase(getMonthlyWater.pending, state => {
+        state.monthIsLoading = true;
+      })
       .addCase(getMonthlyWater.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.monthIsLoading = false;
         state.error = null;
-        state.items = action.payload;
+        state.items = action.payload.records;
       })
       .addCase(getMonthlyWater.rejected, handleRejected);
   },
