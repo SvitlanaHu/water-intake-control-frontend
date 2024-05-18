@@ -4,8 +4,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 axios.defaults.baseURL = 'https://water-intake-control-backend.onrender.com/';
 // axios.defaults.baseURL = 'http://localhost:3005/api';
 
-const setAuthHeader = token => {
+const setAuthHeader = ({ token }) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  // axios.defaults.headers.common.RefreshToken = refreshToken;
 };
 
 const clearAuthHeader = () => {
@@ -25,29 +26,16 @@ export const register = createAsyncThunk(
   }
 );
 
-export const verifyEmail = createAsyncThunk(
-  'auth/verifyemail',
-  async (credentials, thunkAPI) => {
-    try {
-      const res = await axios.get(
-        '/users/verify/:verificationToken',
-        credentials
-      );
-      setAuthHeader(res.token);
-      return res.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('/users/login', credentials);
       console.log('res login', res);
-      setAuthHeader(res.token);
+      setAuthHeader({
+        token: res.data.token,
+        refreshToken: res.data.refreshToken,
+      });
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -69,7 +57,7 @@ export const refreshUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
-
+    console.log('persistedToken', persistedToken);
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }

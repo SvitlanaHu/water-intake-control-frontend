@@ -1,7 +1,9 @@
+import { NavLink } from 'react-router-dom/dist';
 import AdvantagesSection from '../../components/AdvantagesSection/AdvantagesSection';
 import DocumentTitle from '../../components/DocumentTitle/DocumentTitle';
 import Logo from '../../components/Logo/Logo';
 import styles from '../AuthPages/AuthPages.module.css';
+import AuthBtn from '../../components/AuthBtn/AuthBtn';
 
 export default function ConfirmEmailPage() {
   return (
@@ -16,6 +18,11 @@ export default function ConfirmEmailPage() {
         <div className={styles.textWrap}>
           The email confirmation has been sent to your email address. Please
           verify it.
+        </div>
+        <div className={styles.btnToSignIn}>
+          <NavLink to="/signin">
+            <AuthBtn>Sign In</AuthBtn>
+          </NavLink>
         </div>
         <div className={styles.wrapWaterSection}>
           <AdvantagesSection />

@@ -8,6 +8,7 @@ const authSlice = createSlice({
       email: null,
     },
     token: null,
+    refreshToken: null,
     isLoggedIn: false,
     isRefreshing: false,
   },
@@ -16,16 +17,18 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
-        state.isLoggedIn = true;
+        state.refreshToken = action.payload.refreshToken;
       })
       .addCase(logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
+        state.refreshToken = action.payload.refreshToken;
         state.isLoggedIn = true;
       })
       .addCase(logOut.fulfilled, state => {
         state.user = { email: null };
         state.token = null;
+        state.refreshToken = null;
         state.isLoggedIn = false;
       })
       .addCase(refreshUser.pending, state => {

@@ -22,7 +22,6 @@ import RestrictedRoute from './RestrictedRoute';
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
-  console.log('isRefreshing', isRefreshing);
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -51,6 +50,12 @@ const App = () => {
           }
         />
         <Route path="/tracker" element={<TrackerPage />} />
+        {/* <Route
+          path="/tracker"
+          element={
+            <PrivateRoute redirectTo="/signin" component={TrackerPage} />
+          }
+        /> */}
         <Route path="/statistics" element={<Statistics />} />
         <Route path="*" element={<NotFoundPage />} />
         {/* Додайте інші маршрути, які вам потрібні */}
