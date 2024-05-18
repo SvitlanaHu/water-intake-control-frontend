@@ -21,41 +21,43 @@ const WaterItem = ({ data }) => {
   };
 
   return (
-    <li className={css.waterItemContainer}>
-      <svg className={css.svgGlass}>
-        <use
-          className={css.grassIcon}
-          href="../../../public/symbol.svg#icon-water-glass"
-        ></use>
-      </svg>
+    <li>
+      <div className={css.waterItemContainer}>
+        <svg className={css.svgGlass}>
+          <use
+            className={css.grassIcon}
+            href="../../../public/symbol.svg#icon-water-glass"
+          ></use>
+        </svg>
 
-      <div className={css.textContainer}>
-        <p className={css.textWater}>{data.volume}ml</p>
-        <p className={css.textTime}>{formattedTime}</p>
-      </div>
+        <div className={css.textContainer}>
+          <p className={css.textWater}>{data.volume}ml</p>
+          <p className={css.textTime}>{formattedTime}</p>
+        </div>
 
-      <div className={css.editScript}>
-        <button type="button" className={css.btn} onClick={handleOpenModal}>
-          <svg className={css.editSvgContainer}>
-            <use
-              className={css.editIcon}
-              href="../../../public/symbol.svg#icon-edit-2"
-            ></use>
-          </svg>
-        </button>
-        <button type="button" className={css.btn} onClick={handleOpenModal}>
-          <svg className={css.editSvgContainer}>
-            <use
-              className={css.editIcon}
-              href="../../../public/symbol.svg#icon-trash-04"
-            ></use>
-          </svg>
-        </button>
+        <div className={css.editScript}>
+          <button type="button" className={css.btn} onClick={handleOpenModal}>
+            <svg className={css.editSvgContainer}>
+              <use
+                className={css.editIcon}
+                href="../../../public/symbol.svg#icon-edit-2"
+              ></use>
+            </svg>
+          </button>
+          <button type="button" className={css.btn} onClick={handleOpenModal}>
+            <svg className={css.editSvgContainer}>
+              <use
+                className={css.editIcon}
+                href="../../../public/symbol.svg#icon-trash-04"
+              ></use>
+            </svg>
+          </button>
+        </div>
+        <DeleteWaterModal
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        />
       </div>
-      <DeleteWaterModal
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-      />
     </li>
   );
 };
