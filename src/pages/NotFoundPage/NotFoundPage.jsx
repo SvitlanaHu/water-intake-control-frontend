@@ -32,7 +32,7 @@ export default function NotFoundPage() {
   return (
     <div className={styles.wrap}>
       <h2 className={styles.title}>
-        Oops! It seems like the page you're looking for doesn't exist.
+        Oops! It seems like the page you are looking for does not exist.
       </h2>
       <div className={styles.textWrap}>
         <p className={styles.text}>

@@ -4,9 +4,11 @@
   margin-top: 40px;
   margin-left: 20px;
   margin-right: 20px;
+  height: 160px;
 }
 .scrollDiv {
   overflow-x: scroll;
+  overflow-y: hidden;
 }
 
 .scrollDiv::-webkit-scrollbar {
@@ -30,5 +32,6 @@
   .dailyCont {
     margin-left: 32px;
     margin-right: 32px;
+    height: 174px;
   }
 }

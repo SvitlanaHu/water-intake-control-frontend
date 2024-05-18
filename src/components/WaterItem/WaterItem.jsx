@@ -3,10 +3,22 @@ import css from './WaterItem.module.css';
 // import WaterModal from "../WaterModal/WaterModal";
 // import DeleteWaterModal from "../DeleteWaterModal/DeleteWaterModal";
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import { useState } from 'react';
+import DeleteWaterModal from '../DeleteWaterModal/DeleteWaterModal';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 const WaterItem = ({ data }) => {
-  console.log(data);
-  const formattedTime = dayjs(data.date).format('h:mm A');
+  const userTimezone = dayjs.tz.guess();
+  const formattedTime = dayjs(data.date).tz(userTimezone).format('h:mm A');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
 
   return (
     <li>
@@ -24,19 +36,27 @@ const WaterItem = ({ data }) => {
         </div>
 
         <div className={css.editScript}>
-          <svg className={css.editSvgContainer}>
-            <use
-              className={css.editIcon}
-              href="../../../public/symbol.svg#icon-edit-2"
-            ></use>
-          </svg>
-          <svg className={css.editSvgContainer}>
-            <use
-              className={css.editIcon}
-              href="../../../public/symbol.svg#icon-trash-04"
-            ></use>
-          </svg>
+          <button type="button" className={css.btn} onClick={handleOpenModal}>
+            <svg className={css.editSvgContainer}>
+              <use
+                className={css.editIcon}
+                href="../../../public/symbol.svg#icon-edit-2"
+              ></use>
+            </svg>
+          </button>
+          <button type="button" className={css.btn} onClick={handleOpenModal}>
+            <svg className={css.editSvgContainer}>
+              <use
+                className={css.editIcon}
+                href="../../../public/symbol.svg#icon-trash-04"
+              ></use>
+            </svg>
+          </button>
         </div>
+        <DeleteWaterModal
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        />
       </div>
     </li>
   );

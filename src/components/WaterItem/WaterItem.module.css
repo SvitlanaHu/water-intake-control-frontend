@@ -30,6 +30,21 @@
   padding: 0;
   margin: 0;
 }
+.btn {
+  border: none;
+  padding: 0;
+  width: 14px;
+  height: 14px;
+  display: flex;
+}
+.btn:hover {
+  border-color: transparent;
+  background-color: transparent;
+}
+.btn:focus,
+.btn:focus-visible {
+  outline: none;
+}
 .textWater {
   color: #323f47;
   font-size: 14px;

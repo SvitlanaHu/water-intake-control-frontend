@@ -24,6 +24,7 @@ const WaterMainInfo = () => {
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
         />
+
         <div className={css.imgWrapper}>
           <img
             className={css.img}

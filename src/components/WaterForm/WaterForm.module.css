@@ -1,232 +1,217 @@
 .form {
-    max-width: 343px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 40px 20px;
-    color: #323f47;
-    position: relative;
+  max-width: 343px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px 20px;
+  color: #323f47;
+  position: relative;
 }
 
 .titleBox {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 }
 
 .formTitle {
-    color: var(--text-color);
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: -0.2px;
+  color: var(--text-color);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.2px;
 }
 
 .divValue {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .textValue {
-    color: var(--text-color);
-    text-align: left;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 20px;
-    letter-spacing: -0.16px;
+  color: var(--text-color);
+  text-align: left;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.16px;
 }
-
 
 .labelTime,
 .labelAmount {
-    color: var(--main-text-color);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 18px;
-    letter-spacing: -0.14px;
-
+  color: var(--main-text-color);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.14px;
 }
 
 .amountBox {
-    display: flex;
-    margin-bottom: 16px;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  margin-bottom: 16px;
+  align-items: center;
+  gap: 8px;
 }
 
 .timeBox,
 .enterBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 8px;
-    margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 24px;
 }
 
-.decrementBtn {
-    height: 40px;
-    width: 40px;
-    border-radius: 20px;
-    align-items: center;
-    text-align: center;
-    cursor: pointer;
-    position: relative;
-
-
+.decrementButton {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
 }
 
-.decrementBtn::before {
-    content: "";
+.decrementButton::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 2px;
+  background-color: var(--text-color);
+}
+
+.incrementButton {
+  position: relative;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  border-color: var(--text-color);
+
+  span {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 15px;
-    height: 2px;
-    background-color: var(--text-color);
-
-}
-
-.incrementBtn {
-    position: relative;
-    height: 40px;
-    width: 40px;
-    border-radius: 20px;
-    align-items: center;
-    text-align: center;
-    cursor: pointer;
-
-    span {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 30px;
-        font-weight: 300;
-
-    }
-
+    font-size: 30px;
+    font-weight: 300;
+  }
 }
 
 .waterAmountBox {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .waterAmount {
-    display: none;
+  display: none;
 }
 
 .spanAmount {
-    width: 68px;
-    height: 18px;
-    display: flex;
-    padding: 11px 20px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 30px;
-    background: var(--text-color);
-    color: #FFFFFF;
-    font-size: 14px;
-    font-weight: 700;
-
+  width: 68px;
+  height: 18px;
+  display: flex;
+  padding: 11px 20px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  background: var(--text-color);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .input {
-    height: 100%;
-    display: flex;
-    padding: 14px 16px;
-    align-items: flex-start;
-    gap: 10px;
-    align-self: stretch;
-    border-radius: 15px;
-    border: 1px solid rgba(47, 47, 47, 0.15);
-    color: var(--main-text-color);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 18px;
-    letter-spacing: -0.14px;
+  height: 100%;
+  display: flex;
+  padding: 14px 16px;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 15px;
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  color: var(--main-text-color);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.14px;
+  background-color: #ffffff;
 }
 
 /* tablet */
 @media (min-width: 768px) {
-    .form {
-        max-width: 518px;
-        padding: 40px;
+  .form {
+    max-width: 518px;
+    padding: 40px;
+  }
 
+  .titleBox {
+    width: 347px;
+  }
+
+  .formTitle {
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: -0.28px;
+  }
+
+  .divValue {
+    width: 196px;
+  }
+
+  .textValue {
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.18px;
+  }
+
+  .labelTime,
+  .labelAmount {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.16px;
+  }
+
+  .decrementBtn {
+    height: 43px;
+    width: 43px;
+  }
+
+  .decrementBtn::before {
+    width: 16px;
+    height: 3px;
+  }
+
+  .waterAmountBox {
+    height: 43px;
+  }
+
+  .spanAmount {
+    font-size: 15px;
+  }
+
+  .incrementBtn {
+    height: 43px;
+    width: 43px;
+
+    span {
+      font-size: 35px;
+      font-weight: 400;
     }
+  }
 
-    .titleBox {
-        width: 347px;
-    }
-
-    .formTitle {
-        font-size: 28px;
-        line-height: 32px;
-        letter-spacing: -0.28px;
-    }
-
-    .divValue {
-        width: 196px;
-    }
-
-    .textValue {
-        font-size: 18px;
-        line-height: 24px;
-        letter-spacing: -0.18px;
-    }
-
-
-    .labelTime,
-    .labelAmount {
-        font-size: 16px;
-        line-height: 24px;
-        letter-spacing: -0.16px;
-    }
-
-    .decrementBtn {
-        height: 43px;
-        width: 43px;
-    }
-
-    .decrementBtn::before {
-        width: 16px;
-        height: 3px;
-    }
-
-    .waterAmountBox {
-        height: 43px;
-    }
-
-
-    .spanAmount {
-        font-size: 15px;
-
-    }
-
-    .incrementBtn {
-        height: 43px;
-        width: 43px;
-
-        span {
-            font-size: 35px;
-            font-weight: 400;
-        }
-
-    }
-
-    .input {
-        padding: 16px 16px;
-        font-size: 16px;
-        line-height: 24px;
-        letter-spacing: -0.16px;
-    }
+  .input {
+    padding: 16px 16px;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.16px;
+  }
 }
 
 /* desktop */
 @media (min-width: 1440px) {
-
-    .divValue {
-        width: 196px;
-    }
-
-
-
+  .divValue {
+    width: 196px;
+  }
 }
