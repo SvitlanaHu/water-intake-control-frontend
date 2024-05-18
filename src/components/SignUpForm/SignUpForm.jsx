@@ -1,43 +1,70 @@
-import { useState } from "react";
-import { FiEye, FiEyeOff } from "react-icons/fi";
-import { NavLink } from "react-router-dom";
+import { useState } from 'react';
+import { FiEye, FiEyeOff } from 'react-icons/fi';
+import { NavLink, Navigate } from 'react-router-dom';
 
-import AuthBtn from "../AuthBtn/AuthBtn";
-import DefaultForm from "../DefautForm/DefautForm";
-import styles from "./SignUpForm.module.css";
+import AuthBtn from '../AuthBtn/AuthBtn';
+import DefaultForm from '../DefautForm/DefautForm';
+import styles from './SignUpForm.module.css';
+import { useDispatch } from 'react-redux';
+import { register } from '../../redux/auth/operations';
+import toast from 'react-hot-toast';
 
 export default function SignUpForm() {
+  const dispatch = useDispatch();
+
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [password, setPassword] = useState('');
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const handleToggleConfirmPassword = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-  const handleChangeConfirmPassword = (event) => {
+  const handleChangeConfirmPassword = event => {
     setConfirmPassword(event.target.value);
   };
 
-  const handleChangePassword = (event) => {
+  const handleChangePassword = event => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
 
     // Check if passwords match
     if (password !== confirmPassword) {
-      alert("Passwords do not match");
+      toast.error('Passwords do not match');
       return;
     }
 
-    // Dispatch registration action or perform form submission logic here
-
-    form.reset();
-    setConfirmPassword("");
+    dispatch(
+      register({
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    )
+      .unwrap()
+      .then(() => {
+        form.reset();
+        setConfirmPassword('');
+        toast.success('Registration success');
+        setIsRegistered(true);
+      })
+      .catch(error => {
+        console.log('status', error === 'Request failed with status code 409');
+        if (error === 'Request failed with status code 409') {
+          toast.error('This email is already in use');
+        } else {
+          toast.error('Oops, something went wrong :c Try again!');
+        }
+      });
   };
+  if (isRegistered) {
+    // Якщо користувач успішно зареєстрований, перенаправити його на сторінку верифікації
+    return <Navigate to="/confirm-email" />;
+  }
 
   return (
     <form className={styles.form} onSubmit={handleSubmit} autoComplete="off">
@@ -47,7 +74,7 @@ export default function SignUpForm() {
           Repeat password
           <div className={styles.passwordWrap}>
             <input
-              type={showConfirmPassword ? "text" : "password"}
+              type={showConfirmPassword ? 'text' : 'password'}
               name="confirmPassword"
               placeholder="Repeat password"
               autoComplete="new-password"
