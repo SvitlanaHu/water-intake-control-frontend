@@ -5,10 +5,10 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     user: {
-      name: null,
       email: null,
     },
     token: null,
+    isRegistered: false,
     isLoggedIn: false,
     isEmailVerified: false,
     loginError: null, // Додаємо стан для помилок логіну
@@ -17,6 +17,7 @@ const authSlice = createSlice({
     builder
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
+        state.isRegistered = true;
         state.token = null;
         state.isEmailVerified = false; //Очікується підтвердження електронної пошти
         state.isLoggedIn = false;

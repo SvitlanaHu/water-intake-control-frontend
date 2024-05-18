@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
 
 import AuthBtn from '../AuthBtn/AuthBtn';
 import DefaultForm from '../DefautForm/DefautForm';
@@ -15,6 +15,7 @@ export default function SignUpForm() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState('');
   const [password, setPassword] = useState('');
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const handleToggleConfirmPassword = () => {
     setShowConfirmPassword(!showConfirmPassword);
@@ -40,22 +41,30 @@ export default function SignUpForm() {
 
     dispatch(
       register({
-        name: form.elements.email.value.split('@')[0],
         email: form.elements.email.value,
         password: form.elements.password.value,
       })
     )
       .unwrap()
       .then(() => {
+        form.reset();
+        setConfirmPassword('');
         toast.success('Registration success');
+        setIsRegistered(true);
       })
-      .catch(() => {
-        toast.error('Oops, something went wrong :c Try again!');
+      .catch(error => {
+        console.log('status', error === 'Request failed with status code 409');
+        if (error === 'Request failed with status code 409') {
+          toast.error('This email is already in use');
+        } else {
+          toast.error('Oops, something went wrong :c Try again!');
+        }
       });
-
-    form.reset();
-    setConfirmPassword('');
   };
+  if (isRegistered) {
+    // Якщо користувач успішно зареєстрований, перенаправити його на сторінку верифікації
+    return <Navigate to="/confirm-email" />;
+  }
 
   return (
     <form className={styles.form} onSubmit={handleSubmit} autoComplete="off">
