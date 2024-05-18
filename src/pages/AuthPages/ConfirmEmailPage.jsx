@@ -1,3 +1,4 @@
+import AdvantagesSection from '../../components/AdvantagesSection/AdvantagesSection';
 import DocumentTitle from '../../components/DocumentTitle/DocumentTitle';
 import Logo from '../../components/Logo/Logo';
 import styles from '../AuthPages/AuthPages.module.css';
@@ -13,8 +14,11 @@ export default function ConfirmEmailPage() {
           <DocumentTitle>Register success</DocumentTitle>
         </div>
         <div className={styles.textWrap}>
-          Вам прийшов лист на електронну адресу, підтвердіть будь ласка свій
-          емейл
+          The email confirmation has been sent to your email address. Please
+          verify it.
+        </div>
+        <div className={styles.wrapWaterSection}>
+          <AdvantagesSection />
         </div>
       </div>
     </div>
