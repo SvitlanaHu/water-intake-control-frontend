@@ -114,9 +114,6 @@ const WaterForm = ({ operationType }) => {
         />
       </div>
       <div className={styles.btnBox}>
-        {/* <button className={styles.saveBtn} type="submit">
-          Save
-        </button> */}
         <SaveButton enabled={isValid} />
       </div>
     </form>
