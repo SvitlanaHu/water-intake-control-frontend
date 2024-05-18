@@ -62,7 +62,6 @@ export default function SignUpForm() {
       });
   };
   if (isRegistered) {
-    // Якщо користувач успішно зареєстрований, перенаправити його на сторінку верифікації
     return <Navigate to="/confirm-email" />;
   }
 
