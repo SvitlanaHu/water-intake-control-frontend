@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import { SaveButton } from '../SaveButton/SaveButton';
 //add imports
 import { useDispatch } from 'react-redux';
-import { addWater } from '../../redux/Water/operations';
+import { addWater, dailyWater } from '../../redux/Water/operations';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
@@ -79,7 +79,9 @@ const WaterForm = ({ operationType, closeModal }) => {
         date: formattedDatetime,
         timezone: userTimezone,
       })
-    );
+    ).then(() => {
+      dispatch(dailyWater(date));
+    });
     closeModal();
   };
 

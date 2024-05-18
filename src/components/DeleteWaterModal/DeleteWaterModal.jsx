@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styles from './DeleteWaterModal.module.css';
 import { Modal } from '../Modal/Modal';
 
@@ -15,7 +16,6 @@ const DeleteWaterModal = ({ isModalOpen, setIsModalOpen }) => {
   };
   return (
     <>
-      <button onClick={handleOpenModal}>{'Delete'}</button>
       {isModalOpen && (
         <Modal active={isModalOpen} setActive={setIsModalOpen}>
           <div className={styles.form}>
