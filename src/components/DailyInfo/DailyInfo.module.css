@@ -8,6 +8,7 @@
 }
 .scrollDiv {
   overflow-x: scroll;
+  overflow-y: hidden;
 }
 
 .scrollDiv::-webkit-scrollbar {

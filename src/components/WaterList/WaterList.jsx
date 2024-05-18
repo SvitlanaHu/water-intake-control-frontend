@@ -16,13 +16,13 @@ const WaterList = () => {
   const dispatch = useDispatch();
   const water = useSelector(selectDailyWater);
   const error = useSelector(selectError);
+  const isLoading = useSelector(selectDailyLoading);
 
   useEffect(() => {
     const currentDate = dayjs().format('YYYY-MM-DD');
     dispatch(dailyWater(currentDate));
   }, [dispatch]);
 
-  const isLoading = useSelector(selectDailyLoading);
   if (isLoading) {
     return (
       <div className={css.loaderContainer}>
@@ -36,9 +36,21 @@ const WaterList = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
+  if (water === []) {
+    return (
+      <ul className={css.waterList}>
+        <li></li>
+      </ul>
+    );
+  }
+
+  const sortedWater = [...water].sort((a, b) => {
+    return new Date(a.date) - new Date(b.date);
+  });
+
   return (
     <ul className={css.waterList}>
-      {water.map(data => (
+      {sortedWater.map(data => (
         <WaterItem key={data.id} data={data} />
       ))}
     </ul>

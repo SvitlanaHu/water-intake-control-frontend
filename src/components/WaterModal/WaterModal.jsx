@@ -15,11 +15,21 @@ const WaterModal = ({
   const formState = {
     add: {
       title: 'Add Water',
-      formComponent: <WaterForm operationType="add" />,
+      formComponent: (
+        <WaterForm
+          operationType="add"
+          closeModal={() => setIsModalOpen(false)}
+        />
+      ),
     },
     edit: {
       title: 'Edit Water',
-      formComponent: <WaterForm operationType="edit" />,
+      formComponent: (
+        <WaterForm
+          operationType="edit"
+          closeModal={() => setIsModalOpen(false)}
+        />
+      ),
     },
   };
 
