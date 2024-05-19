@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // import styles from './WaterModal.module.css';
 import WaterForm from '../WaterForm/WaterForm.jsx';
 // import { useState } from 'react';
