@@ -16,15 +16,13 @@ import { useEffect } from 'react';
 import { refreshUser } from '../redux/auth/operations';
 import RefreshLoader from './RefreshLoader/RefreshLoader';
 import RestrictedRoute from './RestrictedRoute';
+import PrivateRoute from './PrivateRoute';
 
 // import { BrowserRouter } from 'react-router-dom';
 
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
-
-  console.log('isRefreshing', isRefreshing);
-
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -52,16 +50,15 @@ const App = () => {
             <RestrictedRoute redirectTo="/tracker" component={SignInPage} />
           }
         />
-        <Route path="/tracker" element={<TrackerPage />} />
-        {/* <Route
+        {/* <Route path="/tracker" element={<TrackerPage />} /> */}
+        <Route
           path="/tracker"
           element={
             <PrivateRoute redirectTo="/signin" component={TrackerPage} />
           }
-        /> */}
+        />
         <Route path="/statistics" element={<Statistics />} />
         <Route path="*" element={<NotFoundPage />} />
-        {/* Додайте інші маршрути, які вам потрібні */}
       </Routes>
       <Toaster
         position="top-right"
