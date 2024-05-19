@@ -7,19 +7,33 @@ import dayjs from 'dayjs';
 
 const CalendarItem = ({ data }) => {
   const dispatch = useDispatch();
-  const { currentMonth, currentYear } = useSelector(state => state.calendar);
+  const { currentMonth, currentYear, selectedDate } = useSelector(
+    state => state.calendar
+  );
+  const date = dayjs(`${currentYear}-${currentMonth + 1}-${data.day}`).format(
+    'YYYY-MM-DD'
+  );
+  const today = dayjs().format('YYYY-MM-DD');
 
   const handleClick = () => {
-    const date = dayjs(`${currentYear}-${currentMonth + 1}-${data.day}`).format(
-      'YYYY-MM-DD'
-    );
+    //  const date = dayjs(`${currentYear}-${currentMonth + 1}-${data.day}`).format(
+    //    'YYYY-MM-DD'
+    //  );
     dispatch(selectDate(date));
     dispatch(dailyWater(date));
   };
+  const isSelected = selectedDate === date && selectedDate !== today;
+  const isIncompleteWater = data.volume < 100;
 
   return (
     <button type="button" className={css.btn} onClick={handleClick}>
-      <p className={css.day}>{data.day}</p>
+      <p
+        className={`${css.day} ${isSelected ? css.selected : ''} ${
+          isIncompleteWater ? css.incomplete : ''
+        }`}
+      >
+        {data.day}
+      </p>
       <p className={css.water}>{data ? data.volume : '0'}%</p>
       {/* <p className={css.water}>0%</p> */}
     </button>
