@@ -32,13 +32,13 @@ const UserBar = () => {
       >
         <p className={css.text}>{userName}</p>
         <svg className={css.svg}>
-          <use className={css.icon} href="../../../public/symbol.svg#"></use>
+          <use className={css.icon} href="../../../symbol.svg#"></use>
         </svg>
 
         <svg className={`${css.svgDrop} ${isIconRotated ? css.rotated : ''}`}>
           <use
             className={css.iconDrop}
-            href="../../../public/symbol.svg#icon-chevron-down"
+            href="../../../symbol.svg#icon-chevron-down"
           ></use>
         </svg>
       </Button>

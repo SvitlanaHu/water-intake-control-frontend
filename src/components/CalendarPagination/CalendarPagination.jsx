@@ -29,7 +29,7 @@ const CalendarPagination = () => {
         <svg className={css.svg}>
           <use
             className={css.icon}
-            href="../../../public/symbol.svg#icon-chevron-left"
+            href="../../../symbol.svg#icon-chevron-left"
           ></use>
         </svg>
       </button>
@@ -40,7 +40,7 @@ const CalendarPagination = () => {
         <svg className={css.svg}>
           <use
             className={css.icon}
-            href="../../../public/symbol.svg#icon-chevron-right"
+            href="../../../symbol.svg#icon-chevron-right"
           ></use>
         </svg>
       </button>

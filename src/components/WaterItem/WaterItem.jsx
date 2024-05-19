@@ -19,6 +19,12 @@ const WaterItem = ({ data }) => {
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
+  const formatVolume = volume => {
+    if (volume > 1000) {
+      return `${(volume / 1000).toFixed(1)} L`;
+    }
+    return `${volume} ml`;
+  };
 
   return (
     <li>
@@ -26,12 +32,12 @@ const WaterItem = ({ data }) => {
         <svg className={css.svgGlass}>
           <use
             className={css.grassIcon}
-            href="../../../public/symbol.svg#icon-water-glass"
+            href="../../../symbol.svg#icon-water-glass"
           ></use>
         </svg>
 
         <div className={css.textContainer}>
-          <p className={css.textWater}>{data.volume}ml</p>
+          <p className={css.textWater}>{formatVolume(data.volume)}</p>
           <p className={css.textTime}>{formattedTime}</p>
         </div>
 
@@ -40,7 +46,7 @@ const WaterItem = ({ data }) => {
             <svg className={css.editSvgContainer}>
               <use
                 className={css.editIcon}
-                href="../../../public/symbol.svg#icon-edit-2"
+                href="../../../symbol.svg#icon-edit-2"
               ></use>
             </svg>
           </button>
@@ -48,7 +54,7 @@ const WaterItem = ({ data }) => {
             <svg className={css.editSvgContainer}>
               <use
                 className={css.editIcon}
-                href="../../../public/symbol.svg#icon-trash-04"
+                href="../../../symbol.svg#icon-trash-04"
               ></use>
             </svg>
           </button>
