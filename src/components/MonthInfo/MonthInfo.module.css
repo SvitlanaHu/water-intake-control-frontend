@@ -22,6 +22,10 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .MonthBlock {
+    margin-left: 31px;
+    margin-right: 31px;
+  }
   .header {
     font-size: 28px;
     line-height: 32px;

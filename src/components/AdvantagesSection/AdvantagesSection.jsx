@@ -9,8 +9,13 @@ const AdvantagesSection = () => {
     const fetchTotalUsers = async () => {
       try {
         // Виклик функції для отримання загальної кількості користувачів
-        const response = await fetch('/api/users/total');
+        const response = await fetch('https://water-intake-control-backend.onrender.com/api/users/total');
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
         const data = await response.json();
+        
         // Оновлення стану totalUsers
         setTotalUsers(data.total);
       } catch (error) {
