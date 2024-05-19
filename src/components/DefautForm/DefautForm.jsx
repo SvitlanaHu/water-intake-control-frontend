@@ -1,11 +1,11 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
-import { FiEye, FiEyeOff } from "react-icons/fi";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { FiEye, FiEyeOff } from 'react-icons/fi';
+import styles from './DefautForm.module.css';
 
-import styles from "./DefautForm.module.css";
-
-const DefaultForm = ({ handleChangePassword }) => {
+const DefaultForm = ({ formValues, errors, handleChange }) => {
   const [showPassword, setShowPassword] = useState(false);
+
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
@@ -15,29 +15,30 @@ const DefaultForm = ({ handleChangePassword }) => {
       <label className={styles.label}>
         Email
         <input
-          type="email"
           name="email"
           placeholder="Enter your email"
-          required
           autoComplete="email"
-          pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
-          title="Please enter a valid email address"
-          className={styles.input}
+          value={formValues.email}
+          onChange={handleChange}
+          className={`${styles.input} ${
+            errors.password ? styles.inputError : ''
+          }`}
         />
+        {errors.email && <span className={styles.error}>{errors.email}</span>}
       </label>
       <label className={styles.label}>
         Password
         <div className={styles.passwordWrap}>
           <input
-            type={showPassword ? "text" : "password"}
+            type={showPassword ? 'text' : 'password'}
             name="password"
             placeholder="Enter your password"
             autoComplete="password"
-            required
-            className={styles.input}
-            pattern=".{6,}"
-            title="Password must be at least 6 characters long"
-            onChange={handleChangePassword} // Використовуємо передану функцію
+            value={formValues.password}
+            onChange={handleChange}
+            className={`${styles.input} ${
+              errors.password ? styles.inputError : ''
+            }`}
           />
           <div className={styles.showPasswordBtnContainer}>
             <button
@@ -53,13 +54,21 @@ const DefaultForm = ({ handleChangePassword }) => {
             </button>
           </div>
         </div>
+        {errors.password && (
+          <span className={styles.error}>{errors.password}</span>
+        )}
       </label>
     </div>
   );
 };
 
 DefaultForm.propTypes = {
-  handleChangePassword: PropTypes.func, // Перевірка типу властивості handleChangePassword
+  formValues: PropTypes.shape({
+    email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+  }).isRequired,
+  errors: PropTypes.object.isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default DefaultForm;
