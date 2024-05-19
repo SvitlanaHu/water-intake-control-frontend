@@ -20,9 +20,7 @@ const DefaultForm = ({ formValues, errors, handleChange }) => {
           autoComplete="email"
           value={formValues.email}
           onChange={handleChange}
-          className={`${styles.input} ${
-            errors.password ? styles.inputError : ''
-          }`}
+          className={`${styles.input} ${errors.email && styles.inputError}`}
         />
         {errors.email && <span className={styles.error}>{errors.email}</span>}
       </label>
@@ -37,7 +35,7 @@ const DefaultForm = ({ formValues, errors, handleChange }) => {
             value={formValues.password}
             onChange={handleChange}
             className={`${styles.input} ${
-              errors.password ? styles.inputError : ''
+              errors.password && styles.inputError
             }`}
           />
           <div className={styles.showPasswordBtnContainer}>
