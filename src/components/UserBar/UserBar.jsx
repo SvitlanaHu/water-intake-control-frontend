@@ -1,13 +1,11 @@
+/* eslint-disable react/prop-types */
 import css from './UserBar.module.css';
-
 import Button from '@mui/material/Button';
-
 import { useState } from 'react';
+
 import UserBarPopover from '../UserBarPopover/UserBarPopover';
 
-const UserBar = () => {
-  const userName = 'Nadia';
-
+const UserBar = ({ userName }) => {
   const [isIconRotated, setIsIconRotated] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = event => {
