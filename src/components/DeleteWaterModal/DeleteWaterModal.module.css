@@ -1,7 +1,8 @@
 .form {
     background-color: var(--white);
     max-width: 344px;
-    padding: 40px 14px;
+    position: relative;
+
 }
 
 .formTitle {
@@ -45,7 +46,8 @@
 }
 
 .cancelBtn {
-    background-color: var(--light-grey);
+    background-color: #F0EFF4;
+    ;
     color: rgba(50, 63, 71, 0.30);
     border-radius: 30px;
     padding: 14px 129px;
@@ -68,9 +70,10 @@
 }
 
 @media only screen and (min-width: 768px) {
-    .forma {
-        width: 516px;
-        padding: 40px;
+    .form {
+        max-width: 516px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .formTitle {
@@ -80,22 +83,25 @@
 
     .text {
         font-size: 18px;
+        width: 436px;
     }
 
     .btnBox {
         display: flex;
         align-items: center;
         flex-direction: row;
+        justify-content: center;
         gap: 10px;
+
     }
 
     .deleteBtn {
-        padding: 18px 67px;
+        padding: 18px 59px;
         font-size: 16px;
     }
 
     .cancelBtn {
-        padding: 18px 67px;
+        padding: 18px 59px;
         font-size: 16px;
     }
 
