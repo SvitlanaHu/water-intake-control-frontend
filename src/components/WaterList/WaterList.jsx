@@ -36,13 +36,6 @@ const WaterList = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-  if (water === []) {
-    return (
-      <ul className={css.waterList}>
-        <li></li>
-      </ul>
-    );
-  }
 
   const sortedWater = [...water].sort((a, b) => {
     return new Date(a.date) - new Date(b.date);

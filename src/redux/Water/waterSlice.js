@@ -5,6 +5,7 @@ import {
   deleteWater,
   dailyWater,
   getMonthlyWater,
+  todayWater,
 } from './operations';
 
 const handlePending = state => {
@@ -21,9 +22,11 @@ const waterSlice = createSlice({
   initialState: {
     items: [],
     dailyItems: [],
+    todayItems: [],
     isLoading: false,
     monthIsLoading: false,
     dailyIsLoading: false,
+    todayIsLoading: false,
     error: null,
   },
   extraReducers: builder => {
@@ -63,6 +66,16 @@ const waterSlice = createSlice({
       .addCase(dailyWater.rejected, (state, action) => {
         state.dailyIsLoading = false;
         state.error = action.payload;
+      })
+      .addCase(todayWater.pending, state => {
+        state.todayIsLoading = true;
+      })
+      .addCase(todayWater.fulfilled, (state, action) => {
+        state.todayIsLoading = false;
+        state.todayItems = action.payload.records;
+      })
+      .addCase(todayWater.rejected, state => {
+        state.todayIsLoading = false;
       })
       .addCase(getMonthlyWater.pending, state => {
         state.monthIsLoading = true;
