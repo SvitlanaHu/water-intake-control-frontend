@@ -1,8 +1,8 @@
-import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection";
-import DocumentTitle from "../../components/DocumentTitle/DocumentTitle";
-import Logo from "../../components/Logo/Logo";
-import SignInForm from "../../components/SignInForm/SignInForm";
-import styles from "../AuthPages/AuthPages.module.css";
+import AdvantagesSection from '../../components/AdvantagesSection/AdvantagesSection';
+import DocumentTitle from '../../components/DocumentTitle/DocumentTitle';
+import Logo from '../../components/Logo/Logo';
+import SignInForm from '../../components/SignInForm/SignInForm';
+import styles from '../AuthPages/AuthPages.module.css';
 
 export default function SignInPage() {
   return (
