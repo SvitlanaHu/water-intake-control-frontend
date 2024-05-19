@@ -8,8 +8,6 @@ const UserPanel = () => {
   const userEmail = user.email || 'Guest';
   const userName = userEmail.split('@')[0];
   const avatar = user.avatarURL;
-  console.log(user);
-  console.log(avatar);
 
   return (
     <div className={css.panelCont}>

@@ -54,6 +54,23 @@ export const dailyWater = createAsyncThunk(
   }
 );
 
+export const todayWater = createAsyncThunk(
+  'water/todayWater',
+  async (date, thunkAPI) => {
+    try {
+      const timezone = new Date().getTimezoneOffset();
+      const response = await axios.get(`/water/daily/${date}`, {
+        params: {
+          timezone: timezone,
+        },
+      });
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
 export const getMonthlyWater = createAsyncThunk(
   'water/getMonthlyWater',
   async ({ year, month }, thunkAPI) => {
