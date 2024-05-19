@@ -1,19 +1,30 @@
 /* eslint-disable react/prop-types */
 import styles from './DeleteWaterModal.module.css';
 import { Modal } from '../Modal/Modal';
+import { deleteWater, dailyWater } from '../../redux/Water/operations';
+import { useDispatch } from 'react-redux';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
 
-const DeleteWaterModal = ({ isModalOpen, setIsModalOpen }) => {
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+const DeleteWaterModal = ({ isModalOpen, setIsModalOpen, id }) => {
+  const dispatch = useDispatch();
+
   const handleDelete = () => {
-    // логіка для видалення запису
-    console.log('Deleting entry...');
+    const date = dayjs().format('YYYY-MM-DD');
+    dispatch(deleteWater(id)).then(() => {
+      dispatch(dailyWater(date));
+    });
+    setIsModalOpen(false);
   };
 
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
   return (
     <>
       {isModalOpen && (
@@ -26,10 +37,18 @@ const DeleteWaterModal = ({ isModalOpen, setIsModalOpen }) => {
               </p>
             </div>
             <div className={styles.btnBox}>
-              <button className={styles.deleteBtn} type="button">
+              <button
+                className={styles.deleteBtn}
+                type="button"
+                onClick={handleDelete}
+              >
                 Delete
               </button>
-              <button className={styles.cancelBtn} type="button">
+              <button
+                className={styles.cancelBtn}
+                type="button"
+                onClick={handleCancel}
+              >
                 Cancel
               </button>
             </div>
