@@ -62,6 +62,7 @@ const WaterItem = ({ data }) => {
         <DeleteWaterModal
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
+          id={data.id}
         />
       </div>
     </li>
