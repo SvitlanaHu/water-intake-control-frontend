@@ -1,13 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjQ1ZTkzOWQ4MTA5ZjFkNWYyNWJjMTQiLCJpYXQiOjE3MTYwNTQ5NzQsImV4cCI6MTcxNjA1ODU3NH0.HHV62t15gFI33pSnZSJ5TrkmDw7mps7OCxnc8rfW6ZE';
-axios.defaults.baseURL =
-  'https://water-intake-control-backend.onrender.com/api';
-
-axios.defaults.headers.Authorization = `Bearer ${token}`;
-
 export const addWater = createAsyncThunk(
   'water/addWater',
   async (water, thunkAPI) => {
