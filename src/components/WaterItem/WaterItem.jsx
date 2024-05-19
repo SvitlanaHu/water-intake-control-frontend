@@ -32,7 +32,7 @@ const WaterItem = ({ data }) => {
         <svg className={css.svgGlass}>
           <use
             className={css.grassIcon}
-            href="../../../public/symbol.svg#icon-water-glass"
+            href="../../../symbol.svg#icon-water-glass"
           ></use>
         </svg>
 
@@ -46,7 +46,7 @@ const WaterItem = ({ data }) => {
             <svg className={css.editSvgContainer}>
               <use
                 className={css.editIcon}
-                href="../../../public/symbol.svg#icon-edit-2"
+                href="../../../symbol.svg#icon-edit-2"
               ></use>
             </svg>
           </button>
@@ -54,7 +54,7 @@ const WaterItem = ({ data }) => {
             <svg className={css.editSvgContainer}>
               <use
                 className={css.editIcon}
-                href="../../../public/symbol.svg#icon-trash-04"
+                href="../../../symbol.svg#icon-trash-04"
               ></use>
             </svg>
           </button>

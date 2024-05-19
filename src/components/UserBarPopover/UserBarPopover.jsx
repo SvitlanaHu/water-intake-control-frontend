@@ -46,7 +46,7 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
             <svg className={css.svg}>
               <use
                 className={css.settingsIcon}
-                href="../../../public/symbol.svg#icon-settings"
+                href="../../../symbol.svg#icon-settings"
               ></use>
             </svg>
             <a className={css.popOverText1}>Setting</a>
@@ -59,7 +59,7 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
             <svg className={css.svg}>
               <use
                 className={css.LogIcon}
-                href="../../../public/symbol.svg#icon-log-out"
+                href="../../../symbol.svg#icon-log-out"
               ></use>
             </svg>
             <a className={css.popOverText2}>LogOut</a>

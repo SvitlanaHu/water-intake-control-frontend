@@ -28,8 +28,8 @@ const WaterMainInfo = () => {
         <div className={css.imgWrapper}>
           <img
             className={css.img}
-            src="./../../public/images/bottle@1x.jpg"
-            srcSet="./../../public/images/bottle-desktop@2x.png"
+            src="./../../images/bottle@1x.jpg"
+            srcSet="./../../images/bottle-desktop@2x.png"
             alt="Water bottle image"
           />
         </div>
