@@ -3,6 +3,8 @@ import Typography from '@mui/material/Typography';
 import Popover from '@mui/material/Popover';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { useState } from 'react';
+import LogOutModal from '../LogOutModal/LogOutModal';
 
 // import UserSettingsModal from "../UserSettingsModal/UserSettingsModal";
 // import LogOutModal from "../LogOutModal/LogOutModal";
@@ -12,6 +14,16 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down(376));
   const isMediumScreen = useMediaQuery(theme.breakpoints.up(768));
+
+  const [isLogOut, setIsLogOut] = useState(false);
+
+  const openLogOutModal = () => {
+    setIsLogOut(true);
+  };
+
+  const closeLogOutModal = () => {
+    setIsLogOut(false);
+  };
 
   const getWidth = () => {
     if (isSmallScreen) {
@@ -55,7 +67,11 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
       </Typography>
       <Typography className={css.typographyLog}>
         <div className={css.settingsCont}>
-          <button type="button" className={css.logBtn}>
+          <button
+            type="button"
+            className={css.logBtn}
+            onClick={openLogOutModal}
+          >
             <svg className={css.svg}>
               <use
                 className={css.LogIcon}
@@ -65,6 +81,11 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
             <a className={css.popOverText2}>LogOut</a>
           </button>
         </div>
+        <LogOutModal
+          isModalOpen={isLogOut}
+          setIsModalOpen={setIsLogOut}
+          closeModal={closeLogOutModal}
+        />
       </Typography>
     </Popover>
   );

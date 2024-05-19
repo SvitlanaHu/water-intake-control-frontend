@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import styles from './LogOutModal.modale.css';
+import styles from './LogOutModal.module.css';
 import { Modal } from '../Modal/Modal';
 import { logOut } from '../../redux/auth/operations';
 import { useDispatch } from 'react-redux';
 
-const LogOutModal = ({ isModalOpen, setIsModalOpen }) => {
+const LogOutModal = ({ isModalOpen, setIsModalOpen, closeModal }) => {
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
@@ -12,9 +12,9 @@ const LogOutModal = ({ isModalOpen, setIsModalOpen }) => {
     setIsModalOpen(false);
   };
 
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  // const handleCancel = () => {
+  //   setIsModalOpen(false);
+  // };
 
   return (
     <>
@@ -36,7 +36,7 @@ const LogOutModal = ({ isModalOpen, setIsModalOpen }) => {
               <button
                 className={styles.cancelBtn}
                 type="button"
-                onClick={handleCancel}
+                onClick={closeModal}
               >
                 Cancel
               </button>
