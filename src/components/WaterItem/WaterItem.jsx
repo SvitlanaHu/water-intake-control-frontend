@@ -19,6 +19,12 @@ const WaterItem = ({ data }) => {
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
+  const formatVolume = volume => {
+    if (volume > 1000) {
+      return `${(volume / 1000).toFixed(1)} L`;
+    }
+    return `${volume} ml`;
+  };
 
   return (
     <li>
@@ -31,7 +37,7 @@ const WaterItem = ({ data }) => {
         </svg>
 
         <div className={css.textContainer}>
-          <p className={css.textWater}>{data.volume}ml</p>
+          <p className={css.textWater}>{formatVolume(data.volume)}</p>
           <p className={css.textTime}>{formattedTime}</p>
         </div>
 
