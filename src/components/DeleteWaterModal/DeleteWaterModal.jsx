@@ -6,6 +6,7 @@ const DeleteWaterModal = ({ isModalOpen, setIsModalOpen }) => {
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
+  // eslint-disable-next-line no-unused-vars
   const handleDelete = () => {
     // логіка для видалення запису
     console.log('Deleting entry...');

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styles from './WaterForm.module.css';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
