@@ -5,7 +5,6 @@
 }
 
 .btn {
-  width: 137px !important;
   height: 50px !important;
 
   border-radius: 30px !important;
@@ -61,12 +60,15 @@
 .svgDrop::before {
   transform: rotate(180deg) !important;
 }
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 16px;
+}
 
 @media only screen and (min-width: 768px) {
   .btn {
-    width: 157px !important;
     height: 56px !important;
-    /* gap: 10px !important; */
     margin-right: 32px !important;
   }
   .userBar {

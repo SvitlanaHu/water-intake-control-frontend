@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 import UserBarPopover from '../UserBarPopover/UserBarPopover';
 
-const UserBar = ({ userName }) => {
+const UserBar = ({ userName, avatar }) => {
   const [isIconRotated, setIsIconRotated] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = event => {
@@ -29,9 +29,7 @@ const UserBar = ({ userName }) => {
         onClick={handleClick}
       >
         <p className={css.text}>{userName}</p>
-        <svg className={css.svg}>
-          <use className={css.icon} href="../../../symbol.svg#"></use>
-        </svg>
+        <img src={avatar} alt="User avatar" className={css.avatar} />
 
         <svg className={`${css.svgDrop} ${isIconRotated ? css.rotated : ''}`}>
           <use

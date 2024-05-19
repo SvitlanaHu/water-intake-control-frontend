@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-
-axios.defaults.baseURL = 'https://water-intake-control-backend.onrender.com/api';
+axios.defaults.baseURL =
+  'https://water-intake-control-backend.onrender.com/api';
 // axios.defaults.baseURL = 'http://localhost:3005/api';
 
-const setAuthHeader = ({ token }) => {
+const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   // axios.defaults.headers.common.RefreshToken = refreshToken;
 };
@@ -33,10 +33,10 @@ export const logIn = createAsyncThunk(
     try {
       const res = await axios.post('/users/login', credentials);
       console.log('res login', res);
-      setAuthHeader({
-        token: res.data.token,
-        refreshToken: res.data.refreshToken,
-      });
+      setAuthHeader(
+        res.data.token
+        // refreshToken: res.data.refreshToken,
+      );
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -7,7 +7,7 @@ const UserPanel = () => {
   const user = useSelector(selectUser);
   const userEmail = user.email || 'Guest';
   const userName = userEmail.split('@')[0];
-  console.log(user);
+  const avatar = user.avatarURL;
 
   return (
     <div className={css.panelCont}>
@@ -17,7 +17,7 @@ const UserPanel = () => {
           Hello<span className={css.userName}>, {userName}!</span>
         </strong>
       </div>
-      <UserBar userName={userName} />
+      <UserBar userName={userName} avatar={avatar} />
     </div>
   );
 };
