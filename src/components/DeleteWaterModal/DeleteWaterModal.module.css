@@ -1,6 +1,7 @@
 .form {
     background-color: var(--white);
     max-width: 344px;
+    padding: 40px 14px;
 }
 
 .formTitle {
@@ -45,7 +46,7 @@
 
 .cancelBtn {
     background-color: var(--light-grey);
-    color: var(--text-color);
+    color: rgba(50, 63, 71, 0.30);
     border-radius: 30px;
     padding: 14px 129px;
     font-size: 14px;
@@ -78,7 +79,6 @@
     }
 
     .text {
-
         font-size: 18px;
     }
 
