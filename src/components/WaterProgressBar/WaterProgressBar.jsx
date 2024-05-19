@@ -24,7 +24,7 @@ const WaterProgressBar = () => {
     0
   );
 
-  const consumedPercentage = ((totalConsumed / dailyNorma) * 100).toFixed(0);
+  const consumedPercentage = +((totalConsumed / dailyNorma) * 100).toFixed(0);
 
   return (
     <div className={css.progressCont}>
