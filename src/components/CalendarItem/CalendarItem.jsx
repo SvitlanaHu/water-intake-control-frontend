@@ -13,7 +13,6 @@ const CalendarItem = ({ data }) => {
   const date = dayjs(`${currentYear}-${currentMonth + 1}-${data.day}`).format(
     'YYYY-MM-DD'
   );
-  const today = dayjs().format('YYYY-MM-DD');
 
   const handleClick = () => {
     //  const date = dayjs(`${currentYear}-${currentMonth + 1}-${data.day}`).format(
@@ -22,7 +21,7 @@ const CalendarItem = ({ data }) => {
     dispatch(selectDate(date));
     dispatch(dailyWater(date));
   };
-  const isSelected = selectedDate === date && selectedDate !== today;
+  const isSelected = selectedDate === date;
   const isIncompleteWater = data.volume < 100;
 
   return (
