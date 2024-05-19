@@ -15,7 +15,6 @@ export default function SignInForm() {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
-
     dispatch(
       logIn({
         email: form.elements.email.value,
@@ -30,7 +29,6 @@ export default function SignInForm() {
       .catch(error => {
         console.log('status', error);
         if (error === 'Request failed with status code 403') {
-          toast.error('Please verify email');
           navigate('/confirm-email');
         } else if (error === 'Request failed with status code 401') {
           toast.error('Incorrect email or password :c');
