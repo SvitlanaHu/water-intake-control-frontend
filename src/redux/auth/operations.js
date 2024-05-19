@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://water-intake-control-backend.onrender.com/';
+
+axios.defaults.baseURL = 'https://water-intake-control-backend.onrender.com/api';
 // axios.defaults.baseURL = 'http://localhost:3005/api';
 
 const setAuthHeader = ({ token }) => {
