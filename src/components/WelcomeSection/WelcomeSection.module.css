@@ -108,21 +108,12 @@
 }
 .link {
   padding: 14px 28px;
-  border: 1px solid var(--main-text-color);
   border-radius: 30px;
   font-size: 14px;
   font-weight: 700;
   line-height: 24px;
   letter-spacing: -0.01em;
   text-align: center;
-}
-.link:hover,
-.link:active,
-.link:focus {
-  cursor: pointer;
-  background-color: var(--mint);
-  border-color: var(--mint);
-  color: var(--text-color);
 }
 @media (min-width: 768px) {
   .link {
@@ -132,4 +123,32 @@
   .linkBox {
     padding-left: 32px;
   }
+}
+
+.linkIn {
+  border: 1px solid var(--main-text-color);
+}
+.linkIn:hover,
+.linkIn:focus {
+  cursor: pointer;
+  color: var(--green);
+  border-color: var(--mint);
+}
+.linkIn:active {
+  color: var(--text-color);
+  border-color: var(--text-color);
+}
+
+.linkUp {
+  background-color: var(--mint);
+  color: var(--text-color);
+}
+.linkUp:hover,
+.linkUp:focus {
+  cursor: pointer;
+  background-color: var(--green);
+  color: var(--text-color);
+}
+.linkUp:active {
+  background-color: var(--light-gray);
 }
