@@ -1,29 +1,11 @@
 import css from './UserBarPopover.module.css';
 import Typography from '@mui/material/Typography';
 import Popover from '@mui/material/Popover';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-
-// import UserSettingsModal from "../UserSettingsModal/UserSettingsModal";
-// import LogOutModal from "../LogOutModal/LogOutModal";
 
 // eslint-disable-next-line react/prop-types
-const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down(376));
-  const isMediumScreen = useMediaQuery(theme.breakpoints.up(768));
-
-  const getWidth = () => {
-    if (isSmallScreen) {
-      return 137;
-    } else if (isMediumScreen) {
-      return 157;
-    }
-    return 120; // default width
-  };
+const UserBarPopover = ({ anchorEl, handleClose, id, open, buttonWidth }) => {
   return (
     <Popover
-      // eslint-disable-next-line no-undef
       className={css.popOver}
       id={id}
       open={open}
@@ -31,7 +13,7 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
       onClose={handleClose}
       PaperProps={{
         style: {
-          width: getWidth(),
+          width: buttonWidth,
           borderRadius: '15px',
         },
       }}
@@ -69,4 +51,5 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
     </Popover>
   );
 };
+
 export default UserBarPopover;
