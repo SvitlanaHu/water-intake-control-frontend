@@ -2,14 +2,13 @@ import { Modal } from '../Modal/Modal';
 import UserSettingsForm from '../UserSettingsForm/UserSettingsForm';
 import { useState } from 'react';
 
-const UserSettingsModal = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+const UserSettingsModal = ({ open, setActive }) => {
   return (
     <>
       <Modal
         isSettingModal="_"
-        active={isModalOpen}
-        setActive={setIsModalOpen}
+        active={open}
+        setActive={setActive}
         title="Setting"
       >
         <UserSettingsForm />
