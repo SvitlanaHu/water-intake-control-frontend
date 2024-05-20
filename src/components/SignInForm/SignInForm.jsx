@@ -18,7 +18,7 @@ const userSchema = Yup.object().shape({
   password: Yup.string()
     .matches(
       /^(?=.*[A-Za-z\d])(?=.*[А-Яа-яІіЇї\d]).{5,}$/,
-      'Must contain letters and digits, min 8 characters.'
+      'Must contain letters and digits, min 5 characters.'
     )
     .required('Password is a required field'),
 });
