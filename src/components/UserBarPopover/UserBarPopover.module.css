@@ -24,16 +24,17 @@
   gap: 8px;
 }
 .typography {
-  width: 137px !important;
   padding-left: 20px !important;
   padding-top: 14px !important;
   padding-bottom: 0px !important;
   padding-right: 40px !important;
+  box-sizing: border-box; /* Ensure padding is included in the width */
 }
 .typographyLog {
   padding-bottom: 14px !important;
   padding-left: 20px !important;
   padding-top: 8px !important;
+  box-sizing: border-box; /* Ensure padding is included in the width */
 }
 .popover {
   border-radius: 15px !important;
