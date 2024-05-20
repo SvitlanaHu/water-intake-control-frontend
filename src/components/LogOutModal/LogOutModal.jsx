@@ -1,17 +1,16 @@
-import styles from './LogOutModal.modale.css';
+/* eslint-disable react/prop-types */
+import styles from './LogOutModal.module.css';
 import { Modal } from '../Modal/Modal';
 import { logOut } from '../../redux/auth/operations';
+import { useDispatch } from 'react';
 
 const LogOutModal = ({ isModalOpen, setIsModalOpen }) => {
   const dispatch = useDispatch();
 
-  // const handleLogOut = () => {
-  //   const date = dayjs().format('YYYY-MM-DD');
-  //   dispatch(deleteWater(id)).then(() => {
-  //     dispatch(dailyWater(date));
-  //   });
-  //   setIsModalOpen(false);
-  // };
+  const handleLogOut = () => {
+    dispatch(logOut());
+    setIsModalOpen(false);
+  };
 
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -30,7 +29,7 @@ const LogOutModal = ({ isModalOpen, setIsModalOpen }) => {
               <button
                 className={styles.logOutBtn}
                 type="button"
-                // onClick={handleLogOut}
+                onClick={handleLogOut}
               >
                 Log out
               </button>
