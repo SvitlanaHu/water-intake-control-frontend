@@ -11,7 +11,6 @@ const WaterDailyNorma = () => {
     }
     return `${volume} ml`;
   };
-  console.log(user.dailyWaterIntake);
 
   return (
     <div className={css.dailyNorm}>
