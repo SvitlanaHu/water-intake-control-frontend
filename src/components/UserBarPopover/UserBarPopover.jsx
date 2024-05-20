@@ -22,34 +22,32 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open, buttonWidth }) => {
         horizontal: 'left',
       }}
     >
-      <div style={{ width: '100%' }}>
-        <Typography className={css.typography} style={{ width: '100%' }}>
-          <div className={css.settingsCont}>
-            <button type="button" className={css.settingBtn}>
-              <svg className={css.svg}>
-                <use
-                  className={css.settingsIcon}
-                  href="../../../symbol.svg#icon-settings"
-                ></use>
-              </svg>
-              <a className={css.popOverText1}>Setting</a>
-            </button>
-          </div>
-        </Typography>
-        <Typography className={css.typographyLog} style={{ width: '100%' }}>
-          <div className={css.settingsCont}>
-            <button type="button" className={css.logBtn}>
-              <svg className={css.svg}>
-                <use
-                  className={css.LogIcon}
-                  href="../../../symbol.svg#icon-log-out"
-                ></use>
-              </svg>
-              <a className={css.popOverText2}>LogOut</a>
-            </button>
-          </div>
-        </Typography>
-      </div>
+      <Typography className={css.typography}>
+        <span className={css.settingsCont}>
+          <button type="button" className={css.settingBtn}>
+            <svg className={css.svg}>
+              <use
+                className={css.settingsIcon}
+                href="../../../symbol.svg#icon-settings"
+              ></use>
+            </svg>
+            <a className={css.popOverText1}>Setting</a>
+          </button>
+        </span>
+      </Typography>
+      <Typography className={css.typographyLog}>
+        <span className={css.settingsCont}>
+          <button type="button" className={css.logBtn}>
+            <svg className={css.svg}>
+              <use
+                className={css.LogIcon}
+                href="../../../symbol.svg#icon-log-out"
+              ></use>
+            </svg>
+            <a className={css.popOverText2}>LogOut</a>
+          </button>
+        </span>
+      </Typography>
     </Popover>
   );
 };
