@@ -17,6 +17,7 @@ import { refreshUser } from '../redux/auth/operations';
 import RefreshLoader from './RefreshLoader/RefreshLoader';
 import RestrictedRoute from './RestrictedRoute';
 import PrivateRoute from './PrivateRoute';
+import ResetPassword from './ResetPassword/ResetPassword';
 
 // import { BrowserRouter } from 'react-router-dom';
 
@@ -58,7 +59,8 @@ const App = () => {
           }
         />
         <Route path="/statistics" element={<Statistics />} />
-        <Route path="*" element={<NotFoundPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
       </Routes>
       <Toaster
         position="top-right"

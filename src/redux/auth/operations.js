@@ -19,7 +19,6 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('/users/register', credentials);
-      console.log('register res', res.data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -32,7 +31,6 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('/users/login', credentials);
-      console.log('res login', res);
       setAuthHeader(
         res.data.token
         // refreshToken: res.data.refreshToken,
@@ -58,7 +56,7 @@ export const refreshUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
-    console.log('persistedToken', persistedToken);
+
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
@@ -67,6 +65,30 @@ export const refreshUser = createAsyncThunk(
       setAuthHeader(persistedToken);
       const res = await axios.get('/users/current');
       return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const sendResetEmail = createAsyncThunk(
+  'auth/sendResetEmail',
+  async (email, thunkAPI) => {
+    try {
+      const response = await axios.post('/forgot-password', { email });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const resetPassword = createAsyncThunk(
+  'auth/resetPassword',
+  async ({ token, password }, thunkAPI) => {
+    try {
+      const response = await axios.post(`/restore-password/${token}`, { password });
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

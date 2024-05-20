@@ -67,6 +67,17 @@
   }
 }
 
+.error {
+  font-size: 11px;
+  color: red;
+  font-weight: 400;
+}
+@media screen and (min-width: 768px) {
+  .error {
+    font-size: 12px;
+  }
+}
+
 .input::placeholder,
 .input {
   color: rgba(47, 47, 47, 0.6);
@@ -81,6 +92,7 @@
 }
 
 .input {
+  outline: none;
   box-sizing: border-box;
   background-color: transparent;
   border-radius: 15px;
@@ -90,6 +102,23 @@
   margin-top: 8px;
   color: rgb(47, 47, 47);
 }
+
+/* Стилі для автоматично вставлених значень */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: rgb(47, 47, 47) !important;
+  background-color: transparent !important;
+}
+
+.inputError,
+.inputError:focus {
+  border: 1px solid red;
+  color: red;
+}
+
 .passwordWrap {
   position: relative;
 }
