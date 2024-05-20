@@ -11,8 +11,7 @@ const WaterProgressBar = () => {
   const dispatch = useDispatch();
   const water = useSelector(selectTodayWater);
   const user = useSelector(selectUser);
-  const dailyNorma =
-    user.dailyWaterIntake === 0 ? 1500 : user.dailyWaterIntake * 1000;
+  const dailyNorma = user.dailyWaterIntake;
 
   useEffect(() => {
     const currentDate = dayjs().format('YYYY-MM-DD');

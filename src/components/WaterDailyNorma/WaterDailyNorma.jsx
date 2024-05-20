@@ -4,11 +4,18 @@ import { useSelector } from 'react-redux';
 
 const WaterDailyNorma = () => {
   const user = useSelector(selectUser);
-  const dailyNorma = user.dailyWaterIntake === 0 ? 1.5 : user.dailyWaterIntake;
+
+  const formatVolume = volume => {
+    if (volume > 1000) {
+      return `${(volume / 1000).toFixed(1)} L`;
+    }
+    return `${volume} ml`;
+  };
+  console.log(user.dailyWaterIntake);
 
   return (
     <div className={css.dailyNorm}>
-      <a className={css.title}>{dailyNorma} L</a>
+      <a className={css.title}>{formatVolume(user.dailyWaterIntake)}</a>
       <a className={css.desc}>My daily norma</a>
     </div>
   );

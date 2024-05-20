@@ -10,8 +10,7 @@ const CalendarItem = ({ data }) => {
   const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
-  const dailyNorma =
-    user.dailyWaterIntake === 0 ? 1500 : user.dailyWaterIntake * 1000;
+  const dailyNorma = user.dailyWaterIntake;
 
   const { currentMonth, currentYear, selectedDate } = useSelector(
     state => state.calendar
