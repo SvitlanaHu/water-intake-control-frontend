@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import css from './AddWaterDetailedBtn.module.css';
 
-const AddWaterDetailedBtn = () => {
+const AddWaterDetailedBtn = ({ handleOpenModal }) => {
   return (
-    <button className={css.btn} type="button">
+    <button className={css.btn} type="button" onClick={handleOpenModal}>
       <svg className={css.svg}>
         <use className={css.icon} href="../../../symbol.svg#icon-plus"></use>
       </svg>
