@@ -21,11 +21,24 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 1.29em;
+  height: 81px;
 }
 @media screen and (min-width: 768px) {
   .label {
     font-size: 16px;
     line-height: 1.5em;
+    height: 90px;
+  }
+}
+
+.error {
+  font-size: 11px;
+  color: red;
+  font-weight: 400;
+}
+@media screen and (min-width: 768px) {
+  .error {
+    font-size: 12px;
   }
 }
 
@@ -51,6 +64,23 @@
   padding: 16px;
   margin-top: 8px;
   color: rgb(47, 47, 47);
+  outline: none;
+}
+
+/* Стилі для автоматично вставлених значень */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: rgb(47, 47, 47) !important;
+  background-color: transparent !important;
+}
+
+.inputError,
+.inputError:focus {
+  border: 1px solid red;
+  color: red;
 }
 
 .passwordWrap {
