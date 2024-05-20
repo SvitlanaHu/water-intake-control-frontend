@@ -1,9 +1,6 @@
 import { useEffect } from 'react';
 import styles from './Modal.module.css';
-
-// import { symbol } from "../Modal/icon/symbol.svg";
 import { ModalTitle } from '../ModalTitle/ModalTitle';
-
 import symbol from '../../../public/symbol.svg';
 
 export const Modal = ({
@@ -29,15 +26,16 @@ export const Modal = ({
     window.addEventListener('keydown', handleEscape);
 
     return () => {
+      document.body.classList.remove('modal-active');
       window.removeEventListener('keydown', handleEscape);
     };
-  }, [setActive, active]);
+  }, [active, setActive]);
 
   const handleCloseModal = () => {
     setActive(false);
   };
 
-  if (active)
+  if (active) {
     return (
       <div className={styles.modalBackdrop} onClick={() => setActive(false)}>
         <div
@@ -56,4 +54,7 @@ export const Modal = ({
         </div>
       </div>
     );
+  }
+
+  return null;
 };
