@@ -1,3 +1,4 @@
+
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styles from './LogOutModal.modale.css';
@@ -8,13 +9,11 @@ import { clearStore } from '../../redux/store';
 const LogOutModal = ({ isModalOpen, setIsModalOpen }) => {
   const dispatch = useDispatch();
 
-  // const handleLogOut = () => {
-  //   const date = dayjs().format('YYYY-MM-DD');
-  //   dispatch(deleteWater(id)).then(() => {
-  //     dispatch(dailyWater(date));
-  //   });
-  //   setIsModalOpen(false);
-  // };
+  const handleLogOut = () => {
+    console.log('Logging out...');
+    dispatch(logOut());
+    setIsModalOpen(false);
+  };
 
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -33,7 +32,7 @@ const LogOutModal = ({ isModalOpen, setIsModalOpen }) => {
               <button
                 className={styles.logOutBtn}
                 type="button"
-                // onClick={handleLogOut}
+                onClick={handleLogOut}
               >
                 Log out
               </button>

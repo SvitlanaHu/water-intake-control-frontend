@@ -15,16 +15,18 @@ import timezone from 'dayjs/plugin/timezone';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-const schema = yup
-  .object({
-    waterAmount: yup
-      .number()
-      .required('Amount of water is required')
-      .min(0, 'Minimum is 0ml')
-      .max(3000, 'Maximum is 3000ml'),
-    time: yup.string().required('Time is required'),
-  })
-  .required();
+const schema = yup.object().shape({
+  waterAmount: yup
+    .number()
+    .required('Amount of water is required')
+    .positive('Water amount must be positive')
+    .integer('Water amount must be an integer')
+    .max(3000, 'Maximum is 3000ml'),
+  time: yup
+    .string()
+    .required('Time is required')
+    .matches(/^([01]\d|2[0-3]):([0-5]\d)$/, 'Invalid time format (HH:MM)'),
+});
 
 const WaterForm = ({ operationType, closeModal }) => {
   const dispatch = useDispatch();
@@ -50,7 +52,9 @@ const WaterForm = ({ operationType, closeModal }) => {
   const waterAmount = watch('waterAmount');
 
   useEffect(() => {
-    setValue('waterAmount', waterAmount);
+    if (waterAmount !== '') {
+      setValue('waterAmount', waterAmount);
+    }
   }, [waterAmount, setValue]);
 
   const incrementWaterAmount = () => {
@@ -62,8 +66,10 @@ const WaterForm = ({ operationType, closeModal }) => {
 
   const handleWaterAmountChange = e => {
     const { value } = e.target;
-    if (!isNaN(value) && value >= 0) {
-      setValue('waterAmount', Number(value));
+    if (value === '' || (/^\d*$/.test(value) && value >= 0)) {
+      setValue('waterAmount', value === '' ? value : Number(value), {
+        shouldValidate: value !== '',
+      });
     }
   };
 
@@ -122,7 +128,6 @@ const WaterForm = ({ operationType, closeModal }) => {
               min="0"
               max="3000"
               {...register('waterAmount')}
-              // readOnly
             />
             <span className={styles.spanAmount}>{waterAmount} ml</span>
           </div>
@@ -153,10 +158,13 @@ const WaterForm = ({ operationType, closeModal }) => {
           className={styles.input}
           type="number"
           value={waterAmount}
-          onChange={e => setValue('waterAmount', e.target.value)}
+          onChange={handleWaterAmountChange}
           min="0"
           max="3000"
         />
+        {errors.waterAmount && (
+          <p className={styles.error}>{errors.waterAmount.message}</p>
+        )}
       </div>
       <div className={styles.btnBox}>
         <SaveButton enabled={isValid} />
