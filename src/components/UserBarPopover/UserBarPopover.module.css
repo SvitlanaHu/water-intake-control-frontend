@@ -74,13 +74,15 @@
   outline: none !important;
   color: none !important;
 }
-.popOverText1,
+
 .popOverText2 {
   opacity: 0.4;
 }
+
 .popOverText1:hover,
 .popOverText2:hover {
   color: var(--text-color) !important;
+  font-weight: 700;
   opacity: 1;
   transition: 350ms cubic-bezier(0.4, 0, 0.2, 1);
 }
