@@ -41,6 +41,13 @@ const WaterList = () => {
     return new Date(a.date) - new Date(b.date);
   });
 
+  if (sortedWater.length === 0) {
+    return (
+      <div className={css.noRecordsMessage}>
+        No water consumption records found for today.
+      </div>
+    );
+  }
   return (
     <ul className={css.waterList}>
       {sortedWater.map(data => (
