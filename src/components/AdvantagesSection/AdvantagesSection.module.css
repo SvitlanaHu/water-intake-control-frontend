@@ -47,10 +47,10 @@
 
 @media (min-width: 1440px) {
   .advantagesSection {
-    width: 672px;
+    width: 660px;
     height: 736px;
     top: 32px;
-    left: 770px;
+    left: 754px;
     background: url(/public/images/home-desktop.jpg) center / cover no-repeat;
   }
 }

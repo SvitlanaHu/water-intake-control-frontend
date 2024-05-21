@@ -6,6 +6,8 @@ import icons from '../../../public/symbol.svg';
 import { TextInput } from '../TextInput/TextInput';
 import { Formik, Form } from 'formik';
 import { SaveButton } from '../SaveButton/SaveButton';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/selectors';
 
 const schema = yup.object().shape({
   name: yup
@@ -43,6 +45,8 @@ const handleFormClick = ev => {
 };
 
 const UserSettingsForm = () => {
+  const { avatarURL } = useSelector(selectUser);
+
   const [img, setImg] = useState(null);
   const [gender, setGender] = useState('man');
   const [weight, setWeight] = useState('');
@@ -68,8 +72,8 @@ const UserSettingsForm = () => {
 
   const amountOfWaterFormula =
     gender === 'woman'
-      ? weight * 0.03 + time * (0.4).toFixed(2)
-      : weight * 0.04 + time * (0.6).toFixed(2);
+      ? weight * 0.03 + time * 0.4
+      : weight * 0.04 + time * 0.6;
 
   return (
     <Formik
@@ -88,7 +92,11 @@ const UserSettingsForm = () => {
           onSubmit={ev => handleFormClick(ev)}
         >
           <div className={css.photoContainer}>
-            {img && <img className={css.settingFormImg} src={img} />}
+            <img
+              className={css.settingFormImg}
+              src={!img ? avatarURL : img}
+              alt="userAvatar"
+            />
             <label htmlFor="photo">
               <svg>
                 <use href={`${icons}#icon-upload`}></use>
@@ -170,6 +178,7 @@ const UserSettingsForm = () => {
             <div className={css.halfFormContainer}>
               <div className={css.indicatorsContainer}>
                 <TextInput
+                  pattern="[0-9]*"
                   id="weight"
                   type="text"
                   forLabel="Your weight in kilograms:"
@@ -177,6 +186,7 @@ const UserSettingsForm = () => {
                   name="weight"
                 ></TextInput>
                 <TextInput
+                  pattern="[0-9]*"
                   placeholder="0"
                   id="time"
                   type="text"
@@ -189,7 +199,11 @@ const UserSettingsForm = () => {
                   The required amount of water in liters per day:
                 </p>
                 <p className={css.amountOfWater}>
-                  {!dirty ? '1.8 L' : amountOfWaterFormula}
+                  {!dirty ||
+                  amountOfWaterFormula === 0 ||
+                  isNaN(amountOfWaterFormula)
+                    ? '1.8 L'
+                    : amountOfWaterFormula.toFixed(1)}
                 </p>
               </div>
               <TextInput

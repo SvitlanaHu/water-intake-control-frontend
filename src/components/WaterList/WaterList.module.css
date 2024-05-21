@@ -7,6 +7,12 @@
   margin-top: 24px;
   margin-bottom: 24px;
 }
+.noRecordsMessage {
+  text-align: center;
+  font-size: 1.2em;
+  color: #666;
+  padding: 20px;
+}
 @media only screen and (min-width: 768px) {
   .waterList {
     gap: 32px;

@@ -8,6 +8,7 @@ export const TextInput = ({
   forLabel,
   placeholder,
   name,
+  pattern,
 }) => {
   return (
     <label
@@ -17,6 +18,7 @@ export const TextInput = ({
       {children}
       {forLabel}
       <Field
+        pattern={pattern}
         name={name}
         placeholder={placeholder}
         className={css.textInput}

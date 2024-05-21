@@ -14,8 +14,8 @@ const WelcomeSection = () => {
         </div>
          
         <div className={styles.linkBox} >
-          <Link className={styles.link} to="/signup">Try tracker</Link>
-          <Link className={styles.link} to="/signin">Sign In</Link>
+          <Link className={`${styles.linkUp} ${styles.link}`} to="/signup">Try tracker</Link>
+          <Link className={`${styles.linkIn} ${styles.link}`} to="/signin">Sign In</Link>
         </div>        
       </div>
     </header>
