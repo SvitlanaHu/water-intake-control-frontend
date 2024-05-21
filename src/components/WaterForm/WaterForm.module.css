@@ -7,6 +7,10 @@
   position: relative;
 }
 
+.error {
+  color: aquamarine;
+}
+
 .titleBox {
   margin-bottom: 24px;
 }
@@ -86,6 +90,7 @@
   border-radius: 20px;
   align-items: center;
   text-align: center;
+  color: var(--text-color);
   cursor: pointer;
   border-color: var(--text-color);
 
