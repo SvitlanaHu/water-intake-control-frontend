@@ -50,7 +50,7 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
         }}
       >
         <Typography className={css.typography}>
-          <div className={css.settingsCont}>
+          <span className={css.settingsCont}>
             <button
               type="button"
               onClick={() => {
@@ -67,10 +67,10 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
               </svg>
               <a className={css.popOverText1}>Setting</a>
             </button>
-          </div>
+          </span>
         </Typography>
         <Typography className={css.typographyLog}>
-          <div className={css.settingsCont}>
+          <span className={css.settingsCont}>
             <button type="button" className={css.logBtn}>
               <svg className={css.svg}>
                 <use
@@ -80,7 +80,7 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
               </svg>
               <a className={css.popOverText2}>LogOut</a>
             </button>
-          </div>
+          </span>
         </Typography>
       </Popover>
 
