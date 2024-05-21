@@ -1,9 +1,8 @@
 import { useDispatch } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import styles from './LogOutModal.modale.css';
 import { Modal } from '../Modal/Modal';
 import { logOut } from '../../redux/auth/operations';
-// import { clearStore } from '../../redux/store';
 
 const LogOutModal = ({ isModalOpen, setIsModalOpen }) => {
   const dispatch = useDispatch();
@@ -49,4 +48,10 @@ const LogOutModal = ({ isModalOpen, setIsModalOpen }) => {
     </>
   );
 };
+
+LogOutModal.propTypes = {
+  isModalOpen: PropTypes.bool.isRequired,
+  setIsModalOpen: PropTypes.func.isRequired,
+};
+
 export default LogOutModal;
