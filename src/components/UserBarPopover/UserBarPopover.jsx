@@ -4,14 +4,13 @@ import Popover from '@mui/material/Popover';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import UserSettingsModal from '../UserSettingsModal/UserSettingsModal';
+import LogOutModal from '../LogOutModal/LogOutModal';
 import { useState } from 'react';
-
-// import UserSettingsModal from "../UserSettingsModal/UserSettingsModal";
-// import LogOutModal from "../LogOutModal/LogOutModal";
 
 // eslint-disable-next-line react/prop-types
 const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
+  const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
 
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down(376));
@@ -28,6 +27,10 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
 
   const handleSettingsClick = () => {
     setIsSettingsModalOpen(true);
+  };
+
+  const handleLogOutClick = () => {
+    setIsLogOutModalOpen(true);
   };
 
   return (
@@ -71,7 +74,15 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
         </Typography>
         <Typography className={css.typographyLog}>
           <span className={css.settingsCont}>
-            <button type="button" className={css.logBtn}>
+            <button
+              onClick={() => {
+                console.log('Logging out...');
+                handleLogOutClick();
+                handleClose();
+              }}
+              type="button"
+              className={css.logBtn}
+            >
               <svg className={css.svg}>
                 <use
                   className={css.LogIcon}
@@ -88,6 +99,12 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
         <UserSettingsModal
           open={isSettingsModalOpen}
           setActive={setIsSettingsModalOpen}
+        />
+      )}
+      {isLogOutModalOpen && (
+        <LogOutModal
+          isModalOpen={isLogOutModalOpen}
+          setIsModalOpen={setIsLogOutModalOpen}
         />
       )}
     </>

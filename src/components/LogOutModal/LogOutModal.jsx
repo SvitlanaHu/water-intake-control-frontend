@@ -2,12 +2,13 @@
 import styles from './LogOutModal.module.css';
 import { Modal } from '../Modal/Modal';
 import { logOut } from '../../redux/auth/operations';
-import { useDispatch } from 'react';
+import { useDispatch } from 'react-redux';
 
 const LogOutModal = ({ isModalOpen, setIsModalOpen }) => {
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
+    console.log('Logging out...');
     dispatch(logOut());
     setIsModalOpen(false);
   };
