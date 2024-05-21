@@ -18,6 +18,7 @@ import RefreshLoader from './RefreshLoader/RefreshLoader';
 import RestrictedRoute from './RestrictedRoute';
 import PrivateRoute from './PrivateRoute';
 import ResetPassword from './ResetPassword/ResetPassword';
+import VerifyPage from '../pages/VerifyPage';
 
 // import { BrowserRouter } from 'react-router-dom';
 
@@ -45,6 +46,7 @@ const App = () => {
           }
         />
         <Route path="/confirm-email" element={<ConfirmEmailPage />} />
+        <Route path="/verify" element={<VerifyPage />} />
         <Route
           path="/signin"
           element={
@@ -59,8 +61,8 @@ const App = () => {
           }
         />
         <Route path="/statistics" element={<Statistics />} />
-          <Route path="*" element={<NotFoundPage />} />
-          <Route path="/reset-password/:token" element={<ResetPassword />} />
+        <Route path="*" element={<NotFoundPage />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
       </Routes>
       <Toaster
         position="top-right"

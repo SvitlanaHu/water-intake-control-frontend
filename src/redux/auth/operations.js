@@ -26,6 +26,17 @@ export const register = createAsyncThunk(
   }
 );
 
+export const verifyPageAction = createAsyncThunk(
+  'auth/verifyPage',
+  async ({ token, refreshToken }, thunkAPI) => {
+    try {
+      return { token, refreshToken };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
@@ -87,7 +98,9 @@ export const resetPassword = createAsyncThunk(
   'auth/resetPassword',
   async ({ token, password }, thunkAPI) => {
     try {
-      const response = await axios.post(`/restore-password/${token}`, { password });
+      const response = await axios.post(`/restore-password/${token}`, {
+        password,
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
