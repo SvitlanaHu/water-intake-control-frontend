@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { verifyPageAction } from '../redux/auth/operations';
+// import { verifyPageAction } from '../redux/auth/operations';
 import toast from 'react-hot-toast';
 import RefreshLoader from '../components/RefreshLoader/RefreshLoader';
 
@@ -18,12 +18,12 @@ const VerifyPage = () => {
 
   useEffect(() => {
     if (token && refreshToken) {
-      dispatch(verifyPageAction({ token, refreshToken }));
-      toast.success('Верифікація пройшла успішно');
-      navigate('/tracker');
+      //   dispatch(verifyPageAction({ token, refreshToken }));
+      toast.success('Верифікація пройшла успішно, увійдіть');
+      navigate('/signin');
 
-      console.log('token', token);
-      console.log('refreshToken', refreshToken);
+      //   console.log('token', token);
+      //   console.log('refreshToken', refreshToken);
     } else {
       toast.error('Верифікацію емейлу не виконано');
     }

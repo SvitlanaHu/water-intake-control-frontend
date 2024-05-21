@@ -47,13 +47,7 @@ const App = () => {
         />
         <Route path="/confirm-email" element={<ConfirmEmailPage />} />
         <Route path="/verify" element={<VerifyPage />} />
-        <Route
-          path="/signin"
-          element={
-            <RestrictedRoute redirectTo="/tracker" component={SignInPage} />
-          }
-        />
-        {/* <Route path="/tracker" element={<TrackerPage />} /> */}
+        <Route path="/signin" element={<SignInPage />} />
         <Route
           path="/tracker"
           element={

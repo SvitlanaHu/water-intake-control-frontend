@@ -26,7 +26,7 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.refreshToken = action.payload.refreshToken;
-        state.isLoggedIn = false;
+        state.isLoggedIn = true;
       })
       .addCase(verifyPageAction.fulfilled, (state, action) => {
         state.token = action.payload.token;

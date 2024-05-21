@@ -79,6 +79,7 @@ export default function SignInForm() {
       .then(() => {
         setFormValues({ email: '', password: '' });
         toast.success('Login success');
+        navigate('/tracker');
       })
       .catch(error => {
         console.log('status', error);
