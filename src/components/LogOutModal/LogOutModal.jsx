@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import styles from './LogOutModal.modale.css';
+import styles from './LogOutModal.module.css';
 import { Modal } from '../Modal/Modal';
 import { logOut } from '../../redux/auth/operations';
 
