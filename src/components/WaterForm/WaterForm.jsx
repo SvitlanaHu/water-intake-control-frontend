@@ -131,7 +131,7 @@ const WaterForm = ({ operationType, closeModal }) => {
             type="button"
             onClick={incrementWaterAmount}
           >
-            <span>+</span>
+            <span className={styles.spanIcon}>+</span>
           </button>
         </div>
         {errors.waterAmount && (
