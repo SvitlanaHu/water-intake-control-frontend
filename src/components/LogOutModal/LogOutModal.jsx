@@ -1,10 +1,9 @@
-
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import styles from './LogOutModal.modale.css';
 import { Modal } from '../Modal/Modal';
 import { logOut } from '../../redux/auth/operations';
-import { clearStore } from '../../redux/store';
+// import { clearStore } from '../../redux/store';
 
 const LogOutModal = ({ isModalOpen, setIsModalOpen }) => {
   const dispatch = useDispatch();
