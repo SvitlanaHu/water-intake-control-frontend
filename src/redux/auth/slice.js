@@ -1,5 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut, refreshUser, sendResetEmail, resetPassword } from './operations';
+import {
+  register,
+  logIn,
+  logOut,
+  refreshUser,
+  sendResetEmail,
+  resetPassword,
+  verifyPageAction,
+} from './operations';
 
 const authSlice = createSlice({
   name: 'auth',
@@ -16,6 +24,11 @@ const authSlice = createSlice({
     builder
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.refreshToken = action.payload.refreshToken;
+        state.isLoggedIn = false;
+      })
+      .addCase(verifyPageAction.fulfilled, (state, action) => {
         state.token = action.payload.token;
         state.refreshToken = action.payload.refreshToken;
         state.isLoggedIn = true;
@@ -43,7 +56,7 @@ const authSlice = createSlice({
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
       })
-      .addCase(sendResetEmail.pending, (state) => {
+      .addCase(sendResetEmail.pending, state => {
         state.isLoading = true;
         state.error = null;
         state.message = null;
@@ -56,7 +69,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(resetPassword.pending, (state) => {
+      .addCase(resetPassword.pending, state => {
         state.isLoading = true;
         state.error = null;
         state.message = null;

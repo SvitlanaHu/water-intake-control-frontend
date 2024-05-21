@@ -1,8 +1,10 @@
-/* eslint-disable react/prop-types */
-import styles from './LogOutModal.module.css';
+
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import styles from './LogOutModal.modale.css';
 import { Modal } from '../Modal/Modal';
 import { logOut } from '../../redux/auth/operations';
-import { useDispatch } from 'react-redux';
+import { clearStore } from '../../redux/store';
 
 const LogOutModal = ({ isModalOpen, setIsModalOpen }) => {
   const dispatch = useDispatch();
