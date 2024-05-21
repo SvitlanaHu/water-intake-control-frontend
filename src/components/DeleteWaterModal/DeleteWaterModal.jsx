@@ -1,7 +1,12 @@
 /* eslint-disable react/prop-types */
 import styles from './DeleteWaterModal.module.css';
 import { Modal } from '../Modal/Modal';
-import { deleteWater, dailyWater } from '../../redux/Water/operations';
+import {
+  deleteWater,
+  dailyWater,
+  todayWater,
+} from '../../redux/Water/operations';
+
 import { useDispatch } from 'react-redux';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
@@ -17,6 +22,7 @@ const DeleteWaterModal = ({ isModalOpen, setIsModalOpen, id }) => {
     const date = dayjs().format('YYYY-MM-DD');
     dispatch(deleteWater(id)).then(() => {
       dispatch(dailyWater(date));
+      dispatch(todayWater(date));
     });
     setIsModalOpen(false);
   };

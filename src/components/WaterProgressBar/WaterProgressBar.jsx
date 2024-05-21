@@ -16,7 +16,7 @@ const WaterProgressBar = () => {
   useEffect(() => {
     const currentDate = dayjs().format('YYYY-MM-DD');
     dispatch(todayWater(currentDate));
-  }, [dispatch, water]);
+  }, [dispatch]);
 
   const totalConsumed = water.reduce(
     (total, record) => total + record.volume,
