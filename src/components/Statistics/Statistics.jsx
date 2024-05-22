@@ -14,6 +14,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const Statistics = () => {
   const [weeklyWaterData, setWeeklyWaterData] = useState([]);
@@ -22,7 +23,7 @@ const Statistics = () => {
   const [timezone, setTimezone] = useState('');
   const { currentMonth, currentYear } = useSelector(state => state.calendar);
   const realMonth = currentMonth + 1;
-  console.log('used Month', realMonth);
+
   useEffect(() => {
     const tz = moment.tz.guess();
     setTimezone(tz);
@@ -31,47 +32,40 @@ const Statistics = () => {
   useEffect(() => {
     const fetchWaterData = async () => {
       if (!timezone) return;
-      console.log('timezone', timezone);
       try {
         const response = await axios.get(
           `https://water-intake-control-backend.onrender.com/api/water/monthly/${currentYear}/${realMonth}?timezone=${timezone}`
         );
 
         const { records } = response.data;
-        console.log('records', records);
-        const transformedData = records.reduce((accumulator, record) => {
+
+        const daysInMonth = moment().daysInMonth();
+        const allDays = Array.from({ length: daysInMonth }, (_, i) => {
+          const dayOfMonth = i + 1;
+          const date = moment(
+            `${currentYear}-${realMonth}-${dayOfMonth}`
+          ).format('YYYY-MM-DD');
+          return { date, waterConsumed: 0 };
+        });
+
+        records.forEach(record => {
           const date = record.date.split('T')[0];
           const waterConsumed = (record.volume * 0.001).toFixed(3);
 
-          const existingRecord = accumulator.find(item => item.date === date);
+          const dayIndex = moment(date).date() - 1;
+          allDays[dayIndex].waterConsumed = (
+            parseFloat(allDays[dayIndex].waterConsumed) +
+            parseFloat(waterConsumed)
+          ).toFixed(3);
+        });
 
-          if (existingRecord) {
-            existingRecord.waterConsumed = (
-              parseFloat(existingRecord.waterConsumed) +
-              parseFloat(waterConsumed)
-            ).toFixed(3);
-          } else {
-            accumulator.push({ date, waterConsumed });
-          }
-
-          return accumulator;
-        }, []);
-
-        // Сортування за значенням date від меншого до більшого
-        transformedData.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-        console.log('transformedData', transformedData);
-        // Sorting the data by date
-        setWeeklyWaterData(transformedData);
+        setWeeklyWaterData(allDays);
       } catch (error) {
-        // setError(error.message);
-      } finally {
-        // setLoading(false);
+        toast.error('Error fetching water data:', error);
       }
     };
     fetchWaterData();
   }, [currentYear, realMonth, timezone]);
-  console.log('weeklyWaterData', weeklyWaterData);
 
   // if (loading) {
   //   return <div>Loading...</div>; // Рендеримо щось поки дані завантажуються
@@ -90,10 +84,11 @@ const Statistics = () => {
               <stop offset="0%" stopColor="#9be1a0" stopOpacity={1} />
               <stop offset="100%" stopColor="#f0eff4" stopOpacity={0.8} />
             </linearGradient>
-          </defs>  
+          </defs>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date"
-            tickFormatter={(tick) => moment(tick).format('DD')}
+          <XAxis
+            dataKey="date"
+            tickFormatter={tick => moment(tick).format('D')}
             tick={{ fontSize: 12 }}
             axisLine={false}
             tickLine={false}
@@ -109,7 +104,7 @@ const Statistics = () => {
           <Tooltip formatter={value => [`${value * 1000} ml`]} />
           <Legend />
           <Area
-            type="monotone" 
+            type="monotone"
             fill="url(#colorWater)"
             dataKey="waterConsumed"
             stroke="#9be1a0"
