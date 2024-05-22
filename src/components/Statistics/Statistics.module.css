@@ -18,3 +18,34 @@
     flex-direction: column;
   }
 }
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 40px;
+}
+
+.pagination button {
+  padding: 5px 10px;
+  border-radius: 30px;
+  background-color: #9be1a0;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+@media only screen and (min-width: 768px) {
+  .pagination button {
+    padding: 10px 20px;
+  }
+}
+.pagination button:disabled {
+  background-color: #d3d3d3;
+  cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #87c48f;
+}

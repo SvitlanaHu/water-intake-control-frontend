@@ -20,26 +20,26 @@ const Statistics = () => {
   const [weeklyWaterData, setWeeklyWaterData] = useState([]);
   // const [loading, setLoading] = useState(true);
   // const [error, setError] = useState(null);
-  const [timezone, setTimezone] = useState('');
+  const [page, setPage] = useState(0);
   const { currentMonth, currentYear } = useSelector(state => state.calendar);
   const realMonth = currentMonth + 1;
-
-  useEffect(() => {
-    const tz = moment.tz.guess();
-    setTimezone(tz);
-  }, []);
+  const daysPerPage = 7;
 
   useEffect(() => {
     const fetchWaterData = async () => {
-      if (!timezone) return;
       try {
+        const timezone = new Date().getTimezoneOffset();
+
         const response = await axios.get(
           `https://water-intake-control-backend.onrender.com/api/water/monthly/${currentYear}/${realMonth}?timezone=${timezone}`
         );
 
         const { records } = response.data;
 
-        const daysInMonth = moment().daysInMonth();
+        const daysInMonth = moment(
+          `${currentYear}-${realMonth}`,
+          'YYYY-MM'
+        ).daysInMonth();
         const allDays = Array.from({ length: daysInMonth }, (_, i) => {
           const dayOfMonth = i + 1;
           const date = moment(
@@ -65,20 +65,41 @@ const Statistics = () => {
       }
     };
     fetchWaterData();
-  }, [currentYear, realMonth, timezone]);
+  }, [currentYear, realMonth]);
 
+  useEffect(() => {
+    //Скидуєм число на 0, коли переключається місяць
+    setPage(0);
+  }, [currentMonth]);
+
+  // Контроль сторінок пагінації
+  const handlePrevPage = () => {
+    if (page > 0) setPage(page - 1);
+  };
+
+  const handleNextPage = () => {
+    if ((page + 1) * daysPerPage < weeklyWaterData.length) {
+      setPage(page + 1);
+    }
+  };
+
+  //Отримуєм дані з поточної сторінки пагінації
+  const currentPageData = weeklyWaterData.slice(
+    page * daysPerPage,
+    (page + 1) * daysPerPage
+  );
+
+  const CustomLegend = () => null;
   // if (loading) {
   //   return <div>Loading...</div>; // Рендеримо щось поки дані завантажуються
   // }
-
   // if (error) {
   //   return <div>Error: {error}</div>; // Рендеримо повідомлення про помилку, якщо є
   // }
-
   return (
     <div className={styles.container}>
       <ResponsiveContainer width="100%" height={300}>
-        <AreaChart data={weeklyWaterData}>
+        <AreaChart data={currentPageData}>
           <defs>
             <linearGradient id="colorWater" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#9be1a0" stopOpacity={1} />
@@ -89,6 +110,7 @@ const Statistics = () => {
           <XAxis
             dataKey="date"
             tickFormatter={tick => moment(tick).format('D')}
+            interval={0} // Don't change interval between days
             tick={{ fontSize: 12 }}
             axisLine={false}
             tickLine={false}
@@ -102,7 +124,7 @@ const Statistics = () => {
             tickLine={false}
           />
           <Tooltip formatter={value => [`${value * 1000} ml`]} />
-          <Legend />
+          <Legend content={<CustomLegend />} />
           <Area
             type="monotone"
             fill="url(#colorWater)"
@@ -114,6 +136,17 @@ const Statistics = () => {
           />
         </AreaChart>
       </ResponsiveContainer>
+      <div className={styles.pagination}>
+        <button onClick={handlePrevPage} disabled={page === 0}>
+          Previous week
+        </button>
+        <button
+          onClick={handleNextPage}
+          disabled={(page + 1) * daysPerPage >= weeklyWaterData.length}
+        >
+          Next week
+        </button>
+      </div>
     </div>
   );
 };
