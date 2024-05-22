@@ -6,7 +6,7 @@ import HomePage from '../pages/HomePage/HomePage';
 import SignInPage from '../pages/AuthPages/SignInPage';
 import SignUpPage from '../pages/AuthPages/SignUpPage';
 import TrackerPage from '../pages/TrackerPage/TrackerPage';
-import Statistics from '../pages/Statistics';
+import StatisticsPage from '../pages/StatisticsPage/StatisticsPage';
 import { Toaster } from 'react-hot-toast';
 import ConfirmEmailPage from '../pages/AuthPages/ConfirmEmailPage';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
@@ -60,7 +60,7 @@ const App = () => {
             <PrivateRoute redirectTo="/signin" component={TrackerPage} />
           }
         />
-        <Route path="/statistics" element={<Statistics />} />
+        <Route path="/statistics" element={<StatisticsPage />} />
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
       </Routes>

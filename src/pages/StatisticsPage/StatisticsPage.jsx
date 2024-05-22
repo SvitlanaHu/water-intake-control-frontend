@@ -1,9 +1,9 @@
 import WaterMainInfo from '../../components/WaterMainInfo/WaterMainInfo';
 import WaterDetailedInfo from '../../components/WaterDetailedInfo/WaterDetailedInfo';
-import css from './StatisticsPage.module.css';
+import styles from './StatisticsPage.module.css';
 const StatisticsPage = () => {
   return (
-    <div className={css.trackerContainer}>
+    <div className={styles.container}>
       <WaterMainInfo />
       <WaterDetailedInfo />
     </div>
