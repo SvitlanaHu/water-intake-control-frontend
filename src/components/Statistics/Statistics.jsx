@@ -39,10 +39,27 @@ const Statistics = () => {
 
         const { records } = response.data;
         console.log('records', records);
-        const transformedData = records.map(record => ({
-          date: record.date.split('T')[0],
-          waterConsumed: record.volume,
-        }));
+        const transformedData = records.reduce((accumulator, record) => {
+          const date = record.date.split('T')[0];
+          const waterConsumed = (record.volume * 0.001).toFixed(3);
+
+          const existingRecord = accumulator.find(item => item.date === date);
+
+          if (existingRecord) {
+            existingRecord.waterConsumed = (
+              parseFloat(existingRecord.waterConsumed) +
+              parseFloat(waterConsumed)
+            ).toFixed(3);
+          } else {
+            accumulator.push({ date, waterConsumed });
+          }
+
+          return accumulator;
+        }, []);
+
+        // Сортування за значенням date від меншого до більшого
+        transformedData.sort((a, b) => new Date(a.date) - new Date(b.date));
+
         console.log('transformedData', transformedData);
         // Sorting the data by date
         setWeeklyWaterData(transformedData);
@@ -54,6 +71,7 @@ const Statistics = () => {
     };
     fetchWaterData();
   }, [currentYear, realMonth, timezone]);
+  console.log('weeklyWaterData', weeklyWaterData);
 
   // if (loading) {
   //   return <div>Loading...</div>; // Рендеримо щось поки дані завантажуються
@@ -68,15 +86,22 @@ const Statistics = () => {
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={weeklyWaterData}>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis label={{ position: 'insideLeft' }} />
-          <Tooltip />
+          <XAxis dataKey="L" />
+          <YAxis
+            label={{ position: 'insideLeft' }}
+            tick={{ fontSize: 12 }}
+            ticks={[2.5, 2, 1.5, 1, 0.5, 0]}
+            tickFormatter={value => `${value}L`}
+          />
+          <Tooltip formatter={value => [`${value * 1000} ml`]} />
           <Legend />
           <Line
-            type="monotone"
+            // type="monotone"
             dataKey="waterConsumed"
-            stroke="#8884d8"
+            stroke="#9be1a0"
             activeDot={{ r: 8 }}
+            dot={{ r: 10, stroke: '#9be1a0', strokeWidth: 3 }}
+            strokeWidth={3}
           />
         </LineChart>
       </ResponsiveContainer>
