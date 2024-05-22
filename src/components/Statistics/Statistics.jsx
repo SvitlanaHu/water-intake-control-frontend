@@ -16,10 +16,11 @@ import {
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { CircularProgress, Stack } from '@mui/material';
 
 const Statistics = () => {
   const [weeklyWaterData, setWeeklyWaterData] = useState([]);
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   // const [error, setError] = useState(null);
   const [page, setPage] = useState(0);
   const { currentMonth, currentYear } = useSelector(state => state.calendar);
@@ -31,6 +32,8 @@ const Statistics = () => {
   useEffect(() => {
     const fetchWaterData = async () => {
       if (!tz) return;
+      setLoading(true);
+
       console.log('timezone in /statistic', tz);
       try {
         // const timezone = new Date().getTimezoneOffset();
@@ -64,7 +67,9 @@ const Statistics = () => {
         });
 
         setWeeklyWaterData(allDays);
+        setLoading(false);
       } catch (error) {
+        setLoading(false);
         if (error.message === 'Request failed with status code 401') {
           setTimeout(() => {
             window.location.reload();
@@ -100,9 +105,15 @@ const Statistics = () => {
   );
 
   const CustomLegend = () => null;
-  // if (loading) {
-  //   return <div>Loading...</div>; // Рендеримо щось поки дані завантажуються
-  // }
+  if (loading) {
+    return (
+      <div className={styles.loaderContainer}>
+        <Stack justifyContent="center" alignItems="center" height="100%">
+          <CircularProgress sx={{ color: '#9BE1A0' }} />
+        </Stack>
+      </div>
+    );
+  }
   // if (error) {
   //   return <div>Error: {error}</div>; // Рендеримо повідомлення про помилку, якщо є
   // }
@@ -120,7 +131,7 @@ const Statistics = () => {
           <XAxis
             dataKey="date"
             tickFormatter={tick => moment(tick).format('D')}
-            interval={0} // Don't change interval between days
+            interval={0}
             tick={{ fontSize: 12 }}
             axisLine={false}
             tickLine={false}

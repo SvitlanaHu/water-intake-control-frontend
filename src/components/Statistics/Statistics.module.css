@@ -49,3 +49,9 @@
 .pagination button:hover:not(:disabled) {
   background-color: #87c48f;
 }
+
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
