@@ -18,4 +18,12 @@
     gap: 32px;
     max-width: 1440px;
   }
+  .waterMainInfo {
+    height: 782px;
+    position: relative; /* Додайте position: relative; */
+  }
+
+  .waterMainInfo > * {
+    height: 100%; /* Розтягніть всі дочірні елементи на всю висоту .waterMainInfo */
+  }
 }
