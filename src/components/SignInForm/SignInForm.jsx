@@ -9,6 +9,7 @@ import styles from './SignInForm.module.css';
 import AuthBtn from '../AuthBtn/AuthBtn';
 import { useNavigate } from 'react-router-dom';
 import DefaultForm from '../DefautForm/DefautForm';
+import RefreshLoader from '../RefreshLoader/RefreshLoader';
 
 // Валідаційна схема Yup
 const userSchema = Yup.object().shape({
@@ -28,6 +29,7 @@ export default function SignInForm() {
   const navigate = useNavigate();
   const [formValues, setFormValues] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = async e => {
     const { name, value } = e.target;
@@ -69,6 +71,8 @@ export default function SignInForm() {
       return;
     }
 
+    setIsLoading(true);
+
     dispatch(
       logIn({
         email: formValues.email,
@@ -89,6 +93,9 @@ export default function SignInForm() {
         } else {
           toast.error('Oops, something went wrong :c Try again!');
         }
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -99,7 +106,8 @@ export default function SignInForm() {
         errors={errors}
         handleChange={handleChange}
       />
-      <AuthBtn>Sign In</AuthBtn>
+      {isLoading && <RefreshLoader />}
+      <AuthBtn disabled={isLoading}>Sign In</AuthBtn>
       <NavLink to="/signup">
         <p className={styles.wrapDesc}>
           <span className={styles.linkQuestion}>Don`t have an account?</span>
