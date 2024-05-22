@@ -25,7 +25,7 @@ const VerifyPage = () => {
         window.location.reload();
       }, 100);
     } else {
-      toast.error('Верифікацію емейлу не виконано');
+      navigate('/signin');
     }
   }, [dispatch, token, refreshToken, navigate]);
 
