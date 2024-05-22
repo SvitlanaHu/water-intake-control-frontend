@@ -1,14 +1,14 @@
-import styles from "./WaterDetailedInfo.module.css";
+import styles from "./WaterStatisticsInfo.module.css";
 import UserPanel from "../UserPanel/UserPanel";
 import DailyInfo from "../DailyInfo/DailyInfo";
-import MonthInfo from "../MonthInfo/MonthInfo";
+import StatisticsInfo from "../StatisticsInfo/StatisticsInfo";
 
 const WaterDetailedInfo = () => {
   return (
     <div className={styles.container}>
       <UserPanel />
       <DailyInfo />
-      <MonthInfo />
+      <StatisticsInfo />
     </div>
   );
 };
