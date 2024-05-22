@@ -49,7 +49,11 @@ const WaterItem = ({ data }) => {
         </div>
 
         <div className={css.editScript}>
-          <button type="button" className={css.btn} onClick={handleOpenEditModal}>
+          <button
+            type="button"
+            className={css.btn}
+            onClick={handleOpenEditModal}
+          >
             <svg className={css.editSvgContainer}>
               <use
                 className={css.editIcon}
@@ -57,7 +61,11 @@ const WaterItem = ({ data }) => {
               ></use>
             </svg>
           </button>
-          <button type="button" className={css.btn} onClick={handleOpenDeleteModal}>
+          <button
+            type="button"
+            className={css.btn}
+            onClick={handleOpenDeleteModal}
+          >
             <svg className={css.editSvgContainer}>
               <use
                 className={css.editIcon}
@@ -72,6 +80,7 @@ const WaterItem = ({ data }) => {
           setIsModalOpen={setIsEditModalOpen}
           id={data.id}
           operationType="edit"
+          waterData={data}
         />
         <DeleteWaterModal
           isModalOpen={isDeleteModalOpen}
