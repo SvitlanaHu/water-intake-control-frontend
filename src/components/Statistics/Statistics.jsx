@@ -85,18 +85,32 @@ const Statistics = () => {
     <div className={styles.container}>
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={weeklyWaterData}>
+          <defs>
+            <linearGradient id="colorWater" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#9be1a0" stopOpacity={1} />
+              <stop offset="100%" stopColor="#f0eff4" stopOpacity={0.8} />
+            </linearGradient>
+          </defs>  
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="L" />
+          <XAxis dataKey="date"
+            tickFormatter={(tick) => moment(tick).format('DD')}
+            tick={{ fontSize: 12 }}
+            axisLine={false}
+            tickLine={false}
+          />
           <YAxis
             label={{ position: 'insideLeft' }}
             tick={{ fontSize: 12 }}
             ticks={[2.5, 2, 1.5, 1, 0.5, 0]}
             tickFormatter={value => `${value}L`}
+            axisLine={false}
+            tickLine={false}
           />
           <Tooltip formatter={value => [`${value * 1000} ml`]} />
           <Legend />
           <Area
-            type="monotone" fill="#9be1a0"
+            type="monotone" 
+            fill="url(#colorWater)"
             dataKey="waterConsumed"
             stroke="#9be1a0"
             activeDot={{ r: 8 }}
