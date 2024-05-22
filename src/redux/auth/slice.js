@@ -7,6 +7,8 @@ import {
   sendResetEmail,
   resetPassword,
   verifyPageAction,
+  updateUser,
+  updateAvatar
 } from './operations';
 
 const authSlice = createSlice({
@@ -85,7 +87,24 @@ const authSlice = createSlice({
       .addCase(resetPassword.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      });
+      })
+      .addCase(updateUser.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+        state.message = null;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = { ...state.user, ...action.payload };
+      })
+      .addCase(updateUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+    // .addCase(updateAvatar.fulfilled, (state, action) => {
+    //   state.isLoading = false;
+    //   state.user = { ...state.user, ...action.payload };
+    // });
   },
 });
 

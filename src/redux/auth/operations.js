@@ -14,6 +14,12 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
+const config = {
+  headers: {
+    'Content-Type': 'multipart/form-data'
+  }
+};
+
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
@@ -106,3 +112,33 @@ export const resetPassword = createAsyncThunk(
     }
   }
 );
+
+
+export const updateUser = createAsyncThunk('auth/updateUser', async (values, thunkAPI) => {
+  try {
+    const response = await axios.patch('users/update', values);
+    return response.data
+  } catch (e) {
+    console.log(e)
+    return thunkAPI.rejectWithValue(e.message);
+  }
+
+})
+
+
+
+export const updateAvatar = createAsyncThunk('auth/updateAvatar', async (avatarFormData, thunkAPI) => {
+  try {
+    const response = await axios.patch('users/avatars', avatarFormData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    console.log(response)
+    return response.data
+  } catch (e) {
+    console.log(e)
+    return thunkAPI.rejectWithValue(e.message);
+  }
+
+})

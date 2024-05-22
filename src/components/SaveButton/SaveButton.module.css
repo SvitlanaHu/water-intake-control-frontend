@@ -10,6 +10,12 @@
   border-color: transparent;
   font-size: 14px;
   display: block;
+  max-width: 116px;
+}
+
+.saveButton:focus {
+  border: none;
+  outline: none;
 }
 
 .saveButton:disabled {
@@ -21,5 +27,6 @@
   .saveButton {
     font-size: 16px;
     padding: 16px 50px;
+    max-width: 141px;
   }
 }
