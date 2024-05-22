@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import moment from 'moment-timezone';
 
 import {
-  LineChart,
-  Line,
+  AreaChart,
+  Area,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -84,7 +84,7 @@ const Statistics = () => {
   return (
     <div className={styles.container}>
       <ResponsiveContainer width="100%" height={300}>
-        <LineChart data={weeklyWaterData}>
+        <AreaChart data={weeklyWaterData}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="L" />
           <YAxis
@@ -95,15 +95,15 @@ const Statistics = () => {
           />
           <Tooltip formatter={value => [`${value * 1000} ml`]} />
           <Legend />
-          <Line
-            // type="monotone"
+          <Area
+            type="monotone" fill="#9be1a0"
             dataKey="waterConsumed"
             stroke="#9be1a0"
             activeDot={{ r: 8 }}
             dot={{ r: 10, stroke: '#9be1a0', strokeWidth: 3 }}
             strokeWidth={3}
           />
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
     </div>
   );
