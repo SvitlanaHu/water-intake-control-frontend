@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import CalendarPagination from "../CalendarPagination/CalendarPagination";
 import Statistics from "../Statistics/Statistics";
 
-const MonthInfo = () => {
+const StatisticsInfo = () => {
   return (
     <div className={styles.MonthBlock}>
       <div className={styles.paginationBar}>
@@ -25,4 +25,4 @@ const MonthInfo = () => {
     </div>
   );
 };
-export default MonthInfo;
+export default StatisticsInfo;
