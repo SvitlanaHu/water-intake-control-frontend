@@ -10,4 +10,4 @@ const StatisticsPage = () => {
     </div>
   );
 };
-export default StatisticsPage; 
+export default StatisticsPage;
