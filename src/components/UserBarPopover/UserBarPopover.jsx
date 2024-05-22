@@ -1,21 +1,25 @@
 import css from './UserBarPopover.module.css';
 import Typography from '@mui/material/Typography';
+import { useDispatch } from 'react-redux';
 import Popover from '@mui/material/Popover';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import UserSettingsModal from '../UserSettingsModal/UserSettingsModal';
 import LogOutModal from '../LogOutModal/LogOutModal';
 import { useState } from 'react';
+import { selectIsSettingModalOpen } from '../../redux/SettingModal/Selectors';
+import { openSettingModal } from '../../redux/SettingModal/SettingModalSlice';
+import { useSelector } from 'react-redux';
 
 // eslint-disable-next-line react/prop-types
 const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
-  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
+  const dispatch = useDispatch();
   const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
-
+  const isSettingModalOpen = useSelector(selectIsSettingModalOpen);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down(376));
   const isMediumScreen = useMediaQuery(theme.breakpoints.up(768));
-
+  console.log(isSettingModalOpen);
   const getWidth = () => {
     if (isSmallScreen) {
       return 137;
@@ -23,10 +27,6 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
       return 157;
     }
     return 120; // default width
-  };
-
-  const handleSettingsClick = () => {
-    setIsSettingsModalOpen(true);
   };
 
   const handleLogOutClick = () => {
@@ -57,8 +57,8 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
             <button
               type="button"
               onClick={() => {
-                handleSettingsClick();
                 handleClose();
+                dispatch(openSettingModal());
               }}
               className={css.settingBtn}
             >
@@ -95,12 +95,7 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
         </Typography>
       </Popover>
 
-      {isSettingsModalOpen && (
-        <UserSettingsModal
-          open={isSettingsModalOpen}
-          setActive={setIsSettingsModalOpen}
-        />
-      )}
+      {isSettingModalOpen && <UserSettingsModal open={isSettingModalOpen} />}
       {isLogOutModalOpen && (
         <LogOutModal
           isModalOpen={isLogOutModalOpen}

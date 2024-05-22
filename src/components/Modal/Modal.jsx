@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import styles from './Modal.module.css';
 import { ModalTitle } from '../ModalTitle/ModalTitle';
 import symbol from '../../../public/symbol.svg';
+import { useDispatch } from 'react-redux';
+import { closeSettingModal } from '../../redux/SettingModal/SettingModalSlice';
 
 export const Modal = ({
   isSettingModal,
@@ -31,6 +33,7 @@ export const Modal = ({
       window.removeEventListener('keydown', handleEscape);
     };
   }, [active, setActive]);
+  const dispatch = useDispatch();
 
   const handleCloseModal = () => {
     setActive(false);
@@ -38,7 +41,13 @@ export const Modal = ({
 
   if (active) {
     return (
-      <div className={styles.modalBackdrop} onClick={() => setActive(false)}>
+      <div
+        className={styles.modalBackdrop}
+        onClick={() => {
+          () => setActive(false);
+          dispatch(closeSettingModal());
+        }}
+      >
         <div
           className={
             isSettingModal ? styles.modalWrapper : styles.modalsWrapper
@@ -47,7 +56,13 @@ export const Modal = ({
         >
           <ModalTitle margin="20">{title}</ModalTitle>
           {children}
-          <button className={styles.closeButton} onClick={handleCloseModal}>
+          <button
+            className={styles.closeButton}
+            onClick={() => {
+              handleCloseModal;
+              dispatch(closeSettingModal());
+            }}
+          >
             <svg className={styles.closeIcon}>
               <use href={`${symbol}#icon-x`}></use>
             </svg>

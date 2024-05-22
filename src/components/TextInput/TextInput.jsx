@@ -1,5 +1,5 @@
-import { ErrorMessage, Field } from 'formik';
 import css from './TextInput.module.css';
+import { useFormContext } from 'react-hook-form';
 
 export const TextInput = ({
   children,
@@ -8,7 +8,7 @@ export const TextInput = ({
   forLabel,
   placeholder,
   name,
-  pattern,
+  register,
 }) => {
   return (
     <label
@@ -17,15 +17,13 @@ export const TextInput = ({
     >
       {children}
       {forLabel}
-      <Field
-        pattern={pattern}
-        name={name}
+      <input
+        {...register(name)}
         placeholder={placeholder}
         className={css.textInput}
         type={type}
         id={id}
-      ></Field>
-      <ErrorMessage className={css.errorMessage} name={name} component="span" />
+      />
     </label>
   );
 };
