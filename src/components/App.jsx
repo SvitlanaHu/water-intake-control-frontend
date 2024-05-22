@@ -8,7 +8,6 @@ import SignUpPage from '../pages/AuthPages/SignUpPage';
 import TrackerPage from '../pages/TrackerPage/TrackerPage';
 import StatisticsPage from '../pages/StatisticsPage/StatisticsPage';
 import { Toaster } from 'react-hot-toast';
-import ConfirmEmailPage from '../pages/AuthPages/ConfirmEmailPage';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -24,6 +23,8 @@ import PrivateRoute from './PrivateRoute';
 import ResetPassword from './ResetPassword/ResetPassword';
 import VerifyPage from '../pages/VerifyPage';
 import RestrictedAfterRegisterRoute from './RestrictedAfterRegisterRoute';
+import ErrorEmailVerifyPage from '../pages/AuthPages/ErrorEmailVerifyPage';
+import ConfirmEmailPage from '../pages/AuthPages/ConfirmEmailPage';
 
 // import { BrowserRouter } from 'react-router-dom';
 
@@ -55,7 +56,16 @@ const App = () => {
           }
         />
         <Route path="/confirm-email" element={<ConfirmEmailPage />} />
-        <Route path="/verify" element={<VerifyPage />} />
+        <Route
+          path="/verify"
+          element={
+            <RestrictedAfterRegisterRoute
+              redirectTo="/error-verify-email"
+              component={VerifyPage}
+            />
+          }
+        />
+        <Route path="/error-verify-email" element={<ErrorEmailVerifyPage />} />
         <Route
           path="/signin"
           element={
