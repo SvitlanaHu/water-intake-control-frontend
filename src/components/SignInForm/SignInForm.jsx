@@ -87,7 +87,7 @@ export default function SignInForm() {
         } else if (error === 'Request failed with status code 401') {
           toast.error('Incorrect email or password :c');
         } else {
-          toast.error('Internal Server Error');
+          toast.error('Oops, something went wrong :c Try again!');
         }
       });
   };
