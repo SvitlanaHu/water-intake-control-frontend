@@ -88,6 +88,7 @@ export default function SignInForm() {
         console.log('status', error);
         if (error === 'Request failed with status code 403') {
           navigate('/confirm-email');
+          toast.error('Please verify your email');
         } else if (error === 'Request failed with status code 401') {
           toast.error('Incorrect email or password :c');
         } else {
