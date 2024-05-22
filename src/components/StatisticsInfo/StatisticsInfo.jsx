@@ -4,7 +4,7 @@ import CalendarPagination from '../CalendarPagination/CalendarPagination';
 import Statistics from '../Statistics/Statistics';
 import svgIcon from '../../../public/symbol.svg';
 
-const MonthInfo = () => {
+const StatisticsInfo = () => {
   return (
     <div className={styles.MonthBlock}>
       <div className={styles.paginationBar}>
@@ -26,4 +26,4 @@ const MonthInfo = () => {
   );
 };
 
-export default MonthInfo;
+export default StatisticsInfo;
