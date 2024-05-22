@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux';
 
 const UserPanel = () => {
   const user = useSelector(selectUser);
-  const userEmail = user.email || 'Guest';
-  const userName = userEmail.split('@')[0];
+  console.log(user);
+  const userName = user.nickname;
   const avatar = user.avatarURL;
 
   return (
