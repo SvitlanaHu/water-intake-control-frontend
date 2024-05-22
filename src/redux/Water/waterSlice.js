@@ -42,7 +42,12 @@ const waterSlice = createSlice({
       .addCase(updateWater.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload;
+        const index = state.items.findIndex(
+          water => water.id === action.payload.id
+        );
+        if (index !== -1) {
+          state.items[index] = action.payload;
+        }
       })
       .addCase(updateWater.rejected, handleRejected)
       .addCase(deleteWater.pending, handlePending)

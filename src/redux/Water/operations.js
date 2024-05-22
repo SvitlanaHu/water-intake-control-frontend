@@ -15,7 +15,7 @@ export const addWater = createAsyncThunk(
 
 export const updateWater = createAsyncThunk(
   'water/updateWater',
-  async (waterId, water, thunkAPI) => {
+  async ({ waterId, water }, thunkAPI) => {
     try {
       const response = await axios.put(`/water/${waterId}`, water);
       return response.data;
