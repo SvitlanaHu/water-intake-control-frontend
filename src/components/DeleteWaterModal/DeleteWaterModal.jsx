@@ -5,9 +5,9 @@ import {
   deleteWater,
   dailyWater,
   todayWater,
+  getMonthlyWater,
 } from '../../redux/Water/operations';
-
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
@@ -17,12 +17,16 @@ dayjs.extend(timezone);
 
 const DeleteWaterModal = ({ isModalOpen, setIsModalOpen, id }) => {
   const dispatch = useDispatch();
+  const { selectedDate, currentMonth, currentYear } = useSelector(
+    state => state.calendar
+  );
 
   const handleDelete = () => {
     const date = dayjs().format('YYYY-MM-DD');
     dispatch(deleteWater(id)).then(() => {
-      dispatch(dailyWater(date));
+      dispatch(dailyWater(selectedDate));
       dispatch(todayWater(date));
+      dispatch(getMonthlyWater({ year: currentYear, month: currentMonth + 1 }));
     });
     setIsModalOpen(false);
   };

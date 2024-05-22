@@ -54,10 +54,13 @@ const waterSlice = createSlice({
       .addCase(deleteWater.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        // Видаляємо запис з items
         const index = state.items.findIndex(
           water => water.id === action.payload.id
         );
-        state.items.splice(index, 1);
+        if (index !== -1) {
+          state.items.splice(index, 1);
+        }
       })
       .addCase(deleteWater.rejected, handleRejected)
       .addCase(dailyWater.pending, state => {

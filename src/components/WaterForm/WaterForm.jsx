@@ -11,6 +11,7 @@ import {
   dailyWater,
   todayWater,
   updateWater,
+  getMonthlyWater,
 } from '../../redux/Water/operations';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
@@ -34,7 +35,9 @@ const schema = yup.object().shape({
 
 const WaterForm = ({ operationType, closeModal, id, waterData }) => {
   const dispatch = useDispatch();
-  const { selectedDate } = useSelector(state => state.calendar);
+  const { selectedDate, currentMonth, currentYear } = useSelector(
+    state => state.calendar
+  );
   const {
     register,
     handleSubmit,
@@ -112,6 +115,9 @@ const WaterForm = ({ operationType, closeModal, id, waterData }) => {
       ).then(() => {
         dispatch(dailyWater(date));
         dispatch(todayWater(dayjs().format('YYYY-MM-DD')));
+        dispatch(
+          getMonthlyWater({ year: currentYear, month: currentMonth + 1 })
+        );
       });
     }
 
