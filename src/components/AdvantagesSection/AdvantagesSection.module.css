@@ -114,7 +114,7 @@
   position: absolute;
   display: flex;
   align-items: center;
-  width: 125px;
+  width: 145px;
   height: 26px;
   top: 210px;
   left: 18px;
@@ -126,7 +126,7 @@
 }
 @media (min-width: 768px) {
   .customersBox {
-    width: 200px;
+    width: 220px;
     height: 48px;
     top: 280px;
     left: 32px;
