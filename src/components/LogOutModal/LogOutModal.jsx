@@ -8,7 +8,6 @@ const LogOutModal = ({ isModalOpen, setIsModalOpen }) => {
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
-    console.log('Logging out...');
     dispatch(logOut());
     setIsModalOpen(false);
   };
