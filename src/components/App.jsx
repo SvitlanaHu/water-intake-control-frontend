@@ -11,7 +11,7 @@ import { Toaster } from 'react-hot-toast';
 import ConfirmEmailPage from '../pages/AuthPages/ConfirmEmailPage';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoggedIn, selectIsRefreshing } from '../redux/auth/selectors';
+import { selectIsRefreshing } from '../redux/auth/selectors';
 import { useEffect } from 'react';
 import { refreshUser } from '../redux/auth/operations';
 import RefreshLoader from './RefreshLoader/RefreshLoader';
@@ -26,13 +26,10 @@ import RestrictedAfterRegisterRoute from './RestrictedAfterRegisterRoute';
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
-    if (isLoggedIn) {
-      dispatch(refreshUser());
-    }
-  }, [dispatch, isLoggedIn]);
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return isRefreshing ? (
     <RefreshLoader />
