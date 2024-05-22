@@ -15,6 +15,7 @@ import {
 } from 'recharts';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const Statistics = () => {
   const [weeklyWaterData, setWeeklyWaterData] = useState([]);
@@ -24,6 +25,7 @@ const Statistics = () => {
   const { currentMonth, currentYear } = useSelector(state => state.calendar);
   const realMonth = currentMonth + 1;
   const daysPerPage = 7;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchWaterData = async () => {
@@ -61,11 +63,17 @@ const Statistics = () => {
 
         setWeeklyWaterData(allDays);
       } catch (error) {
+        if (error.message === 'Request failed with status code 401') {
+          setTimeout(() => {
+            window.location.reload();
+          }, 100);
+          navigate('/signin');
+        }
         toast.error('Error fetching water data:', error);
       }
     };
     fetchWaterData();
-  }, [currentYear, realMonth]);
+  }, [currentYear, realMonth, navigate]);
 
   useEffect(() => {
     //Скидуєм число на 0, коли переключається місяць
