@@ -79,7 +79,7 @@ const SignUpForm = () => {
     )
       .unwrap()
       .then(() => {
-        setFormValues({ email: '', password: '' });
+        setFormValues({ email: '', password: '', confirmPassword: '' });
         toast.success('Register success');
       })
       .catch(error => {

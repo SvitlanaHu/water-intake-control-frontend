@@ -19,6 +19,7 @@ import RestrictedRoute from './RestrictedRoute';
 import PrivateRoute from './PrivateRoute';
 import ResetPassword from './ResetPassword/ResetPassword';
 import VerifyPage from '../pages/VerifyPage';
+import RestrictedAfterRegisterRoute from './RestrictedAfterRegisterRoute';
 
 // import { BrowserRouter } from 'react-router-dom';
 
@@ -39,7 +40,7 @@ const App = () => {
         <Route
           path="/signup"
           element={
-            <RestrictedRoute
+            <RestrictedAfterRegisterRoute
               redirectTo="/confirm-email"
               component={SignUpPage}
             />
