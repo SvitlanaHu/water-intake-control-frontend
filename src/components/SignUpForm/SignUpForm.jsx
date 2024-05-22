@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -9,6 +9,7 @@ import AuthBtn from '../AuthBtn/AuthBtn';
 import DefaultForm from '../DefautForm/DefautForm';
 import styles from './SignUpForm.module.css';
 import { register } from '../../redux/auth/operations';
+import RefreshLoader from '../RefreshLoader/RefreshLoader';
 
 // Валідаційна схема Yup
 const signUpSchema = Yup.object().shape({
@@ -35,6 +36,7 @@ const SignUpForm = () => {
     confirmPassword: '',
   });
   const [errors, setErrors] = React.useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = async e => {
     const { name, value } = e.target;
@@ -71,6 +73,8 @@ const SignUpForm = () => {
       return;
     }
 
+    setIsLoading(true);
+
     dispatch(
       register({
         email: formValues.email,
@@ -93,6 +97,9 @@ const SignUpForm = () => {
         } else {
           toast.error('Oops, something went wrong :c Try again!');
         }
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -153,7 +160,8 @@ const SignUpForm = () => {
           )}
         </label>
       </div>
-      <AuthBtn>Sign Up</AuthBtn>
+      {isLoading && <RefreshLoader />}
+      <AuthBtn disabled={isLoading}>Sign Up</AuthBtn>
       <NavLink to="/signin">
         <p className={styles.wrapDesc}>
           <span className={styles.linkQuestion}>Already have an account?</span>

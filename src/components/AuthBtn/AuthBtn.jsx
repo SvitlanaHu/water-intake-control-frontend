@@ -1,14 +1,20 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-import css from "./AuthBtn.module.css";
+import css from './AuthBtn.module.css';
 
-export default function AuthBtn({ children }) {
+export default function AuthBtn({ children, disabled }) {
   return (
-    <button className={css.button} type="submit">
+    <button
+      className={`${css.button} ${disabled ? css.disabledButton : ''}`}
+      type="submit"
+      disabled={disabled}
+    >
       {children}
     </button>
   );
 }
+
 AuthBtn.propTypes = {
-  children: PropTypes.string.isRequired, // Перевірка типу властивості children
+  children: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
 };
