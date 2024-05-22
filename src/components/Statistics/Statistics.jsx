@@ -26,14 +26,16 @@ const Statistics = () => {
   const realMonth = currentMonth + 1;
   const daysPerPage = 7;
   const navigate = useNavigate();
+  const tz = moment.tz.guess();
 
   useEffect(() => {
     const fetchWaterData = async () => {
+      if (!tz) return;
+      console.log('timezone in /statistic', tz);
       try {
-        const timezone = new Date().getTimezoneOffset();
-
+        // const timezone = new Date().getTimezoneOffset();
         const response = await axios.get(
-          `https://water-intake-control-backend.onrender.com/api/water/monthly/${currentYear}/${realMonth}?timezone=${timezone}`
+          `https://water-intake-control-backend.onrender.com/api/water/monthly/${currentYear}/${realMonth}?timezone=${tz}`
         );
 
         const { records } = response.data;
