@@ -21,9 +21,9 @@ const VerifyPage = () => {
       dispatch(verifyPageAction({ token, refreshToken }));
       toast.success('Верифікація пройшла успішно');
       navigate('/tracker');
-
-      console.log('token', token);
-      console.log('refreshToken', refreshToken);
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
     } else {
       toast.error('Верифікацію емейлу не виконано');
     }
