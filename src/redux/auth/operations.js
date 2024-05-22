@@ -114,11 +114,27 @@ export const resetPassword = createAsyncThunk(
 );
 
 
-export const updateUser = createAsyncThunk('auth/updateUser', async (formData, thunkAPI) => {
+export const updateUser = createAsyncThunk('auth/updateUser', async (values, thunkAPI) => {
   try {
-    console.log(formData)
-    const response = await axios.patch('users/update', formData);
-    console.log(response.data)
+    const response = await axios.patch('users/update', values);
+    return response.data
+  } catch (e) {
+    console.log(e)
+    return thunkAPI.rejectWithValue(e.message);
+  }
+
+})
+
+
+
+export const updateAvatar = createAsyncThunk('auth/updateAvatar', async (avatarFormData, thunkAPI) => {
+  try {
+    const response = await axios.patch('users/avatars', avatarFormData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    console.log(response)
     return response.data
   } catch (e) {
     console.log(e)
