@@ -1,16 +1,16 @@
-import styles from "./MonthInfo.module.css";
+import styles from "./StatisticsInfo.module.css";
 import { Link } from 'react-router-dom';
-import Calendar from "../Calendar/Calendar";
 import CalendarPagination from "../CalendarPagination/CalendarPagination";
+import Statistics from "../Statistics/Statistics";
 
 const MonthInfo = () => {
   return (
     <div className={styles.MonthBlock}>
       <div className={styles.paginationBar}>
-        <h1 className={styles.header}>Month</h1>
+        <h1 className={styles.header}>Statistics</h1>
         <div className={styles.box}>
             <CalendarPagination />
-            <Link to="/statistics">
+            <Link to="/tracker">
               <svg className={styles.svg}>
                 <use
                   className={styles.settingsIcon}
@@ -19,8 +19,9 @@ const MonthInfo = () => {
               </svg>
             </Link>    
         </div>
+        
       </div>
-      <Calendar />
+      <Statistics />
     </div>
   );
 };
