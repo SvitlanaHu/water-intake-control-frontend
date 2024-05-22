@@ -1,62 +1,82 @@
 import { useState, useEffect } from 'react';
-import styles from './Statistics.module.css';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+// import styles from './Statistics.module.css';
+import { useSelector } from 'react-redux';
+import moment from 'moment-timezone';
+
+// import {
+//   LineChart,
+//   Line,
+//   XAxis,
+//   YAxis,
+//   CartesianGrid,
+//   Tooltip,
+//   Legend,
+//   ResponsiveContainer,
+// } from 'recharts';
+import axios from 'axios';
 
 const Statistics = () => {
-  const [weeklyWaterData, setWeeklyWaterData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // const [weeklyWaterData, setWeeklyWaterData] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
+  const [timezone, setTimezone] = useState('');
+  const { currentMonth, currentYear } = useSelector(state => state.calendar);
+  const realMonth = currentMonth + 1;
+  console.log('used Month', realMonth);
+  useEffect(() => {
+    const tz = moment.tz.guess();
+    setTimezone(tz);
+  }, []);
 
   useEffect(() => {
     const fetchWaterData = async () => {
+      if (!timezone) return;
+      console.log('timezone', timezone);
       try {
-        const response = await fetch('https://water-intake-control-backend.onrender.com/api-docs/#/Water/getMonthlyWaterData');
-        if (!response.ok) {
-          throw new Error('Failed to fetch water data');
-        }
-        const data = await response.json();
+        const response = await axios.get(
+          `https://water-intake-control-backend.onrender.com/api/water/monthly/${currentYear}/${realMonth}?timezone=${timezone}`
+        );
 
-        const transformedData = data.records.map(record => ({
-          name: record.date.split('T')[0],
+        const { records } = response.data;
+        console.log('records', records);
+        const transformedData = records.map(record => ({
+          date: record.date.split('T')[0],
           waterConsumed: record.volume,
         }));
-
+        console.log('transformedData', transformedData);
         // Sorting the data by date
-        transformedData.sort((a, b) => new Date(a.name) - new Date(b.name));
-
-        setWeeklyWaterData(transformedData);
+        // setWeeklyWaterData(transformedData);
       } catch (error) {
-        setError(error.message);
+        // setError(error.message);
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     };
-
     fetchWaterData();
-  }, []);
+  }, [currentYear, realMonth, timezone]);
 
-  if (loading) {
-    return <div>Loading...</div>; // Рендеримо щось поки дані завантажуються
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>; // Рендеримо щось поки дані завантажуються
+  // }
 
-  if (error) {
-    return <div>Error: {error}</div>; // Рендеримо повідомлення про помилку, якщо є
-  }
+  // if (error) {
+  //   return <div>Error: {error}</div>; // Рендеримо повідомлення про помилку, якщо є
+  // }
 
   return (
-    <div className={styles.container}>
-      <h2>Статистика споживання води за останні 7 днів</h2>
-      <ResponsiveContainer width="100%" height={400}>
-        <LineChart data={weeklyWaterData}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis label={{ value: 'Літри', angle: -90, position: 'insideLeft' }} />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="waterConsumed" stroke="#8884d8" activeDot={{ r: 8 }} />
-        </LineChart>
-      </ResponsiveContainer>
-    </div>
+    // <div className={styles.container}>
+    <h2>Статистика тут</h2>
+    //   <ResponsiveContainer width="100%" height={400}>
+    //     <LineChart data={weeklyWaterData}>
+    //       <CartesianGrid strokeDasharray="3 3" />
+    //       <XAxis dataKey="name" />
+    //       <YAxis label={{ value: 'Літри', angle: -90, position: 'insideLeft' }} />
+    //       <Tooltip />
+    //       <Legend />
+    //       <Line type="monotone" dataKey="waterConsumed" stroke="#8884d8" activeDot={{ r: 8 }} />
+    //     </LineChart>
+    //   </ResponsiveContainer>
+    // </div>
   );
 };
 

@@ -1,7 +1,7 @@
-import styles from "./WaterStatisticsInfo.module.css";
-import UserPanel from "../UserPanel/UserPanel";
-import DailyInfo from "../DailyInfo/DailyInfo";
-import StatisticsInfo from "../StatisticsInfo/StatisticsInfo";
+import styles from './WaterStatisticsInfo.module.css';
+import UserPanel from '../UserPanel/UserPanel';
+import DailyInfo from '../DailyInfo/DailyInfo';
+import StatisticsInfo from '../StatisticsInfo/StatisticsInfo';
 
 const WaterDetailedInfo = () => {
   return (
