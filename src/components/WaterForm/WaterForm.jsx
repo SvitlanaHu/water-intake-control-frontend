@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { SaveButton } from '../SaveButton/SaveButton';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addWater,
   dailyWater,
@@ -34,6 +34,7 @@ const schema = yup.object().shape({
 
 const WaterForm = ({ operationType, closeModal, id, waterData }) => {
   const dispatch = useDispatch();
+  const { selectedDate } = useSelector(state => state.calendar);
   const {
     register,
     handleSubmit,
@@ -82,7 +83,7 @@ const WaterForm = ({ operationType, closeModal, id, waterData }) => {
   };
 
   const onSubmit = data => {
-    const date = dayjs().format('YYYY-MM-DD');
+    const date = selectedDate;
     const datetime = `${date} ${data.time}`;
     const userTimezone = dayjs.tz.guess();
     const formattedDatetime = dayjs.tz(datetime, userTimezone).format();
@@ -96,7 +97,7 @@ const WaterForm = ({ operationType, closeModal, id, waterData }) => {
         })
       ).then(() => {
         dispatch(dailyWater(date));
-        dispatch(todayWater(date));
+        dispatch(todayWater(dayjs().format('YYYY-MM-DD')));
       });
     } else if (operationType === 'edit') {
       dispatch(
@@ -110,7 +111,7 @@ const WaterForm = ({ operationType, closeModal, id, waterData }) => {
         })
       ).then(() => {
         dispatch(dailyWater(date));
-        dispatch(todayWater(date));
+        dispatch(todayWater(dayjs().format('YYYY-MM-DD')));
       });
     }
 
