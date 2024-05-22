@@ -10,6 +10,8 @@ const WaterModal = ({
   isModalOpen,
   setIsModalOpen,
   handleOpenModal,
+  id,
+  waterData,
 }) => {
   // const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -29,6 +31,8 @@ const WaterModal = ({
         <WaterForm
           operationType="edit"
           closeModal={() => setIsModalOpen(false)}
+          id={id}
+          waterData={waterData}
         />
       ),
     },

@@ -79,7 +79,7 @@ const SignUpForm = () => {
     )
       .unwrap()
       .then(() => {
-        setFormValues({ email: '', password: '' });
+        setFormValues({ email: '', password: '', confirmPassword: '' });
         toast.success('Register success');
       })
       .catch(error => {
@@ -88,6 +88,8 @@ const SignUpForm = () => {
           toast.error('This email is already in use');
         } else if (error === 'Request failed with status code 400') {
           toast.error('Bad Request. Please provide a valid email address');
+        } else if (error === 'Request failed with status code 403') {
+          toast.error('This email is already in use');
         } else {
           toast.error('Oops, something went wrong :c Try again!');
         }

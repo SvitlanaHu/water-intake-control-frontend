@@ -1,5 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut, refreshUser, sendResetEmail, resetPassword, updateUser } from './operations';
+import {
+  register,
+  logIn,
+  logOut,
+  refreshUser,
+  sendResetEmail,
+  resetPassword,
+  verifyPageAction,
+  updateUser
+} from './operations';
 
 const authSlice = createSlice({
   name: 'auth',
@@ -11,25 +20,33 @@ const authSlice = createSlice({
     refreshToken: null,
     isLoggedIn: false,
     isRefreshing: false,
+    isRegistered: false,
   },
   extraReducers: builder => {
     builder
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
+        state.isLoggedIn = false;
+        state.isRegistered = true;
+      })
+      .addCase(verifyPageAction.fulfilled, (state, action) => {
         state.token = action.payload.token;
         state.refreshToken = action.payload.refreshToken;
+        state.isRegistered = true;
         state.isLoggedIn = true;
       })
       .addCase(logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.refreshToken = action.payload.refreshToken;
+        state.isRegistered = true;
         state.isLoggedIn = true;
       })
       .addCase(logOut.fulfilled, state => {
         state.user = { email: null };
         state.token = null;
         state.refreshToken = null;
+        state.isRegistered = false;
         state.isLoggedIn = false;
       })
       .addCase(refreshUser.pending, state => {
@@ -38,12 +55,13 @@ const authSlice = createSlice({
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
+        state.isRegistered = true;
         state.isRefreshing = false;
       })
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
       })
-      .addCase(sendResetEmail.pending, (state) => {
+      .addCase(sendResetEmail.pending, state => {
         state.isLoading = true;
         state.error = null;
         state.message = null;
@@ -56,7 +74,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(resetPassword.pending, (state) => {
+      .addCase(resetPassword.pending, state => {
         state.isLoading = true;
         state.error = null;
         state.message = null;

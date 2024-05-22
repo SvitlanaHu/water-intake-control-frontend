@@ -6,28 +6,38 @@ import HomePage from '../pages/HomePage/HomePage';
 import SignInPage from '../pages/AuthPages/SignInPage';
 import SignUpPage from '../pages/AuthPages/SignUpPage';
 import TrackerPage from '../pages/TrackerPage/TrackerPage';
-import Statistics from '../pages/Statistics';
+import StatisticsPage from '../pages/StatisticsPage/StatisticsPage';
 import { Toaster } from 'react-hot-toast';
 import ConfirmEmailPage from '../pages/AuthPages/ConfirmEmailPage';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsRefreshing } from '../redux/auth/selectors';
+import {
+  selectIsLoggedIn,
+  selectIsRefreshing,
+  selectToken,
+} from '../redux/auth/selectors';
 import { useEffect } from 'react';
 import { refreshUser } from '../redux/auth/operations';
 import RefreshLoader from './RefreshLoader/RefreshLoader';
 import RestrictedRoute from './RestrictedRoute';
 import PrivateRoute from './PrivateRoute';
 import ResetPassword from './ResetPassword/ResetPassword';
+import VerifyPage from '../pages/VerifyPage';
+import RestrictedAfterRegisterRoute from './RestrictedAfterRegisterRoute';
 
 // import { BrowserRouter } from 'react-router-dom';
 
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+  const isLogedIn = useSelector(selectIsLoggedIn);
+  const token = useSelector(selectToken);
 
   useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
+    if (token && !isLogedIn) {
+      dispatch(refreshUser({ token }));
+    }
+  }, [dispatch, token, isLogedIn]);
 
   return isRefreshing ? (
     <RefreshLoader />
@@ -38,13 +48,14 @@ const App = () => {
         <Route
           path="/signup"
           element={
-            <RestrictedRoute
+            <RestrictedAfterRegisterRoute
               redirectTo="/confirm-email"
               component={SignUpPage}
             />
           }
         />
         <Route path="/confirm-email" element={<ConfirmEmailPage />} />
+        <Route path="/verify" element={<VerifyPage />} />
         <Route
           path="/signin"
           element={
@@ -58,9 +69,9 @@ const App = () => {
             <PrivateRoute redirectTo="/signin" component={TrackerPage} />
           }
         />
-        <Route path="/statistics" element={<Statistics />} />
-          <Route path="*" element={<NotFoundPage />} />
-          <Route path="/reset-password/:token" element={<ResetPassword />} />
+        <Route path="/statistics" element={<StatisticsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
       </Routes>
       <Toaster
         position="top-right"

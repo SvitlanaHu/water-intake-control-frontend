@@ -5,9 +5,13 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { SaveButton } from '../SaveButton/SaveButton';
-//add imports
 import { useDispatch } from 'react-redux';
-import { addWater, dailyWater } from '../../redux/Water/operations';
+import {
+  addWater,
+  dailyWater,
+  todayWater,
+  updateWater,
+} from '../../redux/Water/operations';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
@@ -15,18 +19,20 @@ import timezone from 'dayjs/plugin/timezone';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-const schema = yup
-  .object({
-    waterAmount: yup
-      .number()
-      .required('Amount of water is required')
-      .min(0, 'Minimum is 0ml')
-      .max(3000, 'Maximum is 3000ml'),
-    time: yup.string().required('Time is required'),
-  })
-  .required();
+const schema = yup.object().shape({
+  waterAmount: yup
+    .number()
+    .required('Amount of water is required')
+    .positive('Water amount must be positive')
+    .integer('Water amount must be an integer')
+    .max(3000, 'Maximum is 3000ml'),
+  time: yup
+    .string()
+    .required('Time is required')
+    .matches(/^([01]\d|2[0-3]):([0-5]\d)$/, 'Invalid time format (HH:MM)'),
+});
 
-const WaterForm = ({ operationType, closeModal }) => {
+const WaterForm = ({ operationType, closeModal, id, waterData }) => {
   const dispatch = useDispatch();
   const {
     register,
@@ -38,51 +44,76 @@ const WaterForm = ({ operationType, closeModal }) => {
     resolver: yupResolver(schema),
     mode: 'onChange',
     defaultValues: {
-      waterAmount: 50,
-      time: new Date().toLocaleTimeString('en-US', {
-        hour12: false,
-        hour: '2-digit',
-        minute: '2-digit',
-      }),
+      waterAmount: operationType === 'edit' ? waterData.volume : 50,
+      time:
+        operationType === 'edit'
+          ? dayjs(waterData.date).format('HH:mm')
+          : new Date().toLocaleTimeString('en-US', {
+              hour12: false,
+              hour: '2-digit',
+              minute: '2-digit',
+            }),
     },
   });
 
   const waterAmount = watch('waterAmount');
 
   useEffect(() => {
-    setValue('waterAmount', waterAmount);
+    if (waterAmount !== '') {
+      setValue('waterAmount', waterAmount);
+    }
   }, [waterAmount, setValue]);
 
   const incrementWaterAmount = () => {
     setValue('waterAmount', Math.min(Number(waterAmount) + 50, 3000));
   };
+
   const decrementWaterAmount = () => {
     setValue('waterAmount', Math.max(Number(waterAmount) - 50, 0));
   };
 
   const handleWaterAmountChange = e => {
     const { value } = e.target;
-    if (!isNaN(value) && value >= 0) {
-      setValue('waterAmount', Number(value));
+    if (value === '' || (/^\d*$/.test(value) && value >= 0)) {
+      setValue('waterAmount', value === '' ? value : Number(value), {
+        shouldValidate: value !== '',
+      });
     }
   };
 
-  //Відправка на сервер
   const onSubmit = data => {
-    console.log(data);
     const date = dayjs().format('YYYY-MM-DD');
     const datetime = `${date} ${data.time}`;
     const userTimezone = dayjs.tz.guess();
     const formattedDatetime = dayjs.tz(datetime, userTimezone).format();
-    dispatch(
-      addWater({
-        volume: Number(data.waterAmount),
-        date: formattedDatetime,
-        timezone: userTimezone,
-      })
-    ).then(() => {
-      dispatch(dailyWater(date));
-    });
+
+    if (operationType === 'add') {
+      dispatch(
+        addWater({
+          volume: Number(data.waterAmount),
+          date: formattedDatetime,
+          timezone: userTimezone,
+        })
+      ).then(() => {
+        dispatch(dailyWater(date));
+        dispatch(todayWater(date));
+      });
+    } else if (operationType === 'edit') {
+      dispatch(
+        updateWater({
+          waterId: id,
+          water: {
+            volume: Number(data.waterAmount),
+            date: formattedDatetime,
+            timezone: userTimezone,
+          },
+        })
+      ).then(() => {
+        dispatch(dailyWater(date));
+        dispatch(todayWater(date));
+      });
+    }
+
     closeModal();
   };
 
@@ -109,9 +140,7 @@ const WaterForm = ({ operationType, closeModal }) => {
             className={styles.decrementButton}
             type="button"
             onClick={decrementWaterAmount}
-          >
-            {/* <span className={styles.spanIcon}>-</span> */}
-          </button>
+          ></button>
           <div className={styles.waterAmountBox}>
             <input
               className={styles.waterAmount}
@@ -121,7 +150,6 @@ const WaterForm = ({ operationType, closeModal }) => {
               min="0"
               max="3000"
               {...register('waterAmount')}
-              // readOnly
             />
             <span className={styles.spanAmount}>{waterAmount} ml</span>
           </div>
@@ -130,7 +158,7 @@ const WaterForm = ({ operationType, closeModal }) => {
             type="button"
             onClick={incrementWaterAmount}
           >
-            <span>+</span>
+            <span className={styles.spanIcon}>+</span>
           </button>
         </div>
         {errors.waterAmount && (
@@ -152,10 +180,13 @@ const WaterForm = ({ operationType, closeModal }) => {
           className={styles.input}
           type="number"
           value={waterAmount}
-          onChange={e => setValue('waterAmount', e.target.value)}
+          onChange={handleWaterAmountChange}
           min="0"
           max="3000"
         />
+        {errors.waterAmount && (
+          <p className={styles.error}>{errors.waterAmount.message}</p>
+        )}
       </div>
       <div className={styles.btnBox}>
         <SaveButton enabled={isValid} />

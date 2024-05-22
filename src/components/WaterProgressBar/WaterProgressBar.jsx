@@ -11,12 +11,12 @@ const WaterProgressBar = () => {
   const dispatch = useDispatch();
   const water = useSelector(selectTodayWater);
   const user = useSelector(selectUser);
-  const dailyNorma = user.dailyWaterIntake;
+  const dailyNorma = user?.dailyWaterIntake || 1;
 
   useEffect(() => {
     const currentDate = dayjs().format('YYYY-MM-DD');
     dispatch(todayWater(currentDate));
-  }, [dispatch, water]);
+  }, [dispatch]);
 
   const totalConsumed = water.reduce(
     (total, record) => total + record.volume,

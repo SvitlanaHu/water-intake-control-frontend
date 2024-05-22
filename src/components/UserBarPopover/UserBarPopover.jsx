@@ -4,14 +4,13 @@ import Popover from '@mui/material/Popover';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import UserSettingsModal from '../UserSettingsModal/UserSettingsModal';
+import LogOutModal from '../LogOutModal/LogOutModal';
 import { useState } from 'react';
-
-// import UserSettingsModal from "../UserSettingsModal/UserSettingsModal";
-// import LogOutModal from "../LogOutModal/LogOutModal";
 
 // eslint-disable-next-line react/prop-types
 const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
+  const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
 
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down(376));
@@ -28,6 +27,10 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
 
   const handleSettingsClick = () => {
     setIsSettingsModalOpen(true);
+  };
+
+  const handleLogOutClick = () => {
+    setIsLogOutModalOpen(true);
   };
 
   return (
@@ -50,7 +53,7 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
         }}
       >
         <Typography className={css.typography}>
-          <div className={css.settingsCont}>
+          <span className={css.settingsCont}>
             <button
               type="button"
               onClick={() => {
@@ -67,11 +70,19 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
               </svg>
               <a className={css.popOverText1}>Setting</a>
             </button>
-          </div>
+          </span>
         </Typography>
         <Typography className={css.typographyLog}>
-          <div className={css.settingsCont}>
-            <button type="button" className={css.logBtn}>
+          <span className={css.settingsCont}>
+            <button
+              onClick={() => {
+                console.log('Logging out...');
+                handleLogOutClick();
+                handleClose();
+              }}
+              type="button"
+              className={css.logBtn}
+            >
               <svg className={css.svg}>
                 <use
                   className={css.LogIcon}
@@ -80,7 +91,7 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
               </svg>
               <a className={css.popOverText2}>LogOut</a>
             </button>
-          </div>
+          </span>
         </Typography>
       </Popover>
 
@@ -88,6 +99,12 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
         <UserSettingsModal
           open={isSettingsModalOpen}
           setActive={setIsSettingsModalOpen}
+        />
+      )}
+      {isLogOutModalOpen && (
+        <LogOutModal
+          isModalOpen={isLogOutModalOpen}
+          setIsModalOpen={setIsLogOutModalOpen}
         />
       )}
     </>
