@@ -14,6 +14,12 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
+const config = {
+  headers: {
+    'Content-Type': 'multipart/form-data'
+  }
+};
+
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
@@ -94,3 +100,17 @@ export const resetPassword = createAsyncThunk(
     }
   }
 );
+
+
+export const updateUser = createAsyncThunk('auth/updateUser', async (formData, thunkAPI) => {
+  try {
+    console.log(formData)
+    const response = await axios.patch('users/update', formData);
+    console.log(response.data)
+    return response.data
+  } catch (e) {
+    console.log(e)
+    return thunkAPI.rejectWithValue(e.message);
+  }
+
+})

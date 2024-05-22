@@ -6,8 +6,9 @@ import icons from '../../../public/symbol.svg';
 import { TextInput } from '../TextInput/TextInput';
 import { Formik, Form } from 'formik';
 import { SaveButton } from '../SaveButton/SaveButton';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
+import { updateUser } from '../../redux/auth/operations';
 
 const schema = yup.object().shape({
   name: yup
@@ -39,21 +40,36 @@ const schema = yup.object().shape({
     .required('Required!'),
 });
 
-const handleFormClick = ev => {
-  ev.preventDefault();
-  const formData = new FormData(ev.target);
-};
-
 const UserSettingsForm = () => {
   const { avatarURL } = useSelector(selectUser);
-
+  const user = useSelector(selectUser);
+  console.log(user);
   const [img, setImg] = useState(null);
-  const [gender, setGender] = useState('man');
+  const [gender, setGender] = useState('woman');
   const [weight, setWeight] = useState('');
   const [time, setTime] = useState('');
+  const dispatch = useDispatch();
 
   const onInputFileChange = ev => {
     setImg(URL.createObjectURL(ev.target.files[0]));
+  };
+
+  const handleFormSumbit = (values, actions) => {
+    const formData = new FormData();
+
+    // formData.append('avatar', img);
+    formData.append('gender', gender);
+    formData.append('nickname', values.name);
+    formData.append('email', values.email);
+    formData.append('weight', values.weight);
+    formData.append('activeTime', values.time);
+    formData.append('dailyWaterIntake', values.amountOfWater);
+    const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    formData.append('password', 'Igoresha1713');
+    formData.append('timezone', userTimeZone);
+    formData.append('subscription', 'PRO');
+    dispatch(updateUser(formData));
+    actions.resetForm();
   };
 
   const handleFormChange = ev => {
@@ -84,13 +100,11 @@ const UserSettingsForm = () => {
         weight: '',
         time: '',
       }}
+      onSubmit={handleFormSumbit}
       validationSchema={schema}
     >
       {({ dirty, isValid }) => (
-        <Form
-          onChange={ev => handleFormChange(ev)}
-          onSubmit={ev => handleFormClick(ev)}
-        >
+        <Form onChange={ev => handleFormChange(ev)}>
           <div className={css.photoContainer}>
             <img
               className={css.settingFormImg}
