@@ -1,22 +1,22 @@
 import { useState, useEffect } from 'react';
-// import styles from './Statistics.module.css';
+import styles from './Statistics.module.css';
 import { useSelector } from 'react-redux';
 import moment from 'moment-timezone';
 
-// import {
-//   LineChart,
-//   Line,
-//   XAxis,
-//   YAxis,
-//   CartesianGrid,
-//   Tooltip,
-//   Legend,
-//   ResponsiveContainer,
-// } from 'recharts';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts';
 import axios from 'axios';
 
 const Statistics = () => {
-  // const [weeklyWaterData, setWeeklyWaterData] = useState([]);
+  const [weeklyWaterData, setWeeklyWaterData] = useState([]);
   // const [loading, setLoading] = useState(true);
   // const [error, setError] = useState(null);
   const [timezone, setTimezone] = useState('');
@@ -45,7 +45,7 @@ const Statistics = () => {
         }));
         console.log('transformedData', transformedData);
         // Sorting the data by date
-        // setWeeklyWaterData(transformedData);
+        setWeeklyWaterData(transformedData);
       } catch (error) {
         // setError(error.message);
       } finally {
@@ -64,19 +64,23 @@ const Statistics = () => {
   // }
 
   return (
-    // <div className={styles.container}>
-    <h2>Статистика тут</h2>
-    //   <ResponsiveContainer width="100%" height={400}>
-    //     <LineChart data={weeklyWaterData}>
-    //       <CartesianGrid strokeDasharray="3 3" />
-    //       <XAxis dataKey="name" />
-    //       <YAxis label={{ value: 'Літри', angle: -90, position: 'insideLeft' }} />
-    //       <Tooltip />
-    //       <Legend />
-    //       <Line type="monotone" dataKey="waterConsumed" stroke="#8884d8" activeDot={{ r: 8 }} />
-    //     </LineChart>
-    //   </ResponsiveContainer>
-    // </div>
+    <div className={styles.container}>
+      <ResponsiveContainer width="100%" height={300}>
+        <LineChart data={weeklyWaterData}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis label={{ position: 'insideLeft' }} />
+          <Tooltip />
+          <Legend />
+          <Line
+            type="monotone"
+            dataKey="waterConsumed"
+            stroke="#8884d8"
+            activeDot={{ r: 8 }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 

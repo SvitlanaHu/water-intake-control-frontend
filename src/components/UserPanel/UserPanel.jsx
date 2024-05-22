@@ -12,7 +12,6 @@ const UserPanel = () => {
     <div className={css.panelCont}>
       <div className={css.text}>
         <strong className={css.greet}>
-          {' '}
           Hello<span className={css.userName}>, {userName}!</span>
         </strong>
       </div>

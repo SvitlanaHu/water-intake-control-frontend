@@ -72,14 +72,18 @@ const App = () => {
             <RestrictedRoute redirectTo="/tracker" component={SignInPage} />
           }
         />
-        {/* <Route path="/tracker" element={<TrackerPage />} /> */}
         <Route
           path="/tracker"
           element={
             <PrivateRoute redirectTo="/signin" component={TrackerPage} />
           }
         />
-        <Route path="/statistics" element={<StatisticsPage />} />
+        <Route
+          path="/statistics"
+          element={
+            <PrivateRoute redirectTo="/signin" component={StatisticsPage} />
+          }
+        />
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
       </Routes>
