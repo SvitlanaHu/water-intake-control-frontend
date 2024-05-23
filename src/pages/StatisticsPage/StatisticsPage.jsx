@@ -5,7 +5,9 @@ import styles from './StatisticsPage.module.css';
 const StatisticsPage = () => {
   return (
     <div className={styles.container}>
-      <WaterMainInfo />
+      <div className={styles.waterMainInfo}>
+        <WaterMainInfo />
+      </div>
       <WaterStatisticsInfo />
     </div>
   );

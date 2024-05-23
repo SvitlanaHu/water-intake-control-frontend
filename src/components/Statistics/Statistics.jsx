@@ -14,86 +14,124 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import axios from 'axios';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { CircularProgress, Stack } from '@mui/material';
 
 const Statistics = () => {
   const [weeklyWaterData, setWeeklyWaterData] = useState([]);
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   // const [error, setError] = useState(null);
-  const [timezone, setTimezone] = useState('');
+  const [page, setPage] = useState(0);
   const { currentMonth, currentYear } = useSelector(state => state.calendar);
   const realMonth = currentMonth + 1;
-  console.log('used Month', realMonth);
-  useEffect(() => {
-    const tz = moment.tz.guess();
-    setTimezone(tz);
-  }, []);
+  const daysPerPage = 7;
+  const navigate = useNavigate();
+  const tz = moment.tz.guess();
 
   useEffect(() => {
     const fetchWaterData = async () => {
-      if (!timezone) return;
-      console.log('timezone', timezone);
+      if (!tz) return;
+      setLoading(true);
+
+      console.log('timezone in /statistic', tz);
       try {
+        // const timezone = new Date().getTimezoneOffset();
         const response = await axios.get(
-          `https://water-intake-control-backend.onrender.com/api/water/monthly/${currentYear}/${realMonth}?timezone=${timezone}`
+          `https://water-intake-control-backend.onrender.com/api/water/monthly/${currentYear}/${realMonth}?timezone=${tz}`
         );
 
         const { records } = response.data;
-        console.log('records', records);
-        const transformedData = records.reduce((accumulator, record) => {
+
+        const daysInMonth = moment(
+          `${currentYear}-${realMonth}`,
+          'YYYY-MM'
+        ).daysInMonth();
+        const allDays = Array.from({ length: daysInMonth }, (_, i) => {
+          const dayOfMonth = i + 1;
+          const date = moment(
+            `${currentYear}-${realMonth}-${dayOfMonth}`
+          ).format('YYYY-MM-DD');
+          return { date, waterConsumed: 0 };
+        });
+
+        records.forEach(record => {
           const date = record.date.split('T')[0];
           const waterConsumed = (record.volume * 0.001).toFixed(3);
 
-          const existingRecord = accumulator.find(item => item.date === date);
+          const dayIndex = moment(date).date() - 1;
+          allDays[dayIndex].waterConsumed = (
+            parseFloat(allDays[dayIndex].waterConsumed) +
+            parseFloat(waterConsumed)
+          ).toFixed(3);
+        });
 
-          if (existingRecord) {
-            existingRecord.waterConsumed = (
-              parseFloat(existingRecord.waterConsumed) +
-              parseFloat(waterConsumed)
-            ).toFixed(3);
-          } else {
-            accumulator.push({ date, waterConsumed });
-          }
-
-          return accumulator;
-        }, []);
-
-        // Сортування за значенням date від меншого до більшого
-        transformedData.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-        console.log('transformedData', transformedData);
-        // Sorting the data by date
-        setWeeklyWaterData(transformedData);
+        setWeeklyWaterData(allDays);
+        setLoading(false);
       } catch (error) {
-        // setError(error.message);
-      } finally {
-        // setLoading(false);
+        setLoading(false);
+        if (error.message === 'Request failed with status code 401') {
+          setTimeout(() => {
+            window.location.reload();
+          }, 100);
+          navigate('/signin');
+        }
+        toast.error('Error fetching water data:', error);
       }
     };
     fetchWaterData();
-  }, [currentYear, realMonth, timezone]);
-  console.log('weeklyWaterData', weeklyWaterData);
+  }, [currentYear, realMonth, navigate]);
 
-  // if (loading) {
-  //   return <div>Loading...</div>; // Рендеримо щось поки дані завантажуються
-  // }
+  useEffect(() => {
+    //Скидуєм число на 0, коли переключається місяць
+    setPage(0);
+  }, [currentMonth]);
 
+  // Контроль сторінок пагінації
+  const handlePrevPage = () => {
+    if (page > 0) setPage(page - 1);
+  };
+
+  const handleNextPage = () => {
+    if ((page + 1) * daysPerPage < weeklyWaterData.length) {
+      setPage(page + 1);
+    }
+  };
+
+  //Отримуєм дані з поточної сторінки пагінації
+  const currentPageData = weeklyWaterData.slice(
+    page * daysPerPage,
+    (page + 1) * daysPerPage
+  );
+
+  const CustomLegend = () => null;
+  if (loading) {
+    return (
+      <div className={styles.loaderContainer}>
+        <Stack justifyContent="center" alignItems="center" height="100%">
+          <CircularProgress sx={{ color: '#9BE1A0' }} />
+        </Stack>
+      </div>
+    );
+  }
   // if (error) {
   //   return <div>Error: {error}</div>; // Рендеримо повідомлення про помилку, якщо є
   // }
-
   return (
     <div className={styles.container}>
       <ResponsiveContainer width="100%" height={300}>
-        <AreaChart data={weeklyWaterData}>
+        <AreaChart data={currentPageData}>
           <defs>
             <linearGradient id="colorWater" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#9be1a0" stopOpacity={1} />
               <stop offset="100%" stopColor="#f0eff4" stopOpacity={0.8} />
             </linearGradient>
-          </defs>  
+          </defs>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date"
-            tickFormatter={(tick) => moment(tick).format('DD')}
+          <XAxis
+            dataKey="date"
+            tickFormatter={tick => moment(tick).format('D')}
+            interval={0}
             tick={{ fontSize: 12 }}
             axisLine={false}
             tickLine={false}
@@ -107,9 +145,9 @@ const Statistics = () => {
             tickLine={false}
           />
           <Tooltip formatter={value => [`${value * 1000} ml`]} />
-          <Legend />
+          <Legend content={<CustomLegend />} />
           <Area
-            type="monotone" 
+            type="monotone"
             fill="url(#colorWater)"
             dataKey="waterConsumed"
             stroke="#9be1a0"
@@ -119,6 +157,17 @@ const Statistics = () => {
           />
         </AreaChart>
       </ResponsiveContainer>
+      <div className={styles.pagination}>
+        <button onClick={handlePrevPage} disabled={page === 0}>
+          Previous week
+        </button>
+        <button
+          onClick={handleNextPage}
+          disabled={(page + 1) * daysPerPage >= weeklyWaterData.length}
+        >
+          Next week
+        </button>
+      </div>
     </div>
   );
 };

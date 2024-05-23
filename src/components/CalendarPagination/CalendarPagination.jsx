@@ -4,14 +4,22 @@ import { useSelector, useDispatch } from 'react-redux';
 import { previousMonth, nextMonth } from '../../redux/calendarSlice';
 import { getMonthlyWater } from '../../redux/Water/operations';
 import { useEffect } from 'react';
+import moment from 'moment-timezone';
 
 const CalendarPagination = () => {
   const dispatch = useDispatch();
   const { currentMonth, currentYear } = useSelector(state => state.calendar);
-
+  const tz = moment.tz.guess();
+  console.log('timezone in tracker', tz);
   useEffect(() => {
-    dispatch(getMonthlyWater({ year: currentYear, month: currentMonth + 1 }));
-  }, [dispatch, currentMonth, currentYear]);
+    dispatch(
+      getMonthlyWater({
+        year: currentYear,
+        month: currentMonth + 1,
+        timezone: tz,
+      })
+    );
+  }, [dispatch, currentMonth, currentYear, tz]);
 
   const handlePreviousMonth = () => {
     dispatch(previousMonth());
