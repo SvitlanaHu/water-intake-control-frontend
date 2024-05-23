@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
+import { useState } from 'react';
 import css from './UserBar.module.css';
 import Button from '@mui/material/Button';
-import { useState } from 'react';
 import UserBarPopover from '../UserBarPopover/UserBarPopover';
 
 const UserBar = ({ userName, avatar }) => {
@@ -50,6 +51,11 @@ const UserBar = ({ userName, avatar }) => {
       />
     </div>
   );
+};
+
+UserBar.propTypes = {
+  userName: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
 };
 
 export default UserBar;
