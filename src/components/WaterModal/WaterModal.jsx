@@ -1,15 +1,12 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 // import styles from './WaterModal.module.css';
 import WaterForm from '../WaterForm/WaterForm.jsx';
-// import { useState } from 'react';
 import { Modal } from '../Modal/Modal.jsx';
-import PropTypes from 'prop-types';
 
 const WaterModal = ({
   operationType,
   isModalOpen,
   setIsModalOpen,
-  handleOpenModal,
   id,
   waterData,
 }) => {
@@ -42,10 +39,11 @@ const WaterModal = ({
   //   setIsModalOpen(true);
   // };
 
-  const handleFormSubmit = formData => {
-    console.log('Form Data Submitted:', formData);
-    setIsModalOpen(false);
-  };
+  // const handleFormSubmit = formData => {
+  //   console.log('Form Data Submitted:', formData);
+  //   setIsModalOpen(false);
+  // };
+
   return (
     <>
       {isModalOpen && (
@@ -56,8 +54,14 @@ const WaterModal = ({
     </>
   );
 };
+
 WaterModal.propTypes = {
   operationType: PropTypes.oneOf(['add', 'edit']).isRequired,
+  isModalOpen: PropTypes.bool.isRequired,
+  setIsModalOpen: PropTypes.func.isRequired,
+  handleOpenModal: PropTypes.func,
+  id: PropTypes.string,
+  waterData: PropTypes.object,
 };
 
 export default WaterModal;
