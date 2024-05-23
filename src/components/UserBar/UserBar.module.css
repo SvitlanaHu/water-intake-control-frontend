@@ -64,6 +64,8 @@
   width: 38px;
   height: 38px;
   border-radius: 16px;
+  object-fit: cover;
+  object-position: center;
 }
 
 @media only screen and (min-width: 768px) {

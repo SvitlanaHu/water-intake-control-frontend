@@ -88,7 +88,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(updateUser.pending, (state) => {
+      .addCase(updateUser.pending, state => {
         state.isLoading = true;
         state.error = null;
         state.message = null;
@@ -101,7 +101,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(updateAvatar.pending, (state) => {
+      .addCase(updateAvatar.pending, state => {
         state.isLoading = true;
         state.error = null;
         state.message = null;
@@ -109,8 +109,11 @@ const authSlice = createSlice({
       .addCase(updateAvatar.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = { ...state.user, ...action.payload };
+      })
+      .addCase(updateAvatar.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       });
-
   },
 });
 

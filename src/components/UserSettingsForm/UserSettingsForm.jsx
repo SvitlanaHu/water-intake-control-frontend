@@ -95,6 +95,7 @@ const UserSettingsForm = () => {
     if (file) {
       const avatarFormData = new FormData();
       avatarFormData.append('avatar', file);
+
       dispatch(updateAvatar(avatarFormData))
         .unwrap()
         .then(() => {
