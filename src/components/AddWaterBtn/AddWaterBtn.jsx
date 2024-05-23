@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import css from './AddWaterBtn.module.css';
 // import WaterModal from "../WaterModal/WaterModal";
 
@@ -10,6 +11,10 @@ const AddWaterBtn = ({ handleOpenModal }) => {
       <a className={css.btnText}>Add water</a>
     </button>
   );
+};
+
+AddWaterBtn.propTypes = {
+  handleOpenModal: PropTypes.func.isRequired,
 };
 
 export default AddWaterBtn;
