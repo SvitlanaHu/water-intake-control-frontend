@@ -119,7 +119,6 @@ export const updateUser = createAsyncThunk('auth/updateUser', async (values, thu
     const response = await axios.patch('users/update', values);
     return response.data
   } catch (e) {
-    console.log(e)
     return thunkAPI.rejectWithValue(e.message);
   }
 
@@ -134,10 +133,9 @@ export const updateAvatar = createAsyncThunk('auth/updateAvatar', async (avatarF
         'Content-Type': 'multipart/form-data',
       },
     });
-    console.log(response)
     return response.data
   } catch (e) {
-    console.log(e)
+
     return thunkAPI.rejectWithValue(e.message);
   }
 

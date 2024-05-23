@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
 import css from './TextInput.module.css';
-// import { useFormContext } from 'react-hook-form';
 
 export const TextInput = ({
   children,
   id,
-  type,
-  forLabel,
-  placeholder,
+  type = 'text',
+  forLabel = '',
+  placeholder = '',
   name,
   register,
 }) => {
@@ -30,17 +29,11 @@ export const TextInput = ({
 };
 
 TextInput.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   id: PropTypes.string.isRequired,
   type: PropTypes.string,
   forLabel: PropTypes.string,
   placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
   register: PropTypes.func.isRequired,
-};
-
-TextInput.defaultProps = {
-  type: 'text',
-  forLabel: '',
-  placeholder: '',
 };
