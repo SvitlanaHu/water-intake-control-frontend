@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import { Modal } from '../Modal/Modal';
 import UserSettingsForm from '../UserSettingsForm/UserSettingsForm';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 const UserSettingsModal = ({ open, setActive }) => {
   return (
@@ -16,4 +17,10 @@ const UserSettingsModal = ({ open, setActive }) => {
     </>
   );
 };
+
+UserSettingsModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  setActive: PropTypes.func.isRequired,
+};
+
 export default UserSettingsModal;
