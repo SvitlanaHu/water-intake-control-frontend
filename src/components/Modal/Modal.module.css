@@ -78,6 +78,11 @@
   height: 24px;
 }
 
+.closeButton:focus {
+  outline: none;
+  border: none;
+}
+
 @media (min-width: 768px) {
   .modalWrapper {
     max-width: 648px;
