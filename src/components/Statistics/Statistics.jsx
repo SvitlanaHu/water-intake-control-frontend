@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import styles from './Statistics.module.css';
 import { useSelector } from 'react-redux';
 import moment from 'moment-timezone';
@@ -27,7 +27,7 @@ const Statistics = () => {
   const realMonth = currentMonth + 1;
   const daysPerPage = 7;
   const navigate = useNavigate();
-  const tz = moment.tz.guess();
+  const tz = useMemo(() => moment.tz.guess(), []);
 
   useEffect(() => {
     const fetchWaterData = async () => {
@@ -80,7 +80,7 @@ const Statistics = () => {
       }
     };
     fetchWaterData();
-  }, [currentYear, realMonth, navigate]);
+  }, [currentYear, realMonth, tz, navigate]);
 
   useEffect(() => {
     //Скидуєм число на 0, коли переключається місяць
