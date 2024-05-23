@@ -1,4 +1,4 @@
-import * as yup from 'yup';
+// import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -18,7 +18,7 @@ import { SaveButton } from '../SaveButton/SaveButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
 import { updateAvatar } from '../../redux/auth/operations';
-import { closeSettingModal } from '../../redux/SettingModal/SettingModalSlice';
+// import { closeSettingModal } from '../../redux/SettingModal/SettingModalSlice';
 
 const UserSettingsForm = () => {
   const {
@@ -57,7 +57,7 @@ const UserSettingsForm = () => {
   const [gender, setGender] = useState(userGender);
   const [weight, setWeight] = useState('');
   const [time, setTime] = useState('');
-  const obj = {};
+  // const obj = {};
   const onInputFileChange = ev => {
     setImg(URL.createObjectURL(ev.target.files[0]));
     setFile(ev.target.files[0]);
