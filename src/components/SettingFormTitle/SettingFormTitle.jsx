@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import css from './SettingFormTitle.module.css';
 
 export const SettingFormTitle = ({ children, margin }) => {
@@ -11,4 +12,13 @@ export const SettingFormTitle = ({ children, margin }) => {
       {children}
     </h3>
   );
+};
+
+SettingFormTitle.propTypes = {
+  children: PropTypes.node.isRequired,
+  margin: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
+
+SettingFormTitle.defaultProps = {
+  margin: '0',
 };
