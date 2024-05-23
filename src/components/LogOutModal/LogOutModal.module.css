@@ -42,7 +42,7 @@
   border: none;
   letter-spacing: -0.14px;
   text-align: center;
-
+  width: 100%;
 }
 
 .cancelBtn {
@@ -94,12 +94,16 @@
   }
 
   .logOutBtn {
-    padding: 18px 59px;
+    padding: 18px;
     font-size: 16px;
+    width: 0;
+    min-width: 173px;
+    height: 60px;
   }
 
   .cancelBtn {
-    padding: 18px 59px;
+    padding: 18px;
     font-size: 16px;
+    min-width: 176px;
   }
 }
