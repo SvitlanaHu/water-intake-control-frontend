@@ -29,6 +29,7 @@ const UserSettingsForm = () => {
     dailyWaterIntake,
     gender: userGender,
     email: userEmail,
+    activeTime,
   } = useSelector(selectUser);
 
   const dispatch = useDispatch();
@@ -41,7 +42,8 @@ const UserSettingsForm = () => {
     userWeight,
     dailyWaterIntake,
     userGender,
-    avatarURL
+    avatarURL,
+    activeTime
   );
 
   const {
@@ -50,6 +52,7 @@ const UserSettingsForm = () => {
     watch,
     formState: { isDirty, errors },
     getValues,
+    setValue,
   } = useForm({
     mode: 'onChange',
     resolver: yupResolver(schema),
@@ -62,8 +65,12 @@ const UserSettingsForm = () => {
   const [time, setTime] = useState('');
   const gender = watch('gender');
   const onInputFileChange = ev => {
-    setImg(URL.createObjectURL(ev.target.files[0]));
-    setFile(ev.target.files[0]);
+    const file = ev.target.files[0];
+    const imageUrl = URL.createObjectURL(file);
+
+    setImg(imageUrl);
+    setFile(file);
+    setValue('photo', imageUrl);
   };
 
   const isFormChange = getIsFormChanged(getValues, defaultValues);
@@ -77,7 +84,7 @@ const UserSettingsForm = () => {
     if (newWeight != userWeight) {
       formData.append('weight', newWeight);
     }
-    if (time) formData.append('activeTime', time);
+    if (time != activeTime) formData.append('activeTime', time);
     if (amountOfWater.toString() != dailyWaterIntake / 1000) {
       formData.append('dailyWaterIntake', amountOfWater * 1000);
     }
@@ -128,6 +135,7 @@ const UserSettingsForm = () => {
           </svg>
           Upload a photo
           <input
+            {...register('photo')}
             onChange={ev => onInputFileChange(ev)}
             type="file"
             name="photo"
@@ -242,11 +250,9 @@ const UserSettingsForm = () => {
               The required amount of water in liters per day:
             </p>
             <p className={css.amountOfWater}>
-              {!isDirty ||
-              amountOfWaterFormula === 0 ||
-              isNaN(amountOfWaterFormula)
-                ? '1.8 L'
-                : amountOfWaterFormula.toFixed(1)}
+              {weight != 0 && time != 0 && weight !== '' && time !== ''
+                ? amountOfWaterFormula.toFixed(1)
+                : '1.8 L'}
             </p>
           </div>
           <TextInput
@@ -267,7 +273,7 @@ const UserSettingsForm = () => {
       <SaveButton
         margin="40"
         enabled={
-          file || isDirty || (Object.keys(errors).length === 0 && isFormChange)
+          (file || isDirty) && Object.keys(errors).length === 0 && isFormChange
         }
       />
     </form>
