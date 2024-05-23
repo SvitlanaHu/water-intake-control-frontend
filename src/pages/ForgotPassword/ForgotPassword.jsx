@@ -3,7 +3,7 @@ import { Box, Button, TextField, Typography } from '@mui/material';
 import { useTheme } from '../../ThemeContext';
 import { useState } from 'react';
 import { sendResetEmail } from '../../redux/auth/operations';
-import styles from './ForgotPassword.module.css';
+// import styles from './ForgotPassword.module.css';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');

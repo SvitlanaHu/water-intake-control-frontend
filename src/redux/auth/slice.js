@@ -8,7 +8,7 @@ import {
   resetPassword,
   verifyPageAction,
   updateUser,
-  updateAvatar
+  // updateAvatar
 } from './operations';
 
 const authSlice = createSlice({
