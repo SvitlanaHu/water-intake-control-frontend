@@ -77,7 +77,7 @@ const UserSettingsForm = () => {
       (dailyWaterIntake >= 1000 && amountOfWater != dailyWaterIntake / 1000) ||
       amountOfWater != dailyWaterIntake
     ) {
-      formData.append('dailyWaterIntake', amountOfWater);
+      formData.append('dailyWaterIntake', amountOfWater * 1000);
     }
 
     const obj = {};
