@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import css from './ModalTitle.module.css';
 
 export const ModalTitle = ({ children, margin }) => {
@@ -6,4 +7,9 @@ export const ModalTitle = ({ children, margin }) => {
       {children}
     </h3>
   );
+};
+
+ModalTitle.propTypes = {
+  children: PropTypes.node.isRequired,
+  margin: PropTypes.number.isRequired,
 };
