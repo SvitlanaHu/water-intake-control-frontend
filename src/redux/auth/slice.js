@@ -8,8 +8,7 @@ import {
   resetPassword,
   verifyPageAction,
   updateUser,
-  updateAvatar,
-  // updateAvatar
+  updateAvatar
 } from './operations';
 
 const authSlice = createSlice({
@@ -96,7 +95,7 @@ const authSlice = createSlice({
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = { ...state.user, ...action.payload };
+        state.user = { ...state.user, ...action.payload.user };
       })
       .addCase(updateUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -109,8 +108,7 @@ const authSlice = createSlice({
       })
       .addCase(updateAvatar.fulfilled, (state, action) => {
         state.isLoading = false;
-        // Оновлюємо URL аватару користувача у стані
-        state.user = { ...state.user, avatarURL: action.payload.avatarURL };
+        state.user = { ...state.user, ...action.payload };
       })
       .addCase(updateAvatar.rejected, (state, action) => {
         state.isLoading = false;

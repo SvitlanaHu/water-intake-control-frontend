@@ -28,7 +28,6 @@ export const schema = yup.object().shape({
 });
 
 export const handleUpdateUser = (dispatch, obj) => {
-    console.log(obj)
     return dispatch(updateUser(obj))
         .unwrap()
         .then(() => {
@@ -60,14 +59,15 @@ export const handleFormChange = (ev, setWeight, setTime) => {
 
 
 
-export const getDefaultValues = (nickname, userEmail, userWeight, dailyWaterIntake) => {
+export const getDefaultValues = (nickname, userEmail, userWeight, dailyWaterIntake, userGender, avatarURL) => {
     const defaultValues = {
+        gender: userGender,
         name: nickname,
         email: userEmail,
         weight: userWeight.toString(),
         time: '',
         amountOfWater: dailyWaterIntake > 1000 ? (dailyWaterIntake / 1000).toString() : dailyWaterIntake.toString(),
-        photo: null,
+        photo: avatarURL,
     };
 
     return defaultValues;
@@ -77,6 +77,7 @@ export const getDefaultValues = (nickname, userEmail, userWeight, dailyWaterInta
 export const getIsFormChanged = (getValues, defaultValues) => {
 
     const currentValues = getValues();
+
 
     const isFormChanged =
         JSON.stringify(defaultValues) !== JSON.stringify(currentValues);

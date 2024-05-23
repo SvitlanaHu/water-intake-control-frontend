@@ -8,4 +8,6 @@ export const selectIsRefreshing = state => state.auth.isRefreshing;
 
 export const selectToken = state => state.auth.token;
 
-export const selectAvatarURL = state => state.auth.user.avatarURL;
+
+
+export const selectIsLoading = state => state.auth.isLoading;

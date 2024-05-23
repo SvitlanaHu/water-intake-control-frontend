@@ -1,6 +1,8 @@
-// import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
+import RefreshLoader from '../RefreshLoader/RefreshLoader';
+
 import {
   schema,
   handleUpdateUser,
@@ -15,9 +17,9 @@ import icons from '../../../public/symbol.svg';
 import { TextInput } from '../TextInput/TextInput';
 import { SaveButton } from '../SaveButton/SaveButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectors';
+import { selectIsLoading, selectUser } from '../../redux/auth/selectors';
 import { updateAvatar } from '../../redux/auth/operations';
-// import { closeSettingModal } from '../../redux/SettingModal/SettingModalSlice';
+import { closeSettingModal } from '../../redux/SettingModal/SettingModalSlice';
 
 const UserSettingsForm = () => {
   const {
@@ -29,13 +31,18 @@ const UserSettingsForm = () => {
     email: userEmail,
   } = useSelector(selectUser);
 
+  const dispatch = useDispatch();
+
+  const isLoading = useSelector(selectIsLoading);
+
   const defaultValues = getDefaultValues(
     nickname,
     userEmail,
     userWeight,
-    dailyWaterIntake
+    dailyWaterIntake,
+    userGender,
+    avatarURL
   );
-  const dispatch = useDispatch();
 
   const {
     register,
@@ -46,21 +53,20 @@ const UserSettingsForm = () => {
   } = useForm({
     mode: 'onChange',
     resolver: yupResolver(schema),
-    defaultValues: defaultValues,
+    defaultValues: { ...defaultValues, gender: userGender },
   });
-
-  const isFormChange = getIsFormChanged(getValues, defaultValues);
 
   const [img, setImg] = useState(null);
   const [file, setFile] = useState(null);
-  const [gender, setGender] = useState(userGender);
   const [weight, setWeight] = useState('');
   const [time, setTime] = useState('');
-  // const obj = {};
+  const gender = watch('gender');
   const onInputFileChange = ev => {
     setImg(URL.createObjectURL(ev.target.files[0]));
     setFile(ev.target.files[0]);
   };
+
+  const isFormChange = getIsFormChanged(getValues, defaultValues);
 
   const onSubmit = data => {
     const { name, email, weight: newWeight, time, amountOfWater } = data;
@@ -72,10 +78,7 @@ const UserSettingsForm = () => {
       formData.append('weight', newWeight);
     }
     if (time) formData.append('activeTime', time);
-    if (
-      (dailyWaterIntake >= 1000 && amountOfWater != dailyWaterIntake / 1000) ||
-      amountOfWater != dailyWaterIntake
-    ) {
+    if (amountOfWater.toString() != dailyWaterIntake / 1000) {
       formData.append('dailyWaterIntake', amountOfWater * 1000);
     }
 
@@ -92,11 +95,16 @@ const UserSettingsForm = () => {
     if (file) {
       const avatarFormData = new FormData();
       avatarFormData.append('avatar', file);
-      dispatch(updateAvatar(avatarFormData));
+
+      dispatch(updateAvatar(avatarFormData))
+        .unwrap()
+        .then(() => {
+          toast.success('Your avatar has been successfully updated!');
+          dispatch(closeSettingModal());
+        });
     }
   };
 
-  console.log(isFormChange);
   const amountOfWaterFormula =
     gender === 'woman'
       ? weight * 0.03 + time * 0.4
@@ -107,6 +115,7 @@ const UserSettingsForm = () => {
       onChange={ev => handleFormChange(ev, setWeight, setTime)}
       onSubmit={handleSubmit(onSubmit)}
     >
+      {isLoading && <RefreshLoader />}
       <div className={css.photoContainer}>
         <img
           className={css.settingFormImg}
@@ -132,7 +141,7 @@ const UserSettingsForm = () => {
 
       <label className={css.radioLabel}>
         <input
-          onChange={() => setGender('woman')}
+          {...register('gender')}
           className={css.radioInput}
           type="radio"
           name="gender"
@@ -143,7 +152,7 @@ const UserSettingsForm = () => {
       </label>
       <label className={css.radioLabel}>
         <input
-          onChange={() => setGender('man')}
+          {...register('gender')}
           className={css.radioInput}
           type="radio"
           name="gender"
@@ -258,7 +267,7 @@ const UserSettingsForm = () => {
       <SaveButton
         margin="40"
         enabled={
-          img !== null || (Object.keys(errors).length === 0 && isFormChange)
+          file || isDirty || (Object.keys(errors).length === 0 && isFormChange)
         }
       />
     </form>
