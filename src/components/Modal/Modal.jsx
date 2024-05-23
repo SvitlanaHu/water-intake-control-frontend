@@ -36,18 +36,13 @@ export const Modal = ({
   const dispatch = useDispatch();
 
   const handleCloseModal = () => {
+    dispatch(closeSettingModal());
     setActive(false);
   };
 
   if (active) {
     return (
-      <div
-        className={styles.modalBackdrop}
-        onClick={() => {
-          () => setActive(false);
-          dispatch(closeSettingModal());
-        }}
-      >
+      <div className={styles.modalBackdrop} onClick={handleCloseModal}>
         <div
           className={
             isSettingModal ? styles.modalWrapper : styles.modalsWrapper
@@ -56,13 +51,7 @@ export const Modal = ({
         >
           <ModalTitle margin="20">{title}</ModalTitle>
           {children}
-          <button
-            className={styles.closeButton}
-            onClick={() => {
-              handleCloseModal;
-              dispatch(closeSettingModal());
-            }}
-          >
+          <button className={styles.closeButton} onClick={handleCloseModal}>
             <svg className={styles.closeIcon}>
               <use href={`${symbol}#icon-x`}></use>
             </svg>
