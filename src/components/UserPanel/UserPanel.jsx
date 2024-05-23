@@ -1,12 +1,12 @@
 import css from './UserPanel.module.css';
 import UserBar from '../UserBar/UserBar';
-import { selectAvatarURL, selectUser } from '../../redux/auth/selectors';
+import { selectUser } from '../../redux/auth/selectors';
 import { useSelector } from 'react-redux';
 
 const UserPanel = () => {
   const user = useSelector(selectUser);
   const userName = user.nickname;
-  const avatar = useSelector(selectAvatarURL);
+  const avatarURL = user.avatarURL;
 
   return (
     <div className={css.panelCont}>
@@ -15,7 +15,7 @@ const UserPanel = () => {
           Hello<span className={css.userName}>, {userName}!</span>
         </strong>
       </div>
-      <UserBar userName={userName} avatar={avatar} />
+      <UserBar userName={userName} avatar={avatarURL} />
     </div>
   );
 };
