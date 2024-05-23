@@ -19,7 +19,6 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down(376));
   const isMediumScreen = useMediaQuery(theme.breakpoints.up(768));
-  console.log(isSettingModalOpen);
   const getWidth = () => {
     if (isSmallScreen) {
       return 137;

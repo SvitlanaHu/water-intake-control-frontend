@@ -79,21 +79,24 @@
 
 .radioInput {
   appearance: none;
-  position: relative;
   margin: 0;
   font-weight: 400;
   line-height: 1.3;
   font-family: var(--font-family);
+  position: relative;
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
 }
 
 .radioInput::before {
   content: '';
   display: inline-block;
-  width: 20px;
-  height: 20px;
   border: 2px solid var(--mint);
   border-radius: 50%;
-  margin-right: 10px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .radioInput:checked::after {
@@ -106,7 +109,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-105%, -70%);
+  transform: translate(-50%, -50%);
 }
 
 .radioLabelContainer {

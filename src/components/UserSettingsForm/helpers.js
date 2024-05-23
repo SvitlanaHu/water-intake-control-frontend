@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 import { updateUser } from '../../redux/auth/operations';
 import toast from 'react-hot-toast';
+import { closeSettingModal } from '../../redux/SettingModal/SettingModalSlice';
 
 
 export const schema = yup.object().shape({
@@ -27,9 +28,11 @@ export const schema = yup.object().shape({
 });
 
 export const handleUpdateUser = (dispatch, obj) => {
+    console.log(obj)
     return dispatch(updateUser(obj))
         .unwrap()
         .then(() => {
+            dispatch(closeSettingModal())
             toast.success('Your data has been successfully updated!');
         })
         .catch(error => {
@@ -54,3 +57,29 @@ export const handleFormChange = (ev, setWeight, setTime) => {
             break;
     }
 };
+
+
+
+export const getDefaultValues = (nickname, userEmail, userWeight, dailyWaterIntake) => {
+    const defaultValues = {
+        name: nickname,
+        email: userEmail,
+        weight: userWeight.toString(),
+        time: '',
+        amountOfWater: dailyWaterIntake > 1000 ? (dailyWaterIntake / 1000).toString() : dailyWaterIntake.toString(),
+        photo: null,
+    };
+
+    return defaultValues;
+};
+
+
+export const getIsFormChanged = (getValues, defaultValues) => {
+
+    const currentValues = getValues();
+
+    const isFormChanged =
+        JSON.stringify(defaultValues) !== JSON.stringify(currentValues);
+    return isFormChanged
+
+}
