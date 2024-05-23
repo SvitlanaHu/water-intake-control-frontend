@@ -1,7 +1,6 @@
 // import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
-import toast from 'react-hot-toast';
 import {
   schema,
   handleUpdateUser,
@@ -93,11 +92,7 @@ const UserSettingsForm = () => {
     if (file) {
       const avatarFormData = new FormData();
       avatarFormData.append('avatar', file);
-      dispatch(updateAvatar(avatarFormData))
-        .unwrap()
-        .then(() => {
-          toast.success('Your avatar has been successfully updated!');
-        });
+      dispatch(updateAvatar(avatarFormData));
     }
   };
 
@@ -263,7 +258,7 @@ const UserSettingsForm = () => {
       <SaveButton
         margin="40"
         enabled={
-          (file || isDirty) && Object.keys(errors).length === 0 && isFormChange
+          img !== null || (Object.keys(errors).length === 0 && isFormChange)
         }
       />
     </form>
