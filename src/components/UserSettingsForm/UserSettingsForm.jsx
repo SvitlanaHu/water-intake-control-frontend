@@ -2,17 +2,23 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { schema, handleUpdateUser, handleFormChange } from './helpers';
+import {
+  schema,
+  handleUpdateUser,
+  handleFormChange,
+  getDefaultValues,
+  getIsFormChanged,
+} from './helpers';
 import { useForm } from 'react-hook-form';
 import { SettingFormTitle } from '../SettingFormTitle/SettingFormTitle';
 import css from './UserSettingsForm.module.css';
 import icons from '../../../public/symbol.svg';
 import { TextInput } from '../TextInput/TextInput';
-
 import { SaveButton } from '../SaveButton/SaveButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
-import { updateAvatar, updateUser } from '../../redux/auth/operations';
+import { updateAvatar } from '../../redux/auth/operations';
+import { closeSettingModal } from '../../redux/SettingModal/SettingModalSlice';
 
 const UserSettingsForm = () => {
   const {
@@ -24,30 +30,34 @@ const UserSettingsForm = () => {
     email: userEmail,
   } = useSelector(selectUser);
 
+  const defaultValues = getDefaultValues(
+    nickname,
+    userEmail,
+    userWeight,
+    dailyWaterIntake
+  );
   const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
+    watch,
     formState: { isDirty, errors },
+    getValues,
   } = useForm({
     mode: 'onChange',
     resolver: yupResolver(schema),
-    defaultValues: {
-      name: nickname,
-      email: userEmail,
-      weight: userWeight,
-      time: '',
-      amountOfWater:
-        dailyWaterIntake > 1000 ? dailyWaterIntake / 1000 : dailyWaterIntake,
-      photo: null,
-    },
+    defaultValues: defaultValues,
   });
+
+  const isFormChange = getIsFormChanged(getValues, defaultValues);
+
   const [img, setImg] = useState(null);
   const [file, setFile] = useState(null);
   const [gender, setGender] = useState(userGender);
   const [weight, setWeight] = useState('');
   const [time, setTime] = useState('');
-
+  const obj = {};
   const onInputFileChange = ev => {
     setImg(URL.createObjectURL(ev.target.files[0]));
     setFile(ev.target.files[0]);
@@ -56,7 +66,6 @@ const UserSettingsForm = () => {
   const onSubmit = data => {
     const { name, email, weight: newWeight, time, amountOfWater } = data;
     const formData = new FormData();
-
     if (gender !== userGender) formData.append('gender', gender);
     if (name !== nickname) formData.append('nickname', name);
     if (email !== userEmail) formData.append('email', email);
@@ -64,7 +73,10 @@ const UserSettingsForm = () => {
       formData.append('weight', newWeight);
     }
     if (time) formData.append('activeTime', time);
-    if (amountOfWater != dailyWaterIntake && dailyWaterIntake < 1000) {
+    if (
+      (dailyWaterIntake >= 1000 && amountOfWater != dailyWaterIntake / 1000) ||
+      amountOfWater != dailyWaterIntake
+    ) {
       formData.append('dailyWaterIntake', amountOfWater);
     }
 
@@ -75,7 +87,7 @@ const UserSettingsForm = () => {
     });
 
     if (Object.keys(obj).length !== 0) {
-      handleUpdateUser(dispatch, obj);
+      handleUpdateUser(dispatch, obj, watch, getValues);
     }
 
     if (file) {
@@ -89,6 +101,7 @@ const UserSettingsForm = () => {
     }
   };
 
+  console.log(isFormChange);
   const amountOfWaterFormula =
     gender === 'woman'
       ? weight * 0.03 + time * 0.4
@@ -249,7 +262,9 @@ const UserSettingsForm = () => {
       </div>
       <SaveButton
         margin="40"
-        enabled={(file || isDirty) && Object.keys(errors).length === 0}
+        enabled={
+          (file || isDirty) && Object.keys(errors).length === 0 && isFormChange
+        }
       />
     </form>
   );
