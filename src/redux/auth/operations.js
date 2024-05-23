@@ -14,11 +14,11 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-const config = {
-  headers: {
-    'Content-Type': 'multipart/form-data'
-  }
-};
+// const config = {
+//   headers: {
+//     'Content-Type': 'multipart/form-data'
+//   }
+// };
 
 export const register = createAsyncThunk(
   'auth/register',
