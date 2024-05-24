@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import css from './AddWaterBtn.module.css';
-// import WaterModal from "../WaterModal/WaterModal";
 
 const AddWaterBtn = ({ handleOpenModal }) => {
   return (

@@ -85,7 +85,6 @@ export default function SignInForm() {
         toast.success('Login success');
       })
       .catch(error => {
-        console.log('status', error);
         if (error === 'Request failed with status code 403') {
           navigate('/confirm-email');
           toast.error('Please verify your email');

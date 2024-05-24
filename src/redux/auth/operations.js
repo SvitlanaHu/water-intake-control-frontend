@@ -1,24 +1,19 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { jwtDecode } from 'jwt-decode';
 
 axios.defaults.baseURL =
   'https://water-intake-control-backend.onrender.com/api';
-// axios.defaults.baseURL = 'http://localhost:3005/api';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  // axios.defaults.headers.common.RefreshToken = refreshToken;
 };
 
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-// const config = {
-//   headers: {
-//     'Content-Type': 'multipart/form-data'
-//   }
-// };
+const decodeToken = token => jwtDecode(token);
 
 export const register = createAsyncThunk(
   'auth/register',
@@ -48,10 +43,7 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('/users/login', credentials);
-      setAuthHeader(
-        res.data.token
-        // refreshToken: res.data.refreshToken,
-      );
+      setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -70,17 +62,38 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
-  async ({ token } = {}, thunkAPI) => {
+  async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const persistedToken = state.auth.token || token;
-    if (persistedToken === null) {
-      return thunkAPI.rejectWithValue('Unable to fetch user');
+    let persistedToken = state.auth.token;
+    const persistedRefreshToken = state.auth.refreshToken;
+
+    if (!persistedToken || !persistedRefreshToken) {
+      return thunkAPI.rejectWithValue('No token available');
     }
 
     try {
-      setAuthHeader(persistedToken);
-      const res = await axios.get('/users/current');
-      return res.data;
+      // Перевіряємо час закінчення токену і оновлюємо його лише якщо він не дійсний
+      const tokenExpirationTime = decodeToken(persistedToken).exp;
+      const currentTime = Math.floor(Date.now() / 1000);
+
+      if (tokenExpirationTime <= currentTime) {
+        const res = await axios.post('/users/refresh-tokens', {
+          refreshToken: persistedRefreshToken,
+        });
+        setAuthHeader(res.data.token);
+        persistedToken = res.data.token;
+      } else {
+        setAuthHeader(persistedToken);
+      }
+
+      // Виконуємо запит на отримання поточного користувача
+      const userResponse = await axios.get('/users/current');
+
+      return {
+        user: userResponse.data,
+        token: persistedToken,
+        refreshToken: persistedRefreshToken,
+      };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -113,30 +126,30 @@ export const resetPassword = createAsyncThunk(
   }
 );
 
-
-export const updateUser = createAsyncThunk('auth/updateUser', async (values, thunkAPI) => {
-  try {
-    const response = await axios.patch('users/update', values);
-    return response.data
-  } catch (e) {
-    return thunkAPI.rejectWithValue(e.message);
+export const updateUser = createAsyncThunk(
+  'auth/updateUser',
+  async (values, thunkAPI) => {
+    try {
+      const response = await axios.patch('users/update', values);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
   }
+);
 
-})
-
-
-
-export const updateAvatar = createAsyncThunk('auth/updateAvatar', async (avatarFormData, thunkAPI) => {
-  try {
-    const response = await axios.patch('users/avatars', avatarFormData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-    return response.data
-  } catch (e) {
-
-    return thunkAPI.rejectWithValue(e.message);
+export const updateAvatar = createAsyncThunk(
+  'auth/updateAvatar',
+  async (avatarFormData, thunkAPI) => {
+    try {
+      const response = await axios.patch('users/avatars', avatarFormData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
   }
-
-})
+);

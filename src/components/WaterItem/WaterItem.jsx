@@ -1,7 +1,5 @@
 /* eslint-disable react/prop-types */
 import css from './WaterItem.module.css';
-// import WaterModal from "../WaterModal/WaterModal";
-// import DeleteWaterModal from "../DeleteWaterModal/DeleteWaterModal";
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';

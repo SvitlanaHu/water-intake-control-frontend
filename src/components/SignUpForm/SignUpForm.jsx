@@ -87,7 +87,6 @@ const SignUpForm = () => {
         toast.success('Register success');
       })
       .catch(error => {
-        console.log('status', error === 'Request failed with status code 409');
         if (error === 'Request failed with status code 409') {
           toast.error('This email is already in use');
         } else if (error === 'Request failed with status code 400') {
