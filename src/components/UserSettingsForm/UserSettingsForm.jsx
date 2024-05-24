@@ -6,7 +6,6 @@ import RefreshLoader from '../RefreshLoader/RefreshLoader';
 import {
   schema,
   handleUpdateUser,
-  handleFormChange,
   getDefaultValues,
   getIsFormChanged,
 } from './helpers';
@@ -61,9 +60,9 @@ const UserSettingsForm = () => {
 
   const [img, setImg] = useState(null);
   const [file, setFile] = useState(null);
-  const [weight, setWeight] = useState('');
-  const [time, setTime] = useState('');
   const gender = watch('gender');
+  const weight = watch('weight');
+  const time = watch('time');
   const onInputFileChange = ev => {
     const file = ev.target.files[0];
     const imageUrl = URL.createObjectURL(file);
@@ -112,16 +111,23 @@ const UserSettingsForm = () => {
     }
   };
 
-  const amountOfWaterFormula =
-    gender === 'woman'
-      ? weight * 0.03 + time * 0.4
-      : weight * 0.04 + time * 0.6;
+  const getAmount = () => {
+    console.log(weight);
+    console.log(time);
+    if (weight === 0 || time === 0 || weight === '' || time === '') {
+      return '1.8';
+    } else {
+      const amount =
+        gender === 'woman'
+          ? weight * 0.03 + time * (0.4).toFixed(1)
+          : weight * 0.04 + time * (0.6).toFixed(1);
+
+      return amount.toFixed(1);
+    }
+  };
 
   return (
-    <form
-      onChange={ev => handleFormChange(ev, setWeight, setTime)}
-      onSubmit={handleSubmit(onSubmit)}
-    >
+    <form onSubmit={handleSubmit(onSubmit)}>
       {isLoading && <RefreshLoader />}
       <div className={css.photoContainer}>
         <img
@@ -249,11 +255,7 @@ const UserSettingsForm = () => {
             <p className={css.requiredAmountText}>
               The required amount of water in liters per day:
             </p>
-            <p className={css.amountOfWater}>
-              {weight != 0 && time != 0 && weight !== '' && time !== ''
-                ? amountOfWaterFormula.toFixed(1)
-                : '1.8 L'}
-            </p>
+            <p className={css.amountOfWater}>{`${getAmount()} L`}</p>
           </div>
           <TextInput
             errors={errors}
