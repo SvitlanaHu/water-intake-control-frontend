@@ -12,7 +12,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  /* color-scheme: light dark; */
   color: var(--main-text-color);
   background-color: var(--white);
 
@@ -76,7 +76,7 @@ button:focus-visible {
   overflow: hidden;
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: var(--white);
     background-color: var(--main-text-color);
@@ -87,7 +87,7 @@ button:focus-visible {
   button {
     background-color: inherit;
   }
-}
+} */
 
 ul {
   list-style-type: none;
