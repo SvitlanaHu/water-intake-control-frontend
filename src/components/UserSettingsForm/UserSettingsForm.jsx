@@ -112,8 +112,6 @@ const UserSettingsForm = () => {
   };
 
   const getAmount = () => {
-    console.log(weight);
-    console.log(time);
     if (weight === 0 || time === 0 || weight === '' || time === '') {
       return '1.8';
     } else {

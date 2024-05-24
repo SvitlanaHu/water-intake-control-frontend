@@ -8,7 +8,7 @@ import {
   resetPassword,
   verifyPageAction,
   updateUser,
-  updateAvatar
+  updateAvatar,
 } from './operations';
 
 const authSlice = createSlice({
@@ -54,7 +54,7 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = action.payload.user;
         state.isLoggedIn = true;
         state.isRegistered = true;
         state.isRefreshing = false;

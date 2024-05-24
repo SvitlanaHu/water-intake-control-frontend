@@ -75,7 +75,6 @@ export const getMonthlyWater = createAsyncThunk(
   'water/getMonthlyWater',
   async ({ year, month, timezone }, thunkAPI) => {
     try {
-      // const timezone = new/ Date().getTimezoneOffset();
       const response = await axios.get(`/water/monthly/${year}/${month}`, {
         params: {
           timezone: timezone,

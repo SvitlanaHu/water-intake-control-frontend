@@ -75,7 +75,6 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
           <span className={css.settingsCont}>
             <button
               onClick={() => {
-                console.log('Logging out...');
                 handleLogOutClick();
                 handleClose();
               }}

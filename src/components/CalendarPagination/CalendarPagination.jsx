@@ -10,7 +10,7 @@ const CalendarPagination = () => {
   const dispatch = useDispatch();
   const { currentMonth, currentYear } = useSelector(state => state.calendar);
   const tz = moment.tz.guess();
-  console.log('timezone in tracker', tz);
+
   useEffect(() => {
     dispatch(
       getMonthlyWater({

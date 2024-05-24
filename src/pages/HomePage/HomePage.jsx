@@ -1,7 +1,4 @@
-// import React from 'react';
-
 import AdvantagesSection from '../../components/AdvantagesSection/AdvantagesSection';
-// import { Modal } from '../../components/Modal/Modal';
 
 import WelcomeSection from '../../components/WelcomeSection/WelcomeSection';
 import styles from './HomePage.module.css';

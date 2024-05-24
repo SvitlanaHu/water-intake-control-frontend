@@ -8,6 +8,6 @@ export const selectIsRefreshing = state => state.auth.isRefreshing;
 
 export const selectToken = state => state.auth.token;
 
-
+export const selectRefreshToken = state => state.auth.refreshToken;
 
 export const selectIsLoading = state => state.auth.isLoading;

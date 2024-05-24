@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-// import styles from './WaterModal.module.css';
 import WaterForm from '../WaterForm/WaterForm.jsx';
 import { Modal } from '../Modal/Modal.jsx';
 
@@ -10,8 +9,6 @@ const WaterModal = ({
   id,
   waterData,
 }) => {
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-
   const formState = {
     add: {
       title: 'Add Water',
@@ -34,15 +31,6 @@ const WaterModal = ({
       ),
     },
   };
-
-  // const handleOpenModal = () => {
-  //   setIsModalOpen(true);
-  // };
-
-  // const handleFormSubmit = formData => {
-  //   console.log('Form Data Submitted:', formData);
-  //   setIsModalOpen(false);
-  // };
 
   return (
     <>
