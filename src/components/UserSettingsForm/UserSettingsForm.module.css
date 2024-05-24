@@ -7,10 +7,10 @@
   .form {
     flex-direction: row;
     gap: 40px;
+  }
 
-    div {
-      min-width: calc(50% - 20px);
-    }
+  .form > div {
+    min-width: calc(50% - 20px);
   }
 }
 
@@ -28,12 +28,6 @@
   }
 }
 
-@media (min-width: 1440px) {
-  .settingFormImg {
-    width: 100px;
-    height: 100px;
-  }
-}
 .photoContainer {
   display: flex;
   flex-direction: column;
@@ -41,39 +35,38 @@
   align-items: center;
   margin-bottom: 40px;
   align-content: center;
+}
 
-  label {
-    display: flex;
-    font-size: 14px;
-    text-align: center;
-    font-family: var(--font-family);
-    margin: 0;
-    line-height: 1.2;
-    svg {
-      margin-right: 8px;
-      width: 18px;
-      height: 18px;
-      fill: none;
-      stroke: black;
-    }
+.photoContainer label {
+  display: flex;
+  font-size: 14px;
+  text-align: center;
+  font-family: var(--font-family);
+  margin: 0;
+  line-height: 1.2;
+}
 
-    input {
-      display: none;
-    }
-  }
+.photoContainer label svg {
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: black;
+}
+
+.photoContainer input[type='file'] {
+  display: none;
 }
 
 @media (min-width: 768px) {
-  .photoContainer {
-    label {
-      line-height: 1.5;
-      font-size: 16px;
+  .photoContainer label {
+    line-height: 1.5;
+    font-size: 16px;
+  }
 
-      svg {
-        width: 20px;
-        height: 20px;
-      }
-    }
+  .photoContainer label svg {
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -180,62 +173,23 @@
   }
 }
 
-@media (min-width: 768px) {
-  .text {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-  .requiredAmountTextContainer {
-    display: flex;
-    gap: 5px;
-    margin-bottom: 14px;
-  }
-}
-
-@media (min-width: 1440px) {
-  .requiredAmountTextContainer {
-  }
-}
-
 .text {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.3;
   color: var(--text-color);
   font-family: Poppins;
-
-  span {
-    color: var(--mint);
-  }
 }
 
-.activeTimeText {
-  margin-bottom: 24px;
-  display: flex;
-
-  svg {
-    margin-right: 4px;
-    width: 18px;
-    height: 18px;
-  }
+.text span {
+  color: var(--mint);
 }
 
 @media (min-width: 768px) {
-  .activeTimeText {
+  .text {
     font-size: 16px;
-    svg {
-      width: 22px;
-      height: 22px;
-    }
+    line-height: 1.5;
   }
-}
-
-.indicatorsContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-bottom: 24px;
 }
 
 .requiredAmountText {
@@ -263,16 +217,56 @@
     font-size: 16px;
   }
 }
-
 @media (min-width: 1440px) {
-  .halfFormContainer {
-  }
-
   .requiredAmountText {
+    letter-spacing: -0.01em;
+  }
+  .amountOfWater {
     letter-spacing: -0.01em;
   }
 }
 
+.activeTimeText {
+  margin-bottom: 24px;
+  display: flex;
+}
+
+.activeTimeText svg {
+  margin-right: 4px;
+  width: 18px;
+  height: 18px;
+}
+
+@media (min-width: 768px) {
+  .activeTimeText {
+    font-size: 16px;
+  }
+
+  .activeTimeText svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.indicatorsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.requiredAmountTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+@media (min-width: 768px) {
+  .requiredAmountTextContainer {
+    flex-direction: row;
+    margin-bottom: 14px;
+  }
+}
 .explanationText {
   border-radius: 15px;
   border: 2px solid var(--light-gray);
