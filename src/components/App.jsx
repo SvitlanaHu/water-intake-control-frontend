@@ -41,7 +41,16 @@ const App = () => {
   ) : (
     <SharedLayout>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/"
+          element={
+            <RestrictedRoute
+              redirectTo="/tracker"
+              component={HomePage}
+            />
+          }
+        />
+        
         <Route
           path="/signup"
           element={
