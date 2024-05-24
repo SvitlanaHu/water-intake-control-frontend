@@ -20,7 +20,7 @@ export const schema = yup.object().shape({
         .max(3, 'Max is 3 symbols!').notOneOf(['0'], 'Value cannot be zero'),
     time: yup
         .string()
-        .required('Weight is required')
+        .required('Time is required')
         .transform(value => (value === '' ? undefined : value))
         .matches(/^\d+(\.\d+)?$/, 'Only numbers please'),
     amountOfWater: yup
@@ -47,19 +47,6 @@ export const handleUpdateUser = (dispatch, obj) => {
 
 
 
-export const handleFormChange = (ev, setWeight, setTime) => {
-    const { name, value } = ev.target;
-    switch (name) {
-        case 'weight':
-            setWeight(value);
-            break;
-        case 'time':
-            setTime(value);
-            break;
-        default:
-            break;
-    }
-};
 
 
 
@@ -81,8 +68,17 @@ export const getDefaultValues = (nickname, userEmail, userWeight, dailyWaterInta
 export const getIsFormChanged = (getValues, defaultValues) => {
 
     const currentValues = getValues();
+
+    const convertValuesToStrings = (obj) => {
+        return Object.fromEntries(
+            Object.entries(obj).map(([key, value]) => [key, String(value)])
+        );
+    };
+    const stringifiedDefaultValues = convertValuesToStrings(defaultValues);
+    console.log(currentValues);
+    console.log(stringifiedDefaultValues)
     const isFormChanged =
-        JSON.stringify(defaultValues) !== JSON.stringify(currentValues);
+        JSON.stringify(stringifiedDefaultValues) !== JSON.stringify(currentValues);
     return isFormChanged
 
 }
