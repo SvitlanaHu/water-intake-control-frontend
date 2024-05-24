@@ -13,16 +13,20 @@ export const schema = yup.object().shape({
         .max(100, 'Max is 100 symbols!'),
     weight: yup
         .string()
+        .required('Weight is required')
+        .notOneOf(['0'], 'Value cannot be zero')
         .matches(/^\d+(\.\d+)?$/, 'Only numbers please')
         .transform(value => (value === '' ? undefined : value))
-        .max(3, 'Max is 3 symbols!'),
+        .max(3, 'Max is 3 symbols!').notOneOf(['0'], 'Value cannot be zero'),
     time: yup
         .string()
-        .nullable()
+        .required('Weight is required')
         .transform(value => (value === '' ? undefined : value))
         .matches(/^\d+(\.\d+)?$/, 'Only numbers please'),
     amountOfWater: yup
         .string()
+        .required('Please indicate the amount of water')
+        .notOneOf(['0'], 'Value cannot be zero')
         .matches(/^\d+(\.\d+)?$/, 'Only numbers please')
         .transform(value => (value === '' ? undefined : value)),
 });
@@ -59,13 +63,13 @@ export const handleFormChange = (ev, setWeight, setTime) => {
 
 
 
-export const getDefaultValues = (nickname, userEmail, userWeight, dailyWaterIntake, userGender, avatarURL) => {
+export const getDefaultValues = (nickname, userEmail, userWeight, dailyWaterIntake, userGender, avatarURL, activeTime) => {
     const defaultValues = {
         gender: userGender,
         name: nickname,
         email: userEmail,
         weight: userWeight.toString(),
-        time: '',
+        time: activeTime,
         amountOfWater: dailyWaterIntake > 1000 ? (dailyWaterIntake / 1000).toString() : dailyWaterIntake.toString(),
         photo: avatarURL,
     };
@@ -77,8 +81,6 @@ export const getDefaultValues = (nickname, userEmail, userWeight, dailyWaterInta
 export const getIsFormChanged = (getValues, defaultValues) => {
 
     const currentValues = getValues();
-
-
     const isFormChanged =
         JSON.stringify(defaultValues) !== JSON.stringify(currentValues);
     return isFormChanged
