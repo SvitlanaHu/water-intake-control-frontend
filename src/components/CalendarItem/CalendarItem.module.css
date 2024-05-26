@@ -26,6 +26,7 @@
   height: 22px;
   border-radius: 30px;
   background-color: var(--white);
+  border: 2px solid var(--day-color);
   margin: 0;
   padding: 0;
   display: flex;
@@ -44,10 +45,14 @@
 }
 .incomplete {
   background-color: var(--day-color);
+  border: 2px solid var(--static-mint);
+  animation: var(--animation-shadow);
 }
 .selected {
   background-color: var(--text-color);
   color: var(--static-mint);
+  border: 2px solid var(--static-mint);
+  animation: var(--animation-shadow);
 }
 
 @media only screen and (min-width: 375px) {

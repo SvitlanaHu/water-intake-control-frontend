@@ -1,6 +1,5 @@
 .container {
   max-width: 375px;
-  /* height: 770px; */
   height: 812px;
   border-radius: 30px;
   background-color: var(--background-color);
@@ -10,15 +9,12 @@
 }
 @media only screen and (min-width: 768px) {
   .container {
-    /* height: 738px; */
     height: 782px;
-
     max-width: 768px;
   }
 }
 @media only screen and (min-width: 1440px) {
   .container {
-    /* height: 736px; */
     width: 768px;
     display: flex;
     flex-direction: column;

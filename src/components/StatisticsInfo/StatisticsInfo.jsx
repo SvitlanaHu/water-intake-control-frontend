@@ -11,7 +11,7 @@ const StatisticsInfo = () => {
         <h1 className={styles.header}>Statistics</h1>
         <div className={styles.box}>
           <CalendarPagination />
-          <Link to="/tracker">
+          <Link to="/statistics">
             <svg className={styles.svg}>
               <use
                 className={styles.settingsIcon}

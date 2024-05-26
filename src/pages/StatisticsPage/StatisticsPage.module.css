@@ -20,7 +20,7 @@
   }
   .waterMainInfo {
     height: 782px;
-    position: relative; /* Додайте position: relative; */
+    position: relative;
   }
 
   .waterMainInfo > * {

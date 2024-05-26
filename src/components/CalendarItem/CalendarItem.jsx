@@ -26,7 +26,7 @@ const CalendarItem = ({ data }) => {
   const isSelected = selectedDate === date;
 
   const waterPercentage = ((data.volume / dailyNorma) * 100).toFixed(0);
-  const isIncompleteWater = waterPercentage < 100;
+  const isIncompleteWater = waterPercentage > 100;
 
   return (
     <button type="button" className={css.btn} onClick={handleClick}>

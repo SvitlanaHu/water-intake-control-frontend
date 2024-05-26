@@ -9,7 +9,7 @@ export default function RefreshLoader() {
           visible={true}
           height="80"
           width="80"
-          color="yellow"
+          color="var(--static-mint)"
           radius="9"
           ariaLabel="three-dots-loading"
           wrapperStyle={{}}
