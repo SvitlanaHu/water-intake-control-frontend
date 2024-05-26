@@ -12,6 +12,7 @@
   align-items: center;
   align-content: center;
   gap: 10px;
+  box-shadow: var(--box-shadow);
 }
 .svg {
   fill: var(--white) !important;

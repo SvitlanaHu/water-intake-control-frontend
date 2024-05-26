@@ -12,6 +12,9 @@
   --static-white: #fff;
   --background-visibility: rgba(1, 1, 1, 0.8);
   --day-color: rgba(50, 63, 71, 0.2);
+  --box-shadow-color: #b7c7ae;
+  --animation-shadow: blink 3s infinite;
+  --box-shadow: 0 4px 8px 0px var(--box-shadow-color);
 
   font-family: Poppins, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -30,6 +33,19 @@
   --main-text-color: #fff;
   --white: #2f2f2f;
   --day-color: #42525b;
+  --box-shadow-color: #87d28d;
+  --animation-shadow: blink 3s infinite;
+  --box-shadow: 0 4px 8px 0px var(--box-shadow-color);
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    box-shadow: 0 4px 8px 0px var(--box-shadow-color);
+  }
+  50% {
+    box-shadow: 0 4px 8px 0px transparent;
+  }
 }
 
 a {

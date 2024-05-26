@@ -9,6 +9,7 @@
   left: 50%;
   margin-top: 175px;
   transform: translate(-50%);
+  box-shadow: var(--box-shadow);
 }
 .textCont {
   margin: 12px;

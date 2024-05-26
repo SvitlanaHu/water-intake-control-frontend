@@ -6,7 +6,6 @@
 
 .btn {
   height: 50px !important;
-
   border-radius: 30px !important;
   background-color: var(--text-color) !important;
   display: flex !important;
@@ -15,6 +14,7 @@
   align-items: center !important;
   align-content: center !important;
   gap: 8px !important;
+  box-shadow: var(--box-shadow) !important;
 }
 .btn:focus,
 .btn:focus-visible {

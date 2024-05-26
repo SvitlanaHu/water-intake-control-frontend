@@ -45,7 +45,6 @@
 .input::placeholder,
 .input {
   color: var(--main-text-color);
-  background-color: var(--day-color);
   font-family: Poppins;
   font-size: 14px;
 }
@@ -60,11 +59,12 @@
   box-sizing: border-box;
   background-color: transparent;
   border-radius: 15px;
-  border: 1px solid rgba(47, 47, 47, 0.2);
+  border: 1px solid var(--day-color);
+  background-color: var(--day-color);
   width: 100%;
   padding: 16px;
   margin-top: 8px;
-  color: rgb(47, 47, 47);
+  color: var(--main-text-color);
   outline: none;
 }
 

@@ -35,6 +35,7 @@
   border: none;
   cursor: pointer;
   font-size: 16px;
+  box-shadow: var(--box-shadow);
 }
 @media only screen and (min-width: 768px) {
   .pagination button {
@@ -44,6 +45,7 @@
 .pagination button:disabled {
   background-color: var(--text-color);
   cursor: not-allowed;
+  box-shadow: var(--box-shadow);
 }
 
 .pagination button:hover:not(:disabled) {

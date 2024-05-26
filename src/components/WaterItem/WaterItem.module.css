@@ -8,6 +8,7 @@
   align-items: center;
   gap: 10px;
   padding: 18px 14px;
+  box-shadow: var(--box-shadow);
 }
 
 .svgGlass {

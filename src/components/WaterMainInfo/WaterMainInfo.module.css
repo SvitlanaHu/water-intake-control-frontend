@@ -8,6 +8,7 @@
   border-radius: 30px;
   height: 415px;
   position: relative;
+  box-shadow: var(--box-shadow);
 }
 
 .logoWrap {

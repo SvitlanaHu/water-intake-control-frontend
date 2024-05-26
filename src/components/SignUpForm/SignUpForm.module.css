@@ -14,7 +14,7 @@
 }
 
 .linkQuestion {
-  color: rgba(47, 47, 47, 0.5);
+  color: var(--main-text-color);
   font-weight: 400;
 }
 .linkRedirect {
@@ -80,7 +80,7 @@
 
 .input::placeholder,
 .input {
-  color: rgba(47, 47, 47, 0.6);
+  color: var(--main-text-color);
   font-family: Poppins;
   font-size: 14px;
 }
@@ -94,13 +94,13 @@
 .input {
   outline: none;
   box-sizing: border-box;
-  background-color: transparent;
+  background-color: var(--day-color);
   border-radius: 15px;
-  border: 1px solid rgba(47, 47, 47, 0.2);
+  border: 1px solid var(--day-color);
   width: 100%;
   padding: 16px;
   margin-top: 8px;
-  color: rgb(47, 47, 47);
+  color: var(--main-text-color);
 }
 
 /* Стилі для автоматично вставлених значень */

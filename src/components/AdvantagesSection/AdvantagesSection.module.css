@@ -7,7 +7,7 @@
   left: 16px;
   gap: 0px;
   opacity: 0px;
-
+  box-shadow: var(--box-shadow);
   background: url(/public/images/home-mobile.jpg) center / cover no-repeat;
 }
 
@@ -124,6 +124,7 @@
   gap: 52px;
   border-radius: 30px;
   background-color: var(--white);
+  box-shadow: var(--box-shadow);
   opacity: 0px;
 }
 @media (min-width: 768px) {
@@ -213,6 +214,7 @@
   border-radius: 30px;
   font-size: 8px;
   font-weight: 700;
+  box-shadow: var(--box-shadow);
 }
 .drive {
   position: absolute;

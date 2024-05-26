@@ -8,6 +8,7 @@
   border-radius: 15px;
   margin-left: 16px;
   margin-top: 0px;
+  box-shadow: var(--box-shadow);
 }
 .title {
   pointer-events: none;

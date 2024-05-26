@@ -40,7 +40,7 @@ const WaterProgressBar = () => {
               borderRadius: '16px',
               width: '12px',
               height: '12px',
-              color: 'white',
+              color: 'var(--white)',
               border: '1px solid var(--static-mint)',
             },
             '& .MuiSlider-rail': {

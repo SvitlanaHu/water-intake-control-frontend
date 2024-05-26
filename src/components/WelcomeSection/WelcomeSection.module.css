@@ -8,6 +8,7 @@
   border-radius: 30px;
   opacity: 0px;
   background-color: var(--background-color);
+  box-shadow: var(--box-shadow);
 }
 
 .container.dark-theme {
