@@ -44,7 +44,8 @@
 
 .input::placeholder,
 .input {
-  color: rgba(47, 47, 47, 0.6);
+  color: var(--main-text-color);
+  background-color: var(--day-color);
   font-family: Poppins;
   font-size: 14px;
 }

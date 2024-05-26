@@ -88,11 +88,6 @@ button:focus-visible {
   overflow: hidden;
 }
 
-:root.dark-theme {
-  color: var(--white);
-  background-color: var(--main-text-color);
-}
-
 ul {
   list-style-type: none;
   margin: 0;
