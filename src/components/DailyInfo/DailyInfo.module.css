@@ -16,11 +16,11 @@
   height: 8px;
 }
 .scrollDiv::-webkit-scrollbar-thumb {
-  background: #323f47;
+  background: var(--text-color);
   border-radius: 9px;
 }
 .scrollDiv::-webkit-scrollbar-track {
-  background-color: #ffffff;
+  background-color: var(--white);
   border-radius: 9px;
 }
 .dateAdd {

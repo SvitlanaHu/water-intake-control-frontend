@@ -4,10 +4,20 @@
 }
 .WaterMaininfoContainer {
   width: 100%;
-  background: #9be1a0;
+  background: var(--mint);
   border-radius: 30px;
   height: 415px;
   position: relative;
+}
+
+.logoWrap {
+  padding: 16px;
+}
+@media screen and (min-width: 768px) {
+  .logoWrap {
+    padding: 32px;
+    padding-bottom: 0;
+  }
 }
 
 .header {
@@ -39,7 +49,7 @@
     max-width: 768px;
   }
   .WaterMaininfoContainer {
-    background: #9be1a0;
+    background: var(--mint);
 
     height: 578px;
   }
@@ -68,7 +78,7 @@
     height: 736px;
   }
   .WaterMaininfoContainer {
-    background: #9be1a0;
+    background: var(--mint);
 
     height: 100%;
   }

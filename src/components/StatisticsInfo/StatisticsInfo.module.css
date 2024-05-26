@@ -9,7 +9,7 @@
 .header {
   margin: 0;
   padding: 0;
-  color: #323f47;
+  color: var(--text-color);
   font-weight: bold;
   font-size: 22px;
   line-height: 24px;
@@ -48,7 +48,7 @@
   opacity: 0.8;
   cursor: pointer;
   fill: none;
-  stroke: #323f47;
+  stroke: var(--text-color);
 }
 .svg:hover,
 .svg:focus {

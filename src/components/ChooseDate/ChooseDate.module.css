@@ -1,5 +1,5 @@
 .text {
-  color: #323f47;
+  color: var(--text-color);
   font-weight: bold;
   font-size: 22px;
   line-height: 24px;

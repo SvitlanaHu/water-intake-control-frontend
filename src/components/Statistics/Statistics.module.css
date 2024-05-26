@@ -1,7 +1,7 @@
 .container {
   max-width: 375px;
   border-radius: 30px;
-  background-color: #f0eff4;
+  background-color: var(--background-color);
   display: flex;
   flex-direction: column;
 }
@@ -30,8 +30,8 @@
 .pagination button {
   padding: 5px 10px;
   border-radius: 30px;
-  background-color: #9be1a0;
-  color: white;
+  background-color: var(--static-mint);
+  color: var(--white);
   border: none;
   cursor: pointer;
   font-size: 16px;
@@ -42,12 +42,12 @@
   }
 }
 .pagination button:disabled {
-  background-color: #d3d3d3;
+  background-color: var(--text-color);
   cursor: not-allowed;
 }
 
 .pagination button:hover:not(:disabled) {
-  background-color: #87c48f;
+  background-color: var(--static-mint);
 }
 
 .loaderContainer {

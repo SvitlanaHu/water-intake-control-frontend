@@ -7,7 +7,7 @@
   background-color: var(--white);
   border-radius: 15px;
   margin-left: 16px;
-  margin-top: 72px;
+  margin-top: 0px;
 }
 .title {
   pointer-events: none;

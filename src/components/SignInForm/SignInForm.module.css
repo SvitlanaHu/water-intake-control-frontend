@@ -19,7 +19,7 @@
 }
 
 .linkRedirect {
-  color: #2f2f2f;
+  color: var(--main-text-color);
   font-weight: 700;
   text-decoration-line: underline;
 }

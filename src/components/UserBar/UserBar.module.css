@@ -8,7 +8,7 @@
   height: 50px !important;
 
   border-radius: 30px !important;
-  background-color: #323f47 !important;
+  background-color: var(--text-color) !important;
   display: flex !important;
   flex-direction: row !important;
   justify-content: space-between !important;
@@ -22,7 +22,7 @@
 }
 
 .text {
-  color: #ffffff !important;
+  color: var(--white) !important;
   font-size: 14px !important;
   line-height: 18px !important;
   letter-spacing: -0.01em !important;
@@ -37,12 +37,12 @@
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  fill: #ffffff !important;
+  fill: var(--white) !important;
 }
 .svgDrop {
   width: 16px !important;
   height: 16px !important;
-  fill: #ffffff !important;
+  fill: var(--white) !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;

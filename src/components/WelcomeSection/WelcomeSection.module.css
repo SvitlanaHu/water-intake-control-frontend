@@ -7,8 +7,25 @@
   gap: 0px;
   border-radius: 30px;
   opacity: 0px;
-  background-color: var(--light-gray);
+  background-color: var(--background-color);
 }
+
+.container.dark-theme {
+  background-color: var(--text-color);
+}
+.title.dark-theme,
+.text.dark-theme,
+.linkIn.dark-theme,
+.linkUp.dark-theme {
+  color: var(--background-color);
+}
+.linkUp.dark-theme {
+  background-color: var(--mint);
+}
+.linkIn.dark-theme {
+  border-color: var(--background-color);
+}
+
 @media (min-width: 768px) {
   .container {
     width: 672px;
@@ -87,6 +104,7 @@
   text-align: left;
   text-wrap: wrap;
 }
+
 @media (min-width: 768px) and (max-width: 1439.98px) {
   .title {
     font-size: 64px;
@@ -143,6 +161,7 @@
   background-color: var(--mint);
   color: var(--text-color);
 }
+
 .linkUp:hover,
 .linkUp:focus {
   cursor: pointer;
@@ -150,5 +169,5 @@
   color: var(--text-color);
 }
 .linkUp:active {
-  background-color: var(--light-gray);
+  background-color: var(--background-color);
 }

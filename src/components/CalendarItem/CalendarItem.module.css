@@ -21,11 +21,11 @@
   font-weight: bold;
   line-height: 18px;
   letter-spacing: -0.01em;
-  color: #323f47;
+  color: var(--text-color);
   width: 28px;
   height: 28px;
   border-radius: 30px;
-  background-color: #ffffff;
+  background-color: var(--white);
   margin: 0;
   padding: 0;
   display: flex;
@@ -46,8 +46,8 @@
   background-color: rgba(50, 63, 71, 0.2);
 }
 .selected {
-  background-color: #323f47;
-  color: #9be1a0;
+  background-color: var(--text-color);
+  color: var(--mint);
 }
 
 @media only screen and (min-width: 768px) {

@@ -18,7 +18,7 @@
   font-weight: 400;
 }
 .linkRedirect {
-  color: #2f2f2f;
+  color: var(--main-text-color);
   font-weight: 700;
   text-decoration-line: underline;
 }
@@ -47,7 +47,7 @@
   }
 }
 .label {
-  color: #2f2f2f;
+  color: var(--main-text-color);
   font-size: 14px;
   font-weight: 700;
   line-height: 1.29em;
@@ -139,7 +139,7 @@ input:-webkit-autofill:active {
 .showPasswordBtn:focus,
 .showPasswordBtn:active {
   border-color: transparent !important;
-  color: #2f2f2f !important;
+  color: var(--main-text-color) !important;
   background-color: transparent !important;
   outline: none;
 }

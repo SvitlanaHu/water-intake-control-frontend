@@ -2,7 +2,7 @@
   max-width: 375px;
   height: 770px;
   border-radius: 30px;
-  background-color: #f0eff4;
+  background-color: var(--background-color);
   display: flex;
   flex-direction: column;
 }

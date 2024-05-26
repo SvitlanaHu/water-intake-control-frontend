@@ -43,7 +43,7 @@
 }
 
 .seconds {
-  color: #9be1a0;
+  color: var(--mint);
   font-weight: 700;
   font-size: 25px;
 }

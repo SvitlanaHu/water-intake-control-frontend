@@ -51,7 +51,7 @@
   width: 18px;
   height: 18px;
   fill: none;
-  stroke: black;
+  stroke: var(--text-color);
 }
 
 .photoContainer input[type='file'] {
@@ -269,7 +269,7 @@
 }
 .explanationText {
   border-radius: 15px;
-  border: 2px solid var(--light-gray);
+  border: 2px solid var(--background-color);
   padding: 16px;
   margin-bottom: 14px;
   letter-spacing: -0.03em;

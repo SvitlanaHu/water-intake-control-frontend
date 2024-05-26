@@ -1,9 +1,11 @@
-import css from './WaterMainInfo.module.css';
+import { useState } from 'react';
+import styles from './WaterMainInfo.module.css';
 import WaterDailyNorma from '../WaterDailyNorma/WaterDailyNorma';
 import WaterProgressBar from '../WaterProgressBar/WaterProgressBar';
 import AddWaterBtn from '../AddWaterBtn/AddWaterBtn';
 import WaterModal from '../WaterModal/WaterModal';
-import { useState } from 'react';
+import Logo from "../Logo/Logo";
+
 
 const WaterMainInfo = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,9 +15,11 @@ const WaterMainInfo = () => {
   };
 
   return (
-    <div className={css.container}>
-      <div className={css.WaterMaininfoContainer}>
-        <h1 className={css.header}> AQUATRACK</h1>
+    <div className={styles.container}>
+      <div className={styles.WaterMaininfoContainer}>
+        <div className={styles.logoWrap}>
+          <Logo text="AquaTrack" />
+        </div>
         <WaterDailyNorma />
         <WaterProgressBar />
         <AddWaterBtn handleOpenModal={handleOpenModal} />
@@ -25,9 +29,9 @@ const WaterMainInfo = () => {
           setIsModalOpen={setIsModalOpen}
         />
 
-        <div className={css.imgWrapper}>
+        <div className={styles.imgWrapper}>
           <img
-            className={css.img}
+            className={styles.img}
             src="./../../images/bottle@1x.jpg"
             srcSet="./../../images/bottle-desktop@2x.png"
             alt="Water bottle image"

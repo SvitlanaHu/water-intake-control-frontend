@@ -2,7 +2,7 @@
   color: var(--main-text-color);
   padding: 15px;
   background-color: transparent;
-  border: 2px solid var(--light-gray);
+  border: 2px solid var(--background-color);
   width: 100%;
   width: -webkit-fill-available;
   border-radius: 15px;

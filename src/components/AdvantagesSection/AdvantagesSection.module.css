@@ -77,6 +77,7 @@
   width: 285px;
   height: 47px;
 }
+
 .customersImg,
 .customersImg2,
 .customersImg3 {
@@ -85,9 +86,10 @@
   width: 27px;
   top: 8px;
   left: 30px;
-  border: 2px solid var(--white);
+  border: 1px solid var(--white);
   border-radius: 50%;
 }
+
 .customersImg2 {
   left: 12px;
 }
@@ -137,6 +139,7 @@
     top: 540px;
   }
 }
+
 .customers {
   position: absolute;
   display: block;
@@ -236,11 +239,24 @@
   top: -2px;
   left: 87px;
 }
+@media (prefers-color-scheme: dark) {
+  .statistics {
+    background-color: var(--dark-mint);
+    color: var(--background-color);
+  }
+}
+
 .setting {
   position: absolute;
   width: 108px;
   background-color: var(--white);
   top: 30px;
+}
+@media (prefers-color-scheme: dark) {
+  .setting {
+    background-color: var(--main-text-color);
+    color: var(--background-color);
+  }
 }
 @media (min-width: 768px) {
   .base {

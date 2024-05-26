@@ -4,9 +4,9 @@
   padding: 16px;
   width: 100%;
   border-radius: 30px;
-  background: #9be1a0;
+  background: var(--mint);
   border: none;
-  color: #323f47;
+  color: var(--text-color);
   font-size: 14px;
   font-weight: 700;
   line-height: 1.29em;

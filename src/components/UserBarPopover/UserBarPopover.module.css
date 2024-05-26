@@ -7,7 +7,7 @@
 .svg {
   width: 16px !important;
   height: 16px !important;
-  fill: #323f47 !important;
+  fill: var(--text-color) !important;
 }
 .settingsIcon,
 .LogIcon {
@@ -38,7 +38,7 @@
 }
 .popover {
   border-radius: 15px !important;
-  color: #ffffff !important;
+  color: var(--white) !important;
 }
 .MuiPopover {
   border-radius: 15px !important;

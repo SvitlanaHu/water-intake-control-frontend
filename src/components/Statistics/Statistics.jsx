@@ -108,7 +108,7 @@ const Statistics = () => {
     return (
       <div className={styles.loaderContainer}>
         <Stack justifyContent="center" alignItems="center" height="100%">
-          <CircularProgress sx={{ color: '#9BE1A0' }} />
+          <CircularProgress sx={{ color: 'var(--static-mint' }} />
         </Stack>
       </div>
     );
@@ -120,8 +120,8 @@ const Statistics = () => {
         <AreaChart data={currentPageData}>
           <defs>
             <linearGradient id="colorWater" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#9be1a0" stopOpacity={1} />
-              <stop offset="100%" stopColor="#f0eff4" stopOpacity={0.8} />
+              <stop offset="0%" stopColor="var(--static-mint)" stopOpacity={1} />
+              <stop offset="100%" stopColor="var(--background-color)" stopOpacity={0.8} />
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" />
@@ -149,7 +149,7 @@ const Statistics = () => {
             dataKey="waterConsumed"
             stroke="#9be1a0"
             activeDot={{ r: 8 }}
-            dot={{ r: 10, stroke: '#9be1a0', strokeWidth: 3 }}
+            dot={{ r: 10, stroke: 'var(--static-mint)', strokeWidth: 3 }}
             strokeWidth={3}
           />
         </AreaChart>
