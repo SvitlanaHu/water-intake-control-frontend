@@ -19,11 +19,15 @@
   color: var(--background-color);
 }
 .btn:hover,
-.btn:active,
-.btn:focus {
+.btn:active {
+  cursor: pointer;
   background: var(--main-text-color);
   border-color: var(--main-text-color);
   color: var(--background-color);
+}
+.btn:focus {
+  border: none;
+  outline: none;
 }
 
 @media only screen and (min-width: 375px) {

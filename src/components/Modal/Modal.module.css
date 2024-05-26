@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--day-color);
   z-index: 100;
   display: flex;
   flex-direction: column;
@@ -39,7 +39,7 @@
 }
 
 .modalWrapper::-webkit-scrollbar-thumb {
-  background-color: var(--background-color);
+  background-color: var(--background-visibility);
   border-radius: 8px;
   border-color: var(--text-color);
   color: var(--text-color);
