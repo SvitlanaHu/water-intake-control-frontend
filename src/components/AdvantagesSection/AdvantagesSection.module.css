@@ -217,8 +217,8 @@
 .drive {
   position: absolute;
   width: 81px;
-  color: var(--white);
-  background-color: var(--text-color);
+  color: var(--static-white);
+  background-color: var(--static-text-color);
   top: -3px;
 }
 .customersO {
@@ -227,37 +227,28 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  color: var(--mint);
-  background-color: var(--mint);
+  color: var(--static-mint);
+  background-color: var(--static-mint);
   top: 2px;
   left: -12px;
 }
 .statistics {
   position: absolute;
   width: 83px;
-  background-color: var(--mint);
+  background-color: var(--static-mint);
+  color: var(--static-text-color);
   top: -2px;
   left: 87px;
-}
-@media (prefers-color-scheme: dark) {
-  .statistics {
-    background-color: var(--dark-mint);
-    color: var(--background-color);
-  }
 }
 
 .setting {
   position: absolute;
   width: 108px;
-  background-color: var(--white);
+  background-color: var(--static-main-text-color);
+  color: var(--static-white);
   top: 30px;
 }
-@media (prefers-color-scheme: dark) {
-  .setting {
-    background-color: var(--main-text-color);
-    color: var(--background-color);
-  }
-}
+
 @media (min-width: 768px) {
   .base {
     font-size: 12px;
@@ -283,6 +274,4 @@
     width: 150px;
     top: 17px;
   }
-}
-@media (min-width: 1440px) {
 }

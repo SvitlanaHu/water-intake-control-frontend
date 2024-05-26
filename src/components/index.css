@@ -1,12 +1,15 @@
 :root {
   /* colors */
   --main-text-color: #3a3939;
+  --static-main-text-color: #3a3939;
   --text-color: #323f47;
+  --static-text-color: #323f47;
   --static-mint: #9be1a0;
   --mint: #9be1a0;
   --green: #87d28d;
   --background-color: #f0eff4;
   --white: #fff;
+  --static-white: #fff;
   --background-visibility: rgba(1, 1, 1, 0.4);
 
   font-family: Poppins, system-ui, Avenir, Helvetica, Arial, sans-serif;
