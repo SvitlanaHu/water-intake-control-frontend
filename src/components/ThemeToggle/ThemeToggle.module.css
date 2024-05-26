@@ -1,8 +1,8 @@
 .btn {
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 4px 8px;
+  font-size: 8px;
   cursor: pointer;
-  background-color: var(--mint);
+  background-color: var(--static-mint);
   border-color: var(--mint);
   border-radius: 20px;
   display: flex;
@@ -18,8 +18,23 @@
   background-color: var(--text-color);
   color: var(--background-color);
 }
-.btn:hover {
+.btn:hover,
+.btn:active,
+.btn:focus {
   background: var(--main-text-color);
   border-color: var(--main-text-color);
   color: var(--background-color);
+}
+
+@media only screen and (min-width: 375px) {
+  .btn {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .btn {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
 }

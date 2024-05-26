@@ -20,7 +20,7 @@ const Calendar = () => {
     return (
       <div className={css.loaderContainer}>
         <Stack justifyContent="center" alignItems="center" height="100%">
-          <CircularProgress sx={{ color: '#9BE1A0' }} />
+          <CircularProgress sx={{ color: 'var(--static-mint)' }} />
         </Stack>
       </div>
     );

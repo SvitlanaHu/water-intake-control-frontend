@@ -11,6 +11,7 @@
   --white: #fff;
   --static-white: #fff;
   --background-visibility: rgba(1, 1, 1, 0.4);
+  --day-color: rgba(50, 63, 71, 0.2);
 
   font-family: Poppins, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -28,6 +29,7 @@
   --mint: #466b48;
   --main-text-color: #fff;
   --white: #2f2f2f;
+  --day-color: #42525b;
 }
 
 a {

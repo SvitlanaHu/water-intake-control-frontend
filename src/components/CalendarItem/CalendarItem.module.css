@@ -17,13 +17,13 @@
 }
 
 .day {
-  font-size: 14px;
+  font-size: 10px;
   font-weight: bold;
   line-height: 18px;
   letter-spacing: -0.01em;
-  color: var(--text-color);
-  width: 28px;
-  height: 28px;
+  color: var(--main-text-color);
+  width: 20px;
+  height: 22px;
   border-radius: 30px;
   background-color: var(--white);
   margin: 0;
@@ -37,17 +37,30 @@
 .water {
   padding: 0;
   margin: 0;
-  font-size: 10px;
-  line-height: 10px;
-  color: #2f2f2f;
+  font-size: 8px;
+  line-height: 8px;
+  color: var(--main-text-color);
   opacity: 0.6;
 }
 .incomplete {
-  background-color: rgba(50, 63, 71, 0.2);
+  background-color: var(--day-color);
 }
 .selected {
   background-color: var(--text-color);
-  color: var(--mint);
+  color: var(--static-mint);
+}
+
+@media only screen and (min-width: 375px) {
+  .day {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .water {
+    font-size: 10px;
+    line-height: 10px;
+  }
 }
 
 @media only screen and (min-width: 768px) {

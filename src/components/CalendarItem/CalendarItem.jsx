@@ -19,10 +19,7 @@ const CalendarItem = ({ data }) => {
     'YYYY-MM-DD'
   );
 
-  const handleClick = () => {
-    //  const date = dayjs(`${currentYear}-${currentMonth + 1}-${data.day}`).format(
-    //    'YYYY-MM-DD'
-    //  );
+  const handleClick = () => {    
     dispatch(selectDate(date));
     dispatch(dailyWater(date));
   };
