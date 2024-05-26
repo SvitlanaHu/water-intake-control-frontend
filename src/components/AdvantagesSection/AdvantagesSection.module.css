@@ -156,7 +156,7 @@
   text-align: left;
 }
 .customersHappy {
-  color: var(--mint);
+  color: var(--static-mint);
 }
 @media (min-width: 768px) {
   .customers {
