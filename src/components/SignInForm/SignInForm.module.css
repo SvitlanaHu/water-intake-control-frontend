@@ -14,12 +14,12 @@
 }
 
 .linkQuestion {
-  color: var(--main-text-color);
+  color: var(--main-text-color) !important;
   font-weight: 400;
 }
 
 .linkRedirect {
-  color: var(--main-text-color);
+  color: var(--main-text-color) !important;
   font-weight: 700;
   text-decoration-line: underline;
 }
