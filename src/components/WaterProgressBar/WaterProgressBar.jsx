@@ -35,17 +35,17 @@ const WaterProgressBar = () => {
           sx={{
             m: 0,
             p: 0,
-            color: '#9be1a0',
+            color: 'var(--static-mint)',
             '& .MuiSlider-thumb': {
               borderRadius: '16px',
               width: '12px',
               height: '12px',
               color: 'white',
-              border: '1px solid #9be1a0',
+              border: '1px solid var(--static-mint)',
             },
             '& .MuiSlider-rail': {
-              color: '#F0EFF4',
-              backgroundColor: '#F0EFF4',
+              color: 'var(--background-color)',
+              backgroundColor: 'var(--background-color)',
             },
           }}
         />

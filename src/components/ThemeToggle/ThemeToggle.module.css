@@ -2,7 +2,7 @@
   padding: 4px 8px;
   font-size: 8px;
   cursor: pointer;
-  background-color: var(--static-mint);
+  background-color: var(--mint);
   border-color: var(--mint);
   border-radius: 20px;
   display: flex;

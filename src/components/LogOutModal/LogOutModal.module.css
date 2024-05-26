@@ -46,8 +46,8 @@
 }
 
 .cancelBtn {
-  background-color: var(--background-color);
-  color: rgba(50, 63, 71, 0.3);
+  background-color: var(--day-color);
+  color: var(--main-text-color);
   border-radius: 30px;
   padding: 14px 129px;
   font-size: 14px;

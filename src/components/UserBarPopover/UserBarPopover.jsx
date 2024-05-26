@@ -35,7 +35,7 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
   return (
     <>
       <Popover
-        className={css.popOver}
+        className={css.popover}
         id={id}
         open={open}
         anchorEl={anchorEl}
@@ -51,46 +51,48 @@ const UserBarPopover = ({ anchorEl, handleClose, id, open }) => {
           horizontal: 'left',
         }}
       >
-        <Typography className={css.typography}>
-          <span className={css.settingsCont}>
-            <button
-              type="button"
-              onClick={() => {
-                handleClose();
-                dispatch(openSettingModal());
-              }}
-              className={css.settingBtn}
-            >
-              <svg className={css.svg}>
-                <use
-                  className={css.settingsIcon}
-                  href="../../../symbol.svg#icon-settings"
-                ></use>
-              </svg>
-              <a className={css.popOverText1}>Setting</a>
-            </button>
-          </span>
-        </Typography>
-        <Typography className={css.typographyLog}>
-          <span className={css.settingsCont}>
-            <button
-              onClick={() => {
-                handleLogOutClick();
-                handleClose();
-              }}
-              type="button"
-              className={css.logBtn}
-            >
-              <svg className={css.svg}>
-                <use
-                  className={css.LogIcon}
-                  href="../../../symbol.svg#icon-log-out"
-                ></use>
-              </svg>
-              <a className={css.popOverText2}>LogOut</a>
-            </button>
-          </span>
-        </Typography>
+        <div className={css.container}>
+          <Typography className={css.typography}>
+            <span className={css.settingsCont}>
+              <button
+                type="button"
+                onClick={() => {
+                  handleClose();
+                  dispatch(openSettingModal());
+                }}
+                className={css.settingBtn}
+              >
+                <svg className={css.svg}>
+                  <use
+                    className={css.settingsIcon}
+                    href="../../../symbol.svg#icon-settings"
+                  ></use>
+                </svg>
+                <a className={css.popOverText1}>Setting</a>
+              </button>
+            </span>
+          </Typography>
+          <Typography className={css.typographyLog}>
+            <span className={css.settingsCont}>
+              <button
+                onClick={() => {
+                  handleLogOutClick();
+                  handleClose();
+                }}
+                type="button"
+                className={css.logBtn}
+              >
+                <svg className={css.svg}>
+                  <use
+                    className={css.LogIcon}
+                    href="../../../symbol.svg#icon-log-out"
+                  ></use>
+                </svg>
+                <a className={css.popOverText2}>LogOut</a>
+              </button>
+            </span>
+          </Typography>
+        </div>
       </Popover>
 
       {isSettingModalOpen && <UserSettingsModal open={isSettingModalOpen} />}
