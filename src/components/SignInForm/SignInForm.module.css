@@ -40,3 +40,29 @@
     margin: 0 auto;
   }
 }
+
+.wrapForgot {
+  margin-top: 20px;
+  justify-content: end;
+}
+@media screen and (min-width: 768px) {
+  .wrapForgot {
+    margin-right: 134px;
+    margin-left: 134px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .wrapForgot {
+    margin-right: 118px;
+    margin-left: 118px;
+  }
+}
+.linkRedirectForgot {
+  text-decoration-line: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+.linkRedirectForgot:hover,
+.linkRedirectForgot:active {
+  color: var(--mint) !important;
+}

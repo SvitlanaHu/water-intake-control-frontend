@@ -107,6 +107,12 @@ export default function SignInForm() {
         handleChange={handleChange}
       />
       {isLoading && <RefreshLoader />}
+      <NavLink
+        to="/reset-password"
+        className={`${styles.wrapDesc} ${styles.wrapForgot}`}
+      >
+        <p className={styles.linkRedirectForgot}>Forgot your password?</p>
+      </NavLink>
       <AuthBtn disabled={isLoading}>Sign In</AuthBtn>
       <NavLink to="/signup">
         <p className={styles.wrapDesc}>
