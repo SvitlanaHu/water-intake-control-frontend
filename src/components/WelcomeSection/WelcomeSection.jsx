@@ -16,8 +16,10 @@ const WelcomeSection = () => {
           <Link className={`${styles.linkUp} ${styles.link}`} to="/signup">
             Try tracker
           </Link>
-          <Link className={`${styles.linkIn} ${styles.link}`} to="/signin">
-            Sign In
+          <Link className={styles.linkInBox} to="/signin">
+            <p className={`${styles.linkIn} ${styles.link}`}>
+              Sign In
+            </p>
           </Link>
         </div>
       </div>

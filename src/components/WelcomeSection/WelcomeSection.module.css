@@ -11,22 +11,6 @@
   box-shadow: var(--box-shadow);
 }
 
-.container.dark-theme {
-  background-color: var(--text-color);
-}
-.title.dark-theme,
-.text.dark-theme,
-.linkIn.dark-theme,
-.linkUp.dark-theme {
-  color: var(--background-color);
-}
-.linkUp.dark-theme {
-  background-color: var(--mint);
-}
-.linkIn.dark-theme {
-  border-color: var(--background-color);
-}
-
 @media (min-width: 768px) {
   .container {
     width: 672px;
@@ -133,6 +117,10 @@
   line-height: 24px;
   letter-spacing: -0.01em;
   text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
 }
 @media (min-width: 768px) {
   .link {
@@ -144,23 +132,55 @@
   }
 }
 
-.linkIn {
-  border: 1px solid var(--main-text-color);
+.linkInBox {
+  position: relative;
 }
+.linkIn {
+  box-shadow: 0 0 5px var(--main-text-color),
+    0 0 5px var(--main-text-color) inset;
+  border: none;
+  -webkit-perspective: 230px;
+  perspective: 230px;
+  z-index: 1;
+}
+
+.linkIn:after {
+  /* position: absolute;
+  content: ''; */
+  width: 100%;
+  height: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  border: 1px solid var(--static-mint);
+  box-shadow: 0 0 5px var(--static-mint), 0 0 5px var(--static-mint) inset;
+  transition: all 0.9s ease;
+}
+
 .linkIn:hover,
 .linkIn:focus {
-  cursor: pointer;
-  color: var(--green);
-  border-color: var(--mint);
+  /* box-shadow: 0 0 5px var(--static-mint), 0 0 5px var(--static-mint) inset; */
+  border: 1px solid var(--static-mint);
+  color: var(--static-mint);
+  box-shadow: inset 0 0 10px var(--static-mint),
+    0 0 20px var(--static-mint) inset, 0 0 20px #0bf4f3 inset;
+  /* -webkit-transform: rotateX(-90deg);
+  -moz-transform: rotateX(-90deg);
+  transform: rotateX(-90deg); */
+}
+.linkIn:hover:after {
+  top: 0;
+  height: 100%;
 }
 .linkIn:active {
-  color: var(--text-color);
-  border-color: var(--text-color);
+  top: 2px;
 }
 
 .linkUp {
-  background-color: var(--mint);
+  background-color: var(--static-mint);
   color: var(--text-color);
+  border: none;
+  box-shadow: 0 0 5px var(--box-shadow-color);
 }
 
 .linkUp:hover,
@@ -168,6 +188,8 @@
   cursor: pointer;
   background-color: var(--green);
   color: var(--text-color);
+  box-shadow: 0 0 10px var(--box-shadow-color), 0 0 20px var(--box-shadow-color),
+    0 0 20px var(--text-color) inset;
 }
 .linkUp:active {
   background-color: var(--background-color);
