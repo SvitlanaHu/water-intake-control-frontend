@@ -100,24 +100,12 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
-export const sendResetEmail = createAsyncThunk(
-  'auth/sendResetEmail',
-  async (email, thunkAPI) => {
-    try {
-      const response = await axios.post('/forgot-password', { email });
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
 export const resetPassword = createAsyncThunk(
   'auth/resetPassword',
-  async ({ token, password }, thunkAPI) => {
+  async (email, thunkAPI) => {
     try {
-      const response = await axios.post(`/restore-password/${token}`, {
-        password,
+      const response = await axios.post('/users/password-reset-request', {
+        email,
       });
       return response.data;
     } catch (error) {
@@ -125,6 +113,20 @@ export const resetPassword = createAsyncThunk(
     }
   }
 );
+
+// export const resetPassword = createAsyncThunk(
+//   'auth/resetPassword',
+//   async ({ token, password }, thunkAPI) => {
+//     try {
+//       const response = await axios.post(`/restore-password/${token}`, {
+//         password,
+//       });
+//       return response.data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 export const updateUser = createAsyncThunk(
   'auth/updateUser',

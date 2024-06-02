@@ -18,11 +18,11 @@ import { refreshUser } from '../redux/auth/operations';
 import RefreshLoader from './RefreshLoader/RefreshLoader';
 import RestrictedRoute from './RestrictedRoute';
 import PrivateRoute from './PrivateRoute';
-import ResetPassword from './ResetPassword/ResetPassword';
 import VerifyPage from '../pages/VerifyPage';
 import RestrictedAfterRegisterRoute from './RestrictedAfterRegisterRoute';
 import ErrorEmailVerifyPage from '../pages/AuthPages/ErrorEmailVerifyPage';
 import ConfirmEmailPage from '../pages/AuthPages/ConfirmEmailPage';
+import ResetPasswordPage from '../pages/AuthPages/ResetPasswordPage';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -44,13 +44,10 @@ const App = () => {
         <Route
           path="/"
           element={
-            <RestrictedRoute
-              redirectTo="/tracker"
-              component={HomePage}
-            />
+            <RestrictedRoute redirectTo="/tracker" component={HomePage} />
           }
         />
-        
+
         <Route
           path="/signup"
           element={
@@ -89,8 +86,24 @@ const App = () => {
             <PrivateRoute redirectTo="/signin" component={StatisticsPage} />
           }
         />
+        <Route
+          path="/signin"
+          element={
+            <RestrictedRoute redirectTo="/tracker" component={SignInPage} />
+          }
+        />
+        <Route
+          path="/reset-password"
+          element={
+            <RestrictedRoute
+              redirectTo="/tracker"
+              component={ResetPasswordPage}
+            />
+          }
+        />
+
         <Route path="*" element={<NotFoundPage />} />
-        <Route path="/reset-password/:token" element={<ResetPassword />} />
+        {/* <Route path="/reset-password/:token" element={<ResetPassword />} /> */}
       </Routes>
       <Toaster
         position="top-right"

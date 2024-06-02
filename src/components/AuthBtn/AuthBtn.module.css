@@ -11,6 +11,7 @@
   font-weight: 700;
   line-height: 1.29em;
   letter-spacing: -0.14px;
+  transition: box-shadow 0.3s ease;
 }
 @media (min-width: 768px) {
   .button {
@@ -33,6 +34,11 @@
 .button:hover,
 .button:focus {
   outline: none;
+}
+
+.button:active,
+.button:hover {
+  box-shadow: var(--box-shadow);
 }
 
 .disabledButton {

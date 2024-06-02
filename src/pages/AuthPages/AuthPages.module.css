@@ -19,7 +19,6 @@
     display: flex;
     gap: 32px;
     position: relative;
-    height: 736px;
   }
 }
 
@@ -32,11 +31,13 @@
 @media screen and (min-width: 768px) {
   .content {
     padding: 0;
+    height: 960px;
   }
 }
 @media screen and (min-width: 1440px) {
   .content {
     width: 672px;
+    height: 736px;
   }
 }
 
@@ -123,7 +124,116 @@
   .wrapWaterSection {
     display: flex;
     position: absolute;
-    left: -32px;
+    left: -10px;
     top: 0;
+  }
+}
+
+.label {
+  color: var(--main-text-color);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.29em;
+  height: 81px;
+}
+.labelResetWrap {
+  height: 119px;
+}
+@media screen and (min-width: 768px) {
+  .label {
+    font-size: 16px;
+    line-height: 1.5em;
+    height: 90px;
+  }
+  .labelResetWrap {
+    margin: 0 134px;
+    margin-bottom: 30px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .labelResetWrap {
+    margin: 0 118px;
+    height: 136px;
+  }
+}
+.labelText {
+  display: block;
+  text-align: center;
+  max-width: 290px;
+  margin: 0 auto;
+}
+
+.error {
+  font-size: 11px;
+  color: red;
+  font-weight: 400;
+}
+@media screen and (min-width: 768px) {
+  .error {
+    font-size: 12px;
+  }
+}
+
+.input::placeholder,
+.input {
+  color: var(--main-text-color);
+  font-family: Poppins;
+  font-size: 14px;
+}
+@media screen and (min-width: 768px) {
+  .input::placeholder,
+  .input {
+    font-size: 16px;
+  }
+}
+
+.input {
+  box-sizing: border-box;
+  background-color: transparent;
+  border-radius: 15px;
+  border: 1px solid var(--day-color) !important;
+  background-color: var(--day-color) !important;
+  width: 100%;
+  padding: 16px;
+  margin-top: 28px;
+  color: var(--main-text-color) !important;
+  outline: none;
+}
+
+/* Стилі для автоматично вставлених значень */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: var(--main-text-color) !important;
+  background-color: var(--day-color) !important;
+  color: var(--main-text-color) !important;
+}
+
+.inputError,
+.inputError:focus {
+  border: 1px solid red;
+  color: red;
+}
+
+.returnToSignIn {
+  margin-bottom: 150px;
+  font-weight: bold;
+  display: block;
+  text-align: end;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+@media screen and (min-width: 768px) {
+  .returnToSignIn {
+    margin-right: 134px;
+    margin-left: 134px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .returnToSignIn {
+    margin-right: 118px;
+    margin-left: 118px;
   }
 }
