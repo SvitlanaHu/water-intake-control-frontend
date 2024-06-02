@@ -136,6 +136,9 @@
   line-height: 1.29em;
   height: 81px;
 }
+.labelResetWrap {
+  height: 119px;
+}
 @media screen and (min-width: 768px) {
   .label {
     font-size: 16px;
@@ -144,11 +147,13 @@
   }
   .labelResetWrap {
     margin: 0 134px;
+    margin-bottom: 30px;
   }
 }
 @media screen and (min-width: 1440px) {
   .labelResetWrap {
     margin: 0 118px;
+    height: 136px;
   }
 }
 .labelText {

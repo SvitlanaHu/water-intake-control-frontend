@@ -34,6 +34,10 @@
 .button:hover,
 .button:focus {
   outline: none;
+}
+
+.button:active,
+.button:hover {
   box-shadow: var(--box-shadow);
 }
 
