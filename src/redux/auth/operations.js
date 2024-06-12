@@ -114,19 +114,20 @@ export const resetPassword = createAsyncThunk(
   }
 );
 
-// export const resetPassword = createAsyncThunk(
-//   'auth/resetPassword',
-//   async ({ token, password }, thunkAPI) => {
-//     try {
-//       const response = await axios.post(`/restore-password/${token}`, {
-//         password,
-//       });
-//       return response.data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
+export const submitNewPassword = createAsyncThunk(
+  'auth/submitNewPassword',
+  async ({ token, newPassword }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post('/users/reset-password', {
+        token,
+        newPassword,
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
 export const updateUser = createAsyncThunk(
   'auth/updateUser',
